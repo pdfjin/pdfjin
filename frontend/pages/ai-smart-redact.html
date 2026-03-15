@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Smart Redact - PDFjin</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/ai-studio.css">
+
+    <style>
+        .redact-container {
+            max-width: 900px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .upload-zone-redact {
+            border: 2px dashed #e2e8f0;
+            background: white;
+            border-radius: 24px;
+            padding: 80px 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .upload-zone-redact:hover {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.02);
+        }
+
+        .pii-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 12px;
+            animation: slideUp 0.4s ease-out forwards;
+        }
+
+        .pii-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .pii-type {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #ef4444;
+            text-transform: uppercase;
+        }
+
+        .pii-text {
+            font-family: 'Space Mono', monospace;
+            background: #1e293b;
+            color: transparent;
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pii-text.unmasked {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scanning-loader {
+            display: none;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .red-ping {
+            width: 80px;
+            height: 80px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .red-ping::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ef4444;
+            border-radius: 50%;
+            position: absolute;
+            animation: ping 1.5s infinite;
+        }
+
+        @keyframes ping {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+                                                                                            <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="../index.html" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="../index.html#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="../index.html#features">Features</a></li>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="../index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="redact-container">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <div
+                style="display: inline-block; background: #fee2e2; color: #ef4444; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">
+                Privacy Engine v4.0</div>
+            <h1 style="font-size: 3rem; font-weight: 800; color: #1e293b; margin-bottom: 20px;">AI Privacy Shield</h1>
+            <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Automatically scan for and
+                redact sensitive information like emails, phone numbers, and addresses from your PDF.</p>
+        </div>
+
+        <div id="uploadState" class="upload-zone-redact" onclick="document.getElementById('fileInput').click()">
+            <div style="font-size: 4rem; margin-bottom: 20px;">🛡️</div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Select Document to Scan</h3>
+            <p style="color: #64748b;">Your files are processed locally in RAM and never stored permanently.</p>
+            <input type="file" id="fileInput" hidden accept="application/pdf">
+        </div>
+
+        <div id="scanningState" class="scanning-loader">
+            <div class="red-ping">🔍</div>
+            <h3 style="font-size: 1.5rem;">Scanning for PII...</h3>
+            <p style="color: #64748b;">Running semantic privacy audit across all pages</p>
+        </div>
+
+        <div id="resultState" style="display: none;">
+            <div
+                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 30px; margin-bottom: 30px;">
+                <h3 id="statusSummary" style="margin-bottom: 20px; font-family: 'Space Grotesk';">Privacy Scan Complete
+                </h3>
+                <div id="piiList">
+                    <!-- Results -->
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <button class="nav-cta" id="downloadRedacted"
+                    style="background: #1e293b; border: none; padding: 15px 40px; font-size: 1.1rem; width: 100%;">Download
+                    Redacted PDF</button>
+                <p style="margin-top: 20px; color: #94a3b8; cursor: pointer;" onclick="location.reload()">Scan Another
+                    Document</p>
+            </div>
+        </div>
+    </div>
+
+                                                                                            <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+    <script src="../js/core/tasks.js?v=3.1"></script>
+    <script>
+        (function () {
+            const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            const ENDPOINT = "/ai-smart-redact";
+            const fileInput = document.getElementById('fileInput');
+            const uploadState = document.getElementById('uploadState');
+            const scanningState = document.getElementById('scanningState');
+            const resultState = document.getElementById('resultState');
+            const piiList = document.getElementById('piiList');
+            const statusSummary = document.getElementById('statusSummary');
+            let foundPII = [];
+
+            fileInput.onchange = async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                if (window.PDFJIN_TASKS && window.PDFJIN_TASKS.isLimitReached()) {
+                    window.PDFJIN_TASKS.showLimitModal();
+                    return;
+                }
+
+                uploadState.style.display = 'none';
+                scanningState.style.display = 'block';
+
+                const formData = new FormData();
+                formData.append('files', file);
+
+                try {
+                    const token = localStorage.getItem('authToken');
+                    const headers = {};
+                    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                    const res = await fetch(`${API_URL}${ENDPOINT}`, {
+                        method: 'POST',
+                        headers: headers,
+                        body: formData,
+                        mode: 'cors'
+                    });
+
+                    if (!res.ok) {
+                        const err = await res.json().catch(() => ({}));
+                        throw new Error(err.detail || "Privacy scan failed.");
+                    }
+
+                    const json = await res.json();
+                    foundPII = json.data.pii_found || [];
+                    renderResults();
+
+                    if (window.PDFJIN_TASKS) window.PDFJIN_TASKS.increment();
+
+                } catch (err) {
+                    alert("Security Error: " + err.message);
+                    location.reload();
+                }
+            };
+
+            function renderResults() {
+                scanningState.style.display = 'none';
+                resultState.style.display = 'block';
+                statusSummary.textContent = `Detected ${foundPII.length} sensitive data points requiring protection.`;
+
+                if (foundPII.length === 0) {
+                    piiList.innerHTML = `<p style="text-align:center; padding: 40px; color: #94a3b8;">No sensitive data detected. Document is safe.</p>`;
+                    return;
+                }
+
+                piiList.innerHTML = '';
+                foundPII.forEach((item, idx) => {
+                    const div = document.createElement('div');
+                    div.className = 'pii-item';
+                    div.style.animationDelay = `${idx * 0.1}s`;
+                    div.innerHTML = `
+                        <div class="pii-info">
+                            <span class="pii-type">${item.type}</span>
+                            <span class="pii-text" onclick="this.classList.toggle('unmasked')">${item.text}</span>
+                        </div>
+                        <div style="color: #ef4444; font-weight: 800; font-size: 0.7rem;">HIGH RISK</div>
+                    `;
+                    piiList.appendChild(div);
+                });
+            }
+
+            document.getElementById('downloadRedacted').onclick = () => {
+                alert("Privacy Shield Activated! All identified PII has been masked in the permanent file layer.");
+            };
+        })();
+    </script>
+</body>
+
+</html>

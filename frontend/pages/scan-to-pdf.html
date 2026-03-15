@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan to PDF - PDFjin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tool-page.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+
+    <style>
+        .scanner-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .camera-preview-wrap {
+            position: relative;
+            width: 100%;
+            max-width: 640px;
+            aspect-ratio: 4/3;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 4px solid #fff;
+        }
+
+        #cameraPreview {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scaleX(1);
+            /* Normal camera view */
+        }
+
+        .camera-controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .snapshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 20px;
+            min-height: 160px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .snapshot-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            aspect-ratio: 3/4;
+            transition: transform 0.2s;
+        }
+
+        .snapshot-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .snapshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .snapshot-item .remove-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #ef4444;
+            color: white;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .snapshot-item .remove-btn:hover {
+            background: #dc2626;
+            transform: scale(1.1);
+        }
+
+        .btn-capture {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            border-radius: 99px;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+
+        .btn-capture:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .capture-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 10;
+        }
+
+        .shutter-effect {
+            animation: shutter-flicker 0.4s ease-out;
+        }
+
+        @keyframes shutter-flicker {
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            40% {
+                opacity: 0;
+            }
+
+            60% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .status-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+    </style>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+</head>
+
+<body class="single-file-mode">
+    <!-- NAVIGATION -->
+                                                                                                    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="../index.html" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="../index.html#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="../index.html#features">Features</a></li>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="../index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="tool-container">
+        <div class="section-inner" style="max-width: 900px;">
+            <div class="tool-card shadow-lg">
+                <div style="text-align: left; margin-bottom: 10px; padding: 20px 20px 0;">
+                    <a href="dashboard.html" class="back-link"
+                        style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
+                        &larr; Back to dashboard
+                    </a>
+                </div>
+
+                <div class="tool-header">
+                    <div class="tool-icon-large"></div>
+                    <h1 class="tool-title">Scan to PDF</h1>
+                    <p class="tool-subtitle">Use your device camera to capture document pages and combine them into a
+                        single PDF instantly.</p>
+                </div>
+
+                <div class="scanner-container" style="padding: 0 30px 40px;">
+                    <div class="status-badge" id="cameraStatus">Initializing Camera...</div>
+
+                    <div class="camera-preview-wrap" id="shutterFrame">
+                        <video id="cameraPreview" autoplay playsinline muted></video>
+                        <div class="capture-overlay" id="flashOverlay"></div>
+                    </div>
+
+                    <div class="camera-controls">
+                        <button class="btn-capture" id="captureBtn">
+                            <span style="font-size: 1.2rem;"></span> Capture Page
+                        </button>
+                    </div>
+
+                    <div class="snapshot-gallery" id="snapshotGallery">
+                        <!-- Snapshots will appear here -->
+                        <div id="emptyState"
+                            style="grid-column: 1/-1; text-align: center; color: #94a3b8; padding: 40px 0;">
+                            No pages captured yet. Click capture to start.
+                        </div>
+                    </div>
+
+                    <div class="action-container" id="actionContainer"
+                        style="display: none; margin-top: 30px; text-align: center; width: 100%;">
+                        <button class="btn-execute" id="executeBtn" style="width: auto; padding: 18px 50px;">
+                            Combine & Convert to PDF &rarr;
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hidden canvas for capturing frames -->
+                <canvas id="captureCanvas" style="display: none;"></canvas>
+            </div>
+        </div>
+    </main>
+
+                                                                                                    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+    <script>
+        (function () {
+            const video = document.getElementById('cameraPreview');
+            const captureBtn = document.getElementById('captureBtn');
+            const canvas = document.getElementById('captureCanvas');
+            const gallery = document.getElementById('snapshotGallery');
+            const emptyState = document.getElementById('emptyState');
+            const actionContainer = document.getElementById('actionContainer');
+            const executeBtn = document.getElementById('executeBtn');
+            const flashOverlay = document.getElementById('flashOverlay');
+            const cameraStatus = document.getElementById('cameraStatus');
+
+            let snapshots = [];
+            let stream = null;
+
+            // 1. Initialize Camera
+            // 1. Initialize Camera
+            async function initCamera() {
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    cameraStatus.textContent = "Not Supported";
+                    alert("Your browser does not support camera access. Please use a modern browser like Chrome or Safari.");
+                    return;
+                }
+
+                // Security Check: getUserMedia requires HTTPS or localhost
+                if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                    cameraStatus.textContent = "Insecure Connection";
+                    alert("Camera access requires a secure (HTTPS) connection. Please ensure you are viewing this page over HTTPS.");
+                    return;
+                }
+
+                const constraints = [
+                    { video: { facingMode: { ideal: "environment" }, width: { ideal: 1920 }, height: { ideal: 1080 } }, audio: false },
+                    { video: { facingMode: { ideal: "environment" }, width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false },
+                    { video: { facingMode: { ideal: "environment" } }, audio: false },
+                    { video: true, audio: false }
+                ];
+
+                for (const constraint of constraints) {
+                    try {
+                        console.log("PDFjin: Attempting camera with:", JSON.stringify(constraint));
+                        stream = await navigator.mediaDevices.getUserMedia(constraint);
+                        
+                        video.srcObject = stream;
+                        
+                        // Robust play handling for mobile browsers
+                        video.setAttribute('playsinline', '');
+                        video.setAttribute('muted', '');
+                        video.muted = true;
+
+                        await new Promise((resolve) => {
+                            video.onloadedmetadata = () => {
+                                video.play()
+                                    .then(resolve)
+                                    .catch(e => {
+                                        console.error("Video play promise rejected:", e);
+                                        resolve(); // Still proceed
+                                    });
+                            };
+                        });
+
+                        cameraStatus.textContent = "Camera Active";
+                        cameraStatus.style.background = "#dcfce7";
+                        cameraStatus.style.color = "#166534";
+                        console.log("PDFjin: Camera successfully initialized.");
+                        return; 
+                    } catch (err) {
+                        console.warn("PDFjin: Camera attempt failed for this constraint:", err.name, err.message);
+                        // If user denied permission, stop trying immediately
+                        if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
+                            showError("Camera permission denied. Please enable camera access in your browser settings and refresh.");
+                            return;
+                        }
+                    }
+                }
+
+                showError("Could not access camera. Please ensure no other app is using it and your browser has permissions.");
+            }
+
+            function showError(msg) {
+                cameraStatus.textContent = "Camera Error";
+                cameraStatus.style.background = "#fee2e2";
+                cameraStatus.style.color = "#991b1b";
+                console.error("PDFjin: " + msg);
+                alert(msg);
+            }
+
+            initCamera();
+
+            // 2. Capture Snapshot
+            captureBtn.onclick = () => {
+                if (!stream) return;
+
+                // Flash effect
+                flashOverlay.classList.remove('shutter-effect');
+                void flashOverlay.offsetWidth; // Trigger reflow
+                flashOverlay.classList.add('shutter-effect');
+
+                // Draw to canvas
+                const ctx = canvas.getContext('2d');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                ctx.drawImage(video, 0, 0);
+
+                // Convert to blob
+                canvas.toBlob((blob) => {
+                    const id = Date.now();
+                    const url = URL.createObjectURL(blob);
+                    snapshots.push({ id, blob });
+
+                    // Remove Empty State
+                    if (emptyState) emptyState.style.display = 'none';
+
+                    // Add to UI
+                    const item = document.createElement('div');
+                    item.className = 'snapshot-item';
+                    item.id = `snap-${id}`;
+                    item.innerHTML = `
+                        <img src="${url}">
+                        <button class="remove-btn" onclick="removeSnapshot(${id}, event)">&times;</button>
+                    `;
+                    gallery.appendChild(item);
+
+                    updateUI();
+                }, 'image/jpeg', 0.92);
+            };
+
+            window.removeSnapshot = (id, e) => {
+                if (e) e.stopPropagation();
+                snapshots = snapshots.filter(s => s.id !== id);
+                const el = document.getElementById(`snap-${id}`);
+                if (el) el.remove();
+
+                if (snapshots.length === 0 && emptyState) {
+                    emptyState.style.display = 'block';
+                }
+                updateUI();
+            };
+
+            function updateUI() {
+                if (snapshots.length > 0) {
+                    actionContainer.classList.add('visible');
+                } else {
+                    actionContainer.classList.remove('visible');
+                }
+            }
+
+            // 3. Convert to PDF
+            executeBtn.onclick = async () => {
+                if (snapshots.length === 0) return;
+
+                executeBtn.disabled = true;
+                const originalText = executeBtn.innerHTML;
+                executeBtn.innerHTML = '<span class="spinner-small"></span> Generating PDF...';
+
+                const formData = new FormData();
+                snapshots.forEach((s, idx) => {
+                    formData.append('files', s.blob, `scan_${idx + 1}.jpg`);
+                });
+
+                try {
+                    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+                    const res = await fetch(`${API_URL}/jpg-to-pdf`, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (!res.ok) throw new Error("Conversion failed on server");
+
+                    const blob = await res.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `scanned_pdfjin_${Date.now()}.pdf`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+
+                    executeBtn.innerHTML = " Success!";
+                    setTimeout(() => {
+                        executeBtn.disabled = false;
+                        executeBtn.innerHTML = originalText;
+                    }, 3000);
+                } catch (err) {
+                    console.error(err);
+                    alert('Conversion failed: ' + err.message);
+                    executeBtn.disabled = false;
+                    executeBtn.innerHTML = originalText;
+                }
+            };
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+Your Website IP Address:
+To make pdfjin.com live, you need to add these two records at your domain registrar (where you bought the domain):
+
+Type	Name	Value
+A Record	@	34.36.165.26
+A Record	www	34.36.165.26
+🛡️ Status of Your SSL Certificate:
+I have successfully requested the certificate for both www.pdfjin.com and pdfjin.com.
+
+Current Status: PROVISIONING (This means Google is waiting for you to update your DNS records so it can verify you own the site).
+Time to Live: Once you update the DNS records above, it usually takes 30–60 minutes for the "Green Lock" to appear.
+🚀 What happens next?
+Update your DNS with the IP address: 34.36.165.26.
+Wait about 30 minutes.
+Your site will be live at https://pdfjin.com!
+Note: If you see a "Not Secure" warning in the first hour, don't worry—that just means Google is still finishing the final security handshake with your domain provider.
+
+Do you need help finding where to put these numbers in your domain settings? (e.g. are you using GoDaddy, Namecheap, etc.?)

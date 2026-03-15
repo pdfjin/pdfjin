@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDFjin Blog | Professional Knowledge Base</title>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blog.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+</head>
+
+<body class="blog-body">
+
+    <!-- NAVIGATION -->
+                                        <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="../index.html" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="../index.html#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="../index.html#features">Features</a></li>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="../index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- BLOG HERO -->
+    <header class="blog-hero">
+        <span class="section-tag">Journal</span>
+        <h1>Insights & <span class="gradient-text">Resources</span></h1>
+        <p class="blog-subtitle">Expert guides on document management, PDF security, and AI-powered productivity.</p>
+    </header>
+
+    <main class="blog-container">
+
+        <!-- TOP STORY -->
+        <article class="featured-post">
+            <img src="../assets/blog/blog-excel.png" alt="Excel to PDF" class="featured-header-img">
+            <div class="featured-content">
+                <span class="post-tag">Featured Guide</span>
+                <h2><a href="blog/excel-to-pdf-guide.html">How to Convert Excel to PDF While Keeping Formatting</a></h2>
+                <p>Learn the professional methodology for transforming complex spreadsheets into high-fidelity PDFs, ensuring every cell, formula, and layout property remains intact for professional delivery.</p>
+                <a href="blog/excel-to-pdf-guide.html" class="read-more">Read Full Article</a>
+            </div>
+        </article>
+
+        <!-- BLOG LIST (Simple, Professional, Aligned) -->
+        <div class="blog-grid">
+
+            <article class="blog-card">
+                <span class="post-tag">Optimization</span>
+                <h3><a href="blog/reduce-pdf-size-email-guide.html">How to Reduce PDF File Size for Email Attachments Online</a></h3>
+                <p>A comprehensive guide on shrinking bulky PDF documents using professional compression algorithms to facilitate faster email transmission without compromising visual clarity or document integrity.</p>
+                <a href="blog/reduce-pdf-size-email-guide.html" class="read-more">Read Full Article</a>
+                <div class="card-footer"><span>Feb 23, 2026</span> • <span>5 min read</span></div>
+            </article>
+
+            <article class="blog-card">
+                <span class="post-tag">Management</span>
+                <h3><a href="blog/merge-multiple-pdfs-guide.html">The Best Way to Merge Multiple PDF Files into One Document</a></h3>
+                <p>Consolidate your digital workspace by merging reports, invoices, and legal documents into a single, organized PDF file. Our guide explores the most efficient methods for professional document compilation.</p>
+                <a href="blog/merge-multiple-pdfs-guide.html" class="read-more">Read Full Article</a>
+                <div class="card-footer"><span>Feb 23, 2026</span> • <span>4 min read</span></div>
+            </article>
+
+            <article class="blog-card">
+                <span class="post-tag">Editing</span>
+                <h3><a href="blog/edit-pdf-text-online-guide.html">How to Edit PDF Text Online for Free (No Download Required)</a></h3>
+                <p>Update dates, correct typographical errors, and redact sensitive information directly from your browser. This tutorial covers the tools needed to manipulate PDF text without expensive desktop software.</p>
+                <a href="blog/edit-pdf-text-online-guide.html" class="read-more">Read Full Article</a>
+                <div class="card-footer"><span>Feb 23, 2026</span> • <span>6 min read</span></div>
+            </article>
+
+            <article class="blog-card">
+                <span class="post-tag">Tutorial</span>
+                <h3><a href="blog/pdf-to-editable-word-guide.html">How to Convert PDF to Editable Word Document Online Free</a></h3>
+                <p>Transform static PDF content into editable Microsoft Word documents. We explore advanced OCR technologies that maintain layout fidelity while providing full text-editing capabilities.</p>
+                <a href="blog/pdf-to-editable-word-guide.html" class="read-more">Read Full Article</a>
+                <div class="card-footer"><span>Feb 23, 2026</span> • <span>6 min read</span></div>
+            </article>
+
+            <article class="blog-card">
+                <span class="post-tag">Security</span>
+                <h3><a href="blog/digitally-sign-pdf-guide.html">The Easiest Way to Digitally Sign PDF Documents Online for Free</a></h3>
+                <p>Eliminate the need for printing and scanning. Learn how to apply legally-compliant digital signatures to contracts, leases, and forms in seconds using secure digital verification methods.</p>
+                <a href="blog/digitally-sign-pdf-guide.html" class="read-more">Read Full Article</a>
+                <div class="card-footer"><span>Feb 23, 2026</span> • <span>7 min read</span></div>
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+                                        <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+{
+    "stats": {
+        "total_revenue": 0,
+        "total_users": 2,
+        "conversions_today": 1
+    },
+    "pricing": {
+        "pro": {
+            "monthly": 4.50,
+            "yearly": 39.00
+        },
+        "enterprise": {
+            "monthly": 49.99,
+            "yearly": 490.00
+        },
+        "free_limit": 50,
+        "free_limit_size": 10,
+        "pro_limit": 100,
+        "pro_limit_size": 100,
+        "ent_limit": 1000,
+        "ent_limit_size": 500
+    },
+    "users": [
+        {
+            "full_name": "Admin Created User",
+            "email": "admin@pdfjin.com",
+            "password": "$2b$12$t7Iz1arH8JOdpdzzMh7iQOWwnv3/EN/baHwvrY9WNxQTaHFWK4s3O",
+            "created_at": "2026-03-01T18:48:45.799730",
+            "plan": "free",
+            "status": "Active"
+        },
+        {
+            "full_name": "dawn",
+            "email": "dawnz@gmail.com",
+            "password": "$2b$12$z.WQwhVoUXxSrYdw.M5eSOKtafB6f7uY4UjjjfQ1osCgemrSZ/ZPu",
+            "created_at": "2026-03-01T18:50:16.751654",
+            "plan": "free"
+        }
+    ]
+}

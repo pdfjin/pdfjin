@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cross-Reference Agent | PDFjin</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tool-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --agent-primary: #6366f1;
+            --agent-secondary: #4f46e5;
+            --agent-glow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .tool-container-agent {
+            display: flex;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+            min-height: 80vh;
+        }
+
+        .sidebar-research {
+            width: 320px;
+            flex-shrink: 0;
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-research {
+            flex-grow: 1;
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .upload-zone {
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--agent-primary);
+            background: #f5f3ff;
+        }
+
+        .file-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .file-item .remove {
+            color: #ef4444;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 0 5px;
+        }
+
+        .hero-agent {
+            margin-bottom: 40px;
+        }
+
+        .premium-badge-agent {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(90deg, var(--agent-primary), var(--agent-secondary));
+            color: white;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 20px;
+        }
+
+        .title-agent {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .query-box {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .query-input {
+            width: 100%;
+            min-height: 120px;
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 20px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            margin: 15px 0;
+            transition: border-color 0.2s;
+        }
+
+        .query-input:focus {
+            outline: none;
+            border-color: var(--agent-primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .btn-agent {
+            background: var(--agent-primary);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+        }
+
+        .btn-agent:hover {
+            background: var(--agent-secondary);
+            transform: translateY(-1px);
+            box-shadow: var(--agent-glow);
+        }
+
+        .btn-agent:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #processingState {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .pulse-orbit {
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--agent-primary);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            position: relative;
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0.8;
+            }
+        }
+
+        .report-container {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .report-header {
+            background: #f8fafc;
+            padding: 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .report-content {
+            padding: 40px;
+            line-height: 1.7;
+            color: #334155;
+        }
+
+        .insight-card {
+            background: #f5f3ff;
+            border-left: 4px solid var(--agent-primary);
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: #1e293b;
+        }
+
+        @media (max-width: 1024px) {
+            .tool-container-agent {
+                flex-direction: column;
+            }
+
+            .sidebar-research {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+</head>
+
+<body>
+
+                                                                                    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="../index.html" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="../index.html#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="../index.html#features">Features</a></li>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="../index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="tool-container-agent">
+        <!-- SIDEBAR -->
+        <aside class="sidebar-research">
+            <h3 style="font-size: 1.25rem; margin-bottom: 20px; font-family: 'Space Grotesk', sans-serif;">Research
+                Sources</h3>
+            <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+                <div class="logo-icon" style="font-size: 2rem; margin-bottom: 10px;">&#128194;</div>
+                <p style="font-size: 0.85rem; color: #94a3b8;">Upload up to 20 PDFs for synthesis</p>
+                <input type="file" id="fileInput" multiple accept=".pdf" hidden>
+            </div>
+            <div class="file-list" id="fileList">
+                <!-- Selected files appear here -->
+            </div>
+
+            <div
+                style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.02); border: 1px solid #e2e8f0; border-radius: 16px;">
+                <h4 style="font-size: 0.9rem; margin-bottom: 10px; color: var(--agent-secondary);">Neural Search Active
+                </h4>
+                <p style="font-size: 0.75rem; color: #64748b; line-height: 1.5;">
+                    The agent scans full-text layers across all documents to find patterns, contradictions, and
+                    consensus.
+                </p>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main-research">
+            <div class="hero-agent">
+                <span class="premium-badge-agent">Multi-Doc Analysis</span>
+                <h1 class="title-agent">Cross-Reference Agent</h1>
+                <p style="color: #64748b; font-size: 1.1rem; max-width: 700px;">
+                    The "Virtual Research Lead" that synthesizes entire folders of knowledge. Ask complex questions
+                    across dozens of documents simultaneously.
+                </p>
+            </div>
+
+            <!-- QUERY BOX -->
+            <div class="query-box" id="querySection">
+                <label style="font-weight: 700; color: #1e293b;">What research query should the Agent lead?</label>
+                <textarea class="query-input" id="researchQuery"
+                    placeholder="e.g., 'What are the conflicting conclusions regarding climate feedback loops across all these papers?' or 'Find the consensus on market trends for 2026.'"></textarea>
+                <button class="btn-agent" id="startResearch">
+                    Launch Neural Synthesis
+                </button>
+            </div>
+
+            <!-- PROCESSING -->
+            <div id="processingState" style="display: none;">
+                <div class="pulse-orbit"></div>
+                <h2 style="font-size: 2rem; margin-bottom: 10px; color: #1e293b;">Analyzing Corpus...</h2>
+                <p style="color: #64748b;">Cross-referencing claims and building citation graph.</p>
+            </div>
+
+            <!-- REPORT RESULTS -->
+            <div class="report-container" id="reportArea">
+                <div class="report-header">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h2 style="font-size: 2.2rem; font-family: 'Space Grotesk', sans-serif; color: #1e293b;">
+                            Synthesized Report</h2>
+                        <button class="btn-agent" id="downloadReport" style="padding: 10px 20px; font-size: 0.9rem;">
+                            Save as PDF
+                        </button>
+                    </div>
+                    <div id="keyInsights"
+                        style="margin-top: 25px; display: grid; grid-template-columns: 1fr; gap: 10px;">
+                        <!-- Insights go here -->
+                    </div>
+                </div>
+                <div class="report-content" id="reportMarkdown">
+                    <!-- Markdown content here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+                                                                                    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js?v=3.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js?v=3.1"></script>
+
+    <script>
+        (function () {
+            const fileInput = document.getElementById('fileInput');
+            const fileList = document.getElementById('fileList');
+            const startBtn = document.getElementById('startResearch');
+            const queryInput = document.getElementById('researchQuery');
+            const querySection = document.getElementById('querySection');
+            const processingState = document.getElementById('processingState');
+            const reportArea = document.getElementById('reportArea');
+            const reportMarkdown = document.getElementById('reportMarkdown');
+            const keyInsights = document.getElementById('keyInsights');
+
+            let selectedFiles = [];
+
+            fileInput.onchange = (e) => {
+                const files = Array.from(e.target.files);
+                selectedFiles = [...selectedFiles, ...files].slice(0, 20); // Limit to 20
+                renderFiles();
+            };
+
+            function renderFiles() {
+                fileList.innerHTML = '';
+                selectedFiles.forEach((file, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'file-item';
+                    div.innerHTML = `
+                        <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px;">${file.name}</span>
+                        <span class="remove" onclick="window.removeFile(${index})">&times;</span>
+                    `;
+                    fileList.appendChild(div);
+                });
+            }
+
+            window.removeFile = (idx) => {
+                selectedFiles.splice(idx, 1);
+                renderFiles();
+            };
+
+            startBtn.onclick = async () => {
+                const query = queryInput.value.trim();
+                if (selectedFiles.length === 0) return alert("Please upload at least one document.");
+                if (!query) return alert("Please enter a research query.");
+
+                querySection.style.display = 'none';
+                processingState.style.display = 'block';
+                reportArea.style.display = 'none';
+
+                const formData = new FormData();
+                selectedFiles.forEach(file => formData.append('files', file));
+                formData.append('query', query);
+
+                try {
+                    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+                    const token = localStorage.getItem('authToken');
+                    const headers = {};
+                    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                    const res = await fetch(`${API_URL}/ai-cross-reference`, {
+                        method: 'POST',
+                        headers: headers,
+                        body: formData,
+                        mode: 'cors'
+                    });
+
+                    if (!res.ok) throw new Error("Synthesis Agent encountered an error.");
+                    const json = await res.json();
+                    renderReport(json.data);
+
+                } catch (err) {
+                    alert("Error: " + err.message);
+                    querySection.style.display = 'block';
+                    processingState.style.display = 'none';
+                }
+            };
+
+            function renderReport(data) {
+                processingState.style.display = 'none';
+                reportArea.style.display = 'block';
+
+                keyInsights.innerHTML = '';
+                if (data.key_insights) {
+                    data.key_insights.forEach(ins => {
+                        const div = document.createElement('div');
+                        div.className = 'insight-card';
+                        div.innerHTML = `<strong>Insight:</strong> ${ins}`;
+                        keyInsights.appendChild(div);
+                    });
+                }
+
+                reportMarkdown.innerHTML = marked.parse(data.report_markdown || "No report generated.");
+            }
+
+            document.getElementById('downloadReport').onclick = () => {
+                const element = document.getElementById('reportArea');
+                const btn = document.getElementById('downloadReport');
+
+                if (!reportMarkdown.innerHTML.trim()) {
+                    alert("No content to export.");
+                    return;
+                }
+
+                const originalText = btn.innerText;
+                btn.disabled = true;
+                btn.innerText = "Generating PDF...";
+
+                const opt = {
+                    margin: [15, 15],
+                    filename: 'research-synthesis-report.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+
+                html2pdf().set(opt).from(element).save().then(() => {
+                    btn.disabled = false;
+                    btn.innerText = originalText;
+                }).catch(err => {
+                    console.error("Export failed:", err);
+                    alert("Export failed. Please try again.");
+                    btn.disabled = false;
+                    btn.innerText = originalText;
+                });
+            };
+        })();
+    </script>
+    <script src="../js/main.js?v=3.3"></script>
+</body>
+
+</html>

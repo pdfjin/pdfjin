@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Subscription | PDFjin Premium</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tool-page.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --pay-primary: #4f46e5;
+            --pay-secondary: #0ea5e9;
+            --pay-bg: #f8fafc;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .checkout-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 20px;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .checkout-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .summary-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .payment-method:hover {
+            border-color: var(--pay-primary);
+            background: rgba(79, 70, 229, 0.02);
+        }
+
+        .payment-method.active {
+            border-color: var(--pay-primary);
+            background: rgba(79, 70, 229, 0.05);
+        }
+
+        .pay-icon {
+            font-size: 1.5rem;
+        }
+
+        .pay-details h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: #1e293b;
+        }
+
+        .pay-details p {
+            margin: 2px 0 0;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .plan-info {
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .plan-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #1e293b;
+            margin-top: 20px;
+        }
+
+        .btn-pay {
+            width: 100%;
+            background: var(--pay-primary);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 16px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 25px;
+        }
+
+        .btn-pay:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+    </style>
+    <script>
+        // Critical: Instant Login Check & Auth Enforcement
+        (function () {
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            } else {
+                // Not logged in: Redirect to auth with return path
+                const params = new URLSearchParams(window.location.search);
+                const plan = params.get('plan') || 'pro';
+                const cycle = params.get('cycle') || 'monthly';
+                const returnUrl = encodeURIComponent(`checkout.html?plan=${plan}&cycle=${cycle}`);
+                window.location.href = `auth.html?returnUrl=${returnUrl}`;
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="../index.html" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="../index.html#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="../index.html#features">Features</a></li>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="../index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="checkout-container">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-family: 'Outfit'; font-size: 2.5rem; font-weight: 800; color: #1e293b;">Secure Checkout</h1>
+            <p style="color: #64748b; margin-top: 10px;">Complete your upgrade to unlock all premium features</p>
+        </div>
+
+        <div class="checkout-layout">
+            <div class="checkout-card">
+                <h3 class="section-title"><span></span> Select Payment Method</h3>
+                <div class="payment-method active" onclick="selectPayment('stripe')">
+                    <div class="pay-icon"></div>
+                    <div class="pay-details">
+                        <h4>Credit or Debit Card</h4>
+                        <p>Visa, Mastercard, AMEX, Discover</p>
+                    </div>
+                </div>
+                <div class="payment-method" onclick="selectPayment('paypal')">
+                    <div class="pay-icon"></div>
+                    <div class="pay-details">
+                        <h4>PayPal</h4>
+                        <p>Fast and secure checkout via PayPal</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <h3 class="section-title"><span></span> Order Summary</h3>
+                <div class="plan-info">
+                    <div class="plan-row">
+                        <span id="summaryPlanName" style="font-weight: 700;">Pro Plan</span>
+                        <span id="summaryPlanPrice" style="font-weight: 700; color: var(--pay-primary);">$4.50</span>
+                    </div>
+                    <div class="plan-row">
+                        <span>Billing Cycle</span>
+                        <span id="summaryBilling">Monthly</span>
+                    </div>
+                </div>
+                <div class="total-row">
+                    <span>Total Due Today</span>
+                    <span id="summaryTotal">$4.50</span>
+                </div>
+                <button class="btn-pay" id="btnConfirmPay">Complete Purchase &rarr;</button>
+                <div class="secure-badge">
+                    <span></span> 256-bit SSL Secure Checkout
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedMethod = 'stripe';
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan') || 'pro';
+        const cycle = urlParams.get('cycle') || 'monthly';
+
+        const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+
+        function selectPayment(method) {
+            selectedMethod = method;
+            document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const pricing = {
+                pro: { monthly: 4.50, yearly: 39.00 },
+                enterprise: { monthly: 49.00, yearly: 490.00 }
+            };
+            const p = pricing[plan.toLowerCase()] || pricing.pro;
+            const price = cycle === 'yearly' ? p.yearly : p.monthly;
+
+            document.getElementById('summaryPlanPrice').textContent = '$' + price.toFixed(2);
+            document.getElementById('summaryTotal').textContent = '$' + price.toFixed(2);
+            document.getElementById('summaryBilling').textContent = cycle.charAt(0).toUpperCase() + cycle.slice(1);
+            document.getElementById('btnConfirmPay').textContent = `Pay $${price.toFixed(2)} with ${selectedMethod.toUpperCase()}`;
+        }
+
+        document.getElementById('btnConfirmPay').onclick = async () => {
+            const btn = document.getElementById('btnConfirmPay');
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+
+            try {
+                const userEmail = localStorage.getItem('userEmail') || '';
+                const response = await fetch(`${API_URL}/create-checkout-session`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        plan_id: plan,
+                        email: userEmail,
+                        cycle: cycle
+                    })
+                });
+
+                const data = await response.json();
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    alert('Checkout failed: ' + (data.detail || 'Unknown error'));
+                    btn.disabled = false;
+                    updateSummary();
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Connection error. Please try again.');
+                btn.disabled = false;
+                updateSummary();
+            }
+        };
+
+        window.onload = updateSummary;
+    </script>
+</body>
+
+</html>

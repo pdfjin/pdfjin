@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AI Contract Auditor Analyze contracts for risky clauses and legal pitfalls instantly with AI." />
+    <title>AI Contract Auditor - Detect risky clauses | PDFjin</title>
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/tool-page.css" />
+    <link rel="stylesheet" href="../css/ai-studio.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E&#128196;%3C/text%3E%3C/svg%3E" />
+    <style>
+        :root {
+            --ai-primary: #6c63ff;
+            --ai-secondary: #ff6584;
+            --clr-text: #1e293b;
+            --clr-text-muted: #64748b;
+            --shadow: 0 12px 48px rgba(108, 99, 255, 0.12);
+            --radius: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: var(--clr-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--ai-primary);
+            font-style: italic;
+        }
+
+        .premium-tag {
+            background: linear-gradient(135deg, #ffd700, #ffa500);
+            color: #000;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 50px;
+            text-align: center;
+            border: 1px solid rgba(108, 99, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--ai-primary), var(--ai-secondary));
+        }
+
+        .tool-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(108, 99, 255, 0.2));
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--clr-text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        /* Upload Area */
+        .upload-zone {
+            border: 2px dashed #e2e8f0;
+            border-radius: 20px;
+            padding: 80px 40px;
+            background: #fafbff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .upload-zone:hover {
+            border-color: var(--ai-primary);
+            background: #f5f3ff;
+            transform: scale(1.01);
+        }
+
+        .upload-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .upload-text {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .upload-hint {
+            font-size: 0.95rem;
+            color: var(--clr-text-muted);
+        }
+
+        #fileInput {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Results display */
+        .results-container {
+            display: none;
+            text-align: left;
+            animation: slideUp 0.5s ease;
+            width: 100%;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .risk-found-badge {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 8px 16px;
+            border-radius: 99px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .risk-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .risk-item {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            border-left: 6px solid #ccc;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: 0.2s;
+        }
+
+        .risk-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .risk-item.High {
+            border-left-color: #ef4444;
+            background: #fffafb;
+        }
+
+        .risk-item.Medium {
+            border-left-color: #f59e0b;
+            background: #fffcf5;
+        }
+
+        .risk-item.Low {
+            border-left-color: #10b981;
+            background: #f7fee7;
+        }
+
+        .risk-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .risk-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1e293b;
+        }
+
+        .severity-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .High .severity-label {
+            background: #ef4444;
+            color: white;
+        }
+
+        .Medium .severity-label {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .Low .severity-label {
+            background: #10b981;
+            color: white;
+        }
+
+        .risk-desc {
+            color: #475569;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .risk-quotes {
+            background: rgba(0, 0, 0, 0.04);
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            color: #64748b;
+            font-style: italic;
+            border-left: 3px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Action Buttons */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--ai-primary), var(--ai-secondary));
+            color: white;
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        .loading-overlay {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 10;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--ai-primary);
+            border-radius: 50%;
+            animation: spin infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            color: var(--clr-text-muted);
+            padding: 40px;
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+                                                                                                    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="../index.html" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="../index.html#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="../index.html#features">Features</a></li>
+            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="../index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="container">
+        <div class="card" id="mainCard">
+            <!-- LOADING OVERLAY -->
+            <div id="loader" class="loading-overlay">
+                <div class="spinner"></div>
+                <h3 style="font-weight: 800;">Auditing Contract...</h3>
+                <p style="color: #64748b;">Identifying risky clauses and potential liabilities</p>
+            </div>
+
+            <div id="uploadUI">
+                <span class="tool-icon"></span>
+                <h1>AI Contract Auditor</h1>
+                <p class="subtitle">Upload a contract and let our AI highlight hidden traps auto-renewals and risky
+                    clauses</p>
+
+                <div class="upload-zone" id="dropZone">
+                    <span class="upload-icon"></span>
+                    <p class="upload-text">Drop your contract PDF here</p>
+                    <p class="upload-hint">Secure, encrypted, and processed only for your audit.</p>
+                    <input type="file" id="fileInput" accept="application/pdf" />
+                </div>
+
+                <div
+                    style="margin-top: 30px; color: #64748b; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 20px;">
+                    <span>Auto-renewals</span>
+                    <span>Hidden Fees</span>
+                    <span>Non-competes</span>
+                </div>
+            </div>
+
+            <!-- RESULTS UI -->
+            <div id="resultsUI" class="results-container">
+                <div class="result-header">
+                    <div>
+                        <h2 style="font-weight: 800; font-size: 1.8rem;">Audit Results</h2>
+                        <p id="fileNameRes" style="color: #64748b; font-weight: 500;"></p>
+                    </div>
+                    <div id="risCountBadge" class="risk-found-badge">0 Risks Found</div>
+                </div>
+
+                <div class="risk-list" id="riskList">
+                    <!-- risks appear here -->
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-secondary" onclick="location.reload()">Audit Another Contract</button>
+                    <button class="btn btn-primary" onclick="window.print()">
+                        <span> Export Report</span>
+                    </button>
+                </div>
+
+                <p style="margin-top: 30px; font-size: 0.8rem; color: #94a3b8; text-align: center;">
+                    Disclaimer: This tool is AI-powered and for informational purposes only. It is not professional
+                    legal advice. Consult with a qualified lawyer for final reviews.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+                                                                                                    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="../index.html" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+    <script>
+        (function () {
+            const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            const ENDPOINT = "/ai-contract-audit"; // Verify endpoint on backend if needed
+            const fileInput = document.getElementById('fileInput');
+            const loader = document.getElementById('loader');
+            const uploadUI = document.getElementById('uploadUI');
+            const resultsUI = document.getElementById('resultsUI');
+            const riskList = document.getElementById('riskList');
+            const fileNameRes = document.getElementById('fileNameRes');
+            const risCountBadge = document.getElementById('risCountBadge');
+
+            const handleFile = async (file) => {
+                if (!file || !file.name.toLowerCase().endsWith('.pdf')) {
+                    return alert("Please upload a PDF document.");
+                }
+
+                fileNameRes.textContent = file.name;
+                uploadUI.style.display = 'none';
+                    const data = await response.json();
+                    renderRisks(data.risks || []);
+
+                } catch (err) {
+                    console.error(err);
+                    alert("Error during audit: " + err.message);
+                    location.reload();
+                }
+            };
+
+            const renderRisks = (risks) => {
+                loader.style.display = 'none';
+                resultsUI.style.display = 'block';
+                riskList.innerHTML = '';
+
+                risCountBadge.textContent = `${risks.length} Risks Identified`;
+                risCountBadge.style.background = risks.length > 0 ? '#fee2e2' : '#f0fdf4';
+                risCountBadge.style.color = risks.length > 0 ? '#dc2626' : '#16a34a';
+
+                if (risks.length === 0) {
+                    riskList.innerHTML = `
+                    <div style="text-align: center; padding: 40px; background: #f0fdf4; border-radius: 20px; border: 2px solid #bbf7d0;">
+                        <span style="font-size: 3rem;"></span>
+                        <h3 style="color: #16a34a; font-weight: 800; margin-top: 15px;">No Major Risks Detected</h3>
+                        <p style="color: #15803d;">Our AI didn't find common high-risk clauses in this contract.</p>
+                    </div>
+                    `;
+                    return;
+                }
+
+                risks.forEach(risk => {
+                    const item = document.createElement('div');
+                    item.className = `risk-item ${risk.severity}`;
+                    item.innerHTML = `
+                    <div class="risk-top">
+                        <span class="risk-title">${risk.clause_name || 'Clause'}</span>
+                        <span class="severity-label">${risk.severity} risk</span>
+                    </div>
+                    <p class="risk-desc">${risk.description}</p>
+                    ${risk.original_text ? `<div class="risk-quotes">"${risk.original_text}"</div>` : ''}
+                    `;
+                    riskList.appendChild(item);
+                });
+            };
+
+            // Event Listeners
+            fileInput.onchange = (e) => {
+                if (e.target.files.length > 0) handleFile(e.target.files[0]);
+            };
+
+            const dropZone = document.getElementById('dropZone');
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(ev => {
+                dropZone.addEventListener(ev, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            });
+
+            dropZone.ondrop = (e) => {
+                if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+            };
+        })();
+    </script>
+</body>
+
+</html>

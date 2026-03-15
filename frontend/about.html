@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="About PDFjin – The story behind the ultimate open-source PDF toolkit. Built for privacy, speed, and intelligence." />
+    <title>About Us | PDFjin | Built for Privacy & Performance</title>
+    
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-G4FR9CKVZ0');
+    </script>
+    
+    <style>
+        :root {
+            --clr-about-accent: #6c63ff;
+        }
+
+        .about-hero {
+            padding: 160px 5% 100px;
+            background: linear-gradient(180deg, rgba(108, 99, 255, 0.05) 0%, transparent 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: -60px auto 100px;
+            padding: 60px;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .about-section {
+            margin-bottom: 80px;
+        }
+
+        .about-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1b2e;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .about-section p {
+            font-size: 1.15rem;
+            color: #5c5f80;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            padding: 40px;
+            border-radius: 24px;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            background: white;
+            box-shadow: 0 20px 40px rgba(108, 99, 255, 0.1);
+            border-color: var(--clr-about-accent);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .value-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #1a1b2e;
+            font-weight: 700;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .tech-item {
+            padding: 12px 24px;
+            background: #f1f5f9;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .about-cta {
+            text-align: center;
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 40px;
+            margin: 0 5% 100px;
+            color: white;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-cta h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                padding: 40px 25px;
+                margin-top: -40px;
+                border-radius: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="index.html#services">Tools</a></li>
+            <li><a href="pages/blog.html">Blog</a></li>
+            <li><a href="index.html#how-it-works">How It Works</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#pricing">Pricing</a></li>
+            <li><a href="pages/api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="pages/auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="pages/dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <header class="about-hero">
+        <div class="section-tag">🌍 Our Mission</div>
+        <h1 class="hero-title">Democratizing Document <br><span class="gradient-text">Productivity</span></h1>
+        <p class="hero-subtitle">We believe professional-grade PDF tools should be fast, accessible, and 100% private for everyone.</p>
+    </header>
+
+    <main class="about-content">
+        <section class="about-section">
+            <h2>The PDFjin Story</h2>
+            <p>PDFjin was born out of a simple frustration: why are the most basic document tasks — like merging three files or signing a contract — locked behind expensive subscriptions or invasive data-tracking websites?</p>
+            <p>We built PDFjin to be different. Our platform is engineered using the best open-source technologies, hosted on world-class infrastructure, and designed with a "Zero-Storage" philosophy. We don't want your data; we just want to help you get your work done.</p>
+        </section>
+
+        <section class="about-section">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="value-icon">🛡️</span>
+                    <h3>Privacy First</h3>
+                    <p>Your documents never touch permanent storage. Everything happens in isolated, temporary environments and is wiped immediately after use.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">⚡</span>
+                    <h3>Speed is a Feature</h3>
+                    <p>No bloated interfaces. No installers. Just lightning-fast processing powered by optimized backend engines.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🔓</span>
+                    <h3>Open Power</h3>
+                    <p>We leverage and contribute to open-source libraries like LibreOffice and Ghostscript, ensuring transparency and trust.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section" style="text-align: center;">
+            <h2>The Technology</h2>
+            <p>PDFjin is a modern web application built on the shoulders of giants. We use a high-performance Python backend, Google Cloud Run for seamless scaling, and advanced AI models for our studio tools.</p>
+            <div class="tech-stack">
+                <span class="tech-item">Google Cloud</span>
+                <span class="tech-item">LibreOffice</span>
+                <span class="tech-item">Python / FastAPI</span>
+                <span class="tech-item">Ghostscript</span>
+                <span class="tech-item">Gemini AI</span>
+                <span class="tech-item">OpenSSL</span>
+            </div>
+        </section>
+    </main>
+
+    <section class="about-cta">
+        <h2>Ready to work smarter?</h2>
+        <p>Join thousands of users who have made the switch to the faster, safer PDF toolkit.</p>
+        <a href="index.html#services" class="btn-primary" style="margin-top: 30px; display: inline-flex;">Explore 18+ Tools Now</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">📄</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology. Fast, free, and privacy-first. Powered by Google Cloud.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="pages/blog.html">Blog</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. Made with ♥ for a safer web.</span>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

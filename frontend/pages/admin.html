@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDFjin | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin-premium.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-G4FR9CKVZ0');
+    </script>
+    <link rel="stylesheet" href="../css/tool-page.css">
+    <script>
+        // PDFjin: Global API configuration & sync
+        (function () {
+            window.PDFJIN_API_URL = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+</head>
+
+<body class="admin-body">
+
+    <!-- Login Gate -->
+    <div id="adminLoginGate" class="login-gate">
+        <div class="login-box">
+            <div class="login-logo"><span>PDF</span>jin</div>
+            <div class="login-subtitle">Admin Control Panel</div>
+            <div id="loginError" class="login-error" style="display:none;"></div>
+            <div class="login-field">
+                <label>Admin Password</label>
+                <input type="password" id="adminPassInput" placeholder="Enter secure key"
+                    autocomplete="current-password">
+            </div>
+            <button class="login-btn" id="adminLoginBtn" onclick="attemptLogin()">Unlock Dashboard</button>
+        </div>
+    </div>
+
+    <!-- Dashboard Layout -->
+    <div id="adminDashboard" style="display:none; width: 100%;">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="/" class="admin-logo"><span>PDF</span>jin</a>
+                <div class="admin-panel-label" id="adminPanelVersion">ADMIN PANEL</div>
+            </div>
+
+            <nav class="admin-nav" id="adminSidebarNav">
+                <a href="#overview" class="admin-nav-link active" data-tab="overview">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Overview</span>
+                </a>
+                <a href="#users" class="admin-nav-link" data-tab="users">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Users</span>
+                    <span id="navuserCount" class="count-badge" style="margin-left:auto; display:none;">0</span>
+                </a>
+                <a href="#tools" class="admin-nav-link" data-tab="tools">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                        </path>
+                    </svg>
+                    <span>Tool Status</span>
+                </a>
+                <a href="#pricing" class="admin-nav-link" data-tab="pricing">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span>Price Tiers</span>
+                </a>
+                <a href="#sales" class="admin-nav-link" data-tab="sales">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    <span>Sales & Revenue</span>
+                </a>
+                <a href="#blog" class="admin-nav-link" data-tab="blog">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                    </svg>
+                    <span>Blog Manager</span>
+                </a>
+                <a href="#settings" class="admin-nav-link" data-tab="settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                        </path>
+                    </svg>
+                    <span>General Settings</span>
+                </a>
+                <a href="#logs" class="admin-nav-link" data-tab="logs">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    <span>Audit logs</span>
+                </a>
+            </nav>
+
+            <div class="admin-sidebar-footer">
+                <button class="admin-logout-btn" id="adminLogoutBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Logout
+                </button>
+                <a href="/" class="back-site-link">&larr; Back to Site</a>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <div class="sidebar-overlay" id="sidebarOverlay"></div>
+            <!-- Topbar -->
+            <div class="admin-topbar">
+                <div class="topbar-left">
+                    <button class="mobile-nav-toggle" id="mobileNavToggle" style="display: none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                    <h2 id="pageTitle">Overview</h2>
+                    <span class="topbar-time" id="topbarTime">Monday, October 20, 2025</span>
+                </div>
+                <div class="topbar-right">
+                    <div class="topbar-status">
+                        <span class="statusdot green"></span> <span id="apiStatusBadge">API Online</span>
+                    </div>
+                    <div class="topbar-status">
+                        <span class="statusdot" id="datasourceDot"></span> <span id="datasourceText">Checking...</span>
+                    </div>
+                    <button class="topbar-refresh" id="btnRefresh" title="Refresh Data">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-.93-5.98"></path>
+                        </svg>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab: Overview -->
+            <section id="tab-overview" class="admin-tab-content active">
+                <div class="statsgrid">
+                    <div class="stat-card gradient-blue">
+                        <div class="stat-icon"></div>
+                        <div class="stat-body">
+                            <span class="stat-label">Total Revenue</span>
+                            <div class="stat-value" id="stat-revenue">$0</div>
+                            <div class="stat-trend trend-up"> +12% this month</div>
+                        </div>
+                    </div>
+                    <div class="stat-card gradient-purple">
+                        <div class="stat-icon"></div>
+                        <div class="stat-body">
+                            <span class="stat-label">Total Users</span>
+                            <div class="stat-value" id="stat-users">0</div>
+                            <div class="stat-trend">Live Updating</div>
+                        </div>
+                    </div>
+                    <div class="stat-card gradient-green">
+                        <div class="stat-icon"></div>
+                        <div class="stat-body">
+                            <span class="stat-label">Tasks Today</span>
+                            <div class="stat-value" id="stat-conversions">0</div>
+                            <div class="stat-trend">Active Now</div>
+                        </div>
+                    </div>
+                    <div class="stat-card gradient-orange">
+                        <div class="stat-icon"></div>
+                        <div class="stat-body">
+                            <span class="stat-label">Server Load</span>
+                            <div class="stat-value" id="stat-load">--</div>
+                            <div class="stat-trend" id="stat-load-trend">Status Optimal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chartsrow">
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2>Revenue Last 7 Days</h2>
+                            <div class="badge badge-paid">Live Data</div>
+                        </div>
+                        <div class="mini-chart">
+                            <div class="chart-bars" id="revenueBars"></div>
+                            <div class="chart-labels" id="revenueLabels"></div>
+                        </div>
+                    </div>
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2>User Distribution</h2>
+                        </div>
+                        <div class="donut-wrap">
+                            <svg class="donut-svg" viewBox="0 0 120 120" id="donutSvg">
+                                <circle class="donut-ring" cx="60" cy="60" r="50" fill="none" stroke="#f1f5f9"
+                                    stroke-width="18" />
+                                <circle class="donut-segment segment-free" cx="60" cy="60" r="50" fill="none"
+                                    stroke="#6366f1" stroke-width="18" transform="rotate(-90 60 60)" />
+                                <circle class="donut-segment segment-pro" cx="60" cy="60" r="50" fill="none"
+                                    stroke="#10b981" stroke-width="18" transform="rotate(-90 60 60)" />
+                                <circle class="donut-segment segment-ent" cx="60" cy="60" r="50" fill="none"
+                                    stroke="#f59e0b" stroke-width="18" transform="rotate(-90 60 60)" />
+                            </svg>
+                            <div class="donut-legend">
+                                <div class="legend-item"><span class="legend-dot" style="background:#6366f1"></span>
+                                    Free <strong id="legendFree">--</strong></div>
+                                <div class="legend-item"><span class="legend-dot" style="background:#10b981"></span> Pro
+                                    <strong id="legendPro">--</strong>
+                                </div>
+                                <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span> Ent
+                                    <strong id="legendEnt">--</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Recent Activity Feed</h2>
+                        <button class="card-btn" id="clearActivityBtn">Clear History</button>
+                    </div>
+                    <div class="activity-feed" id="activityFeed">
+                        <div class="activity-empty">
+                            <div class="spinner"></div> Loading activity...
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Tab: Users -->
+            <section id="tab-users" class="admin-tab-content">
+                <div class="tab-toolbar">
+                    <div class="search-box">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="text" id="userSearch" placeholder="Search by email or name...">
+                    </div>
+                    <div class="filter-row">
+                        <select id="tierFilter" class="admin-select">
+                            <option value="all">All Tiers</option>
+                            <option value="FREE">Free</option>
+                            <option value="PRO">Pro</option>
+                            <option value="ENT">Enterprise</option>
+                        </select>
+                        <select id="statusFilter" class="admin-select">
+                            <option value="all">All Statuses</option>
+                            <option value="Active">Active</option>
+                            <option value="Suspended">Suspended</option>
+                        </select>
+                    </div>
+                    <button class="admin-btn primary" id="btnAddUser">+ Add User</button>
+                </div>
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Registered Users <span class="count-badge" id="userCountBadge">0</span></h2>
+                        <button class="card-btn" id="btnExportUsers">Export CSV</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Tier</th>
+                                    <th>Joined</th>
+                                    <th>Tasks</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userTableBody">
+                                <tr>
+                                    <td colspan="6" class="table-loading">
+                                        <div class="spinner"></div> Loading users...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Sales -->
+            <section id="tab-sales" class="admin-tab-content">
+                <div class="statsgrid">
+                    <div class="stat-card">
+                        <div class="stat-icon"></div>
+                        <div class="stat-body">
+                            <span class="stat-label">This Month</span>
+                            <div class="stat-value" id="salesMonth">$0</div>
+                            <div class="stat-trend trend-up">MRR Growth</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"></div>
+                        <div class="stat-body">
+                            <span class="stat-label">Pro Subscribers</span>
+                            <div class="stat-value" id="salesProCount">0</div>
+                            <div class="stat-trend">Active Now</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"></div>
+                        <div class="stat-body">
+                            <span class="stat-label">Enterprise</span>
+                            <div class="stat-value" id="salesEntCount">0</div>
+                            <div class="stat-trend">B2B Pipelines</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"></div>
+                        <div class="stat-body">
+                            <span class="stat-label">Avg. Revenue</span>
+                            <div class="stat-value" id="salesArpu">$0</div>
+                            <div class="stat-trend">Per User</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Payment Transactions</h2>
+                        <select class="admin-select" id="salesPeriodFilter">
+                            <option value="7">Last 7 Days</option>
+                            <option value="30" selected>Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                        </select>
+                    </div>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Plan</th>
+                                    <th>Method</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salesTableBody">
+                                <tr>
+                                    <td colspan="6" class="table-loading">Loading transactions...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Pricing -->
+            <section id="tab-pricing" class="admin-tab-content">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 24px;">
+                    <!-- Free Tier -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2>Free Tier</h2>
+                            <span class="badge badge-free">Standard</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="modal-field">
+                                <label>Daily Task Limit</label>
+                                <input type="number" id="freeLimitTasks" value="5">
+                            </div>
+                            <div class="modal-field">
+                                <label>Max File Size (MB)</label>
+                                <input type="number" id="freeLimitSize" value="10">
+                            </div>
+                            <div id="freeFeedback" class="admin-feedback" style="display:none; margin-top:10px;"></div>
+                            <button class="admin-btn secondary" style="width:100%" id="btnSaveFree">Save Limits</button>
+                        </div>
+                    </div>
+
+                    <!-- Pro Plan -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2>Pro Plan</h2>
+                            <span class="badge badge-pro">Popular</span>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                                <div class="modal-field">
+                                    <label>Monthly ($)</label>
+                                    <input type="number" id="priceProMonthlyInput" step="0.01" value="4.50">
+                                </div>
+                                <div class="modal-field">
+                                    <label>Yearly ($)</label>
+                                    <input type="number" id="priceProYearlyInput" step="0.01" value="39.00">
+                                </div>
+                            </div>
+                            <div class="modal-field">
+                                <label>Task Limit</label>
+                                <select id="proTaskLimit" class="admin-select" style="width:100%">
+                                    <option value="100">100/day</option>
+                                    <option value="500">500/day</option>
+                                    <option value="unlimited" selected>Unlimited</option>
+                                </select>
+                            </div>
+                            <div class="modal-field">
+                                <label>Max File Size (MB)</label>
+                                <input type="number" id="proLimitSize" value="100">
+                            </div>
+                            <div id="proFeedback" class="admin-feedback" style="display:none; margin-top:10px;"></div>
+                            <button class="admin-btn primary" style="width:100%" id="btnSavePro"
+                                onclick="updatePricing('pro')">Update Pro</button>
+                        </div>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2>Enterprise</h2>
+                            <span class="badge badge-ent">Custom</span>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                                <div class="modal-field">
+                                    <label>Monthly ($)</label>
+                                    <input type="number" id="priceEntMonthlyInput" step="0.01" value="49.99">
+                                </div>
+                                <div class="modal-field">
+                                    <label>Yearly ($)</label>
+                                    <input type="number" id="priceEntYearlyInput" step="0.01" value="490.00">
+                                </div>
+                            </div>
+                            <div class="modal-field">
+                                <label>Team Seats</label>
+                                <input type="number" id="entStats" value="25">
+                            </div>
+                            <div class="modal-field">
+                                <label>Max File Size (MB)</label>
+                                <input type="number" id="entLimitSize" value="1000">
+                            </div>
+                            <div id="entFeedback" class="admin-feedback" style="display:none; margin-top:10px;"></div>
+                            <button class="admin-btn primary" style="width:100%" id="btnSaveEnt"
+                                onclick="updatePricing('ent')">Update Enterprise</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coupons -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Discount Codes</h2>
+                        <button class="admin-btn primary" id="btnAddCoupon">+ New Code</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Discount</th>
+                                    <th>Uses</th>
+                                    <th>Expires</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="couponTableBody">
+                                <tr>
+                                    <td colspan="6" class="table-loading">No active codes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Tool Status -->
+            <section id="tab-tools" class="admin-tab-content">
+                <div class="tab-toolbar">
+                    <h2 style="font-size: 1.1rem; font-weight: 700;">Infrastructure Services</h2>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="admin-btn secondary" id="btnEnableAll">Enable All</button>
+                        <button class="admin-btn danger" id="btnDisableAll">Disable All</button>
+                    </div>
+                </div>
+                <div class="tool-status-grid" id="toolStatusGrid"
+                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                    <!-- Generated by JS -->
+                </div>
+            </section>
+
+            <!-- Tab: Blog Manager -->
+            <section id="tab-blog" class="admin-tab-content">
+                <div class="tab-toolbar">
+                    <div>
+                        <h2 style="font-size: 1.1rem; font-weight: 700;">Content Management</h2>
+                        <p style="font-size: 0.8rem; color: var(--adm-muted);">Manage SEO articles and tutorials</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <a href="blog-admin.html" class="admin-btn secondary" style="text-decoration: none;">Blog
+                            Studio</a>
+                        <button class="admin-btn primary" id="btnCreatePost">+ New Article</button>
+                    </div>
+                </div>
+
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>Published Posts</h2>
+                        <div class="search-box" style="padding: 8px 14px; max-width: 250px;">
+                            <input type="text" id="blogSearch" placeholder="Filter articles...">
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="blogPostList">
+                                <tr>
+                                    <td colspan="5" style="text-align:center; padding: 40px; color: var(--adm-muted);">
+                                        <div class="spinner" style="margin-bottom:10px"></div>
+                                        Syncing with database...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Settings -->
+            <section id="tab-settings" class="admin-tab-content">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2>General Preferences</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="modal-field">
+                                <label>Announcement Banner</label>
+                                <textarea id="announcementText" rows="3"
+                                    placeholder="Display important message to all users..."></textarea>
+                            </div>
+                            <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                                <div style="flex: 1;">
+                                    <label
+                                        style="font-size: 0.8rem; font-weight: 700; color: var(--adm-muted); text-transform: uppercase;">Maintenance</label>
+                                    <div style="display: flex; align-items: center; margin-top: 10px; gap: 10px;">
+                                        <input type="checkbox" id="maintenanceMode"> <span>Enable mode</span>
+                                    </div>
+                                </div>
+                                <div style="flex: 1;">
+                                    <label
+                                        style="font-size: 0.8rem; font-weight: 700; color: var(--adm-muted); text-transform: uppercase;">Registration</label>
+                                    <div style="display: flex; align-items: center; margin-top: 10px; gap: 10px;">
+                                        <input type="checkbox" id="allowRegistrations" checked> <span>Open
+                                            signups</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="admin-btn primary" style="width:100%" id="btnSaveSettings">Save System
+                                Config</button>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2>Infrastructure API</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="modal-field">
+                                <label>Backend Endpoint</label>
+                                <input type="text" id="cfgApiUrl" value="https://pdfjin-api-d33mroeryq-as.a.run.app">
+                            </div>
+                            <div class="modal-field">
+                                <label>Payment Providers</label>
+                                <input type="text" id="cfgStripePublic" placeholder="Stripe Pub Key"
+                                    style="margin-bottom:10px">
+                                <input type="text" id="cfgPaypalId" placeholder="PayPal Client ID">
+                            </div>
+                            <div
+                                style="display:flex; align-items:center; justify-content:space-between; margin-top:10px;">
+                                <span id="apiStatusText" class="badge badge-pro">Checking...</span>
+                                <button class="admin-btn secondary" id="btnTestApi">Test Signal</button>
+                            </div>
+                            <button class="admin-btn primary" style="width:100%; margin-top:20px" id="btnSaveApi">Sync
+                                Infrastructure</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card" style="margin-top:24px; border: 1.5px solid #fee2e2;">
+                    <div class="card-header" style="background: #fff5f5;">
+                        <h2 style="color: #b91c1c;">Danger Operations</h2>
+                    </div>
+                    <div class="card-body" style="display:flex; justify-content:space-between; align-items:center;">
+                        <div>
+                            <h4 style="color: var(--adm-text);">Global Usage Reset</h4>
+                            <p style="font-size:0.85rem; color:var(--adm-muted);">Instantly clear daily task counters
+                                for
+                                all non-paying users.</p>
+                        </div>
+                        <button class="admin-btn danger" id="btnResetCounters">Immediate Reset</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Logs -->
+            <section id="tab-logs" class="admin-tab-content">
+                <div class="tab-toolbar">
+                    <div class="search-box">
+                        <input type="text" id="logSearch" placeholder="Filter audit trail...">
+                    </div>
+                    <select id="logLevelFilter" class="admin-select">
+                        <option value="all">All Levels</option>
+                        <option value="info">Info Only</option>
+                        <option value="warning">Warnings</option>
+                        <option value="error">Critical Errors</option>
+                    </select>
+                    <button class="admin-btn secondary" id="btnClearLogs">Purge Logs</button>
+                </div>
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2>System Audit Trail <span class="count-badge" id="logCountBadge">0</span></h2>
+                    </div>
+                    <div class="log-viewer" id="logViewer"
+                        style="height: 450px; overflow-y: auto; padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: #0f172a; color: #cbd5e1; border-radius: 0 0 16px 16px;">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="userModal">
+        <div class="admin-modal">
+            <div class="modal-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div id="modalUserAvatar" class="user-mini-avatar" style="width: 40px; height: 40px; font-size: 1.2rem;">?</div>
+                    <div>
+                        <h2 style="font-size: 1.1rem; line-height: 1.2;">User Management</h2>
+                        <div id="modalUserEmailLabel" style="font-size: 0.8rem; color: var(--adm-muted); font-weight: 500;">user@example.com</div>
+                    </div>
+                </div>
+                <button class="modal-close" id="closeUserModal"
+                    style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--adm-muted)">&times;</button>
+            </div>
+            <div class="card-body" style="padding: 24px;">
+                <!-- Add User Email Group (Visible only for NEW users) -->
+                <div class="modal-field" id="modalEmailGroup" style="display:none;">
+                    <label>Email Address</label>
+                    <input type="email" id="modalUserEmail" placeholder="e.g. name@example.com">
+                </div>
+
+                <div class="modal-field">
+                    <label>Full Name</label>
+                    <input type="text" id="modalUserName" placeholder="e.g. John Doe">
+                </div>
+
+                <div class="modal-field">
+                    <label>Password (Leave blank to keep current)</label>
+                    <input type="password" id="modalUserPass" placeholder="••••••••">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="modal-field">
+                        <label>Tier Access</label>
+                        <select id="modalUserTier" class="admin-select" style="width:100%">
+                            <option value="FREE">FREE</option>
+                            <option value="PRO">PRO</option>
+                            <option value="ENT">ENTERPRISE</option>
+                        </select>
+                    </div>
+                    <div class="modal-field">
+                        <label>Account Status</label>
+                        <select id="modalUserStatus" class="admin-select" style="width:100%">
+                            <option value="Active">Active</option>
+                            <option value="Suspended">Suspended</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-field">
+                    <label>Admin Notes</label>
+                    <textarea id="modalUserNotes" rows="3" placeholder="Add private notes about this user..."></textarea>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 10px;">
+                    <button class="admin-btn primary" id="btnSaveUserEdit" style="flex:2">Commit Changes</button>
+                    <button class="admin-btn secondary" id="btnCancelUserEdit" style="flex:1">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Post Modal -->
+    <div class="modal-overlay" id="postModal">
+        <div class="admin-modal" style="max-width: 1000px;">
+            <div class="modal-header">
+                <h2 id="modalPostTitle">Article Editor</h2>
+                <button class="modal-close" id="closePostModal"
+                    style="background:none; border:none; font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            <div class="card-body" style="padding: 24px;">
+                <form id="postForm">
+                    <input type="hidden" id="editPostId">
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px;">
+                        <div class="editor-main">
+                            <div class="modal-field">
+                                <label>Post Title</label>
+                                <input type="text" id="postTitle" placeholder="The Ultimate Guide to PDF Editing..."
+                                    style="font-size: 1.2rem; font-weight: 700;">
+                            </div>
+                            <div class="modal-field">
+                                <label>Article Content (HTML/Markdown)</label>
+                                <textarea id="postContent"
+                                    style="height: 450px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 1.6;"
+                                    placeholder="Start writing your masterpiece..."></textarea>
+                            </div>
+                        </div>
+                        <div class="editor-side">
+                            <div class="modal-field">
+                                <label>URL Slug</label>
+                                <input type="text" id="postSlug" placeholder="how-to-edit-pdf-2025">
+                            </div>
+                            <div class="modal-field">
+                                <label>Classification</label>
+                                <select id="postTag" class="admin-select" style="width:100%">
+                                    <option value="Tutorial">Tutorial</option>
+                                    <option value="Security">Security</option>
+                                    <option value="AI Intelligence">AI Intelligence</option>
+                                    <option value="Updates">Product Updates</option>
+                                </select>
+                            </div>
+                            <div class="modal-field">
+                                <label>SEO Meta Description</label>
+                                <textarea id="postMeta" placeholder="Enter search engine snippet..."
+                                    rows="5"></textarea>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; justify-content: space-between; margin-top: 20px; background: #f8fafc; padding: 15px; border-radius: 12px;">
+                                <span style="font-weight: 600; font-size: 0.9rem;">Visibility</span>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="postStatus" checked> <span>Published</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="display: flex; gap: 12px; margin-top: 32px; justify-content: flex-end; border-top: 1px solid var(--adm-border); padding-top: 24px;">
+                        <button type="button" class="admin-btn secondary" id="btnCancelPost">Discard</button>
+                        <button type="button" class="admin-btn primary" id="btnSavePost"
+                            style="padding: 12px 40px;">Publish Article</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/main.js"></script>
+    <script src="../js/admin.js?v=2.2.4"></script>
+</body>
+
+</html>
