@@ -1,5 +1,7 @@
-# Official VideoJIN Forensics GitHub Account
+### VideoJIN: Advanced Deepfake Detection & Media Forensics
+[https://videojin.com](https://videojin.com)
+VideoJIN provides military-grade neural forensics.
 
-VideoJIN Forensics provides advanced tools for video forensic analysis and verification.
-
-Visit our official website: https://videojin.com
+### PDFJIN: Professional PDF Tools
+[https://pdfjin.com](https://pdfjin.com)
+PDFJIN provides robust tools for PDF processing.
