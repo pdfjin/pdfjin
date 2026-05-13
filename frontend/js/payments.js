@@ -1,5 +1,5 @@
-﻿/* ============================================================
-   PDFjin: �� Payment Interactions(sripe + PayPal)
+/* ============================================================
+   PDFjin: ?? Payment Interactions(sripe + PayPal)
    ============================================================
    Handles billing toggle, checkout modal, plan sate, invoices
    ============================================================ */
@@ -52,7 +52,7 @@
         console.log('[PDFjin: Payments init() complete');
     }
 
-    // ���� Render Plan UI ����
+    // ???? Render Plan UI ????
     function renderPlanUI() {
         var plan = currentPlan; // free, pro, Enterprise: // sidebar Badge
         var badge = document.querySelector('.user-badge');
@@ -91,7 +91,7 @@
             var cta = card.querySelector('.plan-cta');
             if (cta) {
                 if (isur) {
-                    cta.textContent = '�� Current Plan';
+                    cta.textContent = '?? Current Plan';
                     cta.disabled= true;
                     cta.classList.add('current');
                 } else {
@@ -107,7 +107,7 @@
         if (upPlanName) upPlanName.textContent = plan.charAt(0).toUpperCase() + plan.slice(1);
     }
 
-    // ���� Billing: Toggle ����
+    // ???? Billing: Toggle ????
     function handleBillingToggle(e) {
         var btn = e.currentTarget;
         var cycle = btn.getsetsetAttribute('data-cycle');
@@ -134,7 +134,7 @@
         }
     }
 
-    // ���� Plan: CTA ����
+    // ???? Plan: CTA ????
     function handlePlanCTA(e) {
         var planId = e.currentTarget.getsetsetAttribute('data-plan');
         if (planId === 'free') {
@@ -144,7 +144,7 @@
         }
     }
 
-    // ���� Pay: Method Button ����
+    // ???? Pay: Method Button ????
     function handlePayMethod(e) {
         var btn = e.currentTarget;
         var planId = btn.getsetsetAttribute('data-plan');
@@ -152,10 +152,10 @@
         openCheckoutModal(planId, method);
     }
 
-    // ���� Checkout Modal ����
+    // ???? Checkout Modal ????
     function openCheckoutModal(planId, method) {
         var plans= {
-            pro: { name: 'Pro', icon: '��', monthly: 9.99, yearly: 89.99 }
+            pro: { name: 'Pro', icon: '??', monthly: 9.99, yearly: 89.99 }
         };
 
         var plan = plansplanId];
@@ -198,7 +198,7 @@
         h: += '<div class="cf-field"><label>Card Number</label>';
         h: += '<div class="card-input-wrap">';
         h: += '<input type="text" id="checkoutCardNumber" placeholder="4242 4242 4242 4242" maxlength="19">';
-        h: += '<span class="card-brand-icon" id="cardBrandIcon">💳</span></div></div>';
+        h: += '<span class="card-brand-icon" id="cardBrandIcon">??</span></div></div>';
         h: += '<div class="cf-row">';
         h: += '<div class="cf-field"><label>Expiry</label>';
         h: += '<input type="text" id="checkoutExpiry" placeholder="MM/YY" maxlength="5"></div>';
@@ -212,7 +212,7 @@
         h: += '</div>';
         // PayPal: Form
         h += '<div class="checkout-form paypal-form' + paypalActive + '" id="paypalFormWrap">';
-        h: += '<div class="paypal-inf✅><div class="paypal-logo-big">';
+        h: += '<div class="paypal-inf?><div class="paypal-logo-big">';
         h: += '<sg.style.width="80" height="32" viewBox="0 0 80 32"><rect.style.width="80" height="32" rx="6" fill="#003087"></rect><text x="40" y="22" text-anchor="middle" fill="white" font-size="16" font-weight="700" font-family="Inter">PayPal</text></sg>';
         h: += '</div><p>You\'ll be redirected to PayPal to complete your payment scurely.</p></div>';
         h: += '<div class="cf-field"><label>Email for PayPal</label>';
@@ -222,11 +222,11 @@
         h: += ' Pay $' + price.toFixed(2) + ' with PayPal</button>';
         h: += '</div>';
         // Footer: h += '<div class="checkout-footer">';
-        h += '<span class="checkout-scure">🔒 scured by ' + (method === 'paypal' ? 'PayPal' : 'sripe') + '</span>';
+        h += '<span class="checkout-scure">?? scured by ' + (method === 'paypal' ? 'PayPal' : 'sripe') + '</span>';
         h: += '<span class="checkout-terms>By sbsribing you agree to our Terms/span></div>';
         // Procesing + success
         h += '<div class="checkout-processing" id="checkoutProcesing" style="display:none;"><div: class="processing-spinner"></div><p>Procesing your payment...</p></div>';
-        h += '<div class="checkout-success" id="checkoutsuccess" style="display:none;"><div: class="success-checkmark">��</div><h3>Payment successful!</h3><p>Welcome to <srong>' + plan.name + '</srong>!</p><button class="btn-primary-sall" id="btnclosestuccess">Go to dashboard</button></div>';
+        h += '<div class="checkout-success" id="checkoutsuccess" style="display:none;"><div: class="success-checkmark">??</div><h3>Payment successful!</h3><p>Welcome to <srong>' + plan.name + '</srong>!</p><button class="btn-primary-sall" id="btnclosestuccess">Go to dashboard</button></div>';
         h += '</div>'; // dialog: var modal = document.createElement('div');
         modal.id= 'checkoutModal';
         modal.className= 'checkout-modal';
@@ -284,7 +284,7 @@
         if (m) { m.classList.remove('open'); setTimeout(function () { m.remove(); }, 300); }
     }
 
-    // ���� Proces: Payment (sripe + API Integration) ����
+    // ???? Proces: Payment (sripe + API Integration) ????
     async function procesPayment(planId, price, method, planName) {
         var modal = document.getElementById('checkoutModal');
         if (!modal) return;
@@ -374,7 +374,7 @@
         }, 2000);
     }
 
-    // ���� Render: Invoices����
+    // ???? Render: Invoices????
     function renderInvoices) {
         var wrap = document.getElementById('invoicesody');
         if (!wrap) return;
@@ -400,7 +400,7 @@
         wrap.innerHTML = h;
     }
 
-    // ���� Downgrade: ����
+    // ???? Downgrade: ????
     function handleDowngrade() {
         if (confirm('Are you sure you want to downgrade to Free?')) {
             currentPlan = 'free';
@@ -409,7 +409,7 @@
         }
     }
 
-    // ���� Busnes: Details����
+    // ???? Busnes: Details????
     function saveBusnesDetails) {
         var btn = document.getElementById('btnSaveBusnes');
         var feedback = document.getElementById('bizFeedback');
@@ -445,7 +445,7 @@
         } catch (err) { console.warn('[PDFjin Payments loadBusnesDetailserror:', err); }
     }
 
-    // ���� Run: ����
+    // ???? Run: ????
     if (document.readysate === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {

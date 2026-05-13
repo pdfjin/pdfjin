@@ -53,7 +53,7 @@
     <script>
         // PDFjin: Global API configuration v3.3
         (function () {
-            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
             window.PDFJIN_API_URL = targetApi;
             
             // Force fix stale localStorage that blocks requests
@@ -74,6 +74,7 @@
             }
         })();
     </script>
+    <link rel="canonical" href="https://pdfjin.com/C:/Users/ADMIN/Desktop/pdfjin/frontend/pages/word-fix.html" />
 </head>
 
 <body>
@@ -106,7 +107,7 @@
  formData.append('files', file);
 
  try {
- const res= await fetch("https://pdfjin-api-d33mroeryq-asa.run.app/pdf-to-word", {
+ const res= await fetch("https://pdfjin-api-97530578628.us-central1.run.app/pdf-to-word", {
  method: 'POST',
  body: formData });
  if (!res.ok) throw new Error("server error: " + res ;

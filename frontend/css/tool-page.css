@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    TOOL PAGES styles (Upload Zone, File List, etc.)
    ============================================================ */
 
@@ -423,5 +423,33 @@
     .signature-tab {
         padding: 10px 15px;
         font-size: 0.9rem;
+    }
+
+    /* Full-width tool cards on mobile */
+    .tool-container {
+        padding-top: 80px;
+        padding-bottom: 40px;
+        width: 100vw;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    .section-inner {
+        padding: 0 5px; /* Minimal padding for mobile */
+    }
+
+    .tool-card {
+        padding: 10px 0;
+        border-radius: 0;
+        width: 100%;
+        max-width: 100vw;
+        box-shadow: none;
+        border-left: none;
+        border-right: none;
+        overflow-x: hidden;
+    }
+
+    .upload-area {
+        padding: 1.5rem 0.5rem;
     }
 }

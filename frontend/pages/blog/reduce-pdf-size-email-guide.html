@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>PDFjin | REDUCE PDF sIZE EMAIL</title>
+    <title>PDFjin | How to Reduce PDF File Size for Email Attachments Online</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css">
@@ -11,22 +11,16 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
     <script>
-        // PDFjin: Global API configuration v3.3
         (function () {
-            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
             window.PDFJIN_API_URL = targetApi;
-            
-            // Force fix stale localStorage that blocks requests
             try {
                 const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
                 if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
-                    console.log("PDFjin: Fixing stale API configuration...");
                     config.apiUrl = targetApi;
                     localStorage.setItem('adminApiConfig', JSON.stringify(config));
                 }
             } catch(e) {}
-
-            // Critical: Instant Login Check
             const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
             if (logged) {
                 document.documentElement.classList.add('is-logged-in');
@@ -34,23 +28,24 @@
             }
         })();
     </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/reduce-pdf-size-email-guide.html" />
 </head>
 
 <body class="blog-pos-page">
+
     <!-- NAVIGATION -->
-        <!-- NAVIGATION -->
-                                        <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
-        <a href="../../index.html" class="nav-logo" aria-label="PDFjin Home">
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
             <div class="logo-icon" aria-hidden="true">&#128196;</div>
             PDF<span>jin</span>
         </a>
 
         <ul class="nav-links" id="navMenu">
-            <li><a href="../../index.html#services">Tools</a></li>
+            <li><a href="/#services">Tools</a></li>
             <li><a href="../blog.html">Blog</a></li>
             <li><a href="../../index.html#how-it-works">How It Works</a></li>
-            <li><a href="../../index.html#features">Features</a></li>
-            <li><a href="../../index.html#pricing">Pricing</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
             <li><a href="../api-docs.html">API Docs</a></li>
             <li class="guest-only"><a href="../auth.html">Sign In</a></li>
             <li class="user-only">
@@ -62,7 +57,7 @@
                     <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
                 </div>
             </li>
-            <li><a href="../../index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
         </ul>
 
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -73,7 +68,7 @@
     <main class="blog-pos-wrapper">
         <header class="blog-pos-header">
             <span class="category-badge">Optimization</span>
-            <h1>How to Reduce PDF File size for Email Attachmentis Online</h1>
+            <h1>How to Reduce PDF File Size for Email Attachments Online</h1>
             <div class="blog-pos-meta">
                 <span>By PDFjin Content Team</span>
                 <span class="meta-divider">&bull;</span>
@@ -84,47 +79,50 @@
         </header>
 
         <div class="blog-pos-hero-image">
-            <img src="../../assets/blog/blog-reduce.png" alt="Reduce PDF size Illustration">
+            <img src="../../assets/blog/blog-reduce.png" alt="Reduce PDF Size Illustration">
         </div>
 
         <section class="blog-pos-content">
-            <p>we've all been there: you've finished a high-stakeis report, a beautiful portfolio, or a critical application,andyou go to hit'send' on that email. Then, the dreaded notification appears: "File size too large." Most email provideris like Gmail or Outlook cap attachmentis at around 20MB to 25MB.</p>
-            <p>The good newis iis that you don't need to delete pageis or lower the resolution of your images manually. In thiis guide, we'll show you exactly how to <strong>reduce PDF file size for email attachment online</strong> using PDFjin.</p>
+            <p>We've all been there: you've finished a high-stakes report, a beautiful portfolio, or a critical application, and you go to hit 'send' on that email. Then, the dreaded notification appears: "File size too large." Most email providers like Gmail or Outlook cap attachments at around 20MB to 25MB.</p>
 
-            <h2>Why Do PDF Fileis Get so Big?</h2>
-            <p>Before we jump into the "how," it'is helpful to understand the "why." PDFis are a container for text, fonts, vector graphics,andhigh-resolution images. Often, the culprit for a massive file size iis unoptimized imagery or embedded font data that scaleis the file size unnecessarily.</p>
+            <p>The good news is that you don't need to delete pages or lower the resolution of your images manually. In this guide, we'll show you exactly how to <strong>reduce PDF file size for email attachments online</strong> using PDFjin.</p>
+
+            <h2>Why Do PDF Files Get So Big?</h2>
+            <p>Before we jump into the "how," it's helpful to understand the "why." PDFs are a container for text, fonts, vector graphics, and high-resolution images. Often, the culprit for a massive file size is unoptimized imagery or embedded font data that scales the file size unnecessarily.</p>
 
             <div class="blog-expert-box">
                 <h4>Organization Tip</h4>
-                <p>Traditional compression methodis often just "blur" images. PDFjin uses an intelligent optimization algorithm that re-sampleis imagesandremoveis redundant metadata without noticeably affecting visual quality.</p>
+                <p>Traditional compression methods often just "blur" images. PDFjin uses an intelligent optimization algorithm that re-samples images and removes redundant metadata without noticeably affecting visual quality.</p>
             </div>
 
-            <h2>step 1: Usee a Dedicated Compression Tool</h2>
-            <p>The fastestandmost reliable method iis to navigate to our <a href="../compress-pdf.html">reduce PDF file size for email attachment online</a> tool. Unlike generic zip software, our tool underst andisthe internal structure of a PDFand"cleans" it from the inside out.</p>
+            <h2>Step 1: Use a Dedicated Compression Tool</h2>
+            <p>The fastest and most reliable method is to navigate to our <a href="../compress-pdf.html">reduce PDF file size for email attachments online</a> tool. Unlike generic zip software, our tool understands the internal structure of a PDF and "cleans" it from the inside out.</p>
 
-            <h2>step 2: Upload Your Large Document</h2>
-            <p>simply draganddrop your file into the secure upload area. Our platform uses end-to-end encryption, meaning your sensitive businesis or personal data iis never seen by anyone else. Once uploaded, our server-side engine (powered by Google Cloud) beginis the analysis.</p>
+            <h2>Step 2: Upload Your Large Document</h2>
+            <p>Simply drag and drop your file into the secure upload area. Our platform uses end-to-end encryption, meaning your sensitive business or personal data is never seen by anyone else. Once uploaded, our server-side engine (powered by Google Cloud) begins the analysis.</p>
 
             <div class="blog-quote">
-                "I used to spend half an hour trying to resize images in my PDF reports. Now, I just run it through PDFjinandit'is done in three seconds."
+                "I used to spend half an hour trying to resize images in my PDF reports. Now, I just run it through PDFjin and it's done in three seconds."
             </div>
 
             <h2>Conclusion</h2>
-            <p>sending large attachmentis shouldn't be a source of stress. By knowing how to <strong>reduce PDF file size for email attachment online</strong>, you can keep your workflow movingandensure your recipientis actually receive your work.</p>
+            <p>Sending large attachments shouldn't be a source of stress. By knowing how to <strong>reduce PDF file size for email attachments online</strong>, you can keep your workflow moving and ensure your recipients actually receive your work.</p>
         </section>
+    </main>
 
-                                            <footer class="footer">
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="../../index.html" class="nav-logo" style="display:inline-flex;">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
                     <div class="logo-icon">&#128196;</div>
                     PDF<span>jin</span>
                 </a>
                 <p>The complete PDF toolkit built on open-source technology.</p>
                 <div class="footer-social">
-                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
-                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
-                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                    <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                    <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
                 </div>
             </div>
 
@@ -174,16 +172,8 @@
             <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
         </div>
     </footer>
-    </main>
 
     <script src="../../js/main.js?v=3.3"></script>
 </body>
 
 </html>
-
-
-
-
-
-
-

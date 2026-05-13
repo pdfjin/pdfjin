@@ -1,16 +1,17 @@
-﻿/* ============================================================
+/* ============================================================
    PDFjin: — Main Javascript
    ============================================================ */
 
 const savedApiCfg = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
 let rawUrl = savedApiCfg.apiUrl || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? "http://localhost:8080"
-    : "https://pdfjin-api-d33mroeryq-as.a.run.app");
+    : "https://pdfjin-api-97530578628.us-central1.run.app");
 
 // Migration Logic: Force update any stale or blocked API URLs from previous sessions
-if (!rawUrl || rawUrl.includes("97530578628") || rawUrl.includes("asia-southeast1.run.app")) {
-    console.log("PDFjin: Deprecated API detected or missing URL. Migrating to high-performance backend...");
-    rawUrl = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+const PROD_API_URL = "https://pdfjin-api-97530578628.us-central1.run.app";
+if (!rawUrl || (rawUrl !== PROD_API_URL && (rawUrl.includes("d33mroeryq") || rawUrl.includes("asia-southeast1") || rawUrl.includes("localhost")))) {
+    console.log("PDFjin: Deprecated or local API detected. Migrating to high-performance US-based backend...");
+    rawUrl = PROD_API_URL;
     // Sync localStorage to fix it permanently for this user
     localStorage.setItem('adminApiConfig', JSON.stringify({ ...savedApiCfg, apiUrl: rawUrl }));
 }
@@ -132,18 +133,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* Scroll: reveal */
+    /* Scroll: reveal & Counter Animation */
     const reveals = document.querySelectorAll('.reveal');
+    const counters = document.querySelectorAll('.stat-number');
+
     if (reveals.length > 0) {
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    
+                    // Trigger counter animation if the visible element is a counter
+                    const statNum = entry.target.querySelector('.stat-number') || (entry.target.classList.contains('stat-number') ? entry.target : null);
+                    if (statNum && !statNum.dataset.animated) {
+                        animateCounter(statNum);
+                    }
+                    
                     revealObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
         reveals.forEach(el => revealObserver.observe(el));
+    }
+
+    function animateCounter(el) {
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        const duration = 2000; // 2 seconds
+        const frameRate = 1000 / 60;
+        const totalFrames = Math.round(duration / frameRate);
+        let currentFrame = 0;
+
+        el.dataset.animated = "true";
+
+        const updateCounter = () => {
+            currentFrame++;
+            const progress = currentFrame / totalFrames;
+            // Ease out expo
+            const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            let currentVal = target * easeProgress;
+
+            if (target > 1000000) {
+                el.textContent = (currentVal / 1000000).toFixed(1) + 'M' + suffix;
+            } else if (target % 1 !== 0) {
+                el.textContent = currentVal.toFixed(1) + suffix;
+            } else {
+                el.textContent = Math.floor(currentVal).toLocaleString() + suffix;
+            }
+
+            if (currentFrame < totalFrames) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                // Set final value precisely
+                if (target > 1000000) {
+                    el.textContent = (target / 1000000).toFixed(1) + 'M' + suffix;
+                } else {
+                    el.textContent = (target % 1 !== 0 ? target.toFixed(1) : target.toLocaleString()) + suffix;
+                }
+            }
+        };
+
+        requestAnimationFrame(updateCounter);
     }
 });
 

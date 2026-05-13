@@ -1,8 +1,8 @@
-﻿/**
+/**
  * PDFjin Tool - HTML to PDF Converter (isolated Module)
  */
 (function () {
-    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
 
     const init = () => {
         const executeBtn = document.getElementById('executeBtn');
@@ -44,7 +44,7 @@
                 document.body.removeChild(a);
 
                 window.PDFJIN_Tasks.increment();
-                executeBtn.innerHTML = "✅ Download: started!";
+                executeBtn.innerHTML = "? Download: started!";
                 setTimeout(() => {
                     executeBtn.innerHTML = originalText;
                     executeBtn.disabled = false;

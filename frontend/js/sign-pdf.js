@@ -1,5 +1,5 @@
 /* ============================================================
-   PDFjin — Sign PDF Engine (v1.0)
+   PDFjin — Sign PDF Engine (v1.0 - Responsive)
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -46,14 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('resize', () => {
-        if (sgModal.classList.contains('active')) {
+        if (sgModal && sgModal.classList.contains('active')) {
             resizeCanvas();
         }
+        updateResponsiveScaling();
     });
 
     // --- 2. File Upload ---
-    dropZone.onclick = () => fileInput.click();
-    fileInput.onchange = (e) => {
+    if (dropZone) dropZone.onclick = () => fileInput.click();
+    if (fileInput) fileInput.onchange = (e) => {
         if (e.target.files.length) startSigner(e.target.files[0]);
     };
 
@@ -63,13 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Initialize PDF.js worker precisely
         const PDF_JS_URL = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174';
         pdfjsLib.GlobalWorkerOptions.workerSrc = `${PDF_JS_URL}/pdf.worker.min.js`;
 
         currentFile = file;
-        dropZone.style.display = 'none';
-        loadingStatus.style.display = 'block';
+        if (dropZone) dropZone.style.display = 'none';
+        if (loadingStatus) loadingStatus.style.display = 'block';
 
         const reader = new FileReader();
         reader.onload = async function () {
@@ -87,16 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (err) {
                 console.error("Error loading PDF:", err);
                 alert("Failed to load PDF.");
-                loadingStatus.style.display = 'none';
-                dropZone.style.display = 'block';
+                if (loadingStatus) loadingStatus.style.display = 'none';
+                if (dropZone) dropZone.style.display = 'block';
             }
         };
         reader.readAsArrayBuffer(file);
     }
 
     async function renderPages() {
-        loadingStatus.style.display = 'block';
-        editorUI.style.display = 'block'; // Make container visible for geometry calculation
+        if (loadingStatus) loadingStatus.style.display = 'block';
+        if (editorUI) editorUI.style.display = 'block';
         pageContainer.innerHTML = '';
         pageData = [];
 
@@ -104,6 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const pageIdx = i - 1;
             const page = await pdfDoc.getPage(i);
             const viewport = page.getViewport({ scale });
+
+            const outer = document.createElement('div');
+            outer.className = 'page-container-outer';
+            outer.style.width = '100%';
+            outer.style.display = 'flex';
+            outer.style.justifyContent = 'center';
+            outer.style.overflow = 'visible';
 
             const wrapper = document.createElement('div');
             wrapper.className = 'page-wrapper';
@@ -113,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.style.marginBottom = '20px';
             wrapper.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
             wrapper.dataset.page = pageIdx;
+            wrapper.dataset.originalWidth = viewport.width;
+            wrapper.dataset.originalHeight = viewport.height;
 
             const canvas = document.createElement('canvas');
             canvas.className = 'page-canvas';
@@ -134,17 +143,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             overlay.onclick = (e) => {
                 if (!currentSignatureImg) {
-                    sgModal.classList.add('active');
+                    if (sgModal) sgModal.classList.add('active');
                     initSignaturePad();
                     return;
                 }
                 const rect = overlay.getBoundingClientRect();
-                placeSignature(overlay, e.clientX - rect.left, e.clientY - rect.top, pageIdx);
+                const s = parseFloat(wrapper.dataset.currentScale || 1);
+                placeSignature(overlay, (e.clientX - rect.left) / s, (e.clientY - rect.top) / s, pageIdx);
             };
 
             wrapper.appendChild(canvas);
             wrapper.appendChild(overlay);
-            pageContainer.appendChild(wrapper);
+            outer.appendChild(wrapper);
+            pageContainer.appendChild(outer);
 
             pageData.push({
                 pageIdx,
@@ -155,9 +166,57 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        loadingStatus.style.display = 'none';
-        // editorUI already set to block in renderPages start
+        if (loadingStatus) loadingStatus.style.display = 'none';
+        
+        if (loadingStatus) loadingStatus.style.display = 'none';
+        
+        // Initial responsive calculation - multiple attempts to ensure layout is ready
+        setTimeout(updateResponsiveScaling, 50);
+        setTimeout(updateResponsiveScaling, 300);
+        setTimeout(updateResponsiveScaling, 1000);
     }
+
+    function updateResponsiveScaling() {
+        if (!pageContainer) return;
+        
+        // Use container width but fallback to window width-20 if container is 0 (hidden/rendering)
+        let containerWidth = pageContainer.clientWidth - 20;
+        if (containerWidth <= 0) {
+            containerWidth = Math.min(window.innerWidth, document.documentElement.clientWidth) - 20;
+        }
+        if (containerWidth <= 0) return;
+
+        const wrappers = document.querySelectorAll('.page-wrapper');
+        
+        wrappers.forEach(wrapper => {
+            const originalWidth = parseFloat(wrapper.dataset.originalWidth);
+            const originalHeight = parseFloat(wrapper.dataset.originalHeight);
+            
+            if (originalWidth > containerWidth) {
+                const s = containerWidth / originalWidth;
+                wrapper.style.transform = `scale(${s})`;
+                wrapper.style.transformOrigin = 'top center';
+                
+                // Adjust parent height to match scaled height to prevent gaps or overflow
+                const scaledHeight = originalHeight * s;
+                wrapper.parentElement.style.height = scaledHeight + 'px';
+                wrapper.dataset.currentScale = s;
+                
+                // CRITICAL: Prevent scaled element from pushing parent width while allowing visual fit
+                wrapper.parentElement.style.width = '100%';
+                wrapper.parentElement.style.display = 'flex';
+                wrapper.parentElement.style.justifyContent = 'center';
+                wrapper.parentElement.style.overflow = 'visible'; // Let the top-level container handle clipping
+            } else {
+                wrapper.style.transform = '';
+                wrapper.parentElement.style.height = (originalHeight + 20) + 'px';
+                wrapper.dataset.currentScale = 1;
+                wrapper.parentElement.style.overflow = 'visible';
+            }
+        });
+    }
+
+    window.addEventListener('resize', updateResponsiveScaling);
 
     // --- 3. Signature Handlers ---
     const sgTabs = document.querySelectorAll('.signature-tab');
@@ -227,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ussavedsgBtn.onclick = () => {
             if (!selectedSavedSg) return;
             currentSignatureImg = selectedSavedSg;
-            sgModal.classList.remove('active');
+            if (sgModal) sgModal.classList.remove('active');
             if (activesignHint) activesignHint.style.display = 'inline';
             if (opensgModalBtn) {
                 opensgModalBtn.innerHTML = "🖋️ Change signature";
@@ -239,7 +298,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (opensgModalBtn) {
         opensgModalBtn.onclick = () => {
-            sgModal.classList.add('active');
+            if (sgModal) sgModal.classList.add('active');
             if (sgTabs.length > 0) sgTabs[0].click();
         };
     }
@@ -253,7 +312,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             currentSignatureImg = signaturePad.toDataURL('image/png');
-            sgModal.classList.remove('active');
+            if (sgModal) sgModal.classList.remove('active');
             if (activesignHint) activesignHint.style.display = 'inline';
             if (opensgModalBtn) {
                 opensgModalBtn.innerHTML = "🖋️ Change signature";
@@ -279,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const img = document.createElement('img');
         img.src = currentSignatureImg;
-        img.style.width = '100.2%'; // Small offset to hide border gaps
+        img.style.width = '100.2%'; 
         img.style.height = '100%';
         img.style.display = 'block';
         img.style.pointerEvents = 'none';
@@ -306,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function dragMouseDown(e) {
             e = e || window.event;
-            if (e.target === el.querySelector('.delete-btn')) return;
+            if (e.target.className === 'delete-btn') return;
             e.preventDefault();
             pos3 = e.clientX;
             pos4 = e.clientY;
@@ -317,15 +376,15 @@ document.addEventListener('DOMContentLoaded', () => {
         function elementDrag(e) {
             e = e || window.event;
             e.preventDefault();
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
+            const s = parseFloat(container.closest('.page-wrapper').dataset.currentScale || 1);
+            pos1 = (pos3 - e.clientX) / s;
+            pos2 = (pos4 - e.clientY) / s;
             pos3 = e.clientX;
             pos4 = e.clientY;
 
             let newTop = el.offsetTop - pos2;
             let newLeft = el.offsetLeft - pos1;
 
-            // Constrain to container
             newTop = Math.max(0, Math.min(newTop, container.offsetHeight - el.offsetHeight));
             newLeft = Math.max(0, Math.min(newLeft, container.offsetWidth - el.offsetWidth));
 
@@ -339,7 +398,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 4. Execution ---
     executeBtn.onclick = async () => {
         const editElements = document.querySelectorAll('.edit-element-wrapper');
         if (editElements.length === 0) {
@@ -372,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         try {
-            const apiUrl = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            const apiUrl = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
             const token = localStorage.getItem('authToken');
             const headers = {};
             if (token) headers['Authorization'] = `Bearer ${token}`;
@@ -388,16 +446,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 mode: 'cors'
             });
 
-            if (!res.ok) throw new Error("Server error: " + res.statusText);
+            if (!res.ok) {
+                let errorMsg = "Server error";
+                try {
+                    const errData = await res.json();
+                    errorMsg = errData.detail || `Error ${res.status}: ${res.statusText}`;
+                } catch (e) {
+                    errorMsg = `HTTP ${res.status}: ${res.statusText || 'Unknown Server Error'}`;
+                }
+                throw new Error(errorMsg);
+            }
 
             const blob = await res.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `signed_${currentFile.name}`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+            const fileName = `signed_${currentFile.name}`;
+            
+            // Mobile-friendly download trigger
+            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveOrOpenBlob(blob, fileName);
+            } else {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                }, 100);
+            }
 
             executeBtn.innerText = 'Success!';
             setTimeout(() => {
@@ -405,12 +483,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 executeBtn.innerHTML = 'Done & Download &rarr;';
             }, 3000);
         } catch (err) {
-            console.error("Signing failed:", err);
-            alert("Signing failed: " + err.message);
+            console.error("SIGN-PDF: Critical execution error", err);
+            
+            // Show more detailed error if available
+            let displayMsg = err.message;
+            if (err.message.includes("Signing failed")) {
+                console.error("DETAILED SERVER ERROR:", err.message);
+                displayMsg = "Server error during signing. Check console for details.";
+            }
+            
+            alert("Signing failed: " + displayMsg);
             executeBtn.disabled = false;
             executeBtn.innerHTML = 'Done & Download &rarr;';
         }
     };
 });
-
-

@@ -42,11 +42,18 @@ async def inspect_pdf(files: List[UploadFile] = File(...)):
 
 # ─── TOOL: EDIT PDF ───────────────────────────────────────────
 @router.post("/edit-pdf")
-async def edit_pdf(files: List[UploadFile] = File(...), edits: str = Form(...)):
-    file = files[0]
+async def edit_pdf(file: UploadFile = File(None), files: List[UploadFile] = File(None), edits: str = Form(...)):
+    target_file = file or (files[0] if files else None)
+    if not target_file:
+        raise HTTPException(status_code=400, detail="No file uploaded")
+    print(f"EDIT-PDF: Processing {target_file.filename} with {len(edits)} bytes of edit data")
     try:
+        print(f"DEBUG: Starting edit-pdf for {target_file.filename}")
         edit_list = json.loads(edits)
-        with pikepdf.open(io.BytesIO(await file.read())) as pdf:
+        print(f"DEBUG: Applying {len(edit_list)} edits")
+        
+        with pikepdf.open(io.BytesIO(await target_file.read())) as pdf:
+            print(f"DEBUG: Opened PDF with {len(pdf.pages)} pages")
             edits_by_page = {}
             for edit in edit_list:
                 p = int(edit.get('page', 0))
@@ -55,6 +62,7 @@ async def edit_pdf(files: List[UploadFile] = File(...), edits: str = Form(...)):
                 
             for i, page in enumerate(pdf.pages):
                 if i in edits_by_page:
+                    print(f"DEBUG: Processing page {i}")
                     width, height = float(page.mediabox[2] - page.mediabox[0]), float(page.mediabox[3] - page.mediabox[1])
                     packet = io.BytesIO()
                     can = canvas.Canvas(packet, pagesize=(width, height))
@@ -65,26 +73,30 @@ async def edit_pdf(files: List[UploadFile] = File(...), edits: str = Form(...)):
                         h = float(edit.get('height', 20))
                         
                         if edit.get('type') == 'text':
+                            print(f"DEBUG: Adding text at {x},{y}")
                             color = hex_to_rgb(edit.get('color', '#000000'), default=(0,0,0))
                             can.setFillColorRGB(*color)
                             size = int(edit.get('size', 12))
                             can.setFont("Helvetica", size)
-                            # Align text baseline higher (0.7 * size) to prevent overlap with line below
                             can.drawString(x, y - (size * 0.7), edit.get('text', ''))
-                        elif edit.get('type') == 'image':
+                        elif edit.get('type') == 'image' or edit.get('type') == 'signature':
+                            print(f"DEBUG: Adding image/signature at {x},{y}")
                             img_data = edit.get('image', '')
                             if ',' in img_data:
                                 img_data = img_data.split(',')[1]
                             import base64
-                            img_bytes = io.BytesIO(base64.b64decode(img_data))
-                            # Use ImageReader to ensure ReportLab can handle the BytesIO reliably
-                            img_reader = ImageReader(img_bytes)
-                            can.drawImage(img_reader, x, y - h, width=w, height=h, mask='auto')
+                            try:
+                                img_bytes = io.BytesIO(base64.b64decode(img_data))
+                                from reportlab.lib.utils import ImageReader
+                                img_reader = ImageReader(img_bytes)
+                                can.drawImage(img_reader, x, y - h, width=w, height=h, mask='auto')
+                            except Exception as img_err:
+                                print(f"DEBUG: Image error: {str(img_err)}")
                         elif edit.get('type') == 'shape':
+                            print(f"DEBUG: Adding shape at {x},{y}")
                             color = hex_to_rgb(edit.get('color', '#ffffff'), default=(1,1,1))
                             can.setFillColorRGB(*color)
                             can.setStrokeColorRGB(*color)
-                            # Shift the whiteout box slightly up and use w/h directly
                             can.rect(x, y - h + 1, w, h, stroke=1, fill=1)
                     can.save()
                     packet.seek(0)
@@ -92,8 +104,20 @@ async def edit_pdf(files: List[UploadFile] = File(...), edits: str = Form(...)):
                         page.add_overlay(overlay.pages[0])
             
             output = io.BytesIO()
+            print("DEBUG: Saving PDF...")
             pdf.save(output)
             output.seek(0)
-            return Response(content=output.getvalue(), media_type="application/pdf", headers={"Content-Disposition": f"attachment; filename=edited_{file.filename}"})
+            print("DEBUG: Save complete")
+            return Response(
+                content=output.getvalue(), 
+                media_type="application/pdf", 
+                headers={
+                    "Content-Disposition": f"attachment; filename=edited_{target_file.filename}",
+                    "Access-Control-Expose-Headers": "Content-Disposition"
+                }
+            )
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        import traceback
+        error_msg = f"Signing failed: {str(e)}\n{traceback.format_exc()}"
+        print(f"DEBUG ERROR: {error_msg}")
+        raise HTTPException(status_code=500, detail=error_msg)

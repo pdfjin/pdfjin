@@ -1,10 +1,10 @@
 /**
  * PDFjin Core - Task Management & Rate Limiting
  */
-const TASKS_API_BASE = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+const TASKS_API_BASE = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
 
 window.PDFJIN_TASKS = {
-    dailyLimit: 50,
+    dailyLimit: 3,
 
     async init() {
         try {
@@ -19,11 +19,11 @@ window.PDFJIN_TASKS = {
             } else if (plan === 'enterprise') {
                 this.dailyLimit = pricing.ent_limit || 500;
             } else {
-                this.dailyLimit = pricing.free_limit || 50;
+                this.dailyLimit = pricing.free_limit || 3;
             }
         } catch (e) {
             console.warn("Task Limit fallback active:", e);
-            this.dailyLimit = 50; // Increased to match homepage
+            this.dailyLimit = 3; // Increased to match homepage
         }
         this.updateDisplay();
     },

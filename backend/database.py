@@ -70,7 +70,7 @@ DEFAULT_DB = {
     "stats": {"total_revenue": 0, "total_users": 0, "conversions_today": 0},
     "announcement": "",
     "maintenance": False, 
-    "pricing": {"free_limit": 50},
+    "pricing": {"free_limit": 3},
     "users": []
 }
 

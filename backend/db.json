@@ -13,7 +13,7 @@
             "monthly": 49.99,
             "yearly": 490.00
         },
-        "free_limit": 50,
+        "free_limit": 3,
         "free_limit_size": 10,
         "pro_limit": 100,
         "pro_limit_size": 100,

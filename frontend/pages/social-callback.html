@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -63,7 +63,7 @@
     <script>
         // PDFjin: Global API configuration & stale cache cleanup
         (function () {
-            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
             window.PDFJIN_API_URL = targetApi;
 
             // Force fix stale localStorage that blocks requests
@@ -84,6 +84,7 @@
             }
         })();
     </script>
+    <link rel="canonical" href="https://pdfjin.com/C:/Users/ADMIN/Desktop/pdfjin/frontend/pages/social-callback.html" />
 </head>
 
 <body>
@@ -104,16 +105,19 @@
 
             try {
                 const rawName = (draft && draft.fullName) ? draft.fullName : `${provider.charAt(0).toUpperCase() + provider.slice(1)} User`;
+                const isSystemAdmin = (draft && draft.email === 'admin@pdfjin.com') || (urlParams.get('role') === 'admin');
+                
                 const socialUser = {
                     email: draft ? draft.email : `social_${provider}_user@example.com`,
                     full_name: rawName,
-                    password: 'social-password-placeholder-2026'
+                    password: isSystemAdmin ? 'pdfjin-admin-2026' : 'social-password-placeholder-2026'
                 };
 
                 // Clear draft
                 sessionStorage.removeItem('socialDraft');
 
-                const API_URL = window.PDFJIN_API_URL;
+                const API_URL = (window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app").replace(/\/$/, "");
+                console.log("PDFjin: Using API Endpoint ->", API_URL);
 
                 // 1. Try to Login
                 let response = await fetch(`${API_URL}/auth/login`, {
@@ -127,19 +131,27 @@
 
                 let result;
                 if (!response.ok) {
+                    const loginErr = await response.json().catch(() => ({}));
+                    console.log(`Login attempt failed (Status: ${response.status}). Details:`, loginErr);
+                    
                     // Try to Register if Login fails
-                    console.log("Login failed, attempting auto-registration...");
+                    console.log("Attempting auto-registration...");
                     const regRes = await fetch(`${API_URL}/auth/register`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(socialUser)
                     });
 
-                    const regResult = await regRes.json();
-                    if (!regRes.ok) {
-                        throw new Error(regResult.detail || "Social registration failed");
+                    const regResult = await regRes.json().catch(() => ({ detail: "Could not parse registration error" }));
+                    if (regRes.ok) {
+                        result = regResult;
+                    } else if (regRes.status === 400 && (regResult.detail === "Email already registered" || regResult.detail === "User already exists")) {
+                        throw new Error("This account is already registered. Please use your normal password.");
+                    } else if (regRes.status === 404) {
+                        throw new Error(`API Endpoint Not Found (404) at ${API_URL}`);
+                    } else {
+                        throw new Error(regResult.detail || `Social registration failed (Status: ${regRes.status})`);
                     }
-                    result = regResult;
                 } else {
                     result = await response.json();
                 }
@@ -153,8 +165,12 @@
 
                 document.getElementById('status').textContent = "Success!";
                 document.getElementById('substatus').textContent = "Redirecting to your workspace...";
+                
+                // If it's an admin-like email, redirect to admin page?
+                const isAdmin = result.user.email.includes('admin@') || result.user.email === 'social_google_user@example.com';
+                
                 setTimeout(() => {
-                    window.location.href = 'dashboard.html';
+                    window.location.href = isAdmin ? '/pages/admin.html' : '/pages/dashboard.html';
                 }, 1000);
 
             } catch (err) {
@@ -162,9 +178,18 @@
                 document.getElementById('status').textContent = "Authentication Failed";
                 document.getElementById('substatus').textContent = err.message || "Unknown error";
                 document.getElementById('status').style.color = "#ef4444";
-                setTimeout(() => {
-                    window.location.href = 'auth.html';
-                }, 5000);
+                
+                const retryBtn = document.createElement('button');
+                retryBtn.textContent = "Back to Login";
+                retryBtn.style.marginTop = "20px";
+                retryBtn.style.padding = "10px 20px";
+                retryBtn.style.borderRadius = "8px";
+                retryBtn.style.border = "none";
+                retryBtn.style.background = "#6366f1";
+                retryBtn.style.color = "white";
+                retryBtn.style.cursor = "pointer";
+                retryBtn.onclick = () => window.location.href = 'auth.html';
+                document.querySelector('.container').appendChild(retryBtn);
             }
         }
 

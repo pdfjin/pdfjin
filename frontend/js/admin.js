@@ -6,7 +6,7 @@
 /* ============ CONSTANTS ============ */
 const API_BASE_URL = window.PDFJIN_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? "http://localhost:8080"
-    : "https://pdfjin-api-d33mroeryq-as.a.run.app");
+    : "https://pdfjin-api-97530578628.us-central1.run.app");
 const ADMIN_PASS = "pdfjin-admin-2026";
 const API_BASE = API_BASE_URL;
 const ADMIN_VERSION = "2.2.1-FIX";
@@ -196,6 +196,16 @@ window.attemptLogin = function () {
         input.value = '';
         input.focus();
     }
+};
+
+window.loginWithGoogle = function () {
+    console.log("Admin: Redirecting to Google Auth Mock...");
+    // Pre-set the draft so the callback knows it's the admin
+    sessionStorage.setItem('socialDraft', JSON.stringify({
+        email: 'admin@pdfjin.com',
+        fullName: 'System Administrator'
+    }));
+    window.location.href = 'social-callback.html?provider=google&role=admin';
 };
 
 window.showDashboard = function() {

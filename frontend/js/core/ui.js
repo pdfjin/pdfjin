@@ -1,4 +1,4 @@
-﻿/**
+/**
  * PDFjin: Core - Shared UI Handlers
  */
 window.PDFJIN_UI = {
@@ -92,13 +92,13 @@ window.PDFJIN_UI = {
 
             item.innerHTML = `
                 <div style="display:flex; align-items:center; gap:12px;">
-                    <span style="font-size:1.4rem;">📄</span>
+                    <div style="width:32px; height:32px; background:#f1f5f9; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#64748b; font-weight:bold; font-size:0.7rem;">FILE</div>
                     <div style="display:flex; flex-direction:column;">
                         <span style="font-weight:600; font-size:0.95rem; color:#334155;">${file.name}</span>
                         <span style="font-size:0.75rem; color:#64748b;">${(file.size / 1024).toFixed(1)} KB</span>
                     </div>
                 </div>
-                <button type="button" onclick="window.PDFJIN_UI.removeFile(${idx})" style="background:none; border:none; color:#ff4d4d; cursor:pointer; font-size:1.2rem; padding:5px;">✕</button>
+                <button type="button" onclick="window.PDFJIN_UI.removeFile(${idx})" style="background:#fff1f1; border:1px solid #fee2e2; color:#ef4444; cursor:pointer; font-size:0.8rem; font-weight:bold; padding:4px 8px; border-radius:6px; transition:all 0.2s;">Remove</button>
             `;
             fileList.appendChild(item);
         });

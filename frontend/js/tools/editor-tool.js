@@ -1,8 +1,8 @@
-﻿/**
+/**
  * PDFjin Tool - Editor & Translator
  */
 (function () {
-    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
 
     document.addEventListener('DOMContentLoaded', () => {
         const executeBtn = document.getElementById('executeBtn');
@@ -66,7 +66,7 @@
 
                 if (window.PDFJIN_TASKS) window.PDFJIN_TASKS.increment();
 
-                executeBtn.innerHTML = "✅ Done!";
+                executeBtn.innerHTML = "? Done!";
                 setTimeout(() => {
                     executeBtn.innerHTML = originalText;
                     executeBtn.disabled = false;

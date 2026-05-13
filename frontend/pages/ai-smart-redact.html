@@ -4,118 +4,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Smart Redact - PDFjin</title>
+    <title>Edit PDF - Add Text & Shapes Online | PDFjin</title>
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/ai-studio.css">
+    <!-- PDF.js for rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
     <style>
-        .redact-container {
-            max-width: 900px;
-            margin: 100px auto 50px;
-            padding: 0 20px;
-        }
-
-        .upload-zone-redact {
-            border: 2px dashed #e2e8f0;
-            background: white;
-            border-radius: 24px;
-            padding: 80px 40px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .upload-zone-redact:hover {
-            border-color: #ef4444;
-            background: rgba(239, 68, 68, 0.02);
-        }
-
-        .pii-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: white;
-            padding: 15px 25px;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 12px;
-            animation: slideUp 0.4s ease-out forwards;
-        }
-
-        .pii-info {
+        .editor-container {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .pii-type {
-            font-size: 0.75rem;
-            font-weight: 800;
-            color: #ef4444;
-            text-transform: uppercase;
+        .editor-toolbar {
+            display: flex;
+            gap: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            flex-wrap: wrap;
         }
 
-        .pii-text {
-            font-family: 'Space Mono', monospace;
-            background: #1e293b;
-            color: transparent;
-            padding: 2px 8px;
-            border-radius: 4px;
+        .tool-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
             cursor: pointer;
+            font-weight: 500;
             transition: all 0.2s;
         }
 
-        .pii-text.unmasked {
-            background: #f1f5f9;
-            color: #1e293b;
+        .tool-btn.active {
+            background: var(--nav-bg, #CC0000);
+            color: white;
+            border-color: var(--nav-bg, #CC0000);
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .tool-btn:hover:not(.active) {
+            background: #f8f9fa;
         }
 
-        .scanning-loader {
-            display: none;
-            padding: 50px;
-            text-align: center;
-        }
-
-        .red-ping {
-            width: 80px;
-            height: 80px;
-            background: rgba(239, 68, 68, 0.1);
-            border-radius: 50%;
-            margin: 0 auto 20px;
+        .pages-view {
+            margin-top: 2rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            position: relative;
+            background: #f0f2f5;
+            padding: 20px 0;
+            border-radius: 12px;
+            width: 100%;
+            overflow-x: hidden;
+            border: 1px solid #ddd;
         }
 
-        .red-ping::after {
-            content: '';
+        .page-container-outer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .page-wrapper {
+            position: relative;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            flex-shrink: 0;
+            transform-origin: top center;
+        }
+
+        .textLayer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            opacity: 1;
+            line-height: 1.0;
+            pointer-events: none;
+        }
+
+        .textLayer.selectable {
+            pointer-events: all;
+        }
+
+        .textLayer span {
+            color: transparent;
+            position: absolute;
+            white-space: pre;
+            cursor: text;
+            transform-origin: 0% 0%;
+        }
+
+        ::selection {
+            background: rgba(0, 123, 255, 0.3);
+        }
+
+        .page-canvas {
+            display: block;
+            width: 100%;
+        }
+
+        .overlay-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            border: 2px solid #ef4444;
-            border-radius: 50%;
-            position: absolute;
-            animation: ping 1.5s infinite;
+            pointer-events: all;
         }
 
-        @keyframes ping {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.5); opacity: 0; }
+        .edit-element {
+            position: absolute;
+            cursor: move;
+            border: 1px dashed transparent;
+            padding: 2px;
+        }
+
+        .edit-element:hover,
+        .edit-element.selected {
+            border-color: #007bff;
+        }
+
+        .edit-text {
+            background: transparent;
+            border: none;
+            outline: none;
+            resize: none;
+            overflow: hidden;
+            font-family: Helvetica, Arial, sans-serif;
+            min-width: 50px;
+            white-space: pre;
+        }
+
+        .edit-shape {
+            background: white;
+            border: 1px solid #ddd;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background: #ff4d4d;
+            color: white;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .edit-element:hover .delete-btn,
+        .edit-element.selected .delete-btn {
+            display: flex;
+        }
+
+        .spinner {
+            display: inline-block;
+            animation: spin 2s infinite linear;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .tool-container {
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+            .tool-card {
+                padding: 10px !important;
+                border-radius: 0 !important;
+            }
+            .upload-area {
+                padding: 1rem 0 !important;
+            }
+            .editor-toolbar {
+                top: 10px;
+                padding: 8px;
+                gap: 5px;
+            }
+            .tool-btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            .tool-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
+    <link rel="canonical" href="https://pdfjin.com/C:/Users/ADMIN/Desktop/pdfjin/frontend/pages/edit-pdf-isolated.html" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tool-page.css">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
     <script>
         // PDFjin: Global API configuration v3.3
         (function () {
-            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
             window.PDFJIN_API_URL = targetApi;
             
             // Force fix stale localStorage that blocks requests
@@ -138,20 +242,24 @@
     </script>
 </head>
 
-<body>
+<body class="single-file-mode">
+
+    <div style="background: #fffbeb; border-bottom: 1px solid #fde68a; padding: 10px; text-align: center; font-weight: 700; color: #92400e; font-size: 0.85rem;">
+        🛠️ Isolated Debug Mode: Version 1.8 (Encoding Safe)
+    </div>
     <!-- NAVIGATION -->
-                                                                                            <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
-        <a href="../index.html" class="nav-logo" aria-label="PDFjin Home">
+                                                    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
             <div class="logo-icon" aria-hidden="true">&#128196;</div>
             PDF<span>jin</span>
         </a>
 
         <ul class="nav-links" id="navMenu">
-            <li><a href="../index.html#services">Tools</a></li>
+            <li><a href="/#services">Tools</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="../index.html#how-it-works">How It Works</a></li>
-            <li><a href="../index.html#features">Features</a></li>
-            <li><a href="../index.html#pricing">Pricing</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
             <li><a href="api-docs.html">API Docs</a></li>
             <li class="guest-only"><a href="auth.html">Sign In</a></li>
             <li class="user-only">
@@ -163,7 +271,7 @@
                     <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
                 </div>
             </li>
-            <li><a href="../index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
         </ul>
 
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -171,52 +279,64 @@
         </button>
     </nav>
 
-    <div class="redact-container">
-        <div style="text-align: center; margin-bottom: 50px;">
-            <div
-                style="display: inline-block; background: #fee2e2; color: #ef4444; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px;">
-                Privacy Engine v4.0</div>
-            <h1 style="font-size: 3rem; font-weight: 800; color: #1e293b; margin-bottom: 20px;">AI Privacy Shield</h1>
-            <p style="color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">Automatically scan for and
-                redact sensitive information like emails, phone numbers, and addresses from your PDF.</p>
-        </div>
+    <main class="tool-container">
+        <div class="section-inner" style="max-width: 1200px; padding: 0;">
+            <div class="tool-card shadow-lg" style="max-width: 100%; width: 100%; border-radius: 0;">
+                <div style="text-align: left; margin-bottom: 15px;">
+                    <a href="dashboard.html" class="back-link" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s;">
+                        &larr; Back to Dashboard
+                    </a>
+                </div>
+                <div class="tool-header">
+                    <div class="tool-icon-large">&#128395;</div>
+                    <h1 class="tool-title">Edit PDF</h1>
+                    <p class="tool-subtitle">Add text, whiteout areas or draw on your PDF document.</p>
+                </div>
 
-        <div id="uploadState" class="upload-zone-redact" onclick="document.getElementById('fileInput').click()">
-            <div style="font-size: 4rem; margin-bottom: 20px;">🛡️</div>
-            <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Select Document to Scan</h3>
-            <p style="color: #64748b;">Your files are processed locally in RAM and never stored permanently.</p>
-            <input type="file" id="fileInput" hidden accept="application/pdf">
-        </div>
+                <div class="upload-area">
+                    <div class="drop-zone" id="dropZone">
+                        <span class="drop-zone-icon">&#128196;</span>
+                        <p class="drop-zone-text">Upload PDF to Edit</p>
+                        <p class="drop-zone-hint">Free online editing (up to 50MB)</p>
+                        <input type="file" id="fileInput" class="file-input" accept="application/pdf" />
+                    </div>
 
-        <div id="scanningState" class="scanning-loader">
-            <div class="red-ping">🔍</div>
-            <h3 style="font-size: 1.5rem;">Scanning for PII...</h3>
-            <p style="color: #64748b;">Running semantic privacy audit across all pages</p>
-        </div>
+                    <div id="loadingStatus">
+                        <span class="spinner">&#9203;</span> Opening document...
+                    </div>
 
-        <div id="resultState" style="display: none;">
-            <div
-                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 20px; padding: 30px; margin-bottom: 30px;">
-                <h3 id="statusSummary" style="margin-bottom: 20px; font-family: 'Space Grotesk';">Privacy Scan Complete
-                </h3>
-                <div id="piiList">
-                    <!-- Results -->
+                    <div id="editorUI" class="editor-container" style="display: none;">
+                        <div class="editor-toolbar">
+                            <button class="tool-btn active" id="selectToolBtn">
+                                <span>🖱️</span> Select
+                            </button>
+                            <button class="tool-btn" id="addTextBtn">
+                                <span>T</span> Add Text
+                            </button>
+                            <button class="tool-btn" id="addShapeBtn">
+                                <span>⬜</span> Whiteout / Shape
+                            </button>
+                            <div style="flex-grow: 1;"></div>
+                            <button class="btn-execute" id="executeBtn" style="margin: 0; padding: 10px 25px; font-size: 0.95rem; font-weight: 700;">
+                                Done & Download &rarr;
+                            </button>
+                        </div>
+
+                        <div id="pageContainer" class="pages-view">
+                            <!-- Pages will be rendered here -->
+                        </div>
+                    </div>
+
+                    <div class="file-list" id="fileList" style="display: none;"></div>
                 </div>
             </div>
-            <div style="text-align: center;">
-                <button class="nav-cta" id="downloadRedacted"
-                    style="background: #1e293b; border: none; padding: 15px 40px; font-size: 1.1rem; width: 100%;">Download
-                    Redacted PDF</button>
-                <p style="margin-top: 20px; color: #94a3b8; cursor: pointer;" onclick="location.reload()">Scan Another
-                    Document</p>
-            </div>
         </div>
-    </div>
+    </main>
 
-                                                                                            <footer class="footer">
+                                                    <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="../index.html" class="nav-logo" style="display:inline-flex;">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
                     <div class="logo-icon">&#128196;</div>
                     PDF<span>jin</span>
                 </a>
@@ -276,94 +396,6 @@
     </footer>
 
     <script src="../js/main.js?v=3.3"></script>
-    <script src="../js/core/tasks.js?v=3.1"></script>
-    <script>
-        (function () {
-            const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
-            const ENDPOINT = "/ai-smart-redact";
-            const fileInput = document.getElementById('fileInput');
-            const uploadState = document.getElementById('uploadState');
-            const scanningState = document.getElementById('scanningState');
-            const resultState = document.getElementById('resultState');
-            const piiList = document.getElementById('piiList');
-            const statusSummary = document.getElementById('statusSummary');
-            let foundPII = [];
-
-            fileInput.onchange = async (e) => {
-                const file = e.target.files[0];
-                if (!file) return;
-
-                if (window.PDFJIN_TASKS && window.PDFJIN_TASKS.isLimitReached()) {
-                    window.PDFJIN_TASKS.showLimitModal();
-                    return;
-                }
-
-                uploadState.style.display = 'none';
-                scanningState.style.display = 'block';
-
-                const formData = new FormData();
-                formData.append('files', file);
-
-                try {
-                    const token = localStorage.getItem('authToken');
-                    const headers = {};
-                    if (token) headers['Authorization'] = `Bearer ${token}`;
-
-                    const res = await fetch(`${API_URL}${ENDPOINT}`, {
-                        method: 'POST',
-                        headers: headers,
-                        body: formData,
-                        mode: 'cors'
-                    });
-
-                    if (!res.ok) {
-                        const err = await res.json().catch(() => ({}));
-                        throw new Error(err.detail || "Privacy scan failed.");
-                    }
-
-                    const json = await res.json();
-                    foundPII = json.data.pii_found || [];
-                    renderResults();
-
-                    if (window.PDFJIN_TASKS) window.PDFJIN_TASKS.increment();
-
-                } catch (err) {
-                    alert("Security Error: " + err.message);
-                    location.reload();
-                }
-            };
-
-            function renderResults() {
-                scanningState.style.display = 'none';
-                resultState.style.display = 'block';
-                statusSummary.textContent = `Detected ${foundPII.length} sensitive data points requiring protection.`;
-
-                if (foundPII.length === 0) {
-                    piiList.innerHTML = `<p style="text-align:center; padding: 40px; color: #94a3b8;">No sensitive data detected. Document is safe.</p>`;
-                    return;
-                }
-
-                piiList.innerHTML = '';
-                foundPII.forEach((item, idx) => {
-                    const div = document.createElement('div');
-                    div.className = 'pii-item';
-                    div.style.animationDelay = `${idx * 0.1}s`;
-                    div.innerHTML = `
-                        <div class="pii-info">
-                            <span class="pii-type">${item.type}</span>
-                            <span class="pii-text" onclick="this.classList.toggle('unmasked')">${item.text}</span>
-                        </div>
-                        <div style="color: #ef4444; font-weight: 800; font-size: 0.7rem;">HIGH RISK</div>
-                    `;
-                    piiList.appendChild(div);
-                });
-            }
-
-            document.getElementById('downloadRedacted').onclick = () => {
-                alert("Privacy Shield Activated! All identified PII has been masked in the permanent file layer.");
-            };
-        })();
-    </script>
+    <script src="../js/pdf-editor.js?v=2.0"></script>
 </body>
-
 </html>

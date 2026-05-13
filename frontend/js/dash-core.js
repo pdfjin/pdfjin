@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const API_URL = window.PDFJIN_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
                 ? "http://localhost:8080"
-                : "https://pdfjin-api-d33mroeryq-as.a.run.app");
+                : "https://pdfjin-api-97530578628.us-central1.run.app");
             const res = await fetch(`${API_URL}/auth/me?token=${token}`);
             if (!res.ok) {
                 console.warn("Session expired or invalid token");
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const API_URL = window.PDFJIN_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
                 ? "http://localhost:8080"
-                : "https://pdfjin-api-d33mroeryq-as.a.run.app");
+                : "https://pdfjin-api-97530578628.us-central1.run.app");
             const res = await fetch(`${API_URL}/site-settings`);
             const data = await res.json();
 

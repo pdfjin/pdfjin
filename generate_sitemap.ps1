@@ -10,13 +10,14 @@ $urls = @()
 # 1. Homepage
 $urls += [PSCustomObject]@{ loc = "$BASE_URL/"; lastmod = $TODAY; priority = "1.0" }
 
-# 2. Main Site Pages
-Get-ChildItem -Path "$FRONTEND_DIR\*.html" -Exclude "index.html", "index_restored.html", "auth.html", "register.html", "dashboard.html" | ForEach-Object {
+# 2. Main Site Pages (Root)
+Get-ChildItem -Path "$FRONTEND_DIR\*.html" -Exclude "index.html", "index_restored.html", "auth.html", "register.html", "dashboard.html", "sitemap_new.xml" | ForEach-Object {
     $urls += [PSCustomObject]@{ loc = "$BASE_URL/$($_.Name)"; lastmod = $TODAY; priority = "0.8" }
 }
 
 # 3. Tool Pages
-Get-ChildItem -Path "$FRONTEND_DIR\pages\*.html" -Exclude "auth.html", "register.html", "dashboard.html", "blog-admin.html", "social-callback.html" | ForEach-Object {
+# Excluded: already in root, or utility pages like auth-isolated, social-callback, etc.
+Get-ChildItem -Path "$FRONTEND_DIR\pages\*.html" -Exclude "auth.html", "register.html", "dashboard.html", "blog-admin.html", "social-callback.html", "auth-isolated.html", "edit-pdf-isolated.html", "watermark-pdf-clean.html", "admin.html", "checkout.html" | ForEach-Object {
     $priority = "0.9"
     if ($_.Name.StartsWith("ai-")) { $priority = "1.0" }
     $urls += [PSCustomObject]@{ loc = "$BASE_URL/pages/$($_.Name)"; lastmod = $TODAY; priority = $priority }

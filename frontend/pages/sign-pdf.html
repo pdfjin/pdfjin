@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign PDF - PDFjin</title>
+    <title>Sign PDF (Responsive) - PDFjin</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/tool-page.css">
 
@@ -32,6 +32,7 @@
             top: 20px;
             z-index: 100;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
         }
 
         .tool-btn {
@@ -68,30 +69,63 @@
             border-color: #ee3939;
         }
 
+        .pages-view {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .page-container-outer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
         .page-wrapper {
             background: white;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             border-radius: 4px;
-            margin: 0 auto 2rem;
+            margin: 0 auto;
+            transform-origin: top center;
+        }
+
+        @media (max-width: 768px) {
+            .tool-container {
+                padding-top: 80px;
+                padding-bottom: 40px;
+            }
+            .tool-card {
+                padding: 10px 0 !important;
+                border-radius: 0;
+            }
+            .upload-area {
+                padding: 1.5rem 0.5rem !important;
+            }
+            .editor-toolbar {
+                padding: 8px;
+                gap: 5px;
+                top: 10px;
+            }
+            .tool-btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+                gap: 4px;
+            }
+            .tool-title {
+                font-size: 1.5rem;
+            }
+            .pages-view {
+                padding: 0;
+            }
         }
     </style>
     <script>
-        // PDFjin: Global API configuration v3.3
         (function () {
-            const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
             window.PDFJIN_API_URL = targetApi;
-            
-            // Force fix stale localStorage that blocks requests
-            try {
-                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
-                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
-                    console.log("PDFjin: Fixing stale API configuration...");
-                    config.apiUrl = targetApi;
-                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
-                }
-            } catch(e) {}
-
-            // Critical: Instant Login Check
             const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
             if (logged) {
                 document.documentElement.classList.add('is-logged-in');
@@ -102,53 +136,28 @@
 </head>
 
 <body class="single-file-mode">
+    <div style="background: #eff6ff; border-bottom: 1px solid #3b82f6; padding: 10px; text-align: center; font-weight: 700; color: #1e40af; font-size: 0.85rem;">
+        📱 Responsive Sign Mode: Documents automatically scale to fit your screen.
+    </div>
 
-    <!-- NAVIGATION -->
-                            <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
-        <a href="../index.html" class="nav-logo" aria-label="PDFjin Home">
-            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+    <nav class="navbar scrolled">
+        <a href="/" class="nav-logo">
+            <div class="logo-icon">&#128196;</div>
             PDF<span>jin</span>
         </a>
-
-        <ul class="nav-links" id="navMenu">
-            <li><a href="../index.html#services">Tools</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="../index.html#how-it-works">How It Works</a></li>
-            <li><a href="../index.html#features">Features</a></li>
-            <li><a href="../index.html#pricing">Pricing</a></li>
-            <li><a href="api-docs.html">API Docs</a></li>
-            <li class="guest-only"><a href="auth.html">Sign In</a></li>
-            <li class="user-only">
-                <div class="nav-user-wrapper">
-                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
-                        <span class="user-bubble" id="navUserBubble">U</span>
-                        <span class="user-status-dot"></span>
-                    </a>
-                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
-                </div>
-            </li>
-            <li><a href="../index.html#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
-        </ul>
-
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
     </nav>
 
     <main class="tool-container">
-        <div class="section-inner" style="max-width: 1200px;">
-            <div class="tool-card shadow-lg" style="max-width: 100%;">
+        <div class="section-inner" style="max-width: 1200px; padding: 0;">
+            <div class="tool-card shadow-lg" style="max-width: 100%; width: 100%; border-radius: 0;">
                 <div class="tool-header">
-                    <div class="tool-icon-large"></div>
                     <h1 class="tool-title">Sign PDF</h1>
-                    <p class="tool-subtitle">Draw or upload your signature and place it anywhere on your PDF.</p>
+                    <p class="tool-subtitle">Mobile-friendly signing. Document fits your screen automatically.</p>
                 </div>
 
                 <div class="upload-area">
                     <div class="drop-zone" id="dropZone">
-                        <span class="drop-zone-icon"></span>
                         <p class="drop-zone-text">Upload PDF to sign</p>
-                        <p class="drop-zone-hint">Fast, secure, and entirely in-browser (up to 50MB)</p>
                         <input type="file" id="fileInput" class="file-input" accept="application/pdf" />
                     </div>
 
@@ -158,23 +167,12 @@
 
                     <div id="editorUI" class="editor-container" style="display: none;">
                         <div class="editor-toolbar">
-                            <button class="tool-btn btn-primary" id="opensgModalBtn">
-                                 🖋️ Create signature
-                            </button>
-                            <span id="activesignHint"
-                                style="display:none; font-size: 0.9rem; color: #666; margin-left:10px;">
-                                 Click on page to place signature
-                            </span>
+                            <button class="tool-btn btn-primary" id="opensgModalBtn">🖋️ Create signature</button>
+                            <span id="activesignHint" style="display:none; font-size: 0.9rem; color: #666; margin-left:10px;">Click on page to place</span>
                             <div style="flex-grow: 1;"></div>
-                            <button class="btn-execute" id="executeBtn"
-                                style="margin: 0; padding: 8px 20px; font-size: 0.9rem;">
-                                Done & Download &rarr;
-                            </button>
+                            <button class="btn-execute" id="executeBtn" style="margin: 0; padding: 8px 20px; font-size: 0.9rem;">Done &rarr;</button>
                         </div>
-
-                        <div id="pageContainer" class="pages-view">
-                            <!-- Pages will be rendered here -->
-                        </div>
+                        <div id="pageContainer" class="pages-view"></div>
                     </div>
                 </div>
             </div>
@@ -185,114 +183,31 @@
     <div id="sgModal" class="modal-overlay">
         <div class="modal-content" style="max-width: 550px;">
             <div class="modal-header">
-                <h3 id="modalTitle">Signature</h3>
-                <button class="btn-ghost" id="closestgModalBtn" style="font-size: 1.5rem;">&times;</button>
+                <h3>Signature</h3>
+                <button class="btn-ghost" id="closestgModalBtn">&times;</button>
             </div>
-
-            <!-- Signature Tabs-->
             <div class="signature-tabs">
                 <div class="signature-tab active" data-target="draw-tab">Draw</div>
-                <div class="signature-tab" data-target="saved-tab">Saved Specimens</div>
+                <div class="signature-tab" data-target="saved-tab">Saved</div>
             </div>
-
-            <!-- Draw Tab -->
             <div id="draw-tab" class="signature-tab-content active">
-                <div style="background:#f9fafb; border:2px solid #e5e7eb; border-radius: 12px; overflow:hidden;">
-                    <canvas id="signature-pad" style="width:100%; height:200px; touch-action:none;"></canvas>
-                </div>
+                <canvas id="signature-pad" style="width:100%; height:200px; touch-action:none; border:1px solid #ddd; border-radius:8px;"></canvas>
                 <div class="modal-actions">
                     <button class="btn-ghost" id="clearsgBtn">Clear</button>
-                    <button class="btn-primary" id="savesgBtn">Use This Signature</button>
+                    <button class="btn-primary" id="savesgBtn">Use This</button>
                 </div>
             </div>
-
-            <!-- Saved Tab -->
             <div id="saved-tab" class="signature-tab-content">
-                <div id="savedSgsContainer"
-                    style="display:grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap:15px; max-height:300px; overflow-y:auto; padding:5px;">
-                    <!-- Saved signatures will be loaded here -->
-                </div>
-                <div id="noSavedSgs" style="text-align:center; padding:2rem; color:#888; display:none;">
-                    <p>No saved signatures found.</p>
-                    <p style="font-size:0.85rem;">Create them in your <a href="dashboard.html"
-                            style="color:#ee3939;">dashboard</a>.</p>
-                </div>
-                <div class="modal-actions">
-                    <button class="btn-primary" id="ussavedsgBtn" style="display:none;">Use selected signature</button>
-                </div>
+                <div id="savedSgsContainer"></div>
+                <div id="noSavedSgs" style="display:none;">No saved signatures.</div>
+                <button class="btn-primary" id="ussavedsgBtn" style="display:none;">Use selected</button>
             </div>
         </div>
     </div>
 
-    <!-- FOOTER -->
-                            <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="../index.html" class="nav-logo" style="display:inline-flex;">
-                    <div class="logo-icon">&#128196;</div>
-                    PDF<span>jin</span>
-                </a>
-                <p>The complete PDF toolkit built on open-source technology.</p>
-                <div class="footer-social">
-                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
-                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
-                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h4>Convert</h4>
-                <ul>
-                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
-                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
-                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
-                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Tools</h4>
-                <ul>
-                    <li><a href="merge-pdf.html">Merge PDF</a></li>
-                    <li><a href="split-pdf.html">Split PDF</a></li>
-                    <li><a href="compress-pdf.html">Compress PDF</a></li>
-                    <li><a href="sign-pdf.html">Sign PDF</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>AI Studio</h4>
-                <ul>
-                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
-                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
-                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
-                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="../about.html">About Us</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="api-docs.html">API Docs</a></li>
-                    <li><a href="../privacy.html">Privacy Policy</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
-            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
-        </div>
-    </footer>
-
-    <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
-
     <script src="../js/main.js?v=3.3"></script>
-    <script src="../js/sign-pdf.js?v=1.0"></script>
+    <script src="../js/sign-pdf.js?v=1.1"></script>
 </body>
-
 </html>

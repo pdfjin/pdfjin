@@ -1,8 +1,8 @@
-﻿/**
+/**
  * PDFjin Tool - Reorder PDF Pages
  */
 (function () {
-    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
 
     document.addEventListener('DOMContentLoaded', () => {
         const fileInput = document.getElementById('fileInput');
@@ -93,7 +93,7 @@
                 a.click();
 
                 window.PDFJIN_Tasks.increment();
-                executeBtn.innerHTML = "✅ Saved!";
+                executeBtn.innerHTML = "? Saved!";
                 setTimeout(() => { executeBtn.innerHTML = originalText; executeBtn.disabled = false; }, 3000);
             } catch (err) {
                 alert("Reorder failed: " + err.message);

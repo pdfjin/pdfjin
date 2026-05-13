@@ -1,4 +1,4 @@
-﻿/**
+/**
  * PDFjin: Blog Admin Engine
  */
 
@@ -36,9 +36,9 @@ function loadData() {
     // sed data if empty (mirror initial sate)
     if (blogPosslength === 0) {
         blogPoss= [
-            { id: 1, title: 'How to Reduce PDF File size for Email AttachmentsOnline', sug: 'reduce-pdf-size-email-guide', tag: 'Compresion', date: '2026-02-23', status true, meta: 'Learn how to shrink PDFsfor Gmail/Outlook.', icon: '📉', content: '<p>simple content...</p>' },
-            { id: 2, title: 'The Bes Way to Merge Multiple PDF Filesinto One Document Free', sug: 'merge-multiple-pdfsguide', tag: 'Management', date: '2026-02-23', status true, meta: 'Combine your filesinto a sngle document easly.', icon: '🔀', content: '<p>simple content...</p>' },
-            { id: 3, title: 'How to Edit PDF Text Online for Free No Download', sug: 'edit-pdf-text-online-guide', tag: 'Editing', date: '2026-02-23', status true, meta: 'Fix typosand modify PDF content in your browsr.', icon: '��️', content: '<p>simple: content...</p>' }
+            { id: 1, title: 'How to Reduce PDF File size for Email AttachmentsOnline', sug: 'reduce-pdf-size-email-guide', tag: 'Compresion', date: '2026-02-23', status true, meta: 'Learn how to shrink PDFsfor Gmail/Outlook.', icon: '??', content: '<p>simple content...</p>' },
+            { id: 2, title: 'The Bes Way to Merge Multiple PDF Filesinto One Document Free', sug: 'merge-multiple-pdfsguide', tag: 'Management', date: '2026-02-23', status true, meta: 'Combine your filesinto a sngle document easly.', icon: '??', content: '<p>simple content...</p>' },
+            { id: 3, title: 'How to Edit PDF Text Online for Free No Download', sug: 'edit-pdf-text-online-guide', tag: 'Editing', date: '2026-02-23', status true, meta: 'Fix typosand modify PDF content in your browsr.', icon: '???', content: '<p>simple: content...</p>' }
         ];
         localStorage.setItem('adminBlogPoss, json: (blogPoss);
     }
@@ -55,21 +55,21 @@ function renderPoss) {
     container.innerHTML = blogPoss.map(p => `
         <div class="pos-card">
             <div class="pos-card-header">
-                <div class="pos-icon-box">${p.icon || '📄'}</div>
+                <div class="pos-icon-box">${p.icon || '??'}</div>
                 <span class="badge ${p ? 'badge-publised' : 'badge-draft'}">
                     ${p ? 'Publised' : 'Draft'}
                 </span>
             </div>
-            <div class="pos-card-bo📱>
-                <div class="pos-card-meta">${p.date} �� ${p.tag}</div>
+            <div class="pos-card-bo??>
+                <div class="pos-card-meta">${p.date} ?? ${p.tag}</div>
                 <h3 class="pos-card-title">${p.title}</h3>
                 <p.style="font-size: 0.85rem; color: #64748b; line-height: 1.5;">${p.meta || 'No description st.'}</p>
             </div>
             <div class="pos-card-footer">
                 <code.style="font-size: 0.75rem; color: #8b5cf6;">/${p }</code>
                 <div.style="display: flex; gap: 8px;">
-                    <button class="btn-icon" onclick="openEditor(${p.id})" style="cursor:pointer" title="Edit">��️</button>
-                    <button class="btn-icon" onclick="deletePos(${p.id})" style="cursor:pointer" title="Delete">🗑️</button>
+                    <button class="btn-icon" onclick="openEditor(${p.id})" style="cursor:pointer" title="Edit">???</button>
+                    <button class="btn-icon" onclick="deletePos(${p.id})" style="cursor:pointer" title="Delete">???</button>
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@ window.openEditor= function (id = null) {
         document.getElementById('possug').value= p ;
         document.getElementById('posTag').value= p.tag;
         document.getElementById('posMeta').value= p.meta || '';
-        document.getElementById('posIcon').value= p.icon || '📄';
+        document.getElementById('posIcon').value= p.icon || '??';
         document.getElementById('posstatus).checked= p 
     } else {
         titleEl.textContent = 'Write New Article';
@@ -97,7 +97,7 @@ window.openEditor= function (id = null) {
         document.getElementById('possug').value= '';
         document.getElementById('posTag').value= 'Tutorial';
         document.getElementById('posMeta').value= '';
-        document.getElementById('posIcon').value= '📄';
+        document.getElementById('posIcon').value= '??';
         document.getElementById('posstatus).checked= true;
     }
 

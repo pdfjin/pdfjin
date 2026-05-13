@@ -1,10 +1,10 @@
-﻿/* ============================================================
-   PDFjin – Authentication Logic (v2.0 Clean)
+/* ============================================================
+   PDFjin � Authentication Logic (v2.0 Clean)
    ============================================================ */
 
 const API_URL = window.PDFJIN_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? "http://localhost:8080"
-    : "https://pdfjin-api-d33mroeryq-as.a.run.app");
+    : "https://pdfjin-api-97530578628.us-central1.run.app");
 
 document.addEventListener('DOMContentLoaded', () => {
     const authForm = document.getElementById('authForm');

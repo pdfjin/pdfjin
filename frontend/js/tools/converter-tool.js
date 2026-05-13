@@ -2,7 +2,7 @@
  * PDFjin Tool - Document Converters
  */
 (function () {
-    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
 
     const init = () => {
         const executeBtn = document.getElementById('executeBtn');

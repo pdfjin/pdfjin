@@ -2,7 +2,7 @@
  * AI Studio - Robust Interaction Handler (v6.0)
  */
 
-window.AI_STUDIO_API = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+window.AI_STUDIO_API = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
 window.AI_SELECTED_FILE = null;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const aiMsg = appendMessage('ai', 'Thinking...');
 
             try {
-                const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+                const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
                 const formData = new FormData();
                 formData.append('files', window.AI_SELECTED_FILE);
                 formData.append('message', message);
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             startPodcastBtn.innerHTML = '<span class="spinner-small"></span> AI Narrating...';
 
             try {
-                const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+                const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
                 const formData = new FormData();
                 formData.append('files', window.AI_SELECTED_FILE);
 
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             startExtractBtn.innerHTML = '<span class="spinner-small"></span> Extracting...';
 
             try {
-                const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+                const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
                 const formData = new FormData();
                 formData.append('files', window.AI_SELECTED_FILE);
                 formData.append('mode', mode);

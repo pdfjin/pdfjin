@@ -1,4 +1,4 @@
-﻿/**
+/**
  * PDFjin Modular Orchestrator (v6.0)
  * Implements strict environment isolation by loading specific tool modules
  */

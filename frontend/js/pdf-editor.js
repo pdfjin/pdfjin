@@ -2,7 +2,7 @@
    PDFjin — ADVANCED PDF EDITOR ENGINE (v1.0)
    ============================================================ */
 
-const API_BASE_URL = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+const API_BASE_URL = "https://pdfjin-api-97530578628.us-central1.run.app";
 
 document.addEventListener('DOMContentLoaded', () => {
     const dropZone = document.getElementById('dropZone');
@@ -113,7 +113,20 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.className = 'page-wrapper';
             wrapper.style.width = viewport.width + 'px';
             wrapper.style.height = viewport.height + 'px';
+            wrapper.style.position = 'relative'; 
+            wrapper.style.margin = '0 auto 20px auto';
+            wrapper.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
             wrapper.dataset.page = pageIdx;
+            wrapper.dataset.originalWidth = viewport.width;
+            wrapper.dataset.originalHeight = viewport.height;
+
+            const outer = document.createElement('div');
+            outer.className = 'page-container-outer';
+            outer.style.width = '100%';
+            outer.style.display = 'flex';
+            outer.style.justifyContent = 'center';
+            outer.style.overflow = 'hidden';
+            outer.appendChild(wrapper);
 
             const canvas = document.createElement('canvas');
             canvas.className = 'page-canvas';
@@ -159,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             wrapper.appendChild(canvas);
             wrapper.appendChild(textLayer);
             wrapper.appendChild(overlay);
-            if (pageContainer) pageContainer.appendChild(wrapper);
+            if (pageContainer) pageContainer.appendChild(outer);
 
             pageData.push({
                 pageIdx,
@@ -173,8 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay.onclick = (e) => {
                 if (e.target !== overlay) return;
                 const rect = overlay.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
+                const s = parseFloat(wrapper.dataset.currentScale || 1);
+                const x = (e.clientX - rect.left) / s;
+                const y = (e.clientY - rect.top) / s;
                 if (activeTool === 'text') addTextElement(overlay, x, y, pageIdx);
                 else if (activeTool === 'shape') addShapeElement(overlay, x, y, pageIdx);
             };
@@ -213,9 +227,54 @@ document.addEventListener('DOMContentLoaded', () => {
         if (loadingStatus) loadingStatus.style.display = 'none';
         if (editorUI) editorUI.style.display = 'block';
         
+        // Initialize responsive check with multiple attempts for robust layout detection
+        setTimeout(updateResponsiveScaling, 50);
+        setTimeout(updateResponsiveScaling, 300);
+        setTimeout(updateResponsiveScaling, 1000);
+        
         // CRITICAL: Initialize tool UI state (Fixes 'Selection not working' on first load)
         updateToolUI();
     }
+
+    function updateResponsiveScaling() {
+        if (!pageContainer) return;
+        
+        // Use container width but fallback to window width-20 if container is 0 or unconstrained
+        let containerWidth = pageContainer.clientWidth - 20;
+        if (containerWidth <= 0 || containerWidth > window.innerWidth) {
+            containerWidth = Math.min(window.innerWidth, document.documentElement.clientWidth) - 20;
+        }
+        if (containerWidth <= 0) return;
+
+        const wrappers = document.querySelectorAll('.page-wrapper');
+        wrappers.forEach(wrapper => {
+            const originalWidth = parseFloat(wrapper.dataset.originalWidth);
+            const originalHeight = parseFloat(wrapper.dataset.originalHeight);
+            
+            if (originalWidth > containerWidth) {
+                const s = containerWidth / originalWidth;
+                wrapper.style.transform = `scale(${s})`;
+                wrapper.style.transformOrigin = 'top center';
+                
+                const scaledHeight = originalHeight * s;
+                wrapper.parentElement.style.height = scaledHeight + 'px';
+                wrapper.dataset.currentScale = s;
+                
+                // Allow the scaled element to fit visually without being clipped by parent's unscaled footprint
+                wrapper.parentElement.style.width = '100%';
+                wrapper.parentElement.style.display = 'flex';
+                wrapper.parentElement.style.justifyContent = 'center';
+                wrapper.parentElement.style.overflow = 'visible';
+            } else {
+                wrapper.style.transform = '';
+                wrapper.parentElement.style.height = (originalHeight + 20) + 'px';
+                wrapper.dataset.currentScale = 1;
+                wrapper.parentElement.style.overflow = 'visible';
+            }
+        });
+    }
+
+    window.addEventListener('resize', updateResponsiveScaling);
 
     // --- 4. Tool Interactions ---
     function addTextElement(container, x, y, pageIdx, options = {}) {
@@ -310,8 +369,12 @@ document.addEventListener('DOMContentLoaded', () => {
             pos2 = pos4 - e.clientY;
             pos3 = e.clientX;
             pos4 = e.clientY;
-            el.style.top = (el.offsetTop - pos2) + "px";
-            el.style.left = (el.offsetLeft - pos1) + "px";
+            const container = el.parentElement;
+            const wrapper = container.closest('.page-wrapper');
+            const s = parseFloat(wrapper.dataset.currentScale || 1);
+            
+            el.style.top = (el.offsetTop - (pos2 / s)) + "px";
+            el.style.left = (el.offsetLeft - (pos1 / s)) + "px";
         }
 
         function closeDragElement() {

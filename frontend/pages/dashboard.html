@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -36,6 +36,20 @@
       cursor: pointer;
     }
 
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1.5px solid rgba(255, 255, 255, 0.35);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+      color: white;
+    }
+
     .user-thumb {
       cursor: default;
     }
@@ -56,7 +70,7 @@
   <script>
     // PDFjin: Global API configuration & stale cache cleanup
     (function () {
-      const targetApi = "https://pdfjin-api-d33mroeryq-as.a.run.app";
+      const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
       window.PDFJIN_API_URL = targetApi;
 
       // Force fix stale localStorage that blocks requests
@@ -77,13 +91,14 @@
       }
     })();
   </script>
+    <link rel="canonical" href="https://pdfjin.com/C:/Users/ADMIN/Desktop/pdfjin/frontend/pages/dashboard.html" />
 </head>
 
 <body class="dash-isolated">
   <!-- Sidebar -->
   <aside class="isolated-sidebar">
     <div class="sidebar-header">
-      <a href="/" class="sidebar-logo"><span>PDF</span>jin</a>
+      <a href="/" class="sidebar-logo"><div class="logo-icon">&#128196;</div><span>PDF</span>jin</a>
       <div class="sidebar-panel-label">USER DASHBOARD</div>
     </div>
 
@@ -180,7 +195,7 @@
       <div class="stats-bar">
         <div class="mini-stat">
           <span class="label">Daily Limit</span>
-          <span class="value">50 Tasks</span>
+          <span class="value">3 Tasks</span>
         </div>
         <div class="mini-stat">
           <span class="label">Storage</span>
@@ -226,246 +241,246 @@
         <a href="sign-pdf.html" class="service-card cat-edit reveal" data-category="edit" id="card-sign-pdf"
           aria-label="Sign PDF content">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F58B;&#xFE0F;</span>
           </div>
           <div class="card-title">Sign PDF</div>
           <div class="card-desc">Draw or upload your digital signature to sign PDFs online.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <!-- CONVERT -->
         <a href="scan-to-pdf.html" class="service-card cat-convert reveal" data-category="convert" id="card-scan-to-pdf"
           aria-label="Scan to PDF converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4F8;</span>
           </div>
           <div class="card-title">Scan to PDF</div>
           <div class="card-desc">Capture documents with your camera and save as PDF.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="pdf-to-word.html" class="service-card cat-convert reveal" data-category="convert" id="card-pdf-to-word"
           aria-label="PDF to Word converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4C4;&#x2192;&#x1F4DD;</span>
           </div>
           <div class="card-title">PDF to Word</div>
           <div class="card-desc">Convert PDF documents to editable Word DOCX files instantly.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="word-to-pdf.html" class="service-card cat-convert reveal" data-category="convert" id="card-word-to-pdf"
           aria-label="Word to PDF converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4DD;&#x2192;&#x1F4C4;</span>
           </div>
           <div class="card-title">Word to PDF</div>
           <div class="card-desc">Transform your Word documents into professional PDFs.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="powerpoint-to-pdf.html" class="service-card cat-convert reveal" data-category="convert"
           id="card-powerpoint-to-pdf" aria-label="PowerPoint to PDF converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4CA;&#x2192;&#x1F4C4;</span>
           </div>
           <div class="card-title">PowerPoint to PDF</div>
           <div class="card-desc">Convert your PPT and PPTX presentations to professional PDFs.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="excel-to-pdf.html" class="service-card cat-convert reveal" data-category="convert"
           id="card-excel-to-pdf" aria-label="Excel to PDF converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4C8;&#x2192;&#x1F4C4;</span>
           </div>
           <div class="card-title">Excel to PDF</div>
           <div class="card-desc">Transform your Excel spreadsheets and CSVs into PDFs.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="pdf-to-jpg.html" class="service-card cat-convert reveal" data-category="convert" id="card-pdf-to-jpg"
           aria-label="PDF to JPG converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4C4;&#x2192;&#x1F5BC;&#xFE0F;</span>
           </div>
           <div class="card-title">PDF to JPG</div>
           <div class="card-desc">Extract pages as high-quality JPG or PNG images.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="jpg-to-pdf.html" class="service-card cat-convert reveal" data-category="convert" id="card-jpg-to-pdf"
           aria-label="JPG to PDF converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F5BC;&#xFE0F;&#x2192;&#x1F4C4;</span>
           </div>
           <div class="card-title">JPG to PDF</div>
           <div class="card-desc">Combine one or more images into a single PDF file.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="pdf-to-powerpoint.html" class="service-card cat-convert reveal" data-category="convert"
           id="card-pdf-to-ppt" aria-label="PDF to PowerPoint converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">📄→📊</span>
           </div>
           <div class="card-title">PDF to PowerPoint</div>
           <div class="card-desc">Turn PDF slidesc into editable PowerPoint presentations.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="pdf-to-excel.html" class="service-card cat-convert reveal" data-category="convert"
           id="card-pdf-to-excel" aria-label="PDF to Excel converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">📄→📊</span>
           </div>
           <div class="card-title">PDF to Excel</div>
           <div class="card-desc">Extract tables and data from PDF into editable Excel spreadsheets.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="html-to-pdf.html" class="service-card cat-convert reveal" data-category="convert" id="card-html-to-pdf"
           aria-label="HTML to PDF converter">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F310;&#x2192;&#x1F4C4;</span>
           </div>
           <div class="card-title">HTML to PDF</div>
           <div class="card-desc">Convert any webpage or HTML file to a PDF document.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <!-- ORGANIZE -->
         <a href="merge-pdf.html" class="service-card cat-organize reveal" data-category="organize" id="card-merge"
           aria-label="Merge PDF files">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F500;</span>
           </div>
           <div class="card-title">Merge PDF</div>
           <div class="card-desc">Combine multiple PDFs into one document in any order.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="split-pdf.html" class="service-card cat-organize reveal" data-category="organize" id="card-split"
           aria-label="Split PDF file">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x2702;&#xFE0F;</span>
           </div>
           <div class="card-title">Split PDF</div>
           <div class="card-desc">Separate pages or extract a range from your PDF.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="rotate-pdf.html" class="service-card cat-organize reveal" data-category="organize" id="card-rotate"
           aria-label="Rotate PDF pages">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F504;</span>
           </div>
           <div class="card-title">Rotate PDF</div>
           <div class="card-desc">Rotate specific pages or the entire PDF to any angle.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="reorder-pdf.html" class="service-card cat-organize reveal" data-category="organize" id="card-reorder"
           aria-label="Reorder PDF pages">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4CB;</span>
           </div>
           <div class="card-title">Reorder Pages</div>
           <div class="card-desc">Drag and drop to rearrange pages in any order.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="add-page-numbers.html" class="service-card cat-organize reveal" data-category="organize"
           id="card-add-numbers" aria-label="Add Page Numbers to PDF">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F522;</span>
           </div>
           <div class="card-title">Add Page Numbers</div>
           <div class="card-desc">Add page numbers to your document with custom positioning.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <!-- OPTIMIZE -->
         <a href="compress-pdf.html" class="service-card cat-optimize reveal" data-category="optimize" id="card-compress"
           aria-label="Compress PDF file">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4E6;</span>
           </div>
           <div class="card-title">Compress PDF</div>
           <div class="card-desc">Reduce file size while maintaining quality for easy sharing.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="repair-pdf.html" class="service-card cat-optimize reveal" data-category="optimize" id="card-repair"
           aria-label="Repair corrupted PDF">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1FA79;</span>
           </div>
           <div class="card-title">Repair PDF</div>
           <div class="card-desc">Recover content from corrupted or damaged PDF files.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <!-- SECURITY -->
         <a href="protect-pdf.html" class="service-card cat-security reveal" data-category="security" id="card-protect"
           aria-label="passsword protect PDF">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F512;</span>
           </div>
           <div class="card-title">Protect PDF</div>
           <div class="card-desc">Add a passsword to your PDF to restrict access.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="unlock-pdf.html" class="service-card cat-security reveal" data-category="security" id="card-unlock"
           aria-label="Unlock PDF passsword">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F513;</span>
           </div>
           <div class="card-title">Unlock PDF</div>
           <div class="card-desc">Remove passsword protection from a PDF you own.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <!-- EDIT -->
         <a href="translate-pdf.html" class="service-card cat-edit reveal" data-category="edit" id="card-translate-pdf"
           aria-label="Translate PDF content">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F310;</span>
           </div>
           <div class="card-title">Translate PDF</div>
           <div class="card-desc">Translate PDF text into over 100 languages instantly.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="edit-pdf.html" class="service-card cat-edit reveal" data-category="edit" id="card-edit-pdf"
           aria-label="Edit PDF content">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x270D;&#xFE0F;</span>
           </div>
           <div class="card-title">Edit PDF</div>
           <div class="card-desc">Add text, whiteout, or modify content on PDF pages.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="ocr-pdf.html" class="service-card cat-edit reveal" data-category="edit" id="card-ocr-pdf"
           aria-label="OCR PDF content">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F50D;</span>
           </div>
           <div class="card-title">OCR PDF</div>
           <div class="card-desc">Convert scanned PDFs into searchable and selectable documents.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="watermark-pdf.html" class="service-card cat-edit reveal" data-category="edit" id="card-watermark"
           aria-label="Add watermark to PDF">
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F58A;&#xFE0F;</span>
           </div>
           <div class="card-title">Watermark PDF</div>
           <div class="card-desc">Stamp text or image watermarks onto your PDF pages.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <!-- AI STUDIO -->
@@ -473,127 +488,127 @@
           aria-label="Chat with PDF AI">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x2728;</span>
           </div>
           <div class="card-title">Chat with PDF</div>
           <div class="card-desc">Ask questions, summarize chapters, and find insights using AI.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="ai-pdf-extraction.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-extraction"
           aria-label="Smart AI PDF Extraction">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F916;</span>
           </div>
           <div class="card-title">Smart Extraction</div>
           <div class="card-desc">Automatically extract tables and data into structured JSON or Excel.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-pdf-study.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-study"
           aria-label="AI Study Partner">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F393;</span>
           </div>
           <div class="card-title">AI Study Partner</div>
           <div class="card-desc">Generate quizzes, flashcards, and study guidesc from any PDF instantly.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-pdf-podcast.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-podcast"
           aria-label="AI Podcast Creator">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F399;&#xFE0F;</span>
           </div>
           <div class="card-title">AI Podcast</div>
           <div class="card-desc">Convert PDFs into high-quality, conversational audio podcasts.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-form-filler.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-form"
           aria-label="AI Form Filler">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F916;</span>
           </div>
           <div class="card-title">AI Form Filler</div>
           <div class="card-desc">Automatically detect fields and fill PDF forms using smart AI suggestions.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="ai-contract-auditor.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-contract"
           aria-label="AI Contract Auditor">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x2696;&#xFE0F;</span>
           </div>
           <div class="card-title">AI Contract Auditor</div>
           <div class="card-desc">Identify risky clausees, auto-renewals, and hidden traps in contracts.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-semantic-extract.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-semantic"
           aria-label="Semantic Table Extraction">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4CA;</span>
           </div>
           <div class="card-title">Semantic Table Extract</div>
           <div class="card-desc">Multimodal vision to "read" tables visually and output structured JSON/CSV.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-smart-rewrite.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-rewrite"
           aria-label="Smart AI Rewrite">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x2728;</span>
           </div>
           <div class="card-title">Smart Rewrite</div>
           <div class="card-desc">AI rewrites your text for conciseness and auto-adjusts font/spacing to fit your goals.
           </div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-smart-redact.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-redact"
           aria-label="Smart Redact Privacy">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F6E1;&#xFE0F;</span>
           </div>
           <div class="card-title">Smart Redact</div>
           <div class="card-desc">AI scans for sensitive PII (SSN, Address, CC) and auto-masks them for privacy.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-cross-reference.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-crossuref"
           aria-label="Cross-Reference Agent">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F9EC;</span>
           </div>
           <div class="card-title">Cross-Reference Agent</div>
           <div class="card-desc">Synthesize insights across 50+ PDFs simultaneously with multi-doc RAG and citations.
           </div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-audio-overview.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-audio"
           aria-label="Audio Overview">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F3A7;</span>
           </div>
           <div class="card-title">Audio Overview</div>
           <div class="card-desc">Convert dry PDFs into high-quality, conversational podcasts with dual AI hosts.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-voice-memo.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-voice"
           aria-label="Voice Scribe">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F399;&#xFE0F;</span>
           </div>
           <div class="card-title">Voice Scribe</div>
           <div class="card-desc">Record voice notes and transform them into professional formal PDF proposals
             instantly.
           </div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
       </div>
       <!-- /services-grid -->
@@ -614,127 +629,127 @@
           aria-label="Chat with PDF AI">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x2728;</span>
           </div>
           <div class="card-title">Chat with PDF</div>
           <div class="card-desc">Ask questions, summarize chapters, and find insights using AI.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="ai-pdf-extraction.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-extraction"
           aria-label="Smart AI PDF Extraction">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F916;</span>
           </div>
           <div class="card-title">Smart Extraction</div>
           <div class="card-desc">Automatically extract tables and data into structured JSON or Excel.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-pdf-study.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-study"
           aria-label="AI Study Partner">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F393;</span>
           </div>
           <div class="card-title">AI Study Partner</div>
           <div class="card-desc">Generate quizzes, flashcards, and study guidesc from any PDF instantly.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-pdf-podcast.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-podcast"
           aria-label="AI Podcast Creator">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F399;&#xFE0F;</span>
           </div>
           <div class="card-title">AI Podcast</div>
           <div class="card-desc">Convert PDFs into high-quality, conversational audio podcasts.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-form-filler.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-form"
           aria-label="AI Form Filler">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F916;</span>
           </div>
           <div class="card-title">AI Form Filler</div>
           <div class="card-desc">Automatically detect fields and fill PDF forms using smart AI suggestions.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
         <a href="ai-contract-auditor.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-contract"
           aria-label="AI Contract Auditor">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x2696;&#xFE0F;</span>
           </div>
           <div class="card-title">AI Contract Auditor</div>
           <div class="card-desc">Identify risky clausees, auto-renewals, and hidden traps in contracts.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-semantic-extract.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-semantic"
           aria-label="Semantic Table Extraction">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F4CA;</span>
           </div>
           <div class="card-title">Semantic Table Extract</div>
           <div class="card-desc">Multimodal vision to "read" tables visually and output structured JSON/CSV.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-smart-rewrite.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-rewrite"
           aria-label="Smart AI Rewrite">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x2728;</span>
           </div>
           <div class="card-title">Smart Rewrite</div>
           <div class="card-desc">AI rewrites your text for conciseness and auto-adjusts font/spacing to fit your goals.
           </div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-smart-redact.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-redact"
           aria-label="Smart Redact Privacy">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F6E1;&#xFE0F;</span>
           </div>
           <div class="card-title">Smart Redact</div>
           <div class="card-desc">AI scans for sensitive PII (SSN, Address, CC) and auto-masks them for privacy.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-cross-reference.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-crossuref"
           aria-label="Cross-Reference Agent">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F9EC;</span>
           </div>
           <div class="card-title">Cross-Reference Agent</div>
           <div class="card-desc">Synthesize insights across 50+ PDFs simultaneously with multi-doc RAG and citations.
           </div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-audio-overview.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-audio"
           aria-label="Audio Overview">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F3A7;</span>
           </div>
           <div class="card-title">Audio Overview</div>
           <div class="card-desc">Convert dry PDFs into high-quality, conversational podcasts with dual AI hosts.</div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
         <a href="ai-voice-memo.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-voice"
           aria-label="Voice Scribe">
           <div class="ai-badge">Premium</div>
           <div class="card-icon-wrap">
-            <span class="icon-emoji"></span>
+            <span class="icon-emoji">&#x1F399;&#xFE0F;</span>
           </div>
           <div class="card-title">Voice Scribe</div>
           <div class="card-desc">Record voice notes and transform them into professional formal PDF proposals
             instantly.
           </div>
-          <span class="card-arrow"></span>
+          <span class="card-arrow">&rarr;</span>
         </a>
 
       </div>
@@ -755,7 +770,7 @@
           <div style="font-size: 1.5rem; font-weight: 800; margin: 12px 0;">$0 <span
               style="font-size: 0.9rem; font-weight: 400; color: #64748b;">/mo</span></div>
           <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #475569; line-height: 2;">
-            <li> <strong id="limitFreeTasks">50 Tasks per day</strong></li>
+            <li> <strong id="limitFreeTasks">3 Tasks per day</strong></li>
             <li> includes Premium AI</li>
             <li> Max <span id="limitFreeSize">10</span>MB Files</li>
             <li> No watermark</li>
@@ -840,6 +855,7 @@
 
         <div style="position: relative; z-index: 1;">
           <div style="font-size: 3.5rem; margin-bottom: 24px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
+            &#x1F680;
           </div>
           <h2
             style="font-size: 1.8rem; font-weight: 800; color: #1e293b; margin-bottom: 12px; letter-spacing: -0.02em;">
@@ -854,7 +870,7 @@
             style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; max-width: 600px; margin: 0 auto 40px;">
             <div
               style="background: white; padding: 16px; border-radius: 12px; border: 1px solid #f1f5f9; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
-              <div style="font-size: 1.2rem; margin-bottom: 8px;"></div>
+              <div style="font-size: 1.2rem; margin-bottom: 8px;">⚡</div>
               <div style="font-size: 0.75rem; font-weight: 700; color: #1e293b;">Ultra-Fast</div>
               <div style="font-size: 0.65rem; color: #94a3b8;">140ms Latency</div>
             </div>
@@ -866,7 +882,7 @@
             </div>
             <div
               style="background: white; padding: 16px; border-radius: 12px; border: 1px solid #f1f5f9; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);">
-              <div style="font-size: 1.2rem; margin-bottom: 8px;"></div>
+              <div style="font-size: 1.2rem; margin-bottom: 8px;">🔐</div>
               <div style="font-size: 0.75rem; font-weight: 700; color: #1e293b;">Secure</div>
               <div style="font-size: 0.65rem; color: #94a3b8;">HMAC Auth</div>
             </div>

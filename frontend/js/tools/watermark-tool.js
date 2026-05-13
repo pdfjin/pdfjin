@@ -1,9 +1,9 @@
-﻿/**
+/**
  * PDFjin Tool - isolated Watermark Component (v6.2)
  * Pure isolation: handles its own UI and Uploads to prevent any cross-tool interference.
  */
 (function () {
-    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
     const ENDPOINT = "/watermark-pdf";
     let selectedFile = null;
 
@@ -65,10 +65,10 @@
                 fileList.innerHTML = `
                     <div class="file-item" style="background:#fff; border:1px solid #eee; padding:12px; border-radius:12px; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
                         <div style="display:flex; align-items:center; gap:10px;">
-                            <span style="font-size:1.2rem;">📄</span>
+                            <span style="font-size:1.2rem;">??</span>
                             <span style="font-weight:500; font-size:0.9rem;">${file.name}</span>
                         </div>
-                        <button id="removeFileBtn" style="background:none; border:none; color:#ff4d4d; cursor:pointer; font-size:1rem;">✖</button>
+                        <button id="removeFileBtn" style="background:none; border:none; color:#ff4d4d; cursor:pointer; font-size:1rem;">?</button>
                     </div>
                 `;
                 document.getElementById('removeFileBtn').onclick = () => location.reload();
@@ -120,7 +120,7 @@
                 URL.revokeObjectURL(url);
 
                 if (window.PDFJIN_Tasks) window.PDFJIN_Tasks.increment();
-                executeBtn.innerHTML = "✅ Success!";
+                executeBtn.innerHTML = "? Success!";
                 setTimeout(() => {
                     executeBtn.innerHTML = originalText;
                     executeBtn.disabled = false;

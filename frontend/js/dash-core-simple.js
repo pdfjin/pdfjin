@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const get = (id) => document.getElementById(id);
     const API_URL = window.PDFJIN_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? "http://localhost:8080"
-        : "https://pdfjin-api-d33mroeryq-as.a.run.app");
+        : "https://pdfjin-api-97530578628.us-central1.run.app");
 
 
     // 1. Auth Check
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updatePricingDisplay();
 
                 // Limits sync
-                if (get('limitFreeTasks')) get('limitFreeTasks').textContent = `${currentPricing.free_limit || 50} Tasks per day`;
+                if (get('limitFreeTasks')) get('limitFreeTasks').textContent = `${currentPricing.free_limit || 3} Tasks per day`;
                 if (get('limitFreeSize')) get('limitFreeSize').textContent = currentPricing.free_limit_size || 10;
                 if (get('limitProTasks')) get('limitProTasks').textContent = `${currentPricing.pro_limit || 100} Tasks per day`;
                 if (get('limitProSize')) get('limitProSize').textContent = currentPricing.pro_limit_size || 100;

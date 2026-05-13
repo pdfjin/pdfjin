@@ -1,8 +1,8 @@
-﻿/**
+/**
  * PDFjin Tool - PDF Operations (Merge, Split, Rotate, etc.)
  */
 (function () {
-    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-d33mroeryq-as.a.run.app";
+    const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
 
     document.addEventListener('DOMContentLoaded', () => {
         const executeBtn = document.getElementById('executeBtn');
@@ -85,7 +85,7 @@
                     window.PDFJIN_TASKS.increment();
                 }
 
-                executeBtn.innerHTML = "✅ Success!";
+                executeBtn.innerHTML = "? Success!";
                 setTimeout(() => {
                     executeBtn.innerHTML = originalText;
                     executeBtn.disabled = false;

@@ -116,9 +116,9 @@ async def unified_middleware(request: Request, call_next):
         
         # Convert limits to int to be safe
         try:
-            max_tasks = int(pricing.get(limit_key, 50 if plan == "pro" else (500 if plan == "enterprise" else 50)))
+            max_tasks = int(pricing.get(limit_key, 50 if plan == "pro" else (500 if plan == "enterprise" else 3)))
         except:
-            max_tasks = 50
+            max_tasks = 3
 
         # Check Usage
         if identified_user:
@@ -142,9 +142,9 @@ async def unified_middleware(request: Request, call_next):
             if usage["date"] != today: usage = {"date": today, "count": 0}
             
             current_guest_count = int(usage.get("count", 0))
-            if current_guest_count >= 500: # Increased to 500 for testing/recovery
+            if current_guest_count >= 3:
                 return add_cors(Response(
-                    content=json.dumps({"detail": "Guest limit (50/day) reached. Sign in for more."}),
+                    content=json.dumps({"detail": "Guest limit (3/day) reached. Sign in for more."}),
                     status_code=429, media_type="application/json"
                 ))
             usage["count"] = current_guest_count + 1
@@ -154,10 +154,12 @@ async def unified_middleware(request: Request, call_next):
     try:
         response = await call_next(request)
     except Exception as e:
-        response = JSONResponse(
+        import traceback
+        print(f"CRITICAL MIDDLEWARE ERROR: {str(e)}\n{traceback.format_exc()}")
+        return add_cors(JSONResponse(
             status_code=500,
-            content={"detail": f"Internal Server Error: {str(e)}"}
-        )
+            content={"detail": f"System Error: {str(e)}"}
+        ))
     
     return add_cors(response)
 
