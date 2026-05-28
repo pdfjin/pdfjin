@@ -1,0 +1,66 @@
+name: Auto Blogger Pipeline
+
+on:
+  schedule:
+    # Runs at 09:00 and 21:00 UTC (Adjust timezones if needed)
+    - cron: '0 9,21 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  auto-blog-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install google-generativeai
+
+      - name: Run Auto Blogger
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python auto_blogger.py
+
+      - name: Commit and Push to GitHub
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog_topics.csv frontend/pages/blog/*.html frontend/sitemap.xml frontend/pages/blog/rss.xml || true
+          git commit -m "auto-blog: Published new post via GitHub Actions" || echo "No changes to commit"
+          git push
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Deploy to Cloud Run
+        run: |
+          # Sync frontend to backend (replicates deploy-cloud.ps1 step 0)
+          rm -rf backend/static_frontend
+          mkdir -p backend/static_frontend
+          cp -r frontend/* backend/static_frontend/
+          
+          # Deploy to Cloud Run
+          gcloud run deploy pdfjin-api \
+            --source ./backend \
+            --region us-central1 \
+            --platform managed \
+            --allow-unauthenticated \
+            --project pdgjin \
+            --quiet

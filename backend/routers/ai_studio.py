@@ -63,7 +63,7 @@ async def run_ai_task(prompt: str, pdf_content: bytes = b"", use_json=False):
 
     # 1. GEMINI (Priority #1)
     if GEMINI_API_KEY:
-        for mid in ["gemini-1.5-flash", "gemini-1.5-pro"]:
+        for mid in ["gemini-flash-latest", "gemini-pro-latest"]:
             try:
                 print(f"AI Engine: Attempting Gemini ({mid})...")
                 model = genai.GenerativeModel(mid)
