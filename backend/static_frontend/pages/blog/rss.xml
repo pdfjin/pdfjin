@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>PDFjin Blog</title>
+    <link>https://pdfjin.com/pages/blog.html</link>
+    <description>Latest updates and tutorials from PDFjin.</description>
+    <language>en-us</language>
+    <atom:link href="https://pdfjin.com/pages/blog/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Convert Dry PDFs into High-Quality Podcasts | PDFjin</title>
+      <link>https://pdfjin.com/pages/blog/ai-audio-overview-guide.html</link>
+      <description>Learn how to turn long, boring PDFs into engaging conversational podcasts with dual AI hosts using PDFjin's Audio Overview feature.</description>
+      <pubDate>Sun, 24 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://pdfjin.com/pages/blog/ai-audio-overview-guide.html</guid>
+    </item>
+    <item>
+      <title>The Easiest Way to Digitally Sign PDF Documents Online for Free | PDFjin</title>
+      <link>https://pdfjin.com/pages/blog/digitally-sign-pdf-guide.html</link>
+      <description>Learn the easiest way to digitally sign PDF documents online for free. Securely sign legal contracts, invoices, and purchase orders from any device easily.</description>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://pdfjin.com/pages/blog/digitally-sign-pdf-guide.html</guid>
+    </item>
+    <item>
+      <title>How to Edit PDF Text Online for Free (No Download Needed) | PDFjin</title>
+      <link>https://pdfjin.com/pages/blog/edit-pdf-text-online-guide.html</link>
+      <description>Step-by-step guide to edit PDF text online for free. Add annotations, whiteout, draw, and insert signatures instantly in your web browser with no download.</description>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://pdfjin.com/pages/blog/edit-pdf-text-online-guide.html</guid>
+    </item>
+    <item>
+      <title>How to Convert Excel to PDF While Keeping Perfect Formatting | PDFjin</title>
+      <link>https://pdfjin.com/pages/blog/excel-to-pdf-guide.html</link>
+      <description>Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.</description>
+      <pubDate>Thu, 26 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://pdfjin.com/pages/blog/excel-to-pdf-guide.html</guid>
+    </item>
+    <item>
+      <title>How to Merge Multiple PDFs into One Document | PDFjin</title>
+      <link>https://pdfjin.com/pages/blog/merge-multiple-pdfs-guide.html</link>
+      <description>Learn how to merge multiple PDFs into one document online for free in seconds. Combine, arrange, and organize your files with our simple drag-and-drop tool.</description>
+      <pubDate>Wed, 25 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://pdfjin.com/pages/blog/merge-multiple-pdfs-guide.html</guid>
+    </item>
+    <item>
+      <title>How to Convert PDF to Editable Word Document Online for Free | PDFjin</title>
+      <link>https://pdfjin.com/pages/blog/pdf-to-editable-word-guide.html</link>
+      <description>Discover how to convert PDF to editable Word documents online for free. Keep original fonts, columns, and layouts intact without signing up or software installs.</description>
+      <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://pdfjin.com/pages/blog/pdf-to-editable-word-guide.html</guid>
+    </item>
+    <item>
+      <title>How to Reduce PDF File Size for Email Attachments Online | PDFjin</title>
+      <link>https://pdfjin.com/pages/blog/reduce-pdf-size-email-guide.html</link>
+      <description>Learn how to reduce PDF file size for email attachments online for free. Compress large PDFs to fit under email limits while keeping perfect text and layout quality.</description>
+      <pubDate>Mon, 23 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://pdfjin.com/pages/blog/reduce-pdf-size-email-guide.html</guid>
+    </item>
+  </channel>
+</rss>

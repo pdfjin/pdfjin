@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PDFjin</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">
+            <span class="logo-icon">&#128196;</span>
+            <span class="logo-text">PDFjin</span>
+        </div>
+        <div class="auth-section">
+            <button id="loginBtn" class="btn btn-small">Sign In</button>
+            <div id="userProfile" class="user-profile hidden">
+                <span class="user-bubble">U</span>
+                <span id="userPlan" class="plan-badge">Free</span>
+                <button id="logoutBtn" class="btn btn-text btn-small">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="tool-selector">
+            <label for="toolSelect">Select Tool:</label>
+            <select id="toolSelect">
+                <option value="compress-pdf">Compress PDF</option>
+                <option value="merge-pdf">Merge PDF</option>
+                <option value="pdf-to-word">PDF to Word</option>
+                <option value="pdf-to-jpg">PDF to JPG</option>
+                <option value="protect-pdf">Protect PDF</option>
+            </select>
+        </div>
+
+        <div id="optionsArea" class="options-area hidden" style="margin-bottom: 16px;">
+            <input type="password" id="pdfPassword" placeholder="Enter password to protect PDF" style="width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 6px; box-sizing: border-box;">
+        </div>
+
+        <div class="upload-area" id="dropZone">
+            <div class="upload-icon">&#128193;</div>
+            <p>Click to upload or drag & drop</p>
+            <p class="upload-subtext">PDF files only (Max <span id="maxSizeDisplay">50</span>MB)</p>
+            <input type="file" id="fileInput" accept="application/pdf" multiple hidden>
+        </div>
+
+        <div id="fileList" class="file-list hidden"></div>
+
+        <div class="action-area">
+            <button id="processBtn" class="btn btn-primary btn-full hidden">Process Files</button>
+        </div>
+
+        <div id="progressArea" class="progress-area hidden">
+            <div class="spinner"></div>
+            <p id="statusText">Processing your file...</p>
+        </div>
+
+        <div id="resultArea" class="result-area hidden">
+            <div class="success-icon">&#10004;</div>
+            <p>Processing Complete!</p>
+            <button id="downloadBtn" class="btn btn-success btn-full">Download File</button>
+            <button id="resetBtn" class="btn btn-outline btn-full mt-2">Process Another</button>
+        </div>
+        
+        <div id="errorArea" class="error-area hidden">
+            <p id="errorMsg"></p>
+            <button id="errorResetBtn" class="btn btn-outline btn-full mt-2">Try Again</button>
+        </div>
+    </main>
+    
+    <footer>
+        <a href="https://pdfjin.com" target="_blank">Visit PDFjin.com</a>
+    </footer>
+
+    <script src="popup.js"></script>
+</body>
+</html>

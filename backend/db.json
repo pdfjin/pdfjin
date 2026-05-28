@@ -14,11 +14,18 @@
             "yearly": 490.00
         },
         "free_limit": 3,
-        "free_limit_size": 10,
-        "pro_limit": 100,
+        "free_limit_size": 50,
+        "pro_limit": 999999,
         "pro_limit_size": 100,
+        "pro_data_limit": 3000,
         "ent_limit": 1000,
-        "ent_limit_size": 500
+        "ent_limit_size": 500,
+        "flexi-plan": 10.00,
+        "flexi_credits": 3000,
+        "flexi_validity": 3,
+        "flexi_size": 100,
+        "neural_inspector_monthly": 39.00,
+        "neural_agent_monthly": 19.00
     },
     "users": [
         {

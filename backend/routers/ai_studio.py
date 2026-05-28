@@ -16,7 +16,7 @@ router = APIRouter()
 
 # ─── AI ENGINE CONFIGURATION ──────────────────────────────────
 # Priority Order: DeepSeek -> Claude -> Gemini
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyAN270KrgKkQTtllZGpN-cj1fwFx70Lkv8")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", os.getenv("OPENAI_API_KEY", "")) # Fallback to generic key
 DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
@@ -61,7 +61,24 @@ async def run_ai_task(prompt: str, pdf_content: bytes = b"", use_json=False):
     full_text_prompt = f"CONTEXT DOCUMENT TEXT:\n{text_context}\n\nUSER TASK: {prompt}"
     if use_json: full_text_prompt += "\nOutput ONLY valid JSON."
 
-    # 1. DEEPSEEK (Priority #1)
+    # 1. GEMINI (Priority #1)
+    if GEMINI_API_KEY:
+        for mid in ["gemini-1.5-flash", "gemini-1.5-pro"]:
+            try:
+                print(f"AI Engine: Attempting Gemini ({mid})...")
+                model = genai.GenerativeModel(mid)
+                if pdf_content:
+                    try:
+                        r = model.generate_content([prompt, {"mime_type": "application/pdf", "data": pdf_content}])
+                        if r.text: return r.text, mid
+                    except: pass
+                r = model.generate_content(full_text_prompt)
+                if r.text: return r.text, mid
+            except Exception as e:
+                print(f"AI Engine: Gemini {mid} Error: {e}")
+                continue
+
+    # 2. DEEPSEEK (Priority #2)
     if DEEPSEEK_API_KEY:
         # We try V3 (chat) then R1 (reasoner)
         for model_id in ["deepseek-chat", "deepseek-reasoner"]:
@@ -82,20 +99,9 @@ async def run_ai_task(prompt: str, pdf_content: bytes = b"", use_json=False):
                 print(f"AI Engine: DeepSeek {model_id} Error: {e}")
                 continue
 
-        # OpenAI Fallback check
-        if "sk-" in DEEPSEEK_API_KEY:
-            try:
-                print("AI Engine: Attempting OpenAI Fallback (using shared key)...")
-                oa_cli = AsyncOpenAI(api_key=DEEPSEEK_API_KEY)
-                response = await oa_cli.chat.completions.create(
-                    model="gpt-4o",
-                    messages=[{"role": "user", "content": full_text_prompt}],
-                    timeout=45
-                )
-                return response.choices[0].message.content, "gpt-4o"
-            except: pass
+        # OpenAI Fallback check removed as per user request
 
-    # 2. CLAUDE (Priority #2)
+    # 3. CLAUDE (Priority #3)
     if ANTHROPIC_API_KEY:
         try:
             print("AI Engine: Attempting Claude...")
@@ -108,21 +114,6 @@ async def run_ai_task(prompt: str, pdf_content: bytes = b"", use_json=False):
             return response.content[0].text, "claude-3-5-sonnet"
         except Exception as e:
             print(f"AI Engine: Claude Error: {e}")
-
-    # 3. GEMINI (Priority #3)
-    if GEMINI_API_KEY:
-        for mid in ["gemini-1.5-flash", "gemini-1.5-pro"]:
-            try:
-                print(f"AI Engine: Attempting Gemini ({mid})...")
-                model = genai.GenerativeModel(mid)
-                if pdf_content:
-                    try:
-                        r = model.generate_content([prompt, {"mime_type": "application/pdf", "data": pdf_content}])
-                        if r.text: return r.text, mid
-                    except: pass
-                r = model.generate_content(full_text_prompt)
-                if r.text: return r.text, mid
-            except: continue
 
     raise HTTPException(status_code=503, detail="All optimized engines (DeepSeek, Claude, Gemini) are unavailable.")
 
@@ -341,22 +332,37 @@ async def ai_contract_audit(files: List[UploadFile] = File(...)):
         print(f"Contract Audit Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-# ─── TOOL: AI SEMANTIC TABLE EXTRACTION ────────────────────────
+# ─── TOOL: AI SEMANTIC SEARCH & EXTRACTION ─────────────────────
 @router.post("/ai-semantic-extract")
-async def ai_semantic_extract(files: List[UploadFile] = File(...)):
+async def ai_semantic_extract(files: List[UploadFile] = File(...), query: str = Form(None)):
     file = files[0]
     try:
         content = await file.read()
-        # Prompt optimized for multimodal vision extraction
-        prompt = (
-            "Analyze this document visually. Locate all TABLES. "
-            "Reconstruct them into a structured JSON format. "
-            "Output MUST be a JSON object with a 'tables' key containing an array of tables. "
-            "Each table should have 'name' (if identifiable), 'headers' (array), and 'rows' (array of arrays). "
-            "Ensure precise semantic mapping of values."
-        )
         
-        # We specify use_json=True to ensure the formatting is correct
+        # If query is passed, run Advanced AI Semantic Search
+        if query and query.strip():
+            prompt = (
+                "You are an Advanced AI Semantic Search & Extraction system. Analyze the document context "
+                f"to answer the following conceptual query or extract the following structural theme: '{query}'.\n"
+                "Do NOT search for literal character matches. Understand synonyms, intent, and contextual associations.\n"
+                "Output MUST be a JSON object with two keys:\n"
+                "1. 'summary': A comprehensive, high-quality, professional executive summary (markdown format) of what the document contains regarding the query.\n"
+                "2. 'results': An array of matching conceptual occurrences. Each occurrence MUST have:\n"
+                "   - 'page': The page number (integer, 1-indexed) where the finding is located.\n"
+                "   - 'context': The exact or closely surrounding text snippet showing the context.\n"
+                "   - 'relevance': One of 'High', 'Medium', or 'Low' indicating semantic similarity.\n"
+                "Ensure output is ONLY valid JSON."
+            )
+        else:
+            # Default: AI SEMANTIC TABLE EXTRACTION
+            prompt = (
+                "Analyze this document visually. Locate all TABLES. "
+                "Reconstruct them into a structured JSON format. "
+                "Output MUST be a JSON object with a 'tables' key containing an array of tables. "
+                "Each table should have 'name' (if identifiable), 'headers' (array), and 'rows' (array of arrays). "
+                "Ensure precise semantic mapping of values."
+            )
+            
         text_res, model = await run_ai_task(prompt, content, use_json=True)
         text = text_res.strip()
         
@@ -374,11 +380,11 @@ async def ai_semantic_extract(files: List[UploadFile] = File(...)):
             extracted_data = json.loads(text)
             return {"data": extracted_data, "model_used": model}
         except Exception as parse_err:
-            print(f"Table Extract Parse Error: {parse_err} | Raw: {text}")
-            return {"data": {"tables": []}, "model_used": model, "error": "JSON Parse failed"}
+            print(f"Semantic Extract Parse Error: {parse_err} | Raw: {text}")
+            return {"data": {"error": "JSON Parse failed", "raw": text}, "model_used": model}
             
     except Exception as e:
-        print(f"Table Extract Error: {e}")
+        print(f"Semantic Extract Error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 # ─── TOOL: AI SMART REDACT (PRIVACY SHIELD) ────────────────────

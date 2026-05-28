@@ -45,6 +45,6 @@ foreach ($u in $urls) {
 
 $xml += '</urlset>'
 
-$xml | Out-File -FilePath "$FRONTEND_DIR\sitemap_new.xml" -Encoding UTF8
-Write-Host "Success! New sitemap created at $FRONTEND_DIR\sitemap_new.xml"
+$xml | Out-File -FilePath $OUTPUT_FILE -Encoding UTF8
+Write-Host "Success! Sitemap updated at $OUTPUT_FILE"
 Write-Host "Found $($urls.Count) URLs."

@@ -14,6 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, FileResponse, JSONResponse
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 import hashlib
+from fastapi.staticfiles import StaticFiles
 from jose import jwt, JWTError
 from routers.auth import load_users, ALGORITHM, SECRET_KEY, hash_api_key
 
@@ -58,11 +59,11 @@ rate_limit_store: Dict[str, Dict] = {} # Fallback for IPs
 @app.middleware("http")
 async def unified_middleware(request: Request, call_next):
     origin = request.headers.get("origin")
-    # Robust origin matching for all pdfjin.com variants
-    allowed_origins = ["https://pdfjin.com", "https://www.pdfjin.com", "http://localhost:3000"]
+    # Robust origin matching for all pdfjin.com variants and local dev
+    allowed_origins = ["https://pdfjin.com", "https://www.pdfjin.com", "http://localhost:3000", "http://localhost:5000", "http://localhost:8080"]
     cors_origin = "https://pdfjin.com"
     if origin:
-        if any(o in origin for o in ["pdfjin.com", "localhost:3000"]):
+        if any(o in origin for o in ["pdfjin.com", "localhost", "127.0.0.1"]) or origin == "null":
             cors_origin = origin
     
     # Helper to ensure CORS headers are on EVERY response
@@ -112,15 +113,29 @@ async def unified_middleware(request: Request, call_next):
         # Assign Limits
         pricing = db.get("pricing", {})
         limit_key = f"{plan}_limit"
-        if plan == "enterprise": limit_key = "ent_limit"
+        size_limit_key = f"{plan}_limit_size"
+        if plan == "enterprise": 
+            limit_key = "ent_limit"
+            size_limit_key = "ent_limit_size"
         
         # Convert limits to int to be safe
         try:
             max_tasks = int(pricing.get(limit_key, 50 if plan == "pro" else (500 if plan == "enterprise" else 3)))
+            max_size_mb = int(pricing.get(size_limit_key, 50))
         except:
             max_tasks = 3
+            max_size_mb = 50
 
-        # Check Usage
+        # 2a. Check File Size (via Content-Length)
+        content_length = request.headers.get("Content-Length")
+        if content_length:
+            if int(content_length) > max_size_mb * 1024 * 1024:
+                return add_cors(Response(
+                    content=json.dumps({"detail": f"File too large. Max allowed for your plan: {max_size_mb}MB"}),
+                    status_code=413, media_type="application/json"
+                ))
+
+        # 2b. Check Task Usage
         if identified_user:
             if "usage" not in identified_user: identified_user["usage"] = {}
             if identified_user["usage"].get("date") != today:
@@ -161,16 +176,22 @@ async def unified_middleware(request: Request, call_next):
             content={"detail": f"System Error: {str(e)}"}
         ))
     
+    # Google SEO Optimization: Force ETag over Last-Modified
+    if "last-modified" in response.headers:
+        del response.headers["last-modified"]
+    
     return add_cors(response)
 
 # ─── ROOT & HEALTH ────────────────────────────────────────────
-@app.get("/")
-async def health_check():
-    return {"status": "online", "engine": "modular_v2", "version": "2.0-CORS-POWER"}
 
 @app.get("/site-settings")
 async def get_settings():
-    return load_db()
+    db = load_db()
+    # Expose only the publishable key (safe for frontend) — never the secret key
+    result = dict(db)
+    result["stripe_pub_key"] = db.get("stripe_pub_key", "")
+    result["paypal_client_id"] = db.get("paypal_client_id", "")
+    return result
 
 @app.get("/health")
 async def health_status():
@@ -187,20 +208,167 @@ ADMIN_PASS = "pdfjin-admin-2026"
 @app.post("/admin/update-pricing")
 async def update_pricing(
     admin_key: str = Form(...),
+    pro_monthly: float = Form(None),
+    pro_yearly: float = Form(None),
     pro_limit: int = Form(None),
+    pro_limit_size: int = Form(None),
+    pro_data_limit: int = Form(None),
+    ent_monthly: float = Form(None),
+    ent_yearly: float = Form(None),
     ent_limit: int = Form(None),
-    free_limit: int = Form(None)
+    ent_limit_size: int = Form(None),
+    free_limit: int = Form(None),
+    free_limit_size: int = Form(None),
+    flexi_plan: float = Form(None),
+    flexi_credits: int = Form(None),
+    flexi_validity: int = Form(None),
+    flexi_size: int = Form(None)
 ):
     if admin_key != ADMIN_PASS:
         raise HTTPException(status_code=403, detail="Forbidden")
     
     db = load_db()
     if "pricing" not in db: db["pricing"] = {}
-    if pro_limit is not None: db["pricing"]["pro_limit"] = pro_limit
-    if ent_limit is not None: db["pricing"]["ent_limit"] = ent_limit
-    if free_limit is not None: db["pricing"]["free_limit"] = free_limit
+    p = db["pricing"]
+    
+    # Pro updates
+    if "pro" not in p: p["pro"] = {}
+    if pro_monthly is not None: p["pro"]["monthly"] = pro_monthly
+    if pro_yearly is not None: p["pro"]["yearly"] = pro_yearly
+    if pro_limit is not None: p["pro_limit"] = pro_limit
+    if pro_limit_size is not None: p["pro_limit_size"] = pro_limit_size
+    if pro_data_limit is not None: p["pro_data_limit"] = pro_data_limit
+    
+    # Enterprise updates
+    if "enterprise" not in p: p["enterprise"] = {}
+    if ent_monthly is not None: p["enterprise"]["monthly"] = ent_monthly
+    if ent_yearly is not None: p["enterprise"]["yearly"] = ent_yearly
+    if ent_limit is not None: p["ent_limit"] = ent_limit
+    if ent_limit_size is not None: p["ent_limit_size"] = ent_limit_size
+    
+    # Free updates
+    if free_limit is not None: p["free_limit"] = free_limit
+    if free_limit_size is not None: p["free_limit_size"] = free_limit_size
+    
+    # Flexi updates
+    if flexi_plan is not None: p["flexi-plan"] = flexi_plan
+    if flexi_credits is not None: p["flexi_credits"] = flexi_credits
+    if flexi_validity is not None: p["flexi_validity"] = flexi_validity
+    if flexi_size is not None: p["flexi_size"] = flexi_size
+    
     save_db(db)
     return {"status": "success", "pricing": db["pricing"]}
+
+# ─── ADMIN: SITE SETTINGS (Announcement, Maintenance, Tool Status) ────────────
+@app.post("/admin/update-settings")
+async def update_settings(
+    admin_key: str = Form(...),
+    announcement: str = Form(None),
+    maintenance: str = Form(None),
+    allow_registrations: str = Form(None),
+    tool_status: str = Form(None)
+):
+    if admin_key != ADMIN_PASS:
+        raise HTTPException(status_code=403, detail="Forbidden")
+    
+    db = load_db()
+    
+    if announcement is not None:
+        db["announcement"] = announcement.strip()
+    
+    if maintenance is not None:
+        db["maintenance"] = maintenance.lower() in ("true", "1", "yes")
+    
+    if allow_registrations is not None:
+        db["allow_registrations"] = allow_registrations.lower() in ("true", "1", "yes")
+    
+    if tool_status is not None:
+        try:
+            db["tool_status"] = json.loads(tool_status)
+        except Exception:
+            pass
+    
+    save_db(db)
+    return {"status": "success", "announcement": db.get("announcement", ""), "maintenance": db.get("maintenance", False)}
+
+# ─── ADMIN: INFRASTRUCTURE CONFIG (Stripe/PayPal pub keys) ────────────────
+@app.post("/admin/update-infra")
+async def update_infra(
+    admin_key: str = Form(...),
+    stripe_pub_key: str = Form(None),
+    paypal_client_id: str = Form(None),
+    api_url: str = Form(None)
+):
+    if admin_key != ADMIN_PASS:
+        raise HTTPException(status_code=403, detail="Forbidden")
+
+    db = load_db()
+    # Only store public-safe keys — secret key stays in Cloud Run env vars
+    if stripe_pub_key is not None:
+        db["stripe_pub_key"] = stripe_pub_key.strip()
+    if paypal_client_id is not None:
+        db["paypal_client_id"] = paypal_client_id.strip()
+    if api_url is not None:
+        db["api_url_override"] = api_url.strip()
+
+    save_db(db)
+    return {"status": "success", "stripe_pub_key_set": bool(db.get("stripe_pub_key"))}
+
+# ─── ADMIN: CLEANUP ──────────────────────────────────────────────────────────
+@app.post("/admin/cleanup")
+async def admin_cleanup(admin_key: str = Form(...)):
+    if admin_key != ADMIN_PASS:
+        raise HTTPException(status_code=403, detail="Forbidden")
+    
+    cleaned = 0
+    try:
+        temp_dir = tempfile.gettempdir()
+        for f in os.listdir(temp_dir):
+            f_path = os.path.join(temp_dir, f)
+            try:
+                if os.path.isfile(f_path):
+                    os.remove(f_path)
+                    cleaned += 1
+                elif os.path.isdir(f_path):
+                    shutil.rmtree(f_path)
+                    cleaned += 1
+            except Exception:
+                pass
+    except Exception as e:
+        return {"status": "partial", "detail": str(e), "cleaned": cleaned}
+    
+    return {"status": "success", "cleaned": cleaned}
+
+# ─── CLEAN URLS & FRONTEND ROUTES ─────────────────────────────
+@app.get("/pages/{page_name}")
+async def serve_clean_page(page_name: str):
+    # Support extensionless URLs like /pages/admin -> /pages/admin.html
+    # but also handle cases where .html is already present
+    safe_name = os.path.basename(page_name)
+    
+    if safe_name.endswith(".html"):
+        filename = safe_name
+    else:
+        filename = f"{safe_name}.html"
+        
+    target = os.path.join("static_frontend", "pages", filename)
+    if os.path.exists(target):
+        return FileResponse(target)
+    raise HTTPException(status_code=404)
+
+@app.get("/admin")
+async def admin_shortcut():
+    # Shortcut for /admin -> /pages/admin.html
+    return FileResponse(os.path.join("static_frontend", "pages", "admin.html"))
+
+@app.get("/blog-admin.html")
+async def blog_admin_shortcut():
+    return FileResponse(os.path.join("static_frontend", "pages", "blog-admin.html"))
+
+@app.get("/social-callback.html")
+async def social_callback_shortcut():
+    return FileResponse(os.path.join("static_frontend", "pages", "social-callback.html"))
+
 
 # ─── INCLUDE MODULAR ROUTERS ──────────────────────────────────
 app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
@@ -209,6 +377,10 @@ app.include_router(pdf_ops.router, tags=["PDF Operations"])
 app.include_router(converters.router, tags=["Converters"])
 app.include_router(payments.router, tags=["Payments"])
 app.include_router(editor.router, tags=["Editor"])
+
+# ─── SERVE FRONTEND ───────────────────────────────────────────
+# Mount static files at the end so it doesn't shadow API routes
+app.mount("/", StaticFiles(directory="static_frontend", html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn

@@ -14,7 +14,13 @@ EXCLUDE_PAGES = [
     "register.html",
     "social-callback.html",
     "checkout.html",
-    "blog-admin.html"
+    "blog-admin.html",
+    "admin.html",
+    "auth-isolated.html",
+    "edit-pdf-isolated.html",
+    "watermark-pdf-clean.html",
+    "word-fix.html",
+    "index_restored.html"
 ]
 
 def generate_sitemap():
@@ -22,20 +28,27 @@ def generate_sitemap():
     
     urls = []
     today = datetime.now().strftime("%Y-%m-%d")
+    
+    def get_file_date(file_path):
+        if os.path.exists(file_path):
+            mtime = os.path.getmtime(file_path)
+            return datetime.fromtimestamp(mtime).strftime("%Y-%m-%d")
+        return today
 
     # 1. Add Homepage
     urls.append({
         "loc": f"{BASE_URL}/",
-        "lastmod": today,
+        "lastmod": get_file_date(os.path.join(FRONTEND_DIR, "index.html")),
         "priority": "1.0"
     })
 
     # 2. Scan main pages (about, privacy, etc.)
     for file in os.listdir(FRONTEND_DIR):
         if file.endswith(".html") and file not in EXCLUDE_PAGES and file != "index.html":
+            file_path = os.path.join(FRONTEND_DIR, file)
             urls.append({
                 "loc": f"{BASE_URL}/{file}",
-                "lastmod": today,
+                "lastmod": get_file_date(file_path),
                 "priority": "0.8"
             })
 
@@ -49,22 +62,14 @@ def generate_sitemap():
                 if file.startswith("ai-"):
                     priority = "1.0"
                 
+                file_path = os.path.join(pages_dir, file)
                 urls.append({
                     "loc": f"{BASE_URL}/pages/{file}",
-                    "lastmod": today,
+                    "lastmod": get_file_date(file_path),
                     "priority": priority
                 })
 
-    # 4. Scan blog posts
-    blog_dir = os.path.join(FRONTEND_DIR, "pages", "blog")
-    if os.path.exists(blog_dir):
-        for file in os.listdir(blog_dir):
-            if file.endswith(".html") and not file.startswith("heal_") and not file.startswith("polish_"):
-                urls.append({
-                    "loc": f"{BASE_URL}/pages/blog/{file}",
-                    "lastmod": today,
-                    "priority": "0.8"
-                })
+    # Blog and SEO pages are excluded from this main sitemap as requested.
 
     # Build XML
     xml_lines = [

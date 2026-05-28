@@ -25,13 +25,13 @@ async def create_checkout_session(
     If no Stripe Key is configured properly, it returns a simulation response for development.
     """
     try:
-        # 1. Price Mapping (In production, replace these with real Stripe Price IDs)
-        # Note: You should create these products/prices in your Stripe Dashboard.
+        # 1. Price Mapping
         price_map = {
             "pro_monthly": os.getenv("STRIPE_PRICE_PRO_MONTHLY", "price_pro_mon_placeholder"),
             "pro_yearly": os.getenv("STRIPE_PRICE_PRO_YEARLY", "price_pro_year_placeholder"),
             "enterprise_monthly": os.getenv("STRIPE_PRICE_ENT_MONTHLY", "price_ent_mon_placeholder"),
-            "enterprise_yearly": os.getenv("STRIPE_PRICE_ENT_YEARLY", "price_ent_year_placeholder")
+            "enterprise_yearly": os.getenv("STRIPE_PRICE_ENT_YEARLY", "price_ent_year_placeholder"),
+            "flexi-plan_monthly": os.getenv("STRIPE_PRICE_FLEXI", "price_flexi_placeholder")
         }
 
         lookup_key = f"{plan_id.lower()}_{cycle.lower()}"
@@ -40,17 +40,22 @@ async def create_checkout_session(
         print(f"[DEBUG] Checkout Request: Plan={plan_id}, Cycle={cycle}, Email={email}")
         print(f"[DEBUG] Resolved PriceID: {price_id}")
 
-        # 2. Safety Check (Only simulate if key is clearly missing)
-        if not price_id or "sk_test_PLACEHOLDER" in STRIPE_SECRET_KEY:
-            return {
-                "simulation": True,
-                "message": f"Stripe is in Simulation Mode. Resolved PriceID: {price_id}",
-                "plan": plan_id,
-                "cycle": cycle
-            }
+        # 2. Safety Check (Only simulate if key is clearly missing or using placeholder)
+        if not price_id or "placeholder" in price_id.lower() or "sk_test_PLACEHOLDER" in STRIPE_SECRET_KEY or STRIPE_SECRET_KEY.endswith("Placeholder"):
+            print(f"[SIMULATION] Automatically upgrading {email} to {plan_id}...")
+            db = load_db()
+            users = db.get("users", [])
+            for user in users:
+                if user.get("email") == email:
+                    user["plan"] = plan_id.lower()
+                    user["payment_status"] = "simulated_paid"
+                    break
+            save_db(db)
+            return {"url": "dashboard.html?checkout=simulation_success"}
 
         # 3. Create real Checkout Session
         try:
+            is_subscription = "neural-credits" not in plan_id.lower() and "flexi-plan" not in plan_id.lower()
             session = stripe.checkout.Session.create(
                 customer_email=email,
                 payment_method_types=['card'],
@@ -58,7 +63,7 @@ async def create_checkout_session(
                     'price': price_id,
                     'quantity': 1,
                 }],
-                mode='subscription',
+                mode='subscription' if is_subscription else 'payment',
                 success_url=f"{FRONTEND_URL}/pages/dashboard.html?checkout=success&session_id={{CHECKOUT_SESSION_ID}}",
                 cancel_url=f"{FRONTEND_URL}/pages/checkout.html?checkout=cancel",
                 metadata={

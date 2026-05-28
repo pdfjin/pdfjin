@@ -12,8 +12,9 @@ $SERVICE_NAME = "pdfjin-api"
 Write-Host "Starting Cloud-First Deployment for PDFjin..." -ForegroundColor Cyan
 
 # ── STEP 0: Sync local Frontend to Backend directory ────
-Write-Host "STEP 0: Regenerating sitemap and syncing frontend source to backend/static_frontend..." -ForegroundColor Yellow
+Write-Host "STEP 0: Regenerating sitemap and RSS feed, syncing frontend source to backend/static_frontend..." -ForegroundColor Yellow
 python "$ProjectRoot\generate_sitemap.py"
+python "$ProjectRoot\generate_rss.py"
 
 if (Test-Path "$ProjectRoot\backend\static_frontend") {
     Remove-Item -Path "$ProjectRoot\backend\static_frontend" -Recurse -Force
@@ -21,14 +22,8 @@ if (Test-Path "$ProjectRoot\backend\static_frontend") {
 New-Item -ItemType Directory -Path "$ProjectRoot\backend\static_frontend" -Force
 Copy-Item -Path "$ProjectRoot\frontend\*" -Destination "$ProjectRoot\backend\static_frontend\" -Recurse -Force
 
-# ── STEP 1: Sync DB to GCS (Persistence) ──────────────
-Write-Host "STEP 1/2: Syncing database configuration to Cloud Storage..." -ForegroundColor Yellow
-& gcloud.cmd storage cp "$ProjectRoot/backend/db.json" "gs://pdgjin-db-v1/db.json"
-
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "Database sync failed! Aborting." -ForegroundColor Red
-    exit 1
-}
+# ── STEP 1: Skip DB Sync to prevent overwriting production DB ──────────────
+Write-Host "STEP 1/2: Skipping DB sync to preserve production data..." -ForegroundColor Yellow
 
 # ── STEP 2: Backend & Frontend - Deploy to Cloud Run ──────
 Write-Host "STEP 2/2: Building and deploying Integrated Service to Cloud Run..." -ForegroundColor Yellow

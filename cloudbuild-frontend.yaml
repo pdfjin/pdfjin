@@ -1,0 +1,8 @@
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install', 'firebase-tools']
+  - name: 'gcr.io/cloud-builders/npm'
+    entrypoint: 'npx'
+    args: ['firebase', 'deploy', '--only', 'hosting', '--project', 'pdgjin', '--token', '${_FIREBASE_TOKEN}']
+substitutions:
+  _FIREBASE_TOKEN: '' # Needs to be provided

@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import time
 
 # Cloud Run ephemeral sync to Google Cloud Storage
 DB_PATH = "db.json"
@@ -74,33 +75,78 @@ DEFAULT_DB = {
     "users": []
 }
 
+_cached_db = None
+_cached_db_time = 0
+
 def load_db():
-    # 1. Try GCS (Persistence)
-    gcs_data = _load_from_gcs()
-    if gcs_data:
-        # Cache locally for performance/fallback
-        with open(DB_PATH, "w") as f:
-            json.dump(gcs_data, f, indent=2)
-        return gcs_data
+    global _cached_db, _cached_db_time
+    is_cloud_run = bool(os.environ.get("K_SERVICE"))
 
-    # 2. Fall back to local file
-    if not os.path.exists(DB_PATH):
-        print(f"DATABASE: Creating new local db.json")
-        with open(DB_PATH, "w") as f:
-            json.dump(DEFAULT_DB, f)
-        return DEFAULT_DB.copy()
-        
-    with open(DB_PATH, "r") as f:
-        try:
-            return json.load(f)
-        except:
-            return DEFAULT_DB.copy()
+    # If cache is valid (less than 10 seconds old in prod, infinite locally unless updated), return it
+    if _cached_db is not None:
+        if not is_cloud_run or (time.time() - _cached_db_time < 10):
+            return _cached_db
 
-def save_db(data):
+    if is_cloud_run:
+        # In Cloud Run, GCS is the source of truth
+        gcs_data = _load_from_gcs()
+        if gcs_data:
+            try:
+                with open(DB_PATH, "w") as f:
+                    json.dump(gcs_data, f, indent=2)
+            except:
+                pass
+            _cached_db = gcs_data
+            _cached_db_time = time.time()
+            return gcs_data
+            
+        # Fallback to local bundled db.json if GCS fails
+        if os.path.exists(DB_PATH):
+            try:
+                with open(DB_PATH, "r") as f:
+                    _cached_db = json.load(f)
+                    _cached_db_time = time.time()
+                    return _cached_db
+            except:
+                pass
+    else:
+        # Local dev: Try local file first (to prevent old GCS data from overwriting new local data)
+        if os.path.exists(DB_PATH):
+            try:
+                with open(DB_PATH, "r") as f:
+                    _cached_db = json.load(f)
+                    _cached_db_time = time.time()
+                    return _cached_db
+            except:
+                pass
+
+        # Try GCS (Persistence fallback)
+        gcs_data = _load_from_gcs()
+        if gcs_data:
+            # Cache locally for performance/fallback
+            with open(DB_PATH, "w") as f:
+                json.dump(gcs_data, f, indent=2)
+            _cached_db = gcs_data
+            _cached_db_time = time.time()
+            return gcs_data
+
+    # 3. Fall back to default
+    print(f"DATABASE: Creating new local db.json")
+    with open(DB_PATH, "w") as f:
+        json.dump(DEFAULT_DB, f)
+    _cached_db = DEFAULT_DB.copy()
+    _cached_db_time = time.time()
+    return _cached_db
+
+def save_db(db_data):
+    global _cached_db, _cached_db_time
+    _cached_db = db_data
+    _cached_db_time = time.time()
+
     # 1. Save locally (Ephemeral)
     with open(DB_PATH, "w") as f:
-        json.dump(data, f, indent=2)
+        json.dump(db_data, f, indent=2)
     
     # 2. Persist to GCS (Global)
-    _save_to_gcs(data)
+    _save_to_gcs(db_data)
 
