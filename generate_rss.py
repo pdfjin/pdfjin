@@ -7,7 +7,7 @@ from xml.dom import minidom
 
 # Configuration
 BASE_URL = "https://pdfjin.com"
-BLOG_DIR = r"c:\Users\ADMIN\Desktop\pdfjin\frontend\pages\blog"
+BLOG_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend", "pages", "blog")
 OUTPUT_FILE = os.path.join(BLOG_DIR, "rss.xml")
 
 def extract_metadata(html_content):

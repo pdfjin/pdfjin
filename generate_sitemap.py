@@ -3,7 +3,7 @@ from datetime import datetime
 
 # Configuration
 BASE_URL = "https://pdfjin.com"
-FRONTEND_DIR = r"c:\Users\ADMIN\Desktop\pdfjin\frontend"
+FRONTEND_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "frontend")
 OUTPUT_FILE = os.path.join(FRONTEND_DIR, "sitemap.xml")
 
 # Pages to exclude from sitemap
