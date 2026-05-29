@@ -48,6 +48,18 @@ def update_topic_status(topic):
         writer.writerows(rows)
 
 def generate_blog_content(topic):
+    # Get a list of available tools to feed to the AI for internal linking
+    pages_dir = "frontend/pages"
+    exclude = ["blog.html", "admin.html", "auth.html", "register.html", "checkout.html", "api-docs.html", "dashboard.html"]
+    tools_list = []
+    if os.path.exists(pages_dir):
+        for f in os.listdir(pages_dir):
+            if f.endswith(".html") and f not in exclude:
+                tool_name = f.replace(".html", "").replace("-", " ").title()
+                tools_list.append(f"{tool_name} (https://pdfjin.com/pages/{f})")
+    
+    tools_context = "\\n".join(tools_list)
+
     prompt = f"""
 Write a ~1000 word blog post about "{topic}".
 INSTRUCTIONS:
@@ -57,7 +69,9 @@ INSTRUCTIONS:
 4. Add closing remarks with a natural CTA to try PDFjin's free tools.
 5. Keep it creative, informative, persuasive, and authoritative.
 6. Insert keywords naturally, ensure smooth/coherent flow, and strictly avoid robotic or generic AI phrasing.
-7. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
+7. CRITICAL SEO REQUIREMENT: You MUST insert exactly 2 natural internal HTML links (<a> tags) contextually relevant to the topic. Choose 2 appropriate tools from the following list and use their exact URLs:
+{tools_context}
+8. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
     """
     response = model.generate_content(prompt)
     html_content = response.text.replace("```html", "").replace("```", "").strip()
@@ -102,6 +116,35 @@ def build_html_page(topic, html_body, slug, image_url):
     template = re.sub(body_pattern, r'\1\n' + html_body.replace('\\', '\\\\') + r'\n\3', template, flags=re.DOTALL)
     return template
 
+def update_blog_index(topic, slug):
+    index_path = "frontend/pages/blog.html"
+    if not os.path.exists(index_path):
+        print("Warning: blog.html not found, skipping index update.")
+        return
+    with open(index_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    desc = f"Learn all about {topic}. A comprehensive guide by PDFjin."
+    today = datetime.now().strftime("%b %d, %Y")
+    
+    card_html = f"""
+            <article class="blog-card">
+                <span class="post-tag">Guide</span>
+                <h3><a href="blog/{slug}">{topic}</a></h3>
+                <p>{desc}</p>
+                <a href="blog/{slug}" class="read-more">Read Full Article</a>
+                <div class="card-footer"><span>{today}</span> • <span>5 min read</span></div>
+            </article>"""
+
+    if '<div class="blog-grid">' in content:
+        content = content.replace('<div class="blog-grid">', f'<div class="blog-grid">\n{card_html}')
+        with open(index_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        print("Updated blog.html index.")
+    else:
+        print("Error: Could not find <div class=\\"blog-grid\\"> in blog.html")
+
+
 def main():
     topics = get_pending_topics(limit=1)
     if not topics:
@@ -126,6 +169,8 @@ def main():
     update_topic_status(topic)
     print(f"Saved post to {out_path}")
 
+    update_blog_index(topic, slug)
+
     print("Regenerating RSS and Sitemap...")
     # Use generic python command (works cross platform)
     subprocess.run(["python", "generate_rss.py"], check=True)
@@ -137,7 +182,7 @@ def main():
     else:
         print("Pushing to GitHub...")
         try:
-            subprocess.run(["git", "add", "blog_topics.csv", out_path, "frontend/sitemap.xml", "frontend/pages/blog/rss.xml"], check=True)
+            subprocess.run(["git", "add", "blog_topics.csv", out_path, "frontend/sitemap.xml", "frontend/pages/blog/rss.xml", "frontend/pages/blog.html"], check=True)
             subprocess.run(["git", "commit", "-m", f"auto-blog: Published {slug}"], check=True)
             subprocess.run(["git", "push"], check=True)
             print("Deploying to Cloud Run...")
