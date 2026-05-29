@@ -69,7 +69,7 @@ INSTRUCTIONS:
 4. Add closing remarks with a natural CTA to try PDFjin's free tools.
 5. Keep it creative, informative, persuasive, and authoritative.
 6. Insert keywords naturally, ensure smooth/coherent flow, and strictly avoid robotic or generic AI phrasing.
-7. CRITICAL SEO REQUIREMENT: You MUST insert exactly 2 natural internal HTML links (<a> tags) contextually relevant to the topic. Choose 2 appropriate tools from the following list and use their exact URLs:
+7. CRITICAL SEO REQUIREMENT: You MUST insert at least 2 natural internal HTML links (<a> tags) contextually relevant to the topic. Create these links from long tail keywords and point them to a related tools page from the following list using their exact URLs. In addition, you must style the link text with an underline using inline CSS (e.g. <a href="..." style="text-decoration: underline;">) so the link words are distinguishable from other words.
 {tools_context}
 8. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
     """
