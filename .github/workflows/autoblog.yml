@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
 
     steps:
       - name: Checkout code
@@ -40,5 +41,12 @@ jobs:
           git add blog_topics.csv frontend/pages/blog/*.html frontend/sitemap.xml frontend/pages/blog/rss.xml frontend/pages/blog.html || true
           git commit -m "auto-blog: Published new post via GitHub Actions" || echo "No changes to commit"
           git push
+
+      - name: Trigger Continuous Deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Triggering deploy.yml..."
+          gh workflow run deploy.yml --ref main
 
 
