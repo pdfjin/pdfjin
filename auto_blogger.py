@@ -175,6 +175,9 @@ def main():
     # Use generic python command (works cross platform)
     subprocess.run(["python", "generate_rss.py"], check=True)
     subprocess.run(["python", "generate_sitemap.py"], check=True)
+    
+    print("Updating related posts...")
+    subprocess.run(["python", "generate_related_posts.py"], check=True)
 
     # Check if we are running in CI (GitHub Actions)
     if os.getenv("GITHUB_ACTIONS"):
@@ -182,7 +185,7 @@ def main():
     else:
         print("Pushing to GitHub...")
         try:
-            subprocess.run(["git", "add", "blog_topics.csv", out_path, "frontend/sitemap.xml", "frontend/pages/blog/rss.xml", "frontend/pages/blog.html"], check=True)
+            subprocess.run(["git", "add", "blog_topics.csv", "frontend/pages/blog", "frontend/sitemap.xml", "frontend/pages/blog.html"], check=True)
             subprocess.run(["git", "commit", "-m", f"auto-blog: Published {slug}"], check=True)
             subprocess.run(["git", "push"], check=True)
             print("Deploying to Cloud Run...")
