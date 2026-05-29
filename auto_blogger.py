@@ -142,7 +142,7 @@ def update_blog_index(topic, slug):
             f.write(content)
         print("Updated blog.html index.")
     else:
-        print("Error: Could not find <div class=\\"blog-grid\\"> in blog.html")
+        print('Error: Could not find <div class="blog-grid"> in blog.html')
 
 
 def main():
