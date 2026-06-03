@@ -164,7 +164,7 @@
 
     <div class="hero-badge" style="border-color: var(--clr-primary); background: rgba(108, 99, 255, 0.12);">
       <span class="dot"></span>
-      18+ Free PDF Tools & Premium AI Studio — Free Account Required
+      18+ Free PDF Tools & Premium AI Studio — Instant Access
     </div>
 
     <h1 class="hero-title" id="heroTitle">
@@ -177,28 +177,24 @@
       secure, repair and edit your documents — fast, free, and privacy-first.
     </p>
 
-    <div class="hero-actions">
-      <a href="#services" class="btn-primary" id="heroGetStarted">
-        <span>Explore All Tools</span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-line.join="round">
-          <line x1="5" y1="12" x2="19" y2="12" />
-          <polyline points="12 5 19 12 12 19" />
-        </svg>
-      </a>
-      <a href="pages/scan-to-pdf" class="btn-secondary" id="heroScanPDF">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-line.join="round">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-          <circle cx="12" cy="13" r="4"></circle>
-        </svg>
-        Scan Document Now
-      </a>
-      <a href="pages/ai-smart-rewrite" class="btn-secondary" id="heroPremiumAI"
-        style="border-color: #8b5cf6; color: #8b5cf6; background: rgba(139, 92, 246, 0.05); font-weight: 700;">
-        <span style="margin-right: 8px;">✨</span>
-        Smart-Rewrite Premium
-      </a>
+    <div class="hero-dropzone-container">
+      <div id="universalDropZone" class="universal-dropzone" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
+        <div class="dz-content">
+          <div class="dz-icon" style="font-size: 3rem; margin-bottom: 0.5rem;">📄</div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Select a Tool to Begin</h3>
+          <p style="color: var(--clr-text-muted); margin-bottom: 1.5rem;">Upload directly on any tool page. No sign-up required for basic tasks.</p>
+          <div class="hero-actions" style="margin-bottom: 0;">
+            <a href="#services" class="btn-primary" id="heroGetStarted">
+              <span>Explore All Tools</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-line.join="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -693,8 +689,8 @@
         <div class="feature-card reveal">
           <div class="feature-icon" style="background: rgba(255,210,0,0.1);">🆓</div>
           <div class="feature-content">
-            <h3>Free Account</h3>
-            <p>All core tools are free to use with a Free Account. Premium plan available for power users.</p>
+            <h3>Free to Start</h3>
+            <p>All core tools are free to use instantly. Premium plan available for advanced power users.</p>
           </div>
         </div>
 

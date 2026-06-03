@@ -336,3 +336,30 @@
     .blog-pos-content { font-size: 1.15rem; }
     .blog-pos-cta { padding: 3rem 1.5rem; }
 }
+
+/* --- Pagination --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 50px;
+}
+.pagination-btn {
+    padding: 8px 16px;
+    border: 1px solid var(--blog-border);
+    background: var(--blog-bg);
+    color: var(--blog-text);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+.pagination-btn:hover {
+    border-color: var(--blog-accent);
+    color: var(--blog-accent);
+}
+.pagination-btn.active {
+    background: var(--blog-accent);
+    color: #fff;
+    border-color: var(--blog-accent);
+}

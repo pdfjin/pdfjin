@@ -237,6 +237,53 @@
         </div>
     </main>
 
+    <!-- PAGINATION SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.querySelector('.blog-grid');
+            if (!grid) return;
+            const cards = Array.from(grid.querySelectorAll('.blog-card'));
+            const postsPerPage = 10;
+            const totalPages = Math.ceil(cards.length / postsPerPage);
+            
+            if (totalPages > 1) {
+                const paginationDiv = document.createElement('div');
+                paginationDiv.className = 'pagination';
+                grid.after(paginationDiv);
+
+                function showPage(page) {
+                    cards.forEach((card, index) => {
+                        if (index >= (page - 1) * postsPerPage && index < page * postsPerPage) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    renderPagination(page);
+                    
+                    // Scroll to top of grid
+                    if(page !== 1) {
+                        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+
+                function renderPagination(currentPage) {
+                    paginationDiv.innerHTML = '';
+                    for (let i = 1; i <= totalPages; i++) {
+                        const btn = document.createElement('button');
+                        btn.className = `pagination-btn ${i === currentPage ? 'active' : ''}`;
+                        btn.textContent = i;
+                        btn.onclick = () => showPage(i);
+                        paginationDiv.appendChild(btn);
+                    }
+                }
+
+                showPage(1);
+            }
+        });
+    </script>
+
     <!-- FOOTER -->
                                         <footer class="footer">
         <div class="footer-grid">
