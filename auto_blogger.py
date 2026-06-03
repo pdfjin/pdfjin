@@ -84,7 +84,7 @@ def generate_slug(topic):
 
 def generate_image_url(topic):
     encoded = urllib.parse.quote(topic)
-    return f"https://image.pollinations.ai/prompt/{encoded}?width=1200&height=630&nologo=true"
+    return "../../assets/blog/blog-pdf-word.png"
 
 def build_html_page(topic, html_body, slug, image_url):
     with open(TEMPLATE_FILE, "r", encoding="utf-8") as f:
