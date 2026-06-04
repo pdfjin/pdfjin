@@ -13,7 +13,7 @@ BLOG_DIR = r"frontend/pages/blog"
 TEMPLATE_FILE = r"frontend/pages/blog/excel-to-pdf-guide.html"
 
 # Configure Gemini
-API_KEY = os.getenv("GEMINI_API_KEY", "")
+API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
 if not API_KEY:
     print("Error: GEMINI_API_KEY environment variable is not set.")
     exit(1)
@@ -71,7 +71,7 @@ INSTRUCTIONS:
 {tools_context}
 8. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
     """
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={API_KEY}"
     data = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}]
     }).encode("utf-8")
