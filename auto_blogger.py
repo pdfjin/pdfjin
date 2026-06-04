@@ -72,7 +72,31 @@ INSTRUCTIONS:
 {tools_context}
 8. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
     """
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={API_KEY}"
+    # Dynamically find a valid Gemini model
+    list_url = f"https://generativelanguage.googleapis.com/v1beta/models?key={API_KEY}"
+    try:
+        req_list = urllib.request.Request(list_url)
+        with urllib.request.urlopen(req_list) as response:
+            models_data = json.loads(response.read().decode("utf-8"))
+            available_models = [m["name"] for m in models_data.get("models", []) if "generateContent" in m.get("supportedGenerationMethods", [])]
+            
+            # Prefer flash models, fallback to pro, fallback to whatever is first
+            flash_models = [m for m in available_models if "flash" in m]
+            if flash_models:
+                target_model = flash_models[0]
+            elif available_models:
+                target_model = available_models[0]
+            else:
+                print("No suitable models found for generateContent.")
+                exit(1)
+            
+            # Extract just the model id if it starts with models/
+            target_model = target_model.replace("models/", "")
+    except Exception as e:
+        print(f"Error fetching models list: {e}")
+        exit(1)
+
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{target_model}:generateContent?key={API_KEY}"
     data = json.dumps({
         "contents": [{"parts": [{"text": prompt}]}]
     }).encode("utf-8")
