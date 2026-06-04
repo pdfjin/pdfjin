@@ -82,6 +82,11 @@ INSTRUCTIONS:
             text = res["candidates"][0]["content"]["parts"][0]["text"]
             html_content = text.replace("```html", "").replace("```", "").strip()
             return html_content
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode("utf-8")
+        print(f"HTTP Error calling Gemini API: {e.code} - {e.reason}")
+        print(f"Error Details: {error_body}")
+        exit(1)
     except Exception as e:
         print(f"Error calling Gemini API: {e}")
         exit(1)
