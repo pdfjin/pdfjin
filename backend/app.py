@@ -179,6 +179,10 @@ async def unified_middleware(request: Request, call_next):
     # Google SEO Optimization: Force ETag over Last-Modified
     if "last-modified" in response.headers:
         del response.headers["last-modified"]
+        
+    # Prevent aggressive heuristic caching of HTML files
+    if "text/html" in response.headers.get("content-type", ""):
+        response.headers["Cache-Control"] = "no-cache, must-revalidate"
     
     return add_cors(response)
 
@@ -377,6 +381,24 @@ app.include_router(pdf_ops.router, tags=["PDF Operations"])
 app.include_router(converters.router, tags=["Converters"])
 app.include_router(payments.router, tags=["Payments"])
 app.include_router(editor.router, tags=["Editor"])
+
+from fastapi.responses import RedirectResponse
+
+# ─── 301 REDIRECTS FOR SEO ────────────────────────────────────
+@app.get("/C:/Users/{rest_of_path:path}", include_in_schema=False)
+async def redirect_leaked_local_paths(rest_of_path: str):
+    if "frontend/" in rest_of_path:
+        new_path = rest_of_path.split("frontend/")[-1]
+        if new_path == "index.html":
+            return RedirectResponse(url="/", status_code=301)
+        return RedirectResponse(url=f"/{new_path}", status_code=301)
+    return RedirectResponse(url="/", status_code=301)
+
+@app.get("/{year:int}/{month:int}/{rest_of_path:path}", include_in_schema=False)
+async def redirect_wordpress_posts(year: int, month: int, rest_of_path: str):
+    if 2000 <= year <= 2030 and 1 <= month <= 12:
+        return RedirectResponse(url="/pages/blog.html", status_code=301)
+    raise HTTPException(status_code=404)
 
 # ─── SERVE FRONTEND ───────────────────────────────────────────
 # Mount static files at the end so it doesn't shadow API routes

@@ -3,7 +3,7 @@ import csv
 import json
 import subprocess
 from datetime import datetime
-import google.generativeai as genai
+import urllib.request
 import urllib.parse
 import re
 
@@ -17,8 +17,6 @@ API_KEY = os.getenv("GEMINI_API_KEY", "")
 if not API_KEY:
     print("Error: GEMINI_API_KEY environment variable is not set.")
     exit(1)
-genai.configure(api_key=API_KEY)
-model = genai.GenerativeModel('gemini-flash-latest')
 
 def get_pending_topics(limit=1):
     topics = []
@@ -73,9 +71,20 @@ INSTRUCTIONS:
 {tools_context}
 8. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
     """
-    response = model.generate_content(prompt)
-    html_content = response.text.replace("```html", "").replace("```", "").strip()
-    return html_content
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={API_KEY}"
+    data = json.dumps({
+        "contents": [{"parts": [{"text": prompt}]}]
+    }).encode("utf-8")
+    req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req) as response:
+            res = json.loads(response.read().decode("utf-8"))
+            text = res["candidates"][0]["content"]["parts"][0]["text"]
+            html_content = text.replace("```html", "").replace("```", "").strip()
+            return html_content
+    except Exception as e:
+        print(f"Error calling Gemini API: {e}")
+        exit(1)
 
 def generate_slug(topic):
     slug = "".join([c.lower() if c.isalnum() else "-" for c in topic])

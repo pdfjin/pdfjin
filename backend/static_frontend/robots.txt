@@ -11,3 +11,4 @@ Disallow: /pages/register
 Disallow: /admin
 
 Sitemap: https://pdfjin.com/sitemap.xml
+Sitemap: https://pdfjin.com/sitemap-blog.xml

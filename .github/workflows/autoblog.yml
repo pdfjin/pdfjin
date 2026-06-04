@@ -26,7 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install google-generativeai
+          pip install pandas markdown bs4
 
       - name: Run Auto Blogger
         env:
@@ -40,7 +40,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add blog_topics.csv frontend/pages/blog/*.html frontend/sitemap.xml frontend/pages/blog/rss.xml frontend/pages/blog.html || true
           git commit -m "auto-blog: Published new post via GitHub Actions" || echo "No changes to commit"
-          git push
+          git push || true
 
       - name: Trigger Continuous Deployment
         env:
