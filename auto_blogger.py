@@ -5,6 +5,7 @@ import subprocess
 from datetime import datetime
 import urllib.request
 import urllib.parse
+import urllib.error
 import re
 
 # Configuration
@@ -84,11 +85,15 @@ INSTRUCTIONS:
             return html_content
     except urllib.error.HTTPError as e:
         error_body = e.read().decode("utf-8")
-        print(f"HTTP Error calling Gemini API: {e.code} - {e.reason}")
-        print(f"Error Details: {error_body}")
+        print(f"=== NEW ERROR FORMAT ===")
+        print(f"HTTP Error code: {e.code}")
+        print(f"Reason: {e.reason}")
+        print(f"Details: {error_body}")
+        print(f"========================")
         exit(1)
     except Exception as e:
-        print(f"Error calling Gemini API: {e}")
+        print(f"=== CATCH ALL ERROR ===")
+        print(f"Error: {e}")
         exit(1)
 
 def generate_slug(topic):
