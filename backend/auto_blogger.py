@@ -58,10 +58,22 @@ INSTRUCTIONS:
 5. Keep it creative, informative, persuasive, and authoritative.
 6. Insert keywords naturally, ensure smooth/coherent flow, and strictly avoid robotic or generic AI phrasing.
 7. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
+8. DO NOT use colons (:) in any headings (<h2>, <h3>, etc). Use a hyphen (-) instead if needed.
     """
     response = model.generate_content(prompt)
-    html_content = response.text.replace("```html", "").replace("```", "").strip()
-    return html_content
+    content = response.text.strip()
+    if content.startswith("```html"):
+        content = content[7:]
+    if content.startswith("```"):
+        content = content[3:]
+    if content.endswith("```"):
+        content = content[:-3]
+        
+    def repl(m):
+        return m.group(1) + m.group(2).replace(':', ' -') + m.group(3)
+    content = re.sub(r'(<h[1-6][^>]*>)(.*?)(</h[1-6]>)', repl, content)
+        
+    return content.strip()
 
 def generate_slug(topic):
     slug = "".join([c.lower() if c.isalnum() else "-" for c in topic])
