@@ -69,8 +69,10 @@ def generate_slug(topic):
     return slug + "-guide.html"
 
 def generate_image_url(topic):
+    import random
     encoded = urllib.parse.quote(topic)
-    return f"https://image.pollinations.ai/prompt/{encoded}?width=1200&height=630&nologo=true"
+    seed = random.randint(1, 10000000)
+    return f"https://image.pollinations.ai/prompt/{encoded}?width=1200&height=630&nologo=true&seed={seed}"
 
 def build_html_page(topic, html_body, slug, image_url):
     with open(TEMPLATE_FILE, "r", encoding="utf-8") as f:
