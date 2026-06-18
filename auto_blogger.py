@@ -8,6 +8,8 @@ import urllib.parse
 import urllib.error
 import re
 import base64
+import time
+import random
 
 # Configuration
 CSV_FILE = "blog_topics.csv"
@@ -104,24 +106,34 @@ INSTRUCTIONS:
         "contents": [{"parts": [{"text": prompt}]}]
     }).encode("utf-8")
     req = urllib.request.Request(url, data=data, headers={"Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req) as response:
-            res = json.loads(response.read().decode("utf-8"))
-            text = res["candidates"][0]["content"]["parts"][0]["text"]
-            html_content = text.replace("```html", "").replace("```", "").strip()
-            return html_content
-    except urllib.error.HTTPError as e:
-        error_body = e.read().decode("utf-8")
-        print(f"=== NEW ERROR FORMAT ===")
-        print(f"HTTP Error code: {e.code}")
-        print(f"Reason: {e.reason}")
-        print(f"Details: {error_body}")
-        print(f"========================")
-        exit(1)
-    except Exception as e:
-        print(f"=== CATCH ALL ERROR ===")
-        print(f"Error: {e}")
-        exit(1)
+    
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            with urllib.request.urlopen(req) as response:
+                res = json.loads(response.read().decode("utf-8"))
+                text = res["candidates"][0]["content"]["parts"][0]["text"]
+                html_content = text.replace("```html", "").replace("```", "").strip()
+                return html_content
+        except urllib.error.HTTPError as e:
+            error_body = e.read().decode("utf-8")
+            print(f"=== API ERROR (Attempt {attempt + 1}/{max_retries}) ===")
+            print(f"HTTP Error code: {e.code}")
+            print(f"Reason: {e.reason}")
+            print(f"Details: {error_body}")
+            print(f"=====================================")
+            
+            if e.code == 503 and attempt < max_retries - 1:
+                wait_time = (attempt + 1) * 10
+                print(f"High demand detected. Retrying in {wait_time} seconds...")
+                time.sleep(wait_time)
+                continue
+            else:
+                exit(1)
+        except Exception as e:
+            print(f"=== CATCH ALL ERROR ===")
+            print(f"Error: {e}")
+            exit(1)
 
 def generate_slug(topic):
     slug = "".join([c.lower() if c.isalnum() else "-" for c in topic])
