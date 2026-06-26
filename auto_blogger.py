@@ -192,7 +192,6 @@ def update_blog_index(topic, slug, image_url):
     
     card_html = f"""
             <article class="blog-card">
-                <a href="blog/{slug}"><img src="{image_url.replace('../../assets/', '../assets/')}" alt="{topic}" style="width:100%; border-radius:12px; margin-bottom: 15px; aspect-ratio: 16/9; object-fit: cover;"></a>
                 <span class="post-tag">Guide</span>
                 <h3><a href="blog/{slug}">{topic}</a></h3>
                 <p>{desc}</p>
