@@ -144,8 +144,20 @@ def generate_image(topic, slug):
     prompt = f"A professional, modern blog post cover image about {topic}. Flat design, highly relevant, clean, wide landscape."
     seed = random.randint(1, 10000000)
     url = f"https://image.pollinations.ai/prompt/{urllib.parse.quote(prompt)}?width=1280&height=720&nologo=true&seed={seed}"
-    image_filename = slug.replace(".html", ".png")
-    return url, image_filename
+    image_filename = "hero_" + slug.replace(".html", ".png")
+    
+    save_path = os.path.join("frontend", "assets", "blog", "hero", image_filename)
+    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+    
+    print(f"Downloading new hero image to {save_path}...")
+    try:
+        urllib.request.urlretrieve(url, save_path)
+        time.sleep(1) # Small delay to ensure flush
+        local_url = f"/assets/blog/hero/{image_filename}"
+        return local_url, image_filename
+    except Exception as e:
+        print(f"Error downloading image: {e}")
+        return url, image_filename
 
 def build_html_page(topic, html_body, slug, image_url, image_filename):
     with open(TEMPLATE_FILE, "r", encoding="utf-8") as f:
@@ -166,11 +178,14 @@ def build_html_page(topic, html_body, slug, image_url, image_filename):
     template = re.sub(r'"headline":\s*"[^"]+"', f'"headline": "{topic}"', template)
     template = re.sub(r'"datePublished":\s*"[^"]+"', f'"datePublished": "{iso_date}"', template)
     
-    template = re.sub(r'<img src="\.\./\.\./assets/blog/[^"]+"', f'<img src="{image_url}"', template)
+    abs_img_url = f"https://pdfjin.com{image_url}" if image_url.startswith('/') else image_url
+    template = re.sub(r'"image":\s*"[^"]+"', f'"image": "{abs_img_url}"', template)
+    
+    template = re.sub(r'(<div class="blog-pos-hero-image">\s*<img src=")[^"]+(")', rf'\g<1>{image_url}\g<2>', template)
     
     # Use absolute URLs for open graph
-    template = re.sub(r'<meta property="og:image" content="[^"]+"', f'<meta property="og:image" content="{image_url}"', template)
-    template = re.sub(r'<meta name="twitter:image" content="[^"]+"', f'<meta name="twitter:image" content="{image_url}"', template)
+    template = re.sub(r'<meta property="og:image" content="[^"]+"', f'<meta property="og:image" content="{abs_img_url}"', template)
+    template = re.sub(r'<meta name="twitter:image" content="[^"]+"', f'<meta name="twitter:image" content="{abs_img_url}"', template)
 
     body_pattern = r'(<section class="blog-pos-content">)(.*?)(</section>)'
     template = re.sub(r'<h1>.*?</h1>', f'<h1>{topic}</h1>', template)
