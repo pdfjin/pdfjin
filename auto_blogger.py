@@ -73,9 +73,10 @@ INSTRUCTIONS:
 6. Insert keywords naturally, ensure smooth/coherent flow, and strictly avoid robotic or generic AI phrasing.
 7. CRITICAL SEO REQUIREMENT: You MUST insert at least 2 natural internal HTML links (<a> tags) contextually relevant to the topic. Create these links from long tail keywords and point them to a related tools page from the following list using their exact URLs. In addition, you must style the link text with an underline using inline CSS (e.g. <a href="..." style="text-decoration: underline;">) so the link words are distinguishable from other words.
 {tools_context}
-8. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
-9. HEADINGS STRICT RULE: Do NOT use colons (:), semicolons (;), brackets ([]), braces ({{}}), or slashes (/) in any headings (<h2>, <h3>, <h4>). Keep headings clean. For example, write "Step 1 Upload Your Contract" instead of "Step 1: Upload Your Contract".
-10. FORMATTING STYLE: Where applicable, include structured sections like "Legal Note" or "Security and Peace of Mind", and end with a "Pro Tips" section (using <ul> for tips).
+8. OUTBOUND LINK REQUIREMENT: You MUST insert exactly 1 outbound link (<a> tag) to a highly authoritative, non-competitor website (like Wikipedia, Adobe's official documentation, or Microsoft's official guides) that provides helpful background context. Do NOT link to any competing PDF tools. Style the link text with an underline using inline CSS.
+9. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
+10. HEADINGS STRICT RULE: Do NOT use colons (:), semicolons (;), brackets ([]), braces ({{}}), or slashes (/) in any headings (<h2>, <h3>, <h4>). Keep headings clean. For example, write "Step 1 Upload Your Contract" instead of "Step 1: Upload Your Contract".
+11. FORMATTING STYLE: Where applicable, include structured sections like "Legal Note" or "Security and Peace of Mind", and end with a "Pro Tips" section (using <ul> for tips).
     """
     # Dynamically find a valid Gemini model
     list_url = f"https://generativelanguage.googleapis.com/v1beta/models?key={API_KEY}"

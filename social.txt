@@ -1,0 +1,17 @@
+1. Generate Your Daily Blog Post
+
+Open your terminal and run: python auto_blogger.py
+The AI will write and publish a highly-optimized SEO article with your new outbound and internal links.
+2. Generate Your Social Media Drafts
+
+Immediately after the blog finishes, run: python social_poster.py
+Copy the output for Facebook, LinkedIn, and Pinterest.
+3. Post to Social Media
+
+Open Facebook and LinkedIn in your browser. Paste the text it generated and hit Post.
+For Pinterest: Go to a free AI image generator (like Bing Image Creator or Midjourney), paste the exact image prompt the script gave you, save the picture, and upload it to Pinterest with the generated Title and Description.
+4. Morning Reddit Scan
+
+Run: python forum_marketer.py
+Copy your Gemini API Key when it asks.
+For each post it finds, click the Reddit link, copy the "SUGGESTED RESPONSE", paste it into the Reddit reply box, and hit Reply. Press Enter in your terminal to go to the next one.

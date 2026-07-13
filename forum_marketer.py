@@ -1,18 +1,18 @@
 import requests
 import json
 import time
-from openai import OpenAI
+import google.generativeai as genai
 import os
 
 # Configuration
-SUBREDDITS = ["pdf", "software", "techsupport", "productivity"]
+SUBREDDITS = ["pdf", "software", "techsupport", "productivity", "college", "LawSchool", "Teachers", "smallbusiness", "Accounting"]
 PDFJIN_URL = "https://pdfjin.com"
 KEYWORDS = ["merge", "split", "edit pdf", "combine pdf", "password", "unlock pdf", "compress pdf", "convert to pdf"]
 
 def get_reddit_posts(subreddit, limit=15):
-    """Fetch the latest posts from a given subreddit using the JSON API."""
+    """Fetch the latest posts from a given subreddit using the Reddit JSON API!"""
     url = f"https://www.reddit.com/r/{subreddit}/new.json?limit={limit}"
-    headers = {'User-Agent': 'PDFjin-Marketing-Bot/1.0'}
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
     
     try:
         response = requests.get(url, headers=headers)
@@ -22,10 +22,10 @@ def get_reddit_posts(subreddit, limit=15):
             for child in data.get('data', {}).get('children', []):
                 post = child.get('data', {})
                 posts.append({
-                    'title': post.get('title'),
-                    'selftext': post.get('selftext'),
-                    'url': post.get('url'),
-                    'permalink': f"https://www.reddit.com{post.get('permalink')}"
+                    'title': post.get('title', ''),
+                    'selftext': post.get('selftext', ''),
+                    'url': f"https://www.reddit.com{post.get('permalink', '')}",
+                    'permalink': f"https://www.reddit.com{post.get('permalink', '')}"
                 })
             return posts
         else:
@@ -41,18 +41,19 @@ def filter_relevant_posts(posts):
     for post in posts:
         text = f"{post['title']} {post['selftext']}".lower()
         if 'pdf' in text:
-            # Check if it contains any of our target keywords
             for kw in KEYWORDS:
                 if kw in text:
                     relevant.append(post)
                     break
     return relevant
 
-def draft_response(post, api_key):
-    """Use OpenAI to draft a helpful response promoting PDFjin."""
-    client = OpenAI(api_key=api_key)
+def draft_response(post, api_key, model_name):
+    """Use Gemini to draft a helpful response promoting PDFjin."""
+    genai.configure(api_key=api_key)
     
     prompt = f"""
+SYSTEM INSTRUCTION: You are a helpful forum member. You give concise, direct answers and naturally recommend a specific tool.
+
 You are a helpful software enthusiast participating in online forums.
 Someone just posted the following issue/question about PDFs:
 
@@ -61,31 +62,51 @@ Body: {post['selftext']}
 
 Write a helpful, empathetic, and natural-sounding forum reply (2-4 sentences max) that directly addresses their problem. 
 Then, casually suggest they try a free online tool called PDFjin ({PDFJIN_URL}) which can solve their problem easily.
-Do NOT sound like a corporate robot. Sound like a regular helpful user. Do NOT include hashtags.
+CRITICAL INSTRUCTION: Vary how you mention the tool. Sometimes say "I've been using PDFjin", other times "There is a free site called PDFjin", or just smoothly drop the link in the text. Make it sound 100% human and conversational. Do NOT sound like a corporate robot. Do NOT include hashtags.
 """
     try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": "You are a helpful forum member. You give concise, direct answers and naturally recommend a specific tool."},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=150,
-            temperature=0.7
-        )
-        return response.choices[0].message.content.strip()
+        model = genai.GenerativeModel(model_name)
+        response = model.generate_content(prompt)
+        return response.text.strip()
     except Exception as e:
         return f"[!] Error generating response: {e}"
+
+def get_working_model(api_key):
+    """Automatically find the best available model for this API key."""
+    genai.configure(api_key=api_key)
+    try:
+        for m in genai.list_models():
+            if 'generateContent' in m.supported_generation_methods:
+                if 'flash' in m.name: # Prefer a fast model
+                    return m.name
+        # Fallback to the first available if no flash model is found
+        for m in genai.list_models():
+            if 'generateContent' in m.supported_generation_methods:
+                return m.name
+        return None
+    except Exception as e:
+        print(f"[!] Could not list models: {e}")
+        return None
 
 def main():
     print("========================================")
     print("  PDFjin Forum Marketing Assistant")
     print("========================================")
     
-    api_key = input("Enter your OpenAI API Key (sk-...): ").strip()
-    if not api_key:
-        print("API Key is required! Exiting.")
+    gemini_key = os.getenv("GEMINI_API_KEY")
+    if not gemini_key:
+        gemini_key = input("Enter your Gemini API Key: ").strip()
+        
+    if not gemini_key:
+        print("Gemini API Key is required! Exiting.")
         return
+        
+    print("[+] Discovering available AI models for your account...")
+    model_name = get_working_model(gemini_key)
+    if not model_name:
+        print("[-] Could not find any supported text models for this API key.")
+        return
+    print(f"[+] Success! Using model: {model_name}")
 
     print("\n[+] Scanning Reddit for people who need PDF help...\n")
     
@@ -95,7 +116,7 @@ def main():
         posts = get_reddit_posts(sub)
         relevant = filter_relevant_posts(posts)
         all_relevant.extend(relevant)
-        time.sleep(1) # Be nice to Reddit API
+        time.sleep(1) # Be nice to the API
         
     if not all_relevant:
         print("\n[-] No relevant PDF questions found right now. Try again later!")
@@ -111,7 +132,7 @@ def main():
         print(f"Link:  {post['permalink']}")
         print("--------------------------------------------------")
         
-        draft = draft_response(post, api_key)
+        draft = draft_response(post, gemini_key, model_name)
         print("SUGGESTED RESPONSE:")
         print(f"\n{draft}\n")
         
