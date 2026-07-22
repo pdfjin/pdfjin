@@ -183,7 +183,7 @@ async def unified_middleware(request: Request, call_next):
         
     # Prevent aggressive heuristic caching of HTML files
     if "text/html" in response.headers.get("content-type", ""):
-        response.headers["Cache-Control"] = "no-cache, must-revalidate"
+        response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     
     return add_cors(response)
 
