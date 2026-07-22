@@ -246,56 +246,6 @@ async def ai_pdf_podcast(files: List[UploadFile] = File(...)):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-# ─── TOOL: AI PDF FORM FILLER ─────────────────────────────────
-@router.post("/ai-pdf-form-fill")
-async def ai_pdf_form_fill(files: List[UploadFile] = File(...), context: str = Form(""), data: str = Form("{}")):
-    file = files[0]
-    try:
-        content = await file.read()
-        user_data = json.loads(data)
-        
-        if not user_data:
-            prompt = (
-                "Analyze this PDF form for input fields. For each field found, suggest a value based on the following context: "
-                f"'{context}'. "
-                "Output as a JSON array of objects. Each object MUST have: "
-                "'name' (technical field name), 'label' (user-friendly label), "
-                "'type' (text or date), and 'suggested_value' (your suggested content)."
-            )
-            text_res, model = await run_ai_task(prompt, content, use_json=True)
-            text = text_res.strip()
-            if "```json" in text: text = text.split("```json")[1].split("```")[0].strip()
-            elif "```" in text: text = text.split("```")[1].split("```")[0].strip()
-            
-            # Extract just the array part to be safe
-            start = text.find('[')
-            end = text.rfind(']')
-            if start != -1 and end != -1:
-                text = text[start:end+1]
-                
-            try:
-                fields = json.loads(text)
-                if not isinstance(fields, list):
-                    # If it's an object, try to find an array inside it
-                    if isinstance(fields, dict):
-                        for val in fields.values():
-                            if isinstance(val, list):
-                                fields = val
-                                break
-                    else: fields = []
-                return {"fields": fields, "status": "suggested"}
-            except:
-                return {"fields": [], "status": "error", "raw": text}
-        
-        reader = PdfReader(io.BytesIO(content))
-        writer = PdfWriter()
-        for page in reader.pages: writer.add_page(page)
-        writer.update_page_form_field_values(writer.pages[0], user_data)
-        output = io.BytesIO(); writer.write(output); output.seek(0)
-        return StreamingResponse(output, media_type="application/pdf")
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
 # ─── TOOL: AI CONTRACT AUDITOR ─────────────────────────────────
 @router.post("/ai-contract-audit")
 async def ai_contract_audit(files: List[UploadFile] = File(...)):

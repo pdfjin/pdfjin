@@ -19,6 +19,7 @@ from jose import jwt, JWTError
 from routers.auth import load_users, ALGORITHM, SECRET_KEY, hash_api_key
 
 from routers import ai_studio, pdf_ops, converters, auth, payments, editor
+from routers.ai_pdf_form_filler.router import router as ai_pdf_form_filler_router
 from database import load_db, save_db
 
 # ─── AUTHENTICATION ──────────────────────────────────────────
@@ -381,6 +382,7 @@ app.include_router(pdf_ops.router, tags=["PDF Operations"])
 app.include_router(converters.router, tags=["Converters"])
 app.include_router(payments.router, tags=["Payments"])
 app.include_router(editor.router, tags=["Editor"])
+app.include_router(ai_pdf_form_filler_router)
 
 from fastapi.responses import RedirectResponse
 
