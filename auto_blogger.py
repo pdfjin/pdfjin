@@ -63,19 +63,23 @@ def generate_blog_content(topic):
     tools_context = "\\n".join(tools_list)
 
     prompt = f"""
-Write a concise, authoritative, "people-first" guide about "{topic}" following Google's Helpful Content Guidelines.
+Write a technical blog post based on the following title and topic.
+
+BLOG TITLE: {topic}
+
+OBJECTIVE:
+Create an authoritative, highly scannable article that provides immediate value to the reader.
 
 WRITING RULES:
-1. Direct Start: Eliminate all fluff, existential intros, and filler. Lead directly with the technical core of the problem and the direct solution in the first 2-3 sentences.
-2. Structure & Scannability: Break down steps into clean HTML headers (<h2>, <h3>), bullet points (<ul>, <li>), or concise tables (<table>, <tr>, <td>). Avoid long paragraphs (no paragraph should exceed 200 words).
-3. Tone & Style: Write like an expert software engineer giving a peer practical advice—clear, helpful, direct, and empathetic without empty filler. Keep it in mostly active voice.
-4. Natural Keyword Usage: Use terminology naturally (e.g., "font embedding", "rasterization"). DO NOT force unnatural exact-match keyphrases. Strictly avoid robotic or generic AI phrasing.
-5. Strategic Internal Linking (1-2 Links Max): You MUST seamlessly embed 1 or 2 relevant HTML links (<a> tags) contextually relevant to the topic. Create these links pointing to a related tools page from the following list using their exact URLs. Style the link text with an underline using inline CSS (e.g., <a href="..." style="text-decoration: underline;">). Use descriptive, natural anchor text instead of generic phrases.
+1. No Intro Fluff: Start immediately with a clear summary or direct answer to the title's main problem. Lead directly with actionable technical advice.
+2. Technical Depth: Focus on specific technical root causes and clear, step-by-step solutions.
+3. Formatting: Use HTML headers (<h2>, <h3>), lists (<ul>, <li>), paragraphs (<p>), and concise tables (<table>, <tr>, <td>) for key takeaways. Keep paragraphs under 3-4 sentences.
+4. Voice: Informative, peer-to-peer, technical, and approachable.
+5. Strategic Internal Linking (1-2 Links Max): Naturally place 1 to 2 relevant HTML links (<a> tags) pointing to relevant tool pages from the following list using their exact URLs where a tool directly solves the discussed issue. Anchors must feel organic and contextual (e.g., "...or quickly <a href="..." style="text-decoration: underline;">compress the PDF file</a> before sending...").
 {tools_context}
-6. Soft & Integrated CTA: Include a clear, helpful mention of PDFjin near the end as a practical, friction-free online solution rather than an aggressive sales pitch.
-7. Technical Accuracy: Ensure all technical troubleshooting steps remain accurate, actionable, and logical.
-8. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>, <table>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
-9. HEADINGS STRICT RULE: Do NOT use colons (:), semicolons (;), brackets ([]), braces ({{}}), or slashes (/) in any headings (<h2>, <h3>, <h4>). Keep headings clean.
+6. Soft Call-to-Action: Conclude with a helpful, subtle 1-2 sentence recommendation for using PDFjin to quickly handle the task online.
+7. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>, <table>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
+8. HEADINGS STRICT RULE: Do NOT use colons (:), semicolons (;), brackets ([]), braces ({{}}), or slashes (/) in any headings (<h2>, <h3>, <h4>). Keep headings clean.
     """
     # Dynamically find a valid Gemini model
     list_url = f"https://generativelanguage.googleapis.com/v1beta/models?key={API_KEY}"
