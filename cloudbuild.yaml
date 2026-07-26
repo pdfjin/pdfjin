@@ -1,4 +1,8 @@
 steps:
+  # 0. Sync frontend to backend to prevent old artifacts from overriding deployments
+  - name: 'ubuntu'
+    args: ['bash', '-c', 'rm -rf backend/static_frontend && mkdir -p backend/static_frontend && cp -r frontend/* backend/static_frontend/']
+
   # 1. Build the container image for the backend
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/$PROJECT_ID/pdfjin-api', './backend']
