@@ -339,7 +339,85 @@
         </div>
     </div>
 
-                                                                                            <footer class="footer">
+                                                                                            
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        How accurate is the voice-to-text transcription?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>We utilize state-of-the-art speech recognition models that deliver near-human accuracy, properly handling punctuation, capitalization, and context-dependent spelling.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can it handle heavy accents or background noise?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>The AI is highly resilient to diverse accents and moderate background noise, though crystal clear audio will always yield the most flawless transcription results.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Does it identify different speakers in a conversation?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, our advanced diarization technology can detect when different people are talking and will label the transcript with Speaker 1, Speaker 2, etc.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/ai-voice-memo.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Ai Voice Memo &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate is the voice-to-text transcription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We utilize state-of-the-art speech recognition models that deliver near-human accuracy, properly handling punctuation, capitalization, and context-dependent spelling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it handle heavy accents or background noise?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI is highly resilient to diverse accents and moderate background noise, though crystal clear audio will always yield the most flawless transcription results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it identify different speakers in a conversation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our advanced diarization technology can detect when different people are talking and will label the transcript with Speaker 1, Speaker 2, etc."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
+    <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="/" class="nav-logo" style="display:inline-flex;">

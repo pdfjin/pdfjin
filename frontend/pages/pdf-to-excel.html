@@ -143,6 +143,84 @@
               </div>
 
             </div>
+    
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        How does the tool identify tables in a PDF?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Our advanced parsing engine looks for visual gridlines, whitespace patterns, and column alignments to intelligently reconstruct the tabular data into Excel rows and columns.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Will it convert standard text paragraphs into Excel?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>The converter focuses primarily on extracting tabular data. Loose paragraphs may be placed into single cells, so this tool is best used for invoices, financial reports, and data sheets.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Does it handle multi-page tables correctly?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, if a table spans across multiple pages in the PDF, the tool attempts to stitch the data together continuously in the resulting Excel worksheet.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/pdf-to-excel.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Pdf To Excel &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the tool identify tables in a PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our advanced parsing engine looks for visual gridlines, whitespace patterns, and column alignments to intelligently reconstruct the tabular data into Excel rows and columns."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it convert standard text paragraphs into Excel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The converter focuses primarily on extracting tabular data. Loose paragraphs may be placed into single cells, so this tool is best used for invoices, financial reports, and data sheets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it handle multi-page tables correctly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if a table spans across multiple pages in the PDF, the tool attempts to stitch the data together continuously in the resulting Excel worksheet."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
     </main>
 
                             <footer class="footer">

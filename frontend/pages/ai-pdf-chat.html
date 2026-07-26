@@ -293,6 +293,84 @@
                 Transform the way you interact with documents using our intuitive Chat with PDF feature. Instead of endlessly scrolling through dense reports, lengthy research papers, or complex legal contracts, you can simply upload your file and start a dynamic conversation. Powered by advanced AI, this tool acts as your personal reading assistant, ready to answer questions, explain difficult concepts, and extract crucial data points in real-time. Whether you need a concise executive summary of a 50-page document, want to isolate specific clauses in an agreement, or need to verify a hidden detail buried in the text, you can get accurate answers instantly. It's perfect for students prepping for exams, professionals reviewing reports, and researchers analyzing data. By turning static text into an interactive dialogue, you'll save hours of manual reading, boost your productivity, and ensure you never miss critical information again.
             </p>
         </div>
+    
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can I ask questions about specific pages or sections?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes! You can ask the AI to summarize chapter 3, find specific statistics, or explain a complex paragraph in simple terms, and it will draw answers directly from the document's text.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Does the AI hallucinate or invent information not in the PDF?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>The model is strictly constrained to use only the context provided within your uploaded PDF, drastically minimizing hallucinations. If the answer isn't in the document, it will tell you.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        How many questions can I ask in a single session?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>You can have a continuous, multi-turn conversation. Follow-up questions are supported, allowing you to drill down into complex topics mentioned in previous answers.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/ai-pdf-chat.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Ai Pdf Chat &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I ask questions about specific pages or sections?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! You can ask the AI to summarize chapter 3, find specific statistics, or explain a complex paragraph in simple terms, and it will draw answers directly from the document's text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the AI hallucinate or invent information not in the PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The model is strictly constrained to use only the context provided within your uploaded PDF, drastically minimizing hallucinations. If the answer isn't in the document, it will tell you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many questions can I ask in a single session?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can have a continuous, multi-turn conversation. Follow-up questions are supported, allowing you to drill down into complex topics mentioned in previous answers."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
     </main>
 
     <!-- FOOTER -->

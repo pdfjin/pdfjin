@@ -141,7 +141,85 @@
         </div>
       </div>
     </div>
-  </main>
+  
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Will my custom fonts be preserved in the PDF?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, all text is embedded directly into the PDF, meaning your exact typography, font sizes, and layout will look identical regardless of what device the PDF is viewed on.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        What happens to my slide transitions and animations?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>PDF is a static document format. Slide transitions, audio clips, videos, and entrance animations will not function in the resulting PDF file. It will show the final state of each slide.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Does the conversion keep my hidden slides?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>By default, the converter only processes the visible slides in your presentation. Hidden slides are ignored to ensure the PDF reflects your actual presentation flow.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/powerpoint-to-pdf.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Powerpoint To Pdf &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Will my custom fonts be preserved in the PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, all text is embedded directly into the PDF, meaning your exact typography, font sizes, and layout will look identical regardless of what device the PDF is viewed on."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my slide transitions and animations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PDF is a static document format. Slide transitions, audio clips, videos, and entrance animations will not function in the resulting PDF file. It will show the final state of each slide."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the conversion keep my hidden slides?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By default, the converter only processes the visible slides in your presentation. Hidden slides are ignored to ensure the PDF reflects your actual presentation flow."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
+    </main>
 
                                                                                                   <footer class="footer">
         <div class="footer-grid">

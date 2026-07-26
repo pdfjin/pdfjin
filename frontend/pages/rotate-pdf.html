@@ -207,6 +207,84 @@
               </div>
 
             </div>
+    
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can I rotate just one specific page instead of the whole document?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, our visual interface allows you to hover over any individual page thumbnail and rotate it clockwise or counter-clockwise by 90 degrees independently of the others.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Does rotating the page change the actual file permanently?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, once you apply the changes and download the new file, the rotation is permanently saved to the PDF's structural metadata, so it will open correctly on any device.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Will rotating the page ruin the text quality?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>No, the rotation process is completely lossless. It simply changes the orientation metadata of the page; no images or text are re-rendered or degraded.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/rotate-pdf.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Rotate Pdf &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I rotate just one specific page instead of the whole document?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our visual interface allows you to hover over any individual page thumbnail and rotate it clockwise or counter-clockwise by 90 degrees independently of the others."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does rotating the page change the actual file permanently?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, once you apply the changes and download the new file, the rotation is permanently saved to the PDF's structural metadata, so it will open correctly on any device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will rotating the page ruin the text quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, the rotation process is completely lossless. It simply changes the orientation metadata of the page; no images or text are re-rendered or degraded."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
     </main>
 
                             <footer class="footer">

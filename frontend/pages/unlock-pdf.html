@@ -158,6 +158,84 @@
               </div>
 
             </div>
+    
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Do I need to know the password to unlock the PDF?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes. If the PDF has an 'Open Password' (encryption), you MUST provide the correct password. This tool removes the password permanently so you don't have to type it every time in the future.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can this tool hack or crack a password I forgot?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>No. We use standard decryption methods that require the author's password. Brute-forcing 256-bit AES encryption is mathematically impossible, so we do not offer cracking services.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        What is the difference between an Open Password and a Permissions Password?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>An Open Password blocks viewing the file entirely. A Permissions Password allows viewing but restricts printing or editing. This tool can strip Permissions Passwords instantly.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/unlock-pdf.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Unlock Pdf &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to know the password to unlock the PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If the PDF has an 'Open Password' (encryption), you MUST provide the correct password. This tool removes the password permanently so you don't have to type it every time in the future."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can this tool hack or crack a password I forgot?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We use standard decryption methods that require the author's password. Brute-forcing 256-bit AES encryption is mathematically impossible, so we do not offer cracking services."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between an Open Password and a Permissions Password?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An Open Password blocks viewing the file entirely. A Permissions Password allows viewing but restricts printing or editing. This tool can strip Permissions Passwords instantly."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
     </main>
 
     <!-- FOOTER -->

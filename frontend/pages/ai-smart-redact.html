@@ -556,6 +556,84 @@
 
             </div>
         </div>
+    
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        What types of sensitive information can the AI automatically redact?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>The AI is pre-trained to identify and redact Personally Identifiable Information (PII) including Social Security Numbers, credit card details, phone numbers, email addresses, and proper names.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Does it just draw a black box over the text?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Unlike superficial tools that just cover text (which can be removed), our Smart Redact permanently sanitizes the document by removing the underlying text layer before applying the blackout box.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can I specify custom terms to be redacted?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, in addition to the automatic AI pattern recognition for PII, you can input specific keywords, project names, or company phrases that you want scrubbed from the document.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/ai-smart-redact.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Ai Smart Redact &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What types of sensitive information can the AI automatically redact?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI is pre-trained to identify and redact Personally Identifiable Information (PII) including Social Security Numbers, credit card details, phone numbers, email addresses, and proper names."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it just draw a black box over the text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unlike superficial tools that just cover text (which can be removed), our Smart Redact permanently sanitizes the document by removing the underlying text layer before applying the blackout box."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I specify custom terms to be redacted?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, in addition to the automatic AI pattern recognition for PII, you can input specific keywords, project names, or company phrases that you want scrubbed from the document."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
     </main>
 
     <footer class="footer">

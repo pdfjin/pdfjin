@@ -143,6 +143,84 @@
               </div>
 
             </div>
+    
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        How does the tool reduce the PDF file size?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Our engine selectively downsamples high-resolution images, removes redundant embedded fonts, and cleans up unnecessary metadata and hidden layers without touching the text.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Will the compressed PDF look blurry?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>We use smart compression algorithms that maintain excellent visual quality for screens and standard printing. Text and vector graphics remain razor-sharp.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can I choose the level of compression?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, you can typically select between 'Recommended' (best balance of size and quality) and 'Extreme' (smallest possible size, with minor visual degradation in images).</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/compress-pdf.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Compress Pdf &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the tool reduce the PDF file size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our engine selectively downsamples high-resolution images, removes redundant embedded fonts, and cleans up unnecessary metadata and hidden layers without touching the text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the compressed PDF look blurry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We use smart compression algorithms that maintain excellent visual quality for screens and standard printing. Text and vector graphics remain razor-sharp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I choose the level of compression?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, you can typically select between 'Recommended' (best balance of size and quality) and 'Extreme' (smallest possible size, with minor visual degradation in images)."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
     </main>
 
                                                                                                     <footer class="footer">
