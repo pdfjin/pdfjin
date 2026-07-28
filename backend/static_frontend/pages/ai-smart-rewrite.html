@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI PDF Rewriter Online - Rewrite & Rephrase PDF Free</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/ai-studio.css">
+
+    <style>
+        :root {
+            --ai-primary: #8b5cf6;
+            --ai-secondary: #d946ef;
+            --ai-bg: #fdfcff;
+        }
+
+        .tool-container-rewrite {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0;
+        }
+
+        @media (max-width: 768px) {
+            .tool-container-rewrite {
+                margin-top: 70px;
+            }
+        }
+
+        .hero-rewrite {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .premium-badge-rewrite {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--ai-primary), var(--ai-secondary));
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .title-rewrite {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .desc-rewrite {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .drop-card-premium {
+            background: white;
+            border: 2px dashed #e2e8f0;
+            border-radius: 24px;
+            padding: 80px 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .drop-card-premium:hover {
+            border-color: var(--ai-primary);
+            background: rgba(139, 92, 246, 0.02);
+            transform: translateY(-5px);
+        }
+
+        .drop-card-premium::before {
+            content: "✨";
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .editor-grid {
+            display: none;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            margin-top: 40px;
+            align-items: start;
+        }
+
+        .settings-panel {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 30px;
+            position: sticky;
+            top: 100px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-panel {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 50px;
+            min-height: 800px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .preview-panel {
+                padding: 20px;
+                border-radius: 0;
+                min-height: auto;
+            }
+            .hero-rewrite {
+                padding: 20px;
+            }
+            .title-rewrite {
+                font-size: 2rem;
+            }
+        }
+
+        .preview-panel h1, .preview-panel h2, .preview-panel h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .preview-panel p {
+            margin-bottom: 1.2rem;
+        }
+
+        .preview-panel ul, .preview-panel ol {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        .control-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        .select-rewrite {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .btn-action-rewrite {
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        #processBtn {
+            background: var(--ai-primary);
+            color: white;
+        }
+
+        #processBtn:hover {
+            background: #7c3aed;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        }
+
+        #downloadBtn {
+            background: #10b981;
+            color: white;
+            display: none;
+        }
+
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            z-index: 10;
+        }
+
+        .spinner-rewrite {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--ai-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 968px) {
+            .editor-grid {
+                grid-template-columns: 1fr;
+            }
+            .settings-panel {
+                position: static;
+            }
+        }
+
+        .badge-ai {
+            font-size: 0.8rem;
+            vertical-align: middle;
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            color: var(--ai-primary);
+        }
+
+        .is-logged-in .guest-only {
+            display: none;
+        }
+
+        .user-only {
+            display: none;
+        }
+
+        .is-logged-in .user-only {
+            display: block;
+        }
+    </style>
+
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/ai-smart-rewrite.html" />
+    <meta name="description" content="Rewrite, rephrase, expand, or simplify your PDF document text instantly. Change tone to professional or ELI5 using our online AI writing assistant free." />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI PDF Rewriter Online - Rewrite & Rephrase PDF Free",
+  "description": "Rewrite, rephrase, expand, or simplify your PDF document text instantly. Change tone to professional or ELI5 using our online AI writing assistant free.",
+  "url": "https://pdfjin.com/pages/ai-smart-rewrite.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+                                                                                    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="tool-container-rewrite">
+        <div class="hero-rewrite">
+            <div class="premium-badge-rewrite">Premium AI Interface</div>
+            <h1 class="title-rewrite">AI Smart Rewrite</h1>
+            <p class="desc-rewrite">Transform complex documents into concise, professional, or simplified versions.</p>
+        </div>
+
+        <div id="uploadView">
+            <div class="drop-card-premium" id="dropZone">
+                <div style="font-size: 4rem; margin-bottom: 20px;"></div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Upload PDF to Rewrite</h3>
+                <p style="color: #64748b;">Drop your file here or click to browse</p>
+                <input type="file" id="fileInput" hidden accept="application/pdf">
+            </div>
+
+            <!-- Tool Description Area -->
+            <div class="tool-seo-section">
+                <h2>Smart AI Writing & Editing Assistant for PDF Text</h2>
+                <p>Improve the clarity, tone, and quality of your document text with PDFjin's AI Smart Rewrite. Whether you need to rephrase dense academic jargon, summarize lengthy business chapters, simplify legal terms for general readers, expand draft notes, or correct grammar, our sophisticated writing assistant rewrites your content dynamically while preserving the core message. Perfect for marketers, copywriters, researchers, and administrators, this tool works entirely online without requiring any software installations or user accounts. Simply upload your PDF, choose your rewriting objective, and let our semantic engine deliver refined, professional text in seconds. PDFjin operates with top-tier privacy standards, ensuring all uploaded drafts are processed in secure, isolated nodes and permanently deleted from our cloud servers immediately, keeping your proprietary records completely safe.</p>
+            </div>
+        </div>
+
+        <div id="editorView" class="editor-grid">
+            <aside class="settings-panel">
+                <h3 style="margin-bottom: 20px; font-family: 'Space Grotesk';">Rewrite Settings</h3>
+                <div class="control-group">
+                    <label>Target Length</label>
+                    <select id="rewriteLength" class="select-rewrite">
+                        <option value="1-page">Exactly 1 Page</option>
+                        <option value="half-page">Half Page summary</option>
+                        <option value="executive">Executive Overview</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>Tone & style</label>
+                    <select id="rewriteTone" class="select-rewrite">
+                        <option value="professional">Professional</option>
+                        <option value="simple">ELI5 (Simple)</option>
+                    </select>
+                </div>
+                <button id="processBtn" class="btn-action-rewrite">Apply Intelligence</button>
+                <button id="downloadBtn" class="btn-action-rewrite">Download as PDF</button>
+            </aside>
+
+            <main class="preview-panel" id="pdfBuffer">
+                <div class="loading-overlay" id="loader">
+                    <div class="spinner-rewrite"></div>
+                </div>
+                <div id="previewContent">
+                    <div style="text-align: center; color: #94a3b8; margin-top: 100px;">
+                        Your rewritten content will appear here.
+                    </div>
+                </div>
+            
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can this tool simplify complex legal or academic jargon?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, one of its most popular uses is translating dense, complex documents into plain English, making them accessible to a general audience without losing the core meaning.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Will the rewritten document be a new PDF?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, the AI generates the rewritten text and recompiles it into a clean, new PDF document that you can download immediately.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can I change the tone to be more professional?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Absolutely. You can instruct the AI to adopt a formal, professional, persuasive, or even casual tone, and it will rewrite the entire document to match that voice.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/ai-smart-rewrite.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Ai Smart Rewrite &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can this tool simplify complex legal or academic jargon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, one of its most popular uses is translating dense, complex documents into plain English, making them accessible to a general audience without losing the core meaning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the rewritten document be a new PDF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, the AI generates the rewritten text and recompiles it into a clean, new PDF document that you can download immediately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I change the tone to be more professional?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. You can instruct the AI to adopt a formal, professional, persuasive, or even casual tone, and it will rewrite the entire document to match that voice."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
+    </main>
+        </div>
+    </div>
+
+                                                                                    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js?v=3.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js?v=3.1"></script>
+    <script src="../js/main.js?v=3.3"></script>
+    <script src="../js/core/tasks.js?v=3.1"></script>
+
+    <script>
+        (function () {
+            const API_URL = window.PDFJIN_API_URL || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+                ? "http://localhost:8080" : "https://pdfjin-api-97530578628.us-central1.run.app"); const get = (id) => document.getElementById(id);
+            const dropZone = get('dropZone');
+            const fileInput = get('fileInput');
+            const uploadView = get('uploadView');
+            const editorView = get('editorView');
+            const previewContent = get('previewContent');
+            const processBtn = get('processBtn');
+            const downloadBtn = get('downloadBtn');
+            const loader = get('loader');
+            let selectedFile = null;
+            
+            dropZone.onclick = () => fileInput.click();
+            fileInput.onchange = (e) => handleFile(e.target.files[0]);
+            function handleFile(file) {
+                if (!file || file.type !== 'application/pdf') return;
+                selectedFile = file;
+                uploadView.style.display = 'none';
+                editorView.style.display = 'grid';
+            }
+
+            processBtn.onclick = async () => {
+                if (window.PDFJIN_TASKS && window.PDFJIN_TASKS.isLimitReached()) {
+                    window.PDFJIN_TASKS.showLimitModal();
+                    return;
+                }
+
+                const tone = get('rewriteTone').value;
+                const length = get('rewriteLength').value;
+                loader.style.display = 'flex';
+                processBtn.disabled = true;
+                const formData = new FormData();
+                formData.append('files', selectedFile);
+                formData.append('task', `${tone} tone, ${length} length`);
+
+                try {
+                    const token = localStorage.getItem('authToken');
+                    const headers = {};
+                    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                    const res = await fetch(`${API_URL}/ai-smart-rewrite`, {
+                        method: 'POST',
+                        headers: headers,
+                        body: formData,
+                        mode: 'cors'
+                    });
+                    if (!res.ok) {
+                        const err = await res.json();
+                        throw new Error(err.detail || "AI Processing failed");
+                    }
+
+                    const result = await res.json();
+                    if (result.data && result.data.rewritten_text) {
+                        previewContent.innerHTML = marked.parse(result.data.rewritten_text);
+                        downloadBtn.style.display = 'block';
+                        if (window.PDFJIN_TASKS) window.PDFJIN_TASKS.increment();
+                    }
+                } catch (err) {
+                    alert("Error: " + err.message);
+                } finally {
+                    loader.style.display = 'none';
+                    processBtn.disabled = false;
+                }
+            };
+
+            downloadBtn.onclick = () => {
+                const element = get('pdfBuffer');
+                const opt = {
+                    margin: 15,
+                    filename: 'Rewritten_Document.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).save();
+            };
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-G4FR9CKVZ0');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="PDFjin — The ultimate all-in-one PDF toolkit. Now with Premium AI Studio: Convert PDFs to Podcasts, Semantic Rewrite, Cross-Reference Agent, and more. Fast, secure, and privacy-focused." />
+  <meta name="keywords"
+    content="PDF tools, PDF to Word, merge PDF, split PDF, compress PDF, PDF converter, online PDF editor, Excel to PDF, Sign PDF" />
+  <link rel="canonical" href="https://pdfjin.com/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pdfjin.com/" />
+  <meta property="og:title" content="PDFjin — Your Complete PDF Toolkit" />
+  <meta property="og:description"
+    content="Profesessional-grade PDF tools. Convert, merge, split, and edit PDFs online for free." />
+  <meta property="og:image" content="https://pdfjin.com/assets/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://pdfjin.com/" />
+  <meta property="twitter:title" content="PDFjin — Your Complete PDF Toolkit" />
+  <meta property="twitter:description"
+    content="Profesessional-grade PDF tools. Convert, merge, split, and edit PDFs online for free." />
+  <meta property="twitter:image" content="https://pdfjin.com/assets/og-image.jpg" />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PDFjin",
+    "operatingSystem": "All",
+    "applicationCategory": "MultimediaApplication",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "1250"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Merge PDF", "Split PDF", "Compress PDF", "Word to PDF", "Excel to PDF", "Sign PDF", "PDF to Word"
+    ]
+  }
+  </script>
+  <title>PDFjin — Your Complete PDF Toolkit</title>
+  <link rel="stylesheet" href="css/style.css?v=8.0" />
+  <link rel="stylesheet" href="css/ai-studio.css?v=1.0" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>" />
+
+  <script>
+    // Critical: Instant: Login Check
+    (function () {
+      const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+      if (logged) {
+        document.documentElement.classList.add('is-logged-in');
+        window.isUserLoggedIn = true;
+      }
+    })();
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+
+<body class="dashboard-body">
+  <div id="siteAnnouncement" class="site-banner" style="display:none;"></div>
+  <div id="maintenanceOverlay" class="maintenance-overlay" style="display:none;">
+    <div class="maintenance-content">
+      <span class="m-icon">🛠️</span>
+      <h2>System Maintenance</h2>
+      <p>PDFjin is currently undergoing scheduled maintenance to improve our services. We'll be back online shortly!</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       NAVIGATION
+  ═══════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a href="/" class="nav-logo" aria-label="PDFjin Home">
+      <div class="logo-icon" aria-hidden="true">📄</div>
+      PDF<span>jin</span>
+    </a>
+
+    <ul class="nav-links" id="navMenu">
+      <li><a href="#services">Tools</a></li>
+      <li><a href="pages/blog.html">Blog</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="pages/api-docs.html">API Docs</a></li>
+      <li class="guest-only"><a href="pages/auth.html">Sign In</a></li>
+      <li class="guest-only"><a href="pages/register.html" class="nav-register">Register</a></li>
+      <li class="user-only">
+        <div class="nav-user-wrapper">
+          <a href="pages/dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+            <span class="user-bubble" id="navUserBubble">U</span>
+            <span class="user-status-dot"></span>
+          </a>
+          <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+        </div>
+      </li>
+      <li><a href="#services" class="nav-cta" id="mainCTA" onclick="handleMainCTAClick(event)">Get Started Free →</a>
+      </li>
+    </ul>
+
+
+
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <section class="hero" aria-labelledby="heroTitle">
+    <div class="hero-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+
+    <div class="hero-badge" style="border-color: var(--clr-primary); background: rgba(108, 99, 255, 0.12);">
+      <span class="dot"></span>
+      18+ Free PDF Tools & Premium AI Studio — Free Account Required
+    </div>
+
+    <h1 class="hero-title" id="heroTitle">
+      Every PDF Task,<br />
+      <span class="gradient-text">Done in Seconds.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      The all-in-one PDF toolkit for everyone. Convert, merge, split, compress,
+      secure, repair and edit your documents — fast, free, and privacy-first.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary" id="heroGetStarted">
+        <span>Explore All Tools</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
+      </a>
+      <a href="pages/scan-to-pdf.html" class="btn-secondary" id="heroScanPDF">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+          <circle cx="12" cy="13" r="4"></circle>
+        </svg>
+        Scan Document Now
+      </a>
+      <a href="pages/ai-smart-rewrite.html" class="btn-secondary" id="heroPremiumAI"
+        style="border-color: #8b5cf6; color: #8b5cf6; background: rgba(139, 92, 246, 0.05); font-weight: 700;">
+        <span style="margin-right: 8px;">✨</span>
+        Smart-Rewrite Premium
+      </a>
+    </div>
+
+    <div class="hero-stats" aria-label="Site statistics">
+      <div class="stat-item reveal">
+        <span class="stat-number" data-count="5124850" data-suffix="+">0</span>
+        <span class="stat-label">Files Processed</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-number" data-count="28" data-suffix="+">0</span>
+        <span class="stat-label">PDF Tools</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-number" data-count="142" data-suffix="+">0</span>
+        <span class="stat-label">Countries</span>
+      </div>
+      <div class="stat-item reveal">
+        <span class="stat-number" data-count="99.9" data-suffix="%">0</span>
+        <span class="stat-label">Uptime</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SERVICES
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="services" aria-labelledby="servicesTitle">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">🛠️ All Tools</div>
+        <h2 class="section-title" id="servicesTitle">Everything You Need for PDFs</h2>
+        <p class="section-desc">Profesessional-grade PDF tools powered by open-source technology — lightning fast and
+          totally free.</p>
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="category-tabs reveal" role="tablist" aria-label="Service categories">
+        <button class="tab-btn active" data-filter="all" role="tab" aria-selected="true" id="tab-all">All Tools</button>
+        <button class="tab-btn" data-filter="ai" role="tab" aria-selected="false" id="tab-ai"
+          style="color: var(--ai-primary); font-weight: 700;">✨ AI Studio</button>
+        <button class="tab-btn" data-filter="convert" role="tab" aria-selected="false" id="tab-convert">🔀
+          Convert</button>
+        <button class="tab-btn" data-filter="organize" role="tab" aria-selected="false" id="tab-organize">📂
+          Organize</button>
+        <button class="tab-btn" data-filter="optimize" role="tab" aria-selected="false" id="tab-optimize">⚡
+          Optimize</button>
+        <button class="tab-btn" data-filter="security" role="tab" aria-selected="false" id="tab-security">🔒
+          Security</button>
+        <button class="tab-btn" data-filter="edit" role="tab" aria-selected="false" id="tab-edit">✏️ Edit</button>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="services-grid" id="servicesGrid">
+
+        <!-- SIGN PDF (Promoted to top) -->
+        <a href="pages/sign-pdf.html" class="service-card cat-edit reveal" data-category="edit" id="card-sign-pdf"
+          aria-label="Sign PDF content">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🖋️</span>
+          </div>
+          <div class="card-title">Sign PDF</div>
+          <div class="card-desc">Draw or upload your digital signature to sign PDFs online.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <!-- CONVERT -->
+        <a href="pages/scan-to-pdf.html" class="service-card cat-convert reveal" data-category="convert"
+          id="card-scan-to-pdf" aria-label="Scan to PDF converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📸</span>
+          </div>
+          <div class="card-title">Scan to PDF</div>
+          <div class="card-desc">Capture documents with your camera and save as PDF.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/pdf-to-word.html?v=iso-fix-999" class="service-card cat-convert reveal" data-category="convert"
+          id="card-pdf-to-word" aria-label="PDF to Word converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📄→📝</span>
+          </div>
+          <div class="card-title">PDF to Word</div>
+          <div class="card-desc">Convert PDF documents to editable Word DOCX files instantly.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/word-to-pdf.html?v=iso-fix-999" class="service-card cat-convert reveal" data-category="convert"
+          id="card-word-to-pdf" aria-label="Word to PDF converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📝→📄</span>
+          </div>
+          <div class="card-title">Word to PDF</div>
+          <div class="card-desc">Transform your Word documents into profesessional PDFs.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/powerpoint-to-pdf.html?v=iso-fix-999" class="service-card cat-convert reveal"
+          data-category="convert" id="card-powerpoint-to-pdf" aria-label="PowerPoint to PDF converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📊→📄</span>
+          </div>
+          <div class="card-title">PowerPoint to PDF</div>
+          <div class="card-desc">Convert your PPT and PPTX presentations to profesessional PDFs.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/excel-to-pdf.html" class="service-card cat-convert reveal" data-category="convert"
+          id="card-excel-to-pdf" aria-label="Excel to PDF converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📈→📄</span>
+          </div>
+          <div class="card-title">Excel to PDF</div>
+          <div class="card-desc">Transform your Excel spreadsheets and CSVs into PDFs.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/pdf-to-jpg.html" class="service-card cat-convert reveal" data-category="convert"
+          id="card-pdf-to-jpg" aria-label="PDF to JPG converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📄→🖼️</span>
+          </div>
+          <div class="card-title">PDF to JPG</div>
+          <div class="card-desc">Extract pages as high-quality JPG or PNG images.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/jpg-to-pdf.html" class="service-card cat-convert reveal" data-category="convert"
+          id="card-jpg-to-pdf" aria-label="JPG to PDF converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🖼️→📄</span>
+          </div>
+          <div class="card-title">JPG to PDF</div>
+          <div class="card-desc">Combine one or more images into a single PDF file.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/pdf-to-powerpoint.html" class="service-card cat-convert reveal" data-category="convert"
+          id="card-pdf-to-ppt" aria-label="PDF to PowerPoint converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📄→📊</span>
+          </div>
+          <div class="card-title">PDF to PowerPoint</div>
+          <div class="card-desc">Turn PDF slidesc into editable PowerPoint presentations.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/pdf-to-excel.html" class="service-card cat-convert reveal" data-category="convert"
+          id="card-pdf-to-excel" aria-label="PDF to Excel converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📄→📊</span>
+          </div>
+          <div class="card-title">PDF to Excel</div>
+          <div class="card-desc">Extract tables and data from PDF into editable Excel spreadsheets.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/html-to-pdf.html" class="service-card cat-convert reveal" data-category="convert"
+          id="card-html-to-pdf" aria-label="HTML to PDF converter">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🌐→📄</span>
+          </div>
+          <div class="card-title">HTML to PDF</div>
+          <div class="card-desc">Convert any webpage or HTML file to a PDF document.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <!-- ORGANIZE -->
+        <a href="pages/merge-pdf.html" class="service-card cat-organize reveal" data-category="organize" id="card-merge"
+          aria-label="Merge PDF files">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🔀</span>
+          </div>
+          <div class="card-title">Merge PDF</div>
+          <div class="card-desc">Combine multiple PDFs into one document in any order.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/split-pdf.html" class="service-card cat-organize reveal" data-category="organize" id="card-split"
+          aria-label="Split PDF file">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">✂️</span>
+          </div>
+          <div class="card-title">Split PDF</div>
+          <div class="card-desc">Separate pages or extract a range from your PDF.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/rotate-pdf.html" class="service-card cat-organize reveal" data-category="organize"
+          id="card-rotate" aria-label="Rotate PDF pages">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🔄</span>
+          </div>
+          <div class="card-title">Rotate PDF</div>
+          <div class="card-desc">Rotate specific pages or the entire PDF to any angle.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/reorder-pdf.html" class="service-card cat-organize reveal" data-category="organize"
+          id="card-reorder" aria-label="Reorder PDF pages">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📋</span>
+          </div>
+          <div class="card-title">Reorder Pages</div>
+          <div class="card-desc">Drag and drop to rearrange pages in any order.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/add-page-numbers.html" class="service-card cat-organize reveal" data-category="organize"
+          id="card-add-numbers" aria-label="Add Page Numbers to PDF">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🔢</span>
+          </div>
+          <div class="card-title">Add Page Numbers</div>
+          <div class="card-desc">Add page numbers to your document with custom positioning.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <!-- OPTIMIZE -->
+        <a href="pages/compress-pdf.html" class="service-card cat-optimize reveal" data-category="optimize"
+          id="card-compress" aria-label="Compress PDF file">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📦</span>
+          </div>
+          <div class="card-title">Compress PDF</div>
+          <div class="card-desc">Reduce file size while maintaining quality for easy sharing.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/repair-pdf.html" class="service-card cat-optimize reveal" data-category="optimize"
+          id="card-repair" aria-label="Repair corrupted PDF">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🩹</span>
+          </div>
+          <div class="card-title">Repair PDF</div>
+          <div class="card-desc">Recover content from corrupted or damaged PDF files.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <!-- SECURITY -->
+        <a href="pages/protect-pdf.html" class="service-card cat-security reveal" data-category="security"
+          id="card-protect" aria-label="Password protect PDF">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🔒</span>
+          </div>
+          <div class="card-title">Protect PDF</div>
+          <div class="card-desc">Add a password to your PDF to restrict access.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/unlock-pdf.html" class="service-card cat-security reveal" data-category="security"
+          id="card-unlock" aria-label="Unlock PDF password">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🔓</span>
+          </div>
+          <div class="card-title">Unlock PDF</div>
+          <div class="card-desc">Remove password protection from a PDF you own.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <!-- EDIT -->
+        <a href="pages/translate-pdf.html" class="service-card cat-edit reveal" data-category="edit"
+          id="card-translate-pdf" aria-label="Translate PDF content">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🌐</span>
+          </div>
+          <div class="card-title">Translate PDF</div>
+          <div class="card-desc">Translate PDF text into over 100 languages instantly.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/edit-pdf.html" class="service-card cat-edit reveal" data-category="edit" id="card-edit-pdf"
+          aria-label="Edit PDF content">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">✍️</span>
+          </div>
+          <div class="card-title">Edit PDF</div>
+          <div class="card-desc">Add text, whiteout, or modify content on PDF pages.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/ocr-pdf.html" class="service-card cat-edit reveal" data-category="edit" id="card-ocr-pdf"
+          aria-label="OCR PDF content">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🔍</span>
+          </div>
+          <div class="card-title">OCR PDF</div>
+          <div class="card-desc">Convert scanned PDFs into searchable and selectable documents.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/watermark-pdf.html" class="service-card cat-edit reveal" data-category="edit" id="card-watermark"
+          aria-label="Add watermark to PDF">
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🖊️</span>
+          </div>
+          <div class="card-title">Watermark PDF</div>
+          <div class="card-desc">Stamp text or image watermarks onto your PDF pages.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <!-- AI STUDIO -->
+        <a href="pages/ai-pdf-chat.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-chat"
+          aria-label="Chat with PDF AI">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">✨</span>
+          </div>
+          <div class="card-title">Chat with PDF</div>
+          <div class="card-desc">Ask questions, summarize chapters, and find insights using AI.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/ai-pdf-extraction.html" class="service-card cat-ai reveal" data-category="ai"
+          id="card-ai-extraction" aria-label="Smart AI PDF Extraction">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🤖</span>
+          </div>
+          <div class="card-title">Smart Extraction</div>
+          <div class="card-desc">Automatically extract tables and data into structured JSON or Excel.</div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a href="pages/ai-pdf-study.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-study"
+          aria-label="AI Study Partner">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🎓</span>
+          </div>
+          <div class="card-title">AI Study Partner</div>
+          <div class="card-desc">Generate quizzes, flashcards, and study guidesc from any PDF instantly.</div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a href="pages/ai-pdf-podcast.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-podcast"
+          aria-label="AI Podcast Creator">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🎙️</span>
+          </div>
+          <div class="card-title">AI Podcast</div>
+          <div class="card-desc">Convert PDFs into high-quality, conversational audio podcasts.</div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a href="pages/ai-form-filler.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-form"
+          aria-label="AI Form Filler">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🤖</span>
+          </div>
+          <div class="card-title">AI Form Filler</div>
+          <div class="card-desc">Automatically detect fields and fill PDF forms using smart AI suggestions.</div>
+          <span class="card-arrow">→</span>
+        </a>
+
+        <a href="pages/ai-contract-auditor.html" class="service-card cat-ai reveal" data-category="ai"
+          id="card-ai-contract" aria-label="AI Contract Auditor">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">⚖️</span>
+          </div>
+          <div class="card-title">AI Contract Auditor</div>
+          <div class="card-desc">Identify risky clausees, auto-renewals, and hidden traps in contracts.</div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a href="pages/ai-semantic-extract.html" class="service-card cat-ai reveal" data-category="ai"
+          id="card-ai-semantic" aria-label="Semantic Table Extraction">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">📊</span>
+          </div>
+          <div class="card-title">Semantic Table Extract</div>
+          <div class="card-desc">Multimodal vision to "read" tables visually and output structured JSON/CSV.</div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a href="pages/ai-smart-rewrite.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-rewrite"
+          aria-label="Smart AI Rewrite">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">✨</span>
+          </div>
+          <div class="card-title">Smart Rewrite</div>
+          <div class="card-desc">AI rewrites your text for conciseness and auto-adjusts font/spacing to fit your goals.
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a href="pages/ai-smart-redact.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-redact"
+          aria-label="Smart Redact Privacy">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🛡️</span>
+          </div>
+          <div class="card-title">Smart Redact</div>
+          <div class="card-desc">AI scans for sensitive PII (SSN, Address, CC) and auto-masks them for privacy.</div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a href="pages/ai-cross-reference.html" class="service-card cat-ai reveal" data-category="ai"
+          id="card-ai-crossref" aria-label="Cross-Reference Agent">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🧬</span>
+          </div>
+          <div class="card-title">Cross-Reference Agent</div>
+          <div class="card-desc">Synthesize insights across 50+ PDFs simultaneously with multi-doc RAG and citations.
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a href="pages/ai-audio-overview.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-audio"
+          aria-label="Audio Overview">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🎧</span>
+          </div>
+          <div class="card-title">Audio Overview</div>
+          <div class="card-desc">Convert dry PDFs into high-quality, conversational podcasts with dual AI hosts.</div>
+          <span class="card-arrow">→</span>
+        </a>
+        <a href="pages/ai-voice-memo.html" class="service-card cat-ai reveal" data-category="ai" id="card-ai-voice"
+          aria-label="Voice Scribe">
+          <div class="ai-badge">Premium</div>
+          <div class="card-icon-wrap">
+            <span class="icon-emoji">🎙️</span>
+          </div>
+          <div class="card-title">Voice Scribe</div>
+          <div class="card-desc">Record voice notes and transform them into profesessional formal PDF proposals instantly.
+          </div>
+          <span class="card-arrow">→</span>
+        </a>
+      </div>
+      <!-- /services-grid -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       HOW IT WORKS
+  ═══════════════════════════════════════════ -->
+  <section class="section how-section" id="how-it-works" aria-labelledby="howTitle">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">🚀 Simple Process</div>
+        <h2 class="section-title" id="howTitle">Done in Three Simple Steps</h2>
+        <p class="section-desc">No installs required. Just upload, convert, and download.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-item reveal">
+          <div class="step-number">1</div>
+          <div class="step-title">Upload Your File</div>
+          <p class="step-desc">Drag and drop your PDF or document, or click to browse. Supports files up to 100MB.</p>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-number">2</div>
+          <div class="step-title">Choose Your Action</div>
+          <p class="step-desc">Pick from 17+ tools. Adjust settings to match exactly what you need.</p>
+        </div>
+        <div class="step-item reveal">
+          <div class="step-number">3</div>
+          <div class="step-title">Download Instantly</div>
+          <p class="step-desc">Processing happens in seconds. Download your result — files are deleted after 1 hour.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FEATURES / WHY CHOOSE US
+  ═══════════════════════════════════════════ -->
+  <section class="section" id="features" aria-labelledby="featuresTitle">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">✨ Why PDFjin</div>
+        <h2 class="section-title" id="featuresTitle">Built for Speed, Privacy & Quality</h2>
+        <p class="section-desc">We built PDFjin with the same tools the pros use — all open-source, all transparent.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background: rgba(108,99,255,0.15);">⚡</div>
+          <div class="feature-content">
+            <h3>Lightning Fast</h3>
+            <p>Powered by Cloud Run and optimized open-source engines. Most files process in under 5 seconds.</p>
+          </div>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background: rgba(255,101,132,0.12);">🛡️</div>
+          <div class="feature-content">
+            <h3>Privacy First</h3>
+            <p>Your files are encrypted in transit. Uploaded files are automatically deleted after 60 minutes.</p>
+          </div>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background: rgba(67,233,123,0.12);">🔓</div>
+          <div class="feature-content">
+            <h3>100% Open Source</h3>
+            <p>Built on LibreOffice, pypdf, Ghostscript, and more. Transparent, auditable, and trustworthy.</p>
+          </div>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background: rgba(0,210,255,0.12);">🛡️</div>
+          <div class="feature-content">
+            <h3>Certified Data Security</h3>
+            <p>Hosted on Google Cloud infra with <strong>ISO 27001, 27017, & 27018</strong> certifications. SOC 2/3,
+              HIPAA, and GDPR compliant environment.</p>
+          </div>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background: rgba(247,151,30,0.12);">📱</div>
+          <div class="feature-content">
+            <h3>Works on Any Device</h3>
+            <p>Fully responsive web app. Works seamlessly on desktop, tablet, and mobile browsers.</p>
+          </div>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-icon" style="background: rgba(255,210,0,0.1);">🆓</div>
+          <div class="feature-content">
+            <h3>Free Account</h3>
+            <p>All core tools are free to use with a Free Account. Premium plan available for power users.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Compliance & Trust Bar -->
+      <div class="compliance-bar reveal"
+        style="margin-top: 5rem; padding-top: 3rem; border-top: 1px solid rgba(108, 99, 255, 0.08);">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <span style="font-size: 0.75rem; font-weight: 700; color: var(--clr-text-dim); text-transform: uppercase; letter-spacing: 0.15em;">Enterprise-Grade
+            Compliance</span>
+        </div>
+        <div class="compliance-grid">
+          <div class="comp-badge">
+            <span class="comp-icon">🛡️</span>
+            <div class="comp-info">
+              <span class="comp-name">ISO 27001</span>
+              <span class="comp-desc">Security Management</span>
+            </div>
+          </div>
+          <div class="comp-badge">
+            <span class="comp-icon">☁️</span>
+            <div class="comp-info">
+              <span class="comp-name">SOC 2 / SOC 3</span>
+              <span class="comp-desc">Trust & Reliability</span>
+            </div>
+          </div>
+          <div class="comp-badge">
+            <span class="comp-icon">🔒</span>
+            <div class="comp-info">
+              <span class="comp-name">GDPR / HIPAA</span>
+              <span class="comp-desc">Privacy Standards</span>
+            </div>
+          </div>
+          <div class="comp-badge">
+            <span class="comp-icon">🌐</span>
+            <div class="comp-info">
+              <span class="comp-name">ISO 27017/18</span>
+              <span class="comp-desc">Cloud & Privacy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PRICING
+  ═══════════════════════════════════════════ -->
+  <section class="section pricing-section" id="pricing" aria-labelledby="pricingTitle">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <div class="section-tag">💎 Pricing</div>
+        <h2 class="section-title" id="pricingTitle">Simple, Transparent Pricing</h2>
+        <p class="section-desc">Start for free. Upgrade only when you're ready for more.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <!-- Free Plan -->
+        <div class="pricing-card reveal">
+          <span class="pricing-badge badge-free">Free Account</span>
+          <div class="pricing-price">$0<span>/mo</span></div>
+          <p class="pricing-desc">For individuals doing occasional PDF work.</p>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> <strong>50 tasks per day</strong></li>
+            <li><span class="check">✓</span> includes Premium AI tools</li>
+            <li><span class="check">✓</span> Max 10MB file size</li>
+            <li><span class="check">✓</span> No watermark</li>
+          </ul>
+          <button class="btn-plan btn-plan-free" id="btnGetFree" onclick="handleSubscribeClick('free')">Get Started
+            Free</button>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="pricing-card featured reveal">
+          <span class="pricing-badge badge-pro">⚡ Pro</span>
+          <div class="pricing-price">US$ <span id="priceProMonthlyVal">4.50</span><span>/mo</span></div>
+          <p class="pricing-desc">For profesessionals with frequent PDF needs.</p>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> <strong>50 tasks per day</strong></li>
+            <li><span class="check">✓</span> All 35+ Premium & AI tools</li>
+            <li><span class="check">✓</span> Max 50MB file size</li>
+            <li><span class="check">✓</span> No watermarks</li>
+            <li><span class="check">✓</span> Priority processing</li>
+            <li><span class="check">✓</span> Email support</li>
+          </ul>
+          <p style="text-align:center; font-size:0.85rem; font-weight:600; color:var(--text-secondary,#aaa); margin:0.8rem 0 0.5rem; letter-spacing:0.03em;">
+            Choose your billing cycle:</p>
+          <div class="pricing-btn-group">
+            <button class="btn-plan btn-stripe" id="btnProMonthly" onclick="handleSubscribeClick('pro', 'stripe')"
+              style="position:relative;">
+              <span style="font-weight:700;">📅 Monthly</span> — US$ <span id="priceProMonthlyBtn">4.50</span>/mo
+            </button>
+            <button class="btn-plan btn-stripe-green" id="btnProYearly"
+              onclick="handleSubscribeClick('pro', 'stripe', 'yearly')" style="position:relative;">
+              <span style="font-weight:700;">⭐ Yearly</span> — US$ <span id="priceProYearlyBtn">39.00</span>/yr
+              <div style="position:absolute; top:-12px; right:-12px; background:#fbbf24; color:#000; font-size:0.65rem; padding:3px 10px; border-radius:30px; border: 2px solid #fff; font-weight:800; box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+                SAVINGS -28%</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card reveal">
+          <span class="pricing-badge" style="background: #1e293b; color: #fff;">🏢 Enterprise</span>
+          <div class="pricing-price">Custom<span>Pricing</span></div>
+          <p class="pricing-desc">For developers and commercial teams.</p>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> <strong>1,000+ tasks per day</strong></li>
+            <li><span class="check">✓</span> <strong>Full Developer API Access</strong></li>
+            <li><span class="check">✓</span> Custom API Keys & Webhooks</li>
+            <li><span class="check">✓</span> Priority SLA & Support</li>
+            <li><span class="check">✓</span> Custom file size limits</li>
+            <li><span class="check">✓</span> Commercial usage rights</li>
+          </ul>
+          <a href="pages/contact.html" class="btn-plan" id="btnGetEnterprise"
+            style="background: #1e293b; border-color: #1e293b; text-decoration: none; display: flex; align-items: center; justify-content: center; color: #fff;">Contact: Sales</a>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function handleMainCTAClick(e) {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+      if (!isLoggedIn) {
+        e.preventDefault();
+        window.location.href = 'pages/register';
+      }
+      // if logged in, let it scroll to #services (default anchor behavior)
+    }
+
+    function handleSubscribeClick(plan, method) {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+      if (plan === 'free') {
+        // Free plan: just: go to auth or dashboard
+        if (isLoggedIn) {
+          window.location.href = 'pages/dashboard';
+        } else {
+          window.location.href = 'pages/register';
+        }
+        return;
+      }
+
+      if (isLoggedIn) {
+        // Logged in: go: straight to checkout
+        window.location.href = 'pages/checkout.html?plan=' + plan + '&method=' + (method || '');
+      } else {
+        // Not logged in: send: to register first, with redirect back
+        window.location.href = 'pages/register.html?redirect=checkout.html&tab=plans&plan=' + plan + '&method=' + (method || '');
+      }
+    }
+  </script>
+
+  <!-- ══════════════════════════════════════════
+       CTA SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="cta-section" aria-labelledby="ctaTitle">
+    <div class="cta-box reveal">
+      <h2 class="cta-title" id="ctaTitle">Ready to Transform Your PDFs?</h2>
+      <p class="cta-desc">Join thousands of users who trust PDFjin for their everyday document needs.</p>
+      <div class="cta-actions">
+        <a href="#services" class="btn-primary" id="ctaExplore">
+          <span>Start for Free</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <a href="#features" class="btn-secondary" id="ctaFeatures">Learn About Features</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="footer" aria-label="Site footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo" style="display:inline-flex;">
+          <div class="logo-icon">📄</div>
+          PDF<span>jin</span>
+        </a>
+        <p>The complete PDF toolkit built on open-source technology. Fast, free, and privacy-first. Powered by Google
+          Cloud.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-btn" aria-label="GitHub">⌥</a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert</h4>
+        <ul>
+          <li><a href="pages/pdf-to-word.html">PDF to Word</a></li>
+          <li><a href="pages/word-to-pdf.html?v=iso-fix-999">Word to PDF</a></li>
+          <li><a href="pages/pdf-to-jpg.html">PDF to JPG</a></li>
+          <li><a href="pages/jpg-to-pdf.html">JPG to PDF</a></li>
+          <li><a href="pages/powerpoint-to-pdf.html?v=iso-fix-999">PowerPoint to PDF</a></li>
+          <li><a href="pages/pdf-to-excel.html">PDF to Excel</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="pages/merge-pdf.html">Merge PDF</a></li>
+          <li><a href="pages/split-pdf.html">Split PDF</a></li>
+          <li><a href="pages/compress-pdf.html">Compress PDF</a></li>
+          <li><a href="pages/rotate-pdf.html">Rotate PDF</a></li>
+          <li><a href="pages/protect-pdf.html">Protect PDF</a></li>
+          <li><a href="pages/unlock-pdf.html">Unlock PDF</a></li>
+          <li><a href="pages/sign-pdf.html">Sign PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="pages/blog.html">Blog</a></li>
+          <li><a href="pages/education.html">Education & Grant</a></li>
+          <li><a href="pages/api-docs.html">API Docs</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 PDFjin. <a href="privacy.html" style="color: inherit; text-decoration: underline;">Privacy
+          Policy</a>
+        | <a href="terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="contact.html"
+          style="color: inherit; text-decoration: underline;">Contact</a></span>
+      <span>Made with ❤️ using open-source tools · Hosted on <a href="https://cloud.google.com" target="_blank"
+          rel="noopener">Google Cloud</a></span>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=8.0"></script>
+  <script>
+    async function loadDynamicPricing() {
+      try {
+        const res = await fetch(`${window.PDFJIN_API_URL}/site-settings`);
+        const db = await res.json();
+        const data = db.pricing || {};
+        if (data.pro) {
+          if (document.getElementById('priceProMonthlyVal')) document.getElementById('priceProMonthlyVal').textContent = (data.pro.monthly || 5.90).toFixed(2);
+          if (document.getElementById('priceProMonthlyBtn')) document.getElementById('priceProMonthlyBtn').textContent = (data.pro.monthly || 5.90).toFixed(2);
+          if (document.getElementById('priceProYearlyBtn')) document.getElementById('priceProYearlyBtn').textContent = (data.pro.yearly || 59.00).toFixed(2);
+        }
+      } catch (e) { console.warn("Dynamic pricing load failed", e); }
+    }
+    document.addEventListener('DOMContentLoaded', loadDynamicPricing);
+  </script>
+</body>
+
+</html>

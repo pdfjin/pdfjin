@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to build flashcards from textbook PDF chapters using smart AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-build-flashcards-from-textbook-pdf-chapters-using-smart-ai-guide.html" />
+    <meta name="description" content="Learn all about How to build flashcards from textbook PDF chapters using smart AI. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to build flashcards from textbook PDF chapters using smart AI | PDFjin" />
+    <meta property="og:description" content="Learn all about How to build flashcards from textbook PDF chapters using smart AI. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/blog-merge.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-build-flashcards-from-textbook-pdf-chapters-using-smart-ai-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to build flashcards from textbook PDF chapters using smart AI | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to build flashcards from textbook PDF chapters using smart AI. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/blog-merge.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to build flashcards from textbook PDF chapters using smart AI",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://pdfjin.com/assets/blog/blog-merge.png",
+  "datePublished": "2026-07-01",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-build-flashcards-from-textbook-pdf-chapters-using-smart-ai-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to build flashcards from textbook PDF chapters using smart AI</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Jul 01, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/blog-merge.png" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Master Your Textbooks Create Flashcards with Smart AI</h2>
+<p>Studying from dense textbook PDF chapters often feels like a daunting task. You highlight, you annotate, but how much information truly sticks? Many students swear by flashcards. They boost active recall, a scientifically proven method for stronger memory retention. Yet, creating effective flashcards manually, especially from lengthy PDF documents, demands significant time and effort. You might spend hours just transcribing definitions and concepts, leaving less time for actual studying. Imagine a world where smart AI takes on this tedious job, allowing you to focus purely on learning. That world is here. This guide shows you how to transform your textbook PDFs into powerful, AI-generated flashcards, revolutionizing your study routine.</p>
+
+<h2>The AI Advantage for Flashcards and Learning</h2>
+<p>Traditional flashcard creation is a bottleneck. You read, identify key terms, formulate questions, and write answers. This process is repetitive and prone to missing crucial details. Smart AI tools change the game. They can parse through complex academic language in your PDF chapters, identify core concepts, definitions, and relationships, then generate structured flashcards automatically. This isn't just about speed; it's about accuracy and comprehensive coverage. AI doesn't get bored or overlook a subtle but important paragraph. It meticulously <a href="https://pdfjin.com/pages/ai-pdf-extraction.html" style="text-decoration: underline;">extracts key information from PDF textbooks</a>, ensuring no vital detail escapes your study deck. Furthermore, AI can help you understand the context, making your flashcards more effective for deeper learning, not just rote memorization.</p>
+
+<h2>Step 1 Upload Your Textbook PDF Chapter</h2>
+<p>The journey begins with your digital textbook. Most modern textbooks are available as PDF files, or you can easily convert physical books to PDFs using a scanner. Once you have your chapter ready, navigate to a smart AI PDF tool like PDFjin. The process is straightforward: simply drag and drop your PDF file onto the designated upload area, or select it from your computer. Ensure you upload only the specific chapter or section you wish to convert into flashcards. This keeps the AI focused and ensures the generated flashcards are relevant to your current study objective. The interface is designed for simplicity, making it accessible even for first-time users. You don't need any special technical skills to get started.</p>
+
+<h2>Step 2 Let AI Extract Key Concepts</h2>
+<p>After uploading, the smart AI takes over. It employs advanced natural language processing (NLP) to read and understand the content of your PDF. The AI scans for definitions, key terms, important formulas, historical dates, significant figures, and core principles. It identifies the relationships between these elements to formulate meaningful questions and accurate answers, perfect for flashcards. This intelligent analysis goes beyond simple keyword spotting. It comprehends the semantic meaning, ensuring that the flashcards are not just random snippets but coherent pieces of information designed for effective learning. You might be prompted to select specific types of information you want to prioritize, or the AI might suggest categories based on the document's content. This step is where the magic of automated content generation truly shines, significantly cutting down your preparation time.</p>
+
+<h2>Step 3 Review and Customize Your Flashcards</h2>
+<p>Once the AI generates the initial set of flashcards, they are presented to you for review. This is a critical step. While AI is powerful, your human insight is invaluable. You can go through each flashcard, checking for accuracy, clarity, and relevance. Perhaps you want to rephrase a question to better suit your learning style, or add a specific example from your lecture notes. Most smart AI platforms allow you to edit, delete, or add new flashcards directly within the interface. You can also categorize them, add tags, or even link them to specific sections of your original PDF. This customization ensures that the flashcards are perfectly tailored to your individual study needs, making them a truly personalized and potent study aid. You remain in control, fine-tuning the AI's output for optimal results.</p>
+
+<h2>Step 4 Integrate and Study Smarter</h2>
+<p>With your customized flashcards ready, it’s time to integrate them into your study routine. Many AI tools offer export options, allowing you to download your flashcards in formats compatible with popular spaced repetition software like Anki, Quizlet, or even as printable PDFs. This flexibility means you can study anywhere, anytime, on any device. Spaced repetition algorithms, when combined with AI-generated content, create a highly efficient learning loop. The system learns which concepts you struggle with and presents them more frequently, reinforcing your memory where it's weakest. By leveraging these tools, you move beyond passive reading to active recall, leading to deeper understanding and improved retention. This method fundamentally transforms how you approach exam preparation, making it less stressful and more productive.</p>
+
+<h2>Security and Peace of Mind</h2>
+<p>When you upload sensitive academic material, data security is a natural concern. Reputable AI PDF tools prioritize your privacy and data protection. They employ robust encryption protocols to secure your files during upload, processing, and storage. Your documents are typically processed on secure servers and are not shared or used for training purposes without your explicit consent. After processing, you often have the option to delete your files from their servers, ensuring no lasting digital footprint. Always check the privacy policy of any service you use. With PDFjin, you can trust that your academic materials are handled with the utmost confidentiality and security, giving you peace of mind while you focus on your studies.</p>
+
+<h2>Legal Note</h2>
+<p>Remember to respect copyright laws. The textbooks you use are often protected intellectual property. While generating flashcards for personal study is generally considered fair use in an academic context, distributing or sharing these AI-generated flashcards derived from copyrighted material without permission may infringe upon copyright. Always ensure your use complies with academic integrity policies and legal guidelines.</p>
+
+<h2>Pro Tips for Flashcard Success</h2>
+<ul>
+    <li><strong>Focus on Concepts, Not Just Facts:</strong> Encourage the AI (or manually edit) to create flashcards that test your understanding of concepts and relationships, not just isolated facts.</li>
+    <li><strong>Mix Question Types:</strong> Include definition, explanation, comparison, and application-based questions for a well-rounded understanding.</li>
+    <li><strong>Use Visuals:</strong> If your textbook PDF has diagrams or images, consider integrating them into your flashcards where relevant for visual learners.</li>
+    <li><strong>Regular Review:</strong> Consistency is key. Integrate daily flashcard review sessions into your schedule. Spaced repetition software is excellent for this.</li>
+    <li><strong>Collaborate Smartly:</strong> While generating flashcards individually is powerful, you can share and discuss AI-generated flashcards with study groups for mutual benefit, ensuring adherence to copyright.</li>
+    <li><strong>Don't Overload Cards:</strong> Keep each flashcard concise, focusing on one main piece of information per card to maximize recall efficiency.</li>
+    <li><strong>Leverage Other AI Tools:</strong> Beyond flashcards, consider how AI can further <a href="https://pdfjin.com/pages/ai-pdf-study.html" style="text-decoration: underline;">enhance your learning journey with AI-powered study tools</a> like summarization or Q&A features directly from your PDFs.</li>
+</ul>
+
+<h2>Unlock Your Study Potential Today</h2>
+<p>The days of laborious manual flashcard creation are over. Smart AI offers a powerful, efficient, and intelligent way to extract key information from your textbook PDF chapters and transform it into highly effective study tools. You save precious time, reduce mental fatigue, and gain a more comprehensive understanding of your course material. By embracing AI, you're not just studying smarter; you're redefining your entire academic approach. Ready to experience this revolution in learning? Visit PDFjin today and try our free AI tools to convert your textbooks into flashcards and elevate your study game. Your path to academic success just got a whole lot easier.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="ai-driven-pdf-compression-to-shrink-file-size-without-losing-quality-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">AI driven PDF compression to shrink file size without losing quality</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="excel-to-pdf-preserving-formatting-during-conversion-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Excel to PDF - Preserving formatting during conversion</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-add-a-digital-signature-to-a-pdf-without-adobe-acrobat-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to add a digital signature to a PDF without Adobe Acrobat</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-create-a-fillable-pdf-form-from-scratch-for-free-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to create a fillable PDF form from scratch for free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="translate-business-report-pdf-accurately-using-context-aware-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Translate business report PDF accurately using context aware AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="free-privacy-first-pdf-summarizer-for-confidential-business-reports-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Free privacy first PDF summarizer for confidential business reports</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-free-ai-pdf-translator-for-official-international-documents-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best free AI PDF translator for official international documents</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-browser-extensions-for-managing-and-editing-pdf-files-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best browser extensions for managing and editing PDF files</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="convert-scanned-receipts-pdf-to-expense-reports-using-ai-parsing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Convert scanned receipts PDF to expense reports using AI parsing</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="top-5-ai-tools-for-chatting-with-lengthy-legal-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Top 5 AI tools for chatting with lengthy legal PDFs</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="PDFjin Academic Grant — Empowering students and educators with professional-grade AI PDF tools for free. Accelerate your research and studies." />
+    <title>Academic Grant & Student Discount | PDFjin</title>
+    
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dashboard-isolated.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+
+    <style>
+        :root {
+            --edu-primary: #1a1b2e;
+            --edu-accent: #6c63ff;
+            --edu-bg: #f8fafc;
+        }
+
+        .edu-hero {
+            padding: 140px 20px 80px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edu-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .edu-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--edu-accent);
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .edu-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--edu-primary);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .edu-subtitle {
+            font-size: 1.25rem;
+            color: #5c5f80;
+            max-width: 750px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .edu-cta-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-edu {
+            padding: 14px 36px;
+            border-radius: 99px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-edu-primary {
+            background: var(--edu-accent);
+            color: white;
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.25);
+        }
+
+        .btn-edu-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.35);
+        }
+
+        .btn-edu-outline {
+            background: white;
+            border: 2px solid var(--edu-accent);
+            color: var(--edu-accent);
+        }
+
+        .btn-edu-outline:hover {
+            background: var(--edu-accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 80px 20px;
+        }
+
+        .edu-card {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .edu-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--edu-accent);
+            box-shadow: 0 20px 40px rgba(108, 99, 255, 0.1);
+        }
+
+        .edu-card h3 {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            color: var(--edu-primary);
+            font-weight: 700;
+        }
+
+        .edu-card p {
+            color: #5c5f80;
+            line-height: 1.7;
+        }
+
+        .edu-offer-banner {
+            background: linear-gradient(135deg, #1a1b2e 0%, #0f172a 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 32px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .edu-offer-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fbbf24;
+            margin-bottom: 20px;
+        }
+
+        .edu-section {
+            padding: 100px 20px;
+            background: white;
+        }
+
+        .edu-step-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .edu-step-num {
+            width: 50px;
+            height: 50px;
+            background: var(--edu-accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 16px rgba(108, 99, 255, 0.2);
+        }
+    </style>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/education.html" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+                                        <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="edu-hero">
+        <div class="edu-container">
+            <span class="edu-badge">Empowering Education 2026</span>
+            <h1 class="edu-title">The PDFjin <br /><span class="gradient-text">Academic Grant</span></h1>
+            <p class="edu-subtitle">Accelerating research and simplifying studies for the global academic community. We provide professional-grade AI PDF tools to students and educators for free.</p>
+            <div class="edu-cta-group">
+                <a href="auth.html" class="btn-edu btn-edu-primary">Apply as a Student</a>
+                <a href="#admin-grant" class="btn-edu btn-edu-outline">University-Wide License</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="edu-container">
+        <div class="edu-offer-banner">
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 10px; font-weight: 700; color: #fbbf24;">Exclusive Offer</p>
+            <h2 class="edu-offer-title">Pro Plan for .edu users</h2>
+            <div class="edu-offer-price">$0.00 <span style="font-size: 1.2rem; color: #94a3b8;">/ year</span></div>
+            <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">Full access to Premium AI Studio, Unlimited tasks per day, OCR, and Podcast conversion. No credit card required — just verify your academic email.</p>
+        </div>
+    </div>
+
+    <section class="edu-grid edu-container">
+        <div class="edu-card">
+            <div class="edu-card-icon">🧠</div>
+            <h3>AI Research Assistant</h3>
+            <p>Summarize long journals, extract key data points, and cross-reference multiple PDFs using our semantic AI engine.</p>
+        </div>
+        <div class="edu-card">
+            <div class="edu-card-icon">🎧</div>
+            <h3>Audio Learning</h3>
+            <p>Convert your lecture notes and research papers into lifelike audio podcasts. Study on the go with our PDF to Audio tool.</p>
+        </div>
+        <div class="edu-card">
+            <div class="edu-card-icon">🔍</div>
+            <h3>Premium OCR</h3>
+            <p>Perfect for archive research. Digitize scanned books and historical documents into searchable, editable text instantly.</p>
+        </div>
+    </section>
+
+    <section class="edu-section" style="background: #f1f5f9;">
+        <div class="edu-container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 40px; font-weight: 800; font-family: 'Space Grotesk';">How to Claim Your Grant</h2>
+            <div class="edu-step-grid">
+                <div class="edu-step">
+                    <div class="edu-step-num">1</div>
+                    <h4 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 15px;">Register Account</h4>
+                    <p style="color: #5c5f80;">Sign up using your official university or school (.edu) email address.</p>
+                </div>
+                <div class="edu-step">
+                    <div class="edu-step-num">2</div>
+                    <h4 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 15px;">Verify Email</h4>
+                    <p style="color: #5c5f80;">Click the link in your inbox to confirm your academic status.</p>
+                </div>
+                <div class="edu-step">
+                    <div class="edu-step-num">3</div>
+                    <h4 style="font-weight: 700; font-size: 1.2rem; margin-bottom: 15px;">Auto-Upgrade</h4>
+                    <p style="color: #5c5f80;">Your account will be instantly upgraded to the Pro Plan for 12 months.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="edu-section" id="admin-grant">
+        <div class="edu-container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 800; font-family: 'Space Grotesk';">For University Administrators</h2>
+            <p style="color: #5c5f80; max-width: 700px; margin: 0 auto 40px; font-size: 1.15rem;">Looking to provide PDFjin Pro to your entire faculty or student body? We offer site-wide deployment for libraries, labs, and student unions at no cost for approved institutions.</p>
+            
+            <div style="background: white; padding: 40px; border-radius: 24px; border: 1px solid #e2e8f0; text-align: left; max-width: 650px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.03);">
+                <h4 style="margin-bottom: 20px; color: var(--edu-primary); font-weight: 700; font-size: 1.25rem;">Request Institution Partnership</h4>
+                <p style="font-size: 1rem; margin-bottom: 20px; color: #5c5f80;">Contact our Academic Relations team at <strong style="color: var(--edu-accent);">edu@pdfjin.com</strong> with your institution details.</p>
+                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; font-size: 0.95rem; border-left: 5px solid var(--edu-accent); color: #475569;">
+                    <strong>Tip:</strong> Linking to this grant from your university's "Software Resources" or "Library Tools" page helps prioritize your application.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+                                        <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+</body>
+
+</html>

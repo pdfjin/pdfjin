@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | Excel to PDF: Preserving formatting during conversion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/excel-to-pdf-preserving-formatting-during-conversion-guide.html" />
+    <meta name="description" content="Learn all about Excel to PDF: Preserving formatting during conversion. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Excel to PDF: Preserving formatting during conversion | PDFjin" />
+    <meta property="og:description" content="Learn all about Excel to PDF: Preserving formatting during conversion. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/ai-audio-overview-podcast.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/excel-to-pdf-preserving-formatting-during-conversion-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Excel to PDF: Preserving formatting during conversion | PDFjin" />
+    <meta name="twitter:description" content="Learn all about Excel to PDF: Preserving formatting during conversion. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/ai-audio-overview-podcast.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Excel to PDF: Preserving formatting during conversion",
+  "description": "Learn all about Excel to PDF: Preserving formatting during conversion. A comprehensive guide by PDFjin.",
+  "image": "https://pdfjin.com/assets/blog/ai-audio-overview-podcast.png",
+  "datePublished": "2026-05-30",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/excel-to-pdf-preserving-formatting-during-conversion-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>Excel to PDF - Preserving formatting during conversion</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>May 30, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/ai-audio-overview-podcast.png" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Stop the Squish - How to Convert Excel to PDF Without Ruining Your Formatting</h2>
+
+<p>You spent three hours building the perfect spreadsheet. Your color palette looks professional. Your formulas calculate flawlessly. The charts align perfectly with your data tables. It is a masterpiece of data design. You click export, open the new PDF, and your heart sinks. Your beautiful dashboard now spans five disconnected pages. Columns cut off halfway. Charts float on empty white backgrounds. Key numbers have turned into ugly sequences of hashtags.</p>
+
+<p>This is a common frustration for professionals everywhere. Excel files are dynamic and flexible. PDFs are static and rigid. Bridging the gap between the two formats requires care. If you do not prepare your file, the conversion software will make guesses for you. Usually, those guesses ruin your hard work. Fortunately, you can master the art of the perfect conversion. With a few simple tweaks, you can keep your layout completely intact.</p>
+
+<p>In this guide, you will learn why formatting breaks. We will cover the best ways to prepare your spreadsheet. Finally, we will show you how to use professional tools to get clean, presentation-ready files every single time.</p>
+
+<h3>The Real Reason Your Excel Layout Breaks</h3>
+
+<p>Excel operates on an infinite digital canvas. You can scroll endlessly to the right or downward. There are no physical edges to stop you. PDF files, however, mimic physical paper. They must fit standard sizes like Letter, Legal, or A4. When you convert a file, the conversion engine must draw hard boundaries. It slices your continuous grid into rectangular pages.</p>
+
+<p>If your columns are even a millimeter too wide for the target page, Excel pushes them to the next sheet. This creates the dreaded "overflow page" phenomenon. Suddenly, a reader has to flip back and forth just to match a row with its final data points. Text wrapping can also fail. Fonts render differently in PDF viewers than they do in active spreadsheet cells. A label that looked snug in Excel might overlap or clip when converted.</p>
+
+<h3>Pre-Conversion Steps - Setting Up Your Spreadsheet</h3>
+
+<p>Do not rely on default settings. Take control of your layout before you trigger the conversion. These preparatory steps guarantee that your data fits the page beautifully.</p>
+
+<ul>
+    <li><strong>Define the Print Area:</strong> Excel does not know which cells are important. If you have stray calculations off to the side, it will try to include them. Highlight your core table, go to the <em>Page Layout</em> tab, and click <em>Print Area &gt; Set Print Area</em>. This tells the system to ignore everything else.</li>
+    <li><strong>Switch to Page Layout View:</strong> Most people work in the default Normal view. Click the <em>View</em> tab and select <em>Page Layout</em>. This shows you exactly how your data maps to physical pages. You will instantly see which columns are spilling over.</li>
+    <li><strong>Choose Landscape Orientation:</strong> Spreadsheets naturally grow horizontally. Standard vertical portrait pages rarely fit extensive data tables. Switch your page orientation to Landscape under the <em>Page Layout</em> menu to give your columns breathing room.</li>
+    <li><strong>Set Margin Boundaries:</strong> Narrow margins give you more space for your data. Change your margin preset to "Narrow" (0.25 inches) to maximize your printable area.</li>
+</ul>
+
+<h3>The Secret Weapon - Page Scaling</h3>
+
+<p>If you only remember one tip from this guide, make it this one: use page scaling. Excel allows you to force your data to fit a specific width. In the <em>Page Layout</em> tab, look for the <em>Scale to Fit</em> group.</p>
+
+<p>Change the width from "Automatic" to "1 Page". Leave the height set to "Automatic". This configuration forces Excel to shrink your columns just enough to fit a single page wide. If your sheet has hundreds of rows, it will still flow naturally down to page two and three. This prevents your columns from splitting horizontally while keeping the font readable.</p>
+
+<p>Avoid setting both width and height to "1 Page" unless you have a small dashboard. If you force a giant sheet onto a single page, the text will shrink to microscopic sizes. Your readers will need a magnifying glass to see your hard work.</p>
+
+<h3>Preserving Fonts and Gridlines</h3>
+
+<p>Visual style matters. If your table relies on gridlines for readability, make sure they carry over. By default, Excel gridlines do not print or export. To fix this, look at the <em>Sheet Options</em> section of the <em>Page Layout</em> tab. Check the "Print" box under "Gridlines." Your PDF will now feature the clean, subtle borders of your original grid.</p>
+
+<p>Font choice also affects your conversion success. Standard system fonts like Calibri, Arial, and Segoe UI translate perfectly. If you use custom, downloaded fonts, the PDF converter might not recognize them. When this happens, the converter substitutes a generic font. This substitution can alter text widths, ruin your spacing, and mess up your alignment. Stick to universal fonts for business documents.</p>
+
+<h3>Convert Your File Safely and Accurately</h3>
+
+<p>Once your layout is perfect, you need a high-quality converter. Basic built-in options often struggle with complex formulas, hidden rows, and embedded charts. They can compress your images too much, leaving your company logo looking blurry and pixelated.</p>
+
+<p>Using a dedicated online converter guarantees a clean, crisp output. For the best results, you can <a href="https://pdfjin.com/pages/excel-to-pdf.html" style="text-decoration: underline;">convert Excel to PDF with perfect formatting</a> using specialized cloud tools. These platforms preserve your precise color schemes, match your margins, and keep your vector charts sharp at any zoom level. Best of all, they save you from dealing with clumsy printer driver configurations on your local machine.</p>
+
+<h3>Handling the Reverse Process</h3>
+
+<p>Workflow demands can change rapidly. Sometimes, you receive a perfectly formatted PDF report, but you need to manipulate the underlying numbers. Retyping values manually is tedious and introduces errors. You need a way to go backward without losing the structural organization of your tables.</p>
+
+<p>Just as you need a reliable way to create PDFs, you also need a smart tool to extract data. You can easily <a href="https://pdfjin.com/pages/pdf-to-excel.html" style="text-decoration: underline;">convert PDF back to editable Excel spreadsheets</a> when you need to run calculations, merge sheets, or perform data audits. High-quality extraction tools identify cell structures and recreate them perfectly in your new Excel grid. This keeps your workflows smooth, fast, and entirely digital.</p>
+
+<h3>Streamline Your Document Workflows</h3>
+
+<p>Presenting clean data builds trust with your clients, stakeholders, and team members. A messy PDF suggests careless work. A crisp, perfectly aligned document shows professionalism and attention to detail. Do not let default settings ruin your hard work.</p>
+
+<p>Are you ready to stop struggling with broken margins and distorted columns? Take control of your business documents today. Use PDFjin's free online suite to convert, merge, compress, and edit your files with absolute precision. Try PDFjin's fast, secure, and intuitive tools right now to elevate your daily document workflow!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-turn-employee-handbook-pdf-into-interactive-questions-quickly-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to turn employee handbook PDF into interactive questions quickly</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="translate-scanned-foreign-language-pdf-while-preserving-original-layout-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Translate scanned foreign language PDF while preserving original layout</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-free-ai-pdf-translator-for-official-international-documents-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best free AI PDF translator for official international documents</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-browser-extensions-for-managing-and-editing-pdf-files-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best browser extensions for managing and editing PDF files</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-safely-compress-pdf-files-for-email-without-losing-quality-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to safely compress PDF files for email without losing quality</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="extract-clauses-from-legal-contract-pdf-using-ai-automation-tools-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Extract clauses from legal contract PDF using AI automation tools</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="convert-scanned-receipts-pdf-to-expense-reports-using-ai-parsing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Convert scanned receipts PDF to expense reports using AI parsing</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-create-a-fillable-pdf-form-from-scratch-for-free-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to create a fillable PDF form from scratch for free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="top-5-free-ways-to-edit-pdf-text-online-in-2026-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Top 5 free ways to edit PDF text online in 2026</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-free-ways-to-convert-excel-spreadsheets-to-pdf-online-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best free ways to convert Excel spreadsheets to PDF online</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

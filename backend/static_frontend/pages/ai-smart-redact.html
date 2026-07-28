@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Smart Redact PDF - Auto Redaction Tool by Pdfjin</title>
+
+    <!-- PDF.js for rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tool-page.css">
+
+    <style>
+        :root {
+            --redact-primary: #ff3b30;
+            --redact-primary-hover: #e02b20;
+            --redact-bg: #f8fafc;
+            --sidebar-width: 360px;
+        }
+
+        .redact-workspace-grid {
+            display: grid;
+            grid-template-columns: var(--sidebar-width) 1fr;
+            gap: 24px;
+            margin-top: 20px;
+            align-items: start;
+            width: 100%;
+        }
+
+        @media (max-width: 992px) {
+            .redact-workspace-grid {
+                grid-template-columns: 1fr;
+            }
+            .redact-sidebar {
+                position: static !important;
+                max-height: none !important;
+            }
+        }
+
+        /* Premium Sidebar Panel */
+        .redact-sidebar {
+            background: white;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            padding: 24px;
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 140px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-section {
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 18px;
+        }
+
+        .sidebar-section:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .sidebar-section h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .sidebar-help {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        /* Action Buttons */
+        .btn-action-redact {
+            width: 100%;
+            background: linear-gradient(135deg, var(--redact-primary), #ff2d55);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(255, 59, 48, 0.3);
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-action-redact:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 59, 48, 0.4);
+            filter: brightness(1.05);
+        }
+
+        .btn-action-redact:disabled {
+            background: #cbd5e1;
+            box-shadow: none;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Manual Search Group */
+        .search-input-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .search-input-group input {
+            flex-grow: 1;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .search-input-group input:focus {
+            border-color: var(--redact-primary);
+        }
+
+        .btn-sidebar-icon {
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-sidebar-icon:hover {
+            background: #1e293b;
+        }
+
+        /* Config Forms */
+        .select-group {
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .select-group label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .select-redact {
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 0.85rem;
+            background: #f8fafc;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .sidebar-actions-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .btn-sidebar-secondary {
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            background: white;
+            color: #334155;
+            padding: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-sidebar-secondary:hover {
+            background: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .btn-sidebar-secondary.active {
+            background: #ff3b30;
+            color: white;
+            border-color: #ff3b30;
+        }
+
+        .btn-danger:hover {
+            background: #fef2f2;
+            color: #991b1b;
+            border-color: #fca5a5;
+        }
+
+        .btn-link-action {
+            background: none;
+            border: none;
+            color: var(--redact-primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .btn-link-action:hover {
+            text-decoration: underline;
+        }
+
+        /* Loading / Progress CSS */
+        .progress-bar-bg {
+            background: #e2e8f0;
+            border-radius: 6px;
+            height: 8px;
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 6px;
+        }
+
+        .progress-bar-fill {
+            background: var(--redact-primary);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-bar-text {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-align: center;
+        }
+
+        /* Scrollable Results sidebar block */
+        .scrollable-list-section {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .pii-results-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Permanent bake button styling */
+        .btn-redact-primary {
+            width: 100%;
+            background: #0f172a;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-redact-primary:hover {
+            background: #1e293b;
+            transform: translateY(-1px);
+        }
+
+        /* PDF Render workspace layout */
+        .redact-viewport {
+            background: #f1f5f9;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+            padding: 30px 10px;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: auto;
+        }
+
+        .pages-view {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Translucent redaction marks previews */
+        .redaction-mark {
+            position: absolute;
+            z-index: 12;
+            cursor: pointer;
+        }
+
+        .redaction-mark:hover {
+            background-color: rgba(255, 59, 48, 0.4) !important;
+            box-shadow: 0 0 12px rgba(255, 59, 48, 0.6) !important;
+        }
+
+        .redact-badge {
+            transition: opacity 0.2s;
+        }
+
+        .redaction-mark:hover .redact-badge {
+            opacity: 1;
+        }
+
+        /* Utility classes */
+        .spinner {
+            display: inline-block;
+            animation: spin 2s infinite linear;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .is-logged-in .guest-only {
+            display: none;
+        }
+
+        .user-only {
+            display: none;
+        }
+
+        .is-logged-in .user-only {
+            display: block;
+        }
+    </style>
+    <link rel="canonical" href="https://pdfjin.com/pages/ai-smart-redact.html" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <meta name="description" content="Automatically black out and redact sensitive personal information, credit cards, emails and SSN from PDF documents safely using artificial intelligence." />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI PDF Redaction Online - Auto Redact Sensitive PII",
+  "description": "Automatically black out and redact sensitive personal information, credit cards, emails and SSN from PDF documents safely using artificial intelligence.",
+  "url": "https://pdfjin.com/pages/ai-smart-redact.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="single-file-mode">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="tool-container">
+        <div class="section-inner" style="max-width: 1240px; padding: 0 15px;">
+            <div class="tool-card shadow-lg" style="max-width: 100%; width: 100%; border-radius: 24px; padding: 24px;">
+                <div style="text-align: left; margin-bottom: 15px;">
+                    <a href="dashboard.html" class="back-link" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s;">
+                        &larr; Back to Dashboard
+                    </a>
+                </div>
+                
+                <div class="tool-header" style="border-bottom: none; padding-bottom: 1.5rem;">
+                    <div class="tool-icon-large" style="background: rgba(255, 59, 48, 0.08); border-color: rgba(255, 59, 48, 0.2); box-shadow: 0 8px 24px rgba(255, 59, 48, 0.15); color: #ff3b30;">🛡️</div>
+                    <h1 class="tool-title">AI Smart Redact</h1>
+                    <p class="tool-subtitle">Protect privacy by automatically masking full names, emails, card details, phone numbers, and SSNs inside your PDF.</p>
+                </div>
+
+                <div class="upload-area" style="padding: 2rem 0;">
+                    <!-- Drop Zone View -->
+                    <div>
+                        <div class="drop-zone" id="dropZone">
+                            <span class="drop-zone-icon" style="color: #ff3b30;">🛡️</span>
+                            <p class="drop-zone-text">Upload PDF to Smart Redact</p>
+                            <p class="drop-zone-hint">Local & Cloud AI scanning secure framework (up to 50MB)</p>
+                            <input type="file" id="fileInput" class="file-input" accept="application/pdf" />
+                        </div>
+                    </div>
+
+                    <!-- Opening status -->
+                    <div id="loadingStatus" style="display: none; padding: 20px; font-weight: 600;">
+                        <span class="spinner">⏳</span> Opening document...
+                    </div>
+
+                    <!-- Editor UI -->
+                    <div id="editorUI" class="editor-container" style="display: none;">
+                        <div class="redact-workspace-grid">
+                            
+                            <!-- Sidebar controller -->
+                            <aside class="redact-sidebar">
+                                
+                                <div class="sidebar-section">
+                                    <h3>🛡️ AI Redaction Center</h3>
+                                    <p class="sidebar-help">Scans through text patterns and deploys ML model nodes to capture contextual sensitive entities.</p>
+                                    <button class="btn-action-redact" id="aiScanBtn">
+                                        🛡️ Run AI Deep Scan
+                                    </button>
+                                    
+                                    <div id="scanProgressContainer" style="display: none; margin-top: 15px;">
+                                        <div class="progress-bar-bg">
+                                            <div class="progress-bar-fill" id="scanProgressBar" style="width: 0%;"></div>
+                                        </div>
+                                        <div class="progress-bar-text" id="scanStatusText">Connecting...</div>
+                                    </div>
+                                </div>
+
+                                <div class="sidebar-section">
+                                    <h3>🔍 Search & Redact Matches</h3>
+                                    <p class="sidebar-help">Enter manual target phrases (e.g. key figures, names) to redact all instances instantly.</p>
+                                    <div class="search-input-group">
+                                        <input type="text" id="manualSearchInput" placeholder="Keyword or pattern..." />
+                                        <button id="manualSearchBtn" class="btn-sidebar-icon">Redact</button>
+                                    </div>
+                                </div>
+
+                                <div class="sidebar-section">
+                                    <h3>🎨 Redaction Settings</h3>
+                                    <div class="select-group">
+                                        <label for="redactColor">Bake Color</label>
+                                        <select id="redactColor" class="select-redact">
+                                            <option value="#000000">Solid Black (⬛ Legal Redact)</option>
+                                            <option value="#ffffff">Solid White (⬜ Clean Whiteout)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="sidebar-actions-row">
+                                        <button id="drawModeBtn" class="btn-sidebar-secondary">⬜ Draw Custom Box</button>
+                                        <button id="clearAllBtn" class="btn-sidebar-secondary btn-danger">Clear All</button>
+                                    </div>
+                                </div>
+
+                                <div class="sidebar-section scrollable-list-section">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                                        <h3 style="margin-bottom:0;">📋 Sensitive Entities</h3>
+                                        <button id="selectAllBtn" class="btn-link-action">Scan / Add All</button>
+                                    </div>
+                                    <div class="pii-results-list" id="piiResultsList">
+                                        <!-- Loaded dynamically -->
+                                    </div>
+                                </div>
+
+                                <div class="sidebar-footer" style="margin-top: auto; padding-top: 15px; border-top: 1px solid #f1f5f9;">
+                                    <button class="btn-redact-primary" id="executeBtn">
+                                        Redact & Download PDF &rarr;
+                                    </button>
+                                </div>
+
+                            </aside>
+
+                            <!-- Viewport rendered canvas -->
+                            <main class="redact-viewport">
+                                <div id="pageContainer" class="pages-view">
+                                    <!-- Pages rendered here -->
+                                </div>
+                            </main>
+
+                        </div>
+                    </div>
+
+                    <div class="file-list" id="fileList" style="display: none;"></div>
+                </div>
+
+                <!-- Tool Description Area -->
+                <div class="tool-seo-section">
+                    <h2>Smart AI Auto-Redaction of Sensitive PII in PDFs</h2>
+                    <p>Protect digital privacy and comply with data security regulations by automatically redacting sensitive information inside your PDFs with PDFjin's AI Smart Redact. Using advanced machine learning, our tool scans your documents to automatically identify, highlight, and black out personally identifiable information (PII) such as full names, email addresses, phone numbers, credit card details, national IDs, and financial records. This eliminates the risk of human error or manual oversight in legal contracts and medical files. Running securely in your web browser, our tool requires no registration, signup, or software installation. All processing is executed on encrypted cloud nodes and documents are permanently deleted from our servers immediately after download. Redact your documents with speed and complete peace of mind today using PDFjin.</p>
+                </div>
+
+            </div>
+        </div>
+    
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        What types of sensitive information can the AI automatically redact?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>The AI is pre-trained to identify and redact Personally Identifiable Information (PII) including Social Security Numbers, credit card details, phone numbers, email addresses, and proper names.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Does it just draw a black box over the text?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Unlike superficial tools that just cover text (which can be removed), our Smart Redact permanently sanitizes the document by removing the underlying text layer before applying the blackout box.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can I specify custom terms to be redacted?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, in addition to the automatic AI pattern recognition for PII, you can input specific keywords, project names, or company phrases that you want scrubbed from the document.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/ai-smart-redact.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Ai Smart Redact &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What types of sensitive information can the AI automatically redact?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The AI is pre-trained to identify and redact Personally Identifiable Information (PII) including Social Security Numbers, credit card details, phone numbers, email addresses, and proper names."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it just draw a black box over the text?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Unlike superficial tools that just cover text (which can be removed), our Smart Redact permanently sanitizes the document by removing the underlying text layer before applying the blackout box."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I specify custom terms to be redacted?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, in addition to the automatic AI pattern recognition for PII, you can input specific keywords, project names, or company phrases that you want scrubbed from the document."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+    <script src="../js/core/tasks.js?v=3.1"></script>
+    <script src="../js/ai-smart-redact.js?v=1.0"></script>
+</body>
+
+</html>

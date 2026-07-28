@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation  PDFjin Developer Platform</title>
+
+    <!-- Professional Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/api-docs.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tool-page.css">
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/api-docs.html" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Persistent Navbar -->
+                                                                                                        <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="docs-overlay" id="docsOverlay"></div>
+    <div class="docs-wrapper">
+        <!-- Mobile Docs Toggle -->
+        <button class="mobile-docs-btn" id="mobileDocsToggle" aria-label="Toggle Documentation Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <span>Menu</span>
+        </button>
+
+        <!-- Documentation Sidebar -->
+        <aside class="docs-sidebar" id="docsSidebar">
+            <div class="sidebar-nav-group">
+                <h3>Getting Started</h3>
+                                                                                                                <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+            </div>
+
+            <div class="sidebar-nav-group">
+                <h3>Endpoints</h3>
+                                                                                                                <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+            </div>
+
+            <div class="sidebar-nav-group">
+                <h3>Guides</h3>
+                                                                                                                <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="docs-content">
+            <section id="introduction" class="docs-section">
+                <h1>Professional PDF Automation. <span style="color: var(--doc-primary);">Zero Complexity.</span></h1>
+                <p>
+                    Integrate the world's most versatile PDF toolkit directly into your application. Instead of managing
+                    dozens of different libraries,
+                    use one single universal endpoint to process, convert, and use AI on your documents.
+                </p>
+
+                <div class="endpoint-url">
+                    <span class="method-tag method-get">POST</span> https://pdfjin-api.run.app/{tool_name}
+                </div>
+            </section>
+
+            <section id="authentication" class="docs-section">
+                <h2>Authentication</h2>
+                <p>All API requests must include your secret API key in the <code>X-API-Key</code> HTTP header. You can
+                    find your API key in the <a href="dashboard.html">User Dashboard</a> under the Developer tab.</p>
+                <div class="code-container" style="box-shadow: none; border: 1px solid var(--doc-border);">
+                    <div class="code-block">
+                        <pre><code>headers = {
+    "X-API-Key": "pj_live_xxxxxxxxxxxx",
+    "Content-Type": "application/json"
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="universal-request" class="docs-section">
+                <h2>Universal Implementation</h2>
+                <p>One function for all 30+ tools. Simply change the <code>tool_name</code> variable to switch between
+                    merging, splitting, OCR, or AI rewriting.</p>
+
+                <div class="code-container">
+                    <div class="code-tabs">
+                        <div class="tab-link active" onclick="switchTab(event, 'py-snippet')">Python</div>
+                        <div class="tab-link" onclick="switchTab(event, 'js-snippet')">Node.js</div>
+                        <div class="tab-link" onclick="switchTab(event, 'curl-snippet')">cURL</div>
+                    </div>
+
+                    <div id="py-snippet" class="tab-content-code active">
+                        <div class="code-block">
+                            <pre><code>import requests
+
+def pdfjin_process(tool, file_path, api_key, **params):
+    url = f"https://pdfjin-api.run.app/{tool}"
+    headers = {"X-API-Key": api_key}
+    files = {"files": open(file_path, "rb")}
+    
+    response = requests.post(url, headers=headers, files=files, data=params)
+    
+    if response.status_code == 200:
+        with open("result.pdf", "wb") as f:
+            f.write(response.content)
+        return True
+    return False
+
+# Usage Example
+pdfjin_process("pdf-to-word", "invoice.pdf", "YOUR_API_KEY")</code></pre>
+                        </div>
+                    </div>
+
+                    <div id="js-snippet" class="tab-content-code">
+                        <div class="code-block">
+                            <pre><code>const axios = require('axios');
+const fs = require('fs');
+const FormData = require('form-data');
+
+async function processPDF(tool, filePath, apiKey) {
+    const form = new FormData();
+    form.append('files', fs.createReadStream(filePath));
+
+    const response = await axios.post(`https://pdfjin-api.run.app/${tool}`, form, {
+        headers: { ...form.getHeaders(), 'X-API-Key': apiKey },
+        responseType: 'arraybuffer'
+    });
+
+    fs.writeFileSync('result.pdf', response.data);
+}</code></pre>
+                        </div>
+                    </div>
+
+                    <div id="curl-snippet" class="tab-content-code">
+                        <div class="code-block">
+                            <pre><code>curl -X POST "https://pdfjin-api.run.app/merge-pdf" \
+     -H "X-API-Key: YOUR_API_KEY" \
+     -F "files=@document.pdf" \
+     --output result.pdf</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="endpoints" class="docs-section">
+                <h2>Endpoint Reference</h2>
+                <p>Replace <code>{tool_name}</code> in your request with any of the identifiers below.</p>
+
+                <h3 id="standard-tools" style="margin-top: 2rem; font-size: 1rem; color: var(--doc-muted);">STANDARD
+                    TOOLS</h3>
+                <div class="endpoint-list">
+                    <div class="endpoint-item">merge-pdf</div>
+                    <div class="endpoint-item">split-pdf</div>
+                    <div class="endpoint-item">compress-pdf</div>
+                    <div class="endpoint-item">repair-pdf</div>
+                    <div class="endpoint-item">rotate-pdf</div>
+                    <div class="endpoint-item">protect-pdf</div>
+                </div>
+
+                <h3 id="conversion-tools" style="margin-top: 2rem; font-size: 1rem; color: #0ea5e9;">CONVERSION TOOLS
+                </h3>
+                <div class="endpoint-list">
+                    <div class="endpoint-item">pdf-to-word</div>
+                    <div class="endpoint-item">word-to-pdf</div>
+                    <div class="endpoint-item">pdf-to-excel</div>
+                    <div class="endpoint-item">excel-to-pdf</div>
+                    <div class="endpoint-item">pdf-to-jpg</div>
+                    <div class="endpoint-item">jpg-to-pdf</div>
+                </div>
+
+                <h3 id="ai-tools" style="margin-top: 2rem; font-size: 1rem; color: var(--doc-primary);">AI &
+                    INTELLIGENCE</h3>
+                <div class="endpoint-list">
+                    <div class="endpoint-item" style="border-color: #c7d2fe;">ai-smart-rewrite</div>
+                    <div class="endpoint-item" style="border-color: #c7d2fe;">ai-pdf-chat</div>
+                    <div class="endpoint-item" style="border-color: #c7d2fe;">ai-semantic-extract</div>
+                    <div class="endpoint-item" style="border-color: #c7d2fe;">translate-pdf</div>
+                    <div class="endpoint-item" style="border-color: #c7d2fe;">ai-form-filler</div>
+                </div>
+            </section>
+
+            <section id="parameters" class="docs-section">
+                <h2>Common Parameters</h2>
+                <div class="params-table-wrapper">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="param-name">files</span><span class="param-required">*</span></td>
+                                <td class="param-type">Binary</td>
+                                <td>The file to process (PDF, DOCX, JPG, etc)</td>
+                            </tr>
+                            <tr>
+                                <td><span class="param-name">password</span></td>
+                                <td class="param-type">String</td>
+                                <td>Required for encrypted PDF files</td>
+                            </tr>
+                            <tr>
+                                <td><span class="param-name">tone</span></td>
+                                <td class="param-type">String</td>
+                                <td>Specific to AI tools (e.g., 'formal', 'casual')</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="error-handling" class="docs-section">
+                <h2>Error Handling</h2>
+                <p>PDFjin uses standard HTTP response codes to indicate the success or failure of an API request.</p>
+                <div class="params-table-wrapper">
+                    <table class="params-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>200</td>
+                                <td>Success</td>
+                            </tr>
+                            <tr>
+                                <td>400</td>
+                                <td>Bad Request - Check parameters</td>
+                            </tr>
+                            <tr>
+                                <td>401</td>
+                                <td>Unauthorized - Invalid API Key</td>
+                            </tr>
+                            <tr>
+                                <td>429</td>
+                                <td>Too Many Requests - Rate limit exceeded</td>
+                            </tr>
+                            <tr>
+                                <td>500</td>
+                                <td>Server Error - Something went wrong on our end</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="rate-limits" class="docs-section">
+                <h2>Rate Limits</h2>
+                <p>Free tier users are limited to 3 tasks per day. Pro users enjoy unlimited tasks with a concurrency
+                    limit of 5 simultaneous requests.</p>
+            </section>
+
+            <section class="support-card">
+                <h3>Need a custom workflow?</h3>
+                <p>Enterprise users get access to shared engineering support for complex agentic pipelines and
+                    high-volume processing.</p>
+                <a href="../contact.html" class="btn-white">Contact Support</a>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+                                                                                                    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(evt, tabId) {
+            const container = evt.currentTarget.closest('.code-container');
+            container.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
+            container.querySelectorAll('.tab-content-code').forEach(c => c.classList.remove('active'));
+            evt.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Mobile Docs Toggle Logic
+        const docsOverlay = document.getElementById('docsOverlay');
+        const mobileDocsToggle = document.getElementById('mobileDocsToggle');
+        const docsSidebar = document.getElementById('docsSidebar');
+
+        if (mobileDocsToggle && docsSidebar && docsOverlay) {
+            const toggleMenu = () => {
+                const isOpen = docsSidebar.classList.toggle('open');
+                mobileDocsToggle.classList.toggle('active');
+                docsOverlay.classList.toggle('active');
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            };
+
+            mobileDocsToggle.addEventListener('click', toggleMenu);
+            docsOverlay.addEventListener('click', toggleMenu);
+
+            docsSidebar.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 900) {
+                        toggleMenu();
+                    }
+                });
+            });
+        }
+
+        // Sidebar active state on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.docs-section');
+            const navLinks = document.querySelectorAll('.docs-nav a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <script src="../js/main.js?v=3.3"></script>
+</body>
+
+</html>

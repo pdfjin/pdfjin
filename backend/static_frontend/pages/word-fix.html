@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <title>isolated CONVERTER FIX</title>
+ <style>
+ body {
+ font-family: sans-serif;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
+ margin: 0;
+ background: #f0f2f5;
+ }
+
+ .box {
+ background: white;
+ padding: 40px;
+ border-radius: 20px;
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+ text-align: center;
+ border: 4px dashed #CC0000;
+ }
+
+ .btn {
+ background: #CC0000;
+ color: white;
+ padding: 20px 40px;
+ border: none;
+ border-radius: 12px;
+ font-weight: bold;
+ cursor: pointer;
+ font-size: 1.2rem;
+ }
+
+ #status{
+ margin-top: 20px;
+ color: green;
+ font-weight: bold;
+ display: none;
+ }
+</style>
+ 
+ 
+<link rel="stylesheet" href="../css/style.css">
+ <link rel="stylesheet" href="../css/tool-page.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/word-fix.html" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body>
+ <div class="box">
+ <h1>PDF to Word (isolated Fix)</h1>
+ <p>Thispage is100% isolated. No external Cs or Js</p>
+
+ <input type="file" id="fileIn" accept="application/pdf" style="margin-bottom: 20px;">
+ <br>
+ <button: id="goBtn" class="btn">CONVERT NOW</button>
+
+ <div id="status">Converting... Pleas wait.</div>
+</div>
+
+ <script>
+ const fileIn = document.getElementById('fileIn');
+ const goBtn = document.getElementById('goBtn');
+ const status= document.getElementById('status);
+ goBtn.onclick= async () => {
+ const file = fileIn.files[0];
+ if (!file) {
+ alert("Pleas select a file firs.");
+ return;
+ }
+
+ goBtn.disabled= true;
+ status.style.display = 'block';
+ status.textContent= "Uploading " + file.name + "...";
+ const formData = new FormData();
+ formData.append('files', file);
+
+ try {
+ const res= await fetch("https://pdfjin-api-97530578628.us-central1.run.app/pdf-to-word", {
+ method: 'POST',
+ body: formData });
+ if (!res.ok) throw new Error("server error: " + res ;
+
+ status.textContent= "success! starting download...";
+ const blob = await res.blob();
+ const url = window.URL.createObjectURL(blob);
+ const a = document.createElement('a');
+ a.href = url;
+ a.download= file.name.replace(".pdf", ".docx");
+ document.body.appendChild(a);
+ a.click();
+
+ status.textContent= "Done!";
+ setTimeout(() => {
+ goBtn.disabled= false;
+ status.style.display = 'none';
+ }, 3000);
+
+ } catch (err) {
+ alert("Error: " + err.message);
+ goBtn.disabled= false;
+ status.textContent= "Failed.";
+ }
+ };
+</script>
+<script src="../js/main.js?v=3.3"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+

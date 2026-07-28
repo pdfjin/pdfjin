@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to make scanned textbook PDF files searchable with AI OCR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-make-scanned-textbook-pdf-files-searchable-with-ai-ocr-guide.html" />
+    <meta name="description" content="Learn all about How to make scanned textbook PDF files searchable with AI OCR. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to make scanned textbook PDF files searchable with AI OCR | PDFjin" />
+    <meta property="og:description" content="Learn all about How to make scanned textbook PDF files searchable with AI OCR. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/blog-excel.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-make-scanned-textbook-pdf-files-searchable-with-ai-ocr-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to make scanned textbook PDF files searchable with AI OCR | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to make scanned textbook PDF files searchable with AI OCR. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/blog-excel.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to make scanned textbook PDF files searchable with AI OCR",
+  "description": "Learn all about How to make scanned textbook PDF files searchable with AI OCR. A comprehensive guide by PDFjin.",
+  "image": "https://pdfjin.com/assets/blog/blog-excel.png",
+  "datePublished": "2026-06-19",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-make-scanned-textbook-pdf-files-searchable-with-ai-ocr-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to make scanned textbook PDF files searchable with AI OCR</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Jun 19, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/blog-excel.png" alt="How to make scanned textbook PDF files searchable with AI OCR Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Unlock Knowledge How to Make Scanned Textbook PDFs Searchable with AI OCR</h2>
+
+<p>Imagine this scenario. You have a stack of essential textbooks, perhaps inherited or borrowed, filled with crucial information. They exist as physical copies, or worse, as static scanned PDF files on your computer. You need to find a specific term, a key concept, or a vital quote for your research paper or upcoming exam. What do you do? You scroll endlessly, squinting at pages, hoping your eyes catch the right phrase. This frustration is incredibly common. Traditional scanned PDFs are just images; your computer sees them as pictures, not text. This means no highlighting, no copying, and critically, no searching. It's like having a library without an index.</p>
+
+<p>The good news is, you no longer need to suffer through this time-consuming process. The world of digital document management has advanced significantly, thanks to artificial intelligence. We now have powerful tools that can transform those static, unsearchable scanned textbooks into fully interactive, searchable PDFs. The secret weapon is AI-powered Optical Character Recognition, or OCR. This technology revolutionizes how students, researchers, and professionals interact with their digital documents, making information retrieval instant and effortless. Let's explore how you can make your scanned textbooks work harder for you.</p>
+
+<h3>The Silent Struggle with Scanned Textbook PDFs</h3>
+
+<p>Many students and academics rely heavily on textbooks. While digital-native PDFs offer excellent search capabilities, many valuable resources still only exist in print or as legacy scans. These scanned files, often created by a quick pass through a scanner, typically embed pages as images. This image-based format presents significant challenges. You cannot copy text from them. You cannot highlight important sections directly within the PDF viewer. Most importantly, your computer's standard search function simply won't work on the text embedded within the images.</p>
+
+<p>This limitation forces you into inefficient workflows. You might resort to manual note-taking, re-typing passages, or dedicating hours to visually scanning pages for keywords. For complex subjects with dense information, this becomes a major bottleneck for learning and research. It wastes precious time that could be spent understanding the material, rather than just trying to find it. Thankfully, AI OCR provides a robust solution to turn this silent struggle into a seamless study experience, bringing your analog resources into the digital age effectively.</p>
+
+<h3>Enter AI OCR The Game Changer for Digital Learning</h3>
+
+<p>Optical Character Recognition (OCR) technology has been around for some time, converting images of text into machine-readable text. However, traditional OCR often struggled with variations in fonts, handwriting, complex layouts, or lower-quality scans. This is where Artificial Intelligence steps in. AI-powered OCR tools leverage advanced algorithms and machine learning models to achieve remarkable accuracy, even with challenging documents like old textbook scans.</p>
+
+<p>AI OCR doesn't just recognize characters; it understands context. It can better differentiate between similar-looking letters, handle skewed text, identify different languages, and even reconstruct complex table structures. For your scanned textbooks, this means a significantly higher success rate in transforming every word on every page into actual, selectable, and searchable text. This transformation is not just about convenience; it's about fundamentally changing how you interact with your study materials, making them dynamic and responsive to your needs.</p>
+
+<h3>How AI OCR Transforms Your Scanned Textbooks</h3>
+
+<p>The process of converting your scanned textbook PDFs into searchable documents using AI OCR is straightforward. You do not need to be a tech expert or possess specialized software. Online AI OCR tools have simplified this task for everyone. First, you take your scanned textbook PDF file. This might be a single chapter or an entire book. Next, you upload this file to a dedicated online platform that offers AI OCR services. The platform then goes to work.</p>
+
+<p>The AI OCR engine scans each page, intelligently identifying text blocks, distinguishing them from images, and converting those identified characters into a text layer. This new text layer sits invisibly on top of the original scanned image. The final output is a new PDF file that looks identical to your original scan but now includes a fully searchable text layer. You can then use the search function (Ctrl+F or Cmd+F) in any PDF reader to instantly find any word or phrase within the document. It's a truly magical transformation that opens up new possibilities for your study and research. Many platforms offer this service, including dedicated <a href="https://pdfjin.com/pages/ocr-pdf.html" style="text-decoration: underline;">online OCR PDF tools</a> designed for accuracy and ease of use.</p>
+
+<h3>The Power of Searchable PDFs Beyond Basic Search</h3>
+
+<p>The immediate benefit of a searchable PDF is obvious: instant information retrieval. No more flipping pages endlessly. But the advantages extend far beyond a simple Ctrl+F. Once your scanned textbook is searchable, you unlock a cascade of productivity and study benefits. You can quickly cross-reference concepts across different chapters or even different books if they are all searchable. Copying direct quotes for assignments becomes a breeze, ensuring accuracy and saving re-typing time.</p>
+
+<p>Moreover, modern PDF viewers allow you to highlight and annotate directly onto the recognized text. This creates a much richer, more interactive study experience than working with static images. For researchers, the ability to rapidly scan hundreds of pages for specific keywords or concepts can dramatically cut down literature review time. Students can build personal digital libraries of searchable textbooks, making revision and exam preparation significantly more efficient. This intelligent approach to document interaction truly enhances your overall academic performance.</p>
+
+<h3>Integrating AI PDF Study Tools for Enhanced Learning</h3>
+
+<p>Making your textbooks searchable is just the first step. The power of AI extends further to truly revolutionize your study habits. With a searchable PDF, you lay the groundwork for engaging with more advanced <a href="https://pdfjin.com/pages/ai-pdf-study.html" style="text-decoration: underline;">AI PDF study tools</a>. Imagine uploading your now-searchable textbook to an AI assistant that can summarize chapters for you, explain complex concepts in simpler terms, or even generate flashcards based on key information. Some AI tools can even answer specific questions directly from your textbook's content, acting as a personal tutor available 24/7.</p>
+
+<p>This integration transforms your passive reading into active learning. You can ask "What are the main theories discussed in Chapter 3?" or "Explain the concept of quantum entanglement as presented on page 150." The AI, leveraging the underlying searchable text, can then provide precise, contextually relevant answers. This not only deepens your understanding but also significantly accelerates your learning process, allowing you to master material more quickly and effectively than ever before.</p>
+
+<h3>Security and Peace of Mind When Using Online OCR</h3>
+
+<p>When you upload sensitive or copyrighted material like textbooks to an online service, security and privacy are naturally a concern. Reputable AI OCR providers prioritize user data protection. They employ advanced encryption protocols to secure your files during upload and processing. After conversion, many services automatically delete your files from their servers within a short timeframe, ensuring your data does not persist indefinitely.</p>
+
+<p>Always choose a platform that clearly outlines its privacy policy and security measures. Look for assurances of data encryption, temporary file storage, and a commitment to not sharing your content with third parties. Using a trusted service ensures that while you gain the immense benefits of searchable PDFs, your academic materials remain confidential and secure, giving you complete peace of mind.</p>
+
+<h3>Pro Tips for Maximizing Your Searchable Textbooks</h3>
+<ul>
+    <li><strong>Ensure Scan Quality:</strong> For the best OCR results, start with clear, well-lit scans. Blurry or skewed pages reduce accuracy.</li>
+    <li><strong>Choose a Reliable Tool:</strong> Select an AI OCR tool known for its accuracy and user-friendly interface.</li>
+    <li><strong>Review and Correct:</strong> Although AI OCR is highly accurate, quickly skim through your converted PDF to catch any minor recognition errors, especially with specialized terms or unusual fonts.</li>
+    <li><strong>Organize Your Digital Library:</strong> Once converted, rename your files descriptively and organize them into folders for easy access.</li>
+    <li><strong>Backup Your Files:</strong> Always keep a backup of your original scanned PDFs and your new searchable versions.</li>
+    <li><strong>Utilize Advanced Features:</strong> Explore other AI PDF features like summarization, Q&A, or extraction of key data once your PDFs are searchable.</li>
+</ul>
+
+<h3>Transform Your Study Habits Today</h3>
+
+<p>Say goodbye to endless scrolling and frustrated searches through your digital textbooks. AI OCR technology offers a powerful, accessible solution to make your scanned materials fully searchable, interactive, and incredibly efficient. This transformation empowers you to find information instantly, deepen your understanding, and significantly enhance your overall study experience. It's more than just a convenience; it's a strategic advantage in your academic or professional journey.</p>
+
+<p>Are you ready to experience the future of digital learning? Stop letting unsearchable PDFs hold you back. Discover how effortlessly you can make your textbooks searchable and unlock a world of information at your fingertips. Why wait? Start transforming your scanned textbooks into intelligent, dynamic resources today. We invite you to try PDFjin's free tools and see the power of AI OCR for yourself!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-fix-broken-text-formatting-in-converted-pdf-files-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to fix broken text formatting in converted PDF files using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-permanently-delete-sensitive-pages-from-a-pdf-document-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to permanently delete sensitive pages from a PDF document</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="digitally-sign-pdf-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">The Easiest Way to Digitally Sign PDF Documents Online for Free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-ai-pdf-reader-for-visually-impaired-professionals-using-text-to-speech-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best AI PDF reader for visually impaired professionals using text to speech</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-remove-passwords-from-secured-pdf-files-easily-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to remove passwords from secured PDF files easily</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="pdf-to-editable-word-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to Convert PDF to Editable Word Document Online for Free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-safely-compress-pdf-files-for-email-without-losing-quality-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to safely compress PDF files for email without losing quality</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="chat-with-multiple-pdf-documents-simultaneously-using-ai-search-tools-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Chat with multiple PDF documents simultaneously using AI search tools</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="extract-product-inventory-lists-from-supplier-pdf-catalogs-with-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Extract product inventory lists from supplier PDF catalogs with AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-split-a-large-pdf-into-multiple-smaller-files-securely-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to split a large PDF into multiple smaller files securely</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

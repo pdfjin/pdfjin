@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reorder PDF Pages Online Free - Organize PDF Files</title>
+    <meta name="description" content="Rearrange, reorder, delete, and organize pages in your PDF document online for free. Simple drag-and-drop page editor to customize PDF file structure." />
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tool-page.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+    <style>
+        .reorder-zone {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .reorder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .page-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 8px;
+            position: relative;
+            cursor: grab;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .page-card:active {
+            cursor: grabbing;
+        }
+
+        .page-card:hover {
+            transform: translateY(-5px);
+            border-color: #CC0000;
+            box-shadow: 0 8px 16px rgba(204, 0, 0, 0.1);
+        }
+
+        .page-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #f1f5f9;
+            display: block;
+        }
+
+        .page-num {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            background: #CC0000;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 800;
+            box-shadow: 0 2px 6px rgba(204, 0, 0, 0.3);
+            border: 2px solid white;
+        }
+
+        .sortable-ghost {
+            opacity: 0.3;
+            background: #fffafa;
+            border: 2px dashed #CC0000;
+        }
+
+        .preview-loader {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .preview-loader h3 {
+            margin-top: 15px;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        .debug-mini {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 15px;
+            font-family: monospace;
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/reorder-pdf.html" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Reorder PDF Pages Online Free - Organize PDF Files",
+  "description": "Rearrange, reorder, delete, and organize pages in your PDF document online for free. Simple drag-and-drop page editor to customize PDF file structure.",
+  "url": "https://pdfjin.com/pages/reorder-pdf.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="single-file-mode">
+    <!-- NAVIGATION -->
+                        <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="tool-container">
+        <div class="section-inner">
+            <div class="tool-card shadow-lg">
+                <div style="text-align: left; margin-bottom: 25px;">
+                    <a href="dashboard.html" class="back-link"
+                        style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
+                        &larr; Back to dashboard
+                    </a>
+                </div>
+                <div class="tool-header">
+                    <div class="tool-icon-large">📂</div>
+                    <h1 class="tool-title">Reorder PDF</h1>
+                    <p class="tool-subtitle">Rearrange, move, or delete pages with our visual reorder tool. Simply drag the pages to change sequence.</p>
+                </div>
+
+                <div class="upload-area">
+                    <div class="drop-zone" id="dropZone">
+                        <span class="drop-zone-icon"></span>
+                        <p class="drop-zone-text">Upload PDF to Organize</p>
+                        <p class="drop-zone-hint">Free Account required (up to 50MB)</p>
+                        <input type="file" id="fileInput" class="file-input" accept="application/pdf" />
+                    </div>
+
+                    <div id="previewLoader" class="preview-loader">
+                        <div class="spinner-small" style="width: 40px; height: 40px; border-width: 4px; border-top-color: #CC0000;"></div>
+                        <h3>Generating Previews...</h3>
+                        <p class="debug-mini" id="loadStatus">Initializing engine...</p>
+                    </div>
+
+                    <div class="file-list" id="fileList"></div>
+
+                    <div id="reorderZone" class="reorder-zone">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                            <h3 style="font-weight: 700; color: #1e293b;">Visual Page Organizer</h3>
+                            <span style="font-size: 0.85rem; color: #64748b;">Drag pages to reorder</span>
+                        </div>
+                        <div id="reorderGrid" class="reorder-grid">
+                            <!-- Pages will be rendered here -->
+                        </div>
+                    </div>
+
+                    <div class="action-container" id="actionContainer">
+                        <button class="btn-execute" id="executeBtn">
+                            Save & Download &rarr;
+                        </button>
+                    </div>
+
+                </div>
+
+        <!-- Tool Description Area -->
+        <div class="tool-seo-section">
+            <h2>Rearrange, Reorder, and Organize PDF Pages Free Online</h2>
+            <p>Organize, reorder, delete, and rearrange pages in your PDF files visually and effortlessly with PDFjin's free online page organizer. Our interactive thumbnail interface gives you a complete bird's-eye view of your document, allowing you to drag and drop pages into a brand-new sequence or delete unwanted pages in a single click. Ideal for combining files, organizing reports, or cleaning up messy scans, this browser-based tool is completely responsive and requires no registration or software installations. PDFjin ensures that all your links, form fields, and typography formatting remain completely unaffected after page reorganization. Operating under the highest security standards, your sensitive data is protected via HTTPS encryption and automatically purged from our servers once the organization is complete. Take full control of your document structures visually and securely with PDFjin today.</p>
+        </div>
+
+              </div>
+
+            </div>
+    
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        How exactly do I change the page order?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Once you upload the document, you will see a grid of thumbnails representing each page. Simply click, drag, and drop the pages into your desired sequence, then click execute.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can I delete a page while I am reordering them?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes! Hover over any page thumbnail in the grid and click the 'Trash' icon to remove it entirely from the final document before generating the new PDF.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Is it possible to sort pages automatically?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Currently, reordering is a manual drag-and-drop process to give you complete visual control over the final document layout.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/reorder-pdf.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Reorder Pdf &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How exactly do I change the page order?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once you upload the document, you will see a grid of thumbnails representing each page. Simply click, drag, and drop the pages into your desired sequence, then click execute."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I delete a page while I am reordering them?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Hover over any page thumbnail in the grid and click the 'Trash' icon to remove it entirely from the final document before generating the new PDF."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it possible to sort pages automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Currently, reordering is a manual drag-and-drop process to give you complete visual control over the final document layout."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
+    </main>
+
+                        <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+    <script>
+        (function () {
+            document.addEventListener('DOMContentLoaded', () => {
+                const executeBtn = document.getElementById('executeBtn');
+                if (!executeBtn) return;
+
+                if (window.pdfjsLib) {
+                    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+                }
+
+                const loadScript = (src) => {
+                    return new Promise((resolve) => {
+                        if (document.querySelector(`script[src*="${src}"]`)) return resolve();
+                        const s = document.createElement('script');
+                        s.src = src;
+                        s.onload = resolve;
+                        document.body.appendChild(s);
+                    });
+                };
+
+                async function init() {
+                    await loadScript('../js/core/tasks.js');
+                    await loadScript('../js/core/ui.js');
+
+                    const reorderZone = document.getElementById('reorderZone');
+                    const reorderGrid = document.getElementById('reorderGrid');
+                    const previewLoader = document.getElementById('previewLoader');
+                    const loadStatus = document.getElementById('loadStatus');
+
+                    if (window.PDFJIN_UI) {
+                        window.PDFJIN_UI.initUploadArea(async (selectedFiles) => {
+                            if (!selectedFiles || selectedFiles.length === 0) return;
+                            
+                            const file = selectedFiles[0];
+                            previewLoader.style.display = 'block';
+                            reorderZone.style.display = 'none';
+                            reorderGrid.innerHTML = '';
+                            loadStatus.textContent = "Parsing PDF structure...";
+
+                            try {
+                                if (!window.pdfjsLib) throw new Error("PDF processing engine failed to load.");
+
+                                const arrayBuffer = await file.arrayBuffer();
+                                const pdfDoc = await pdfjsLib.getDocument(arrayBuffer).promise;
+                                const totalPages = pdfDoc.numPages;
+
+                                for (let i = 1; i <= totalPages; i++) {
+                                    loadStatus.textContent = `Rendering preview ${i} of ${totalPages}...`;
+                                    const page = await pdfDoc.getPage(i);
+                                    const viewport = page.getViewport({ scale: 0.35 });
+
+                                    const canvas = document.createElement('canvas');
+                                    const ctx = canvas.getContext('2d');
+                                    canvas.height = viewport.height;
+                                    canvas.width = viewport.width;
+
+                                    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+                                    const card = document.createElement('div');
+                                    card.className = 'page-card';
+                                    card.setAttribute('data-index', i - 1);
+                                    card.innerHTML = `
+                                        <img src="${canvas.toDataURL()}">
+                                        <span class="page-num">${i}</span>
+                                    `;
+                                    reorderGrid.appendChild(card);
+                                }
+
+                                previewLoader.style.display = 'none';
+                                reorderZone.style.display = 'block';
+
+                                // Initialize Sortable
+                                if (window.Sortable) {
+                                    new Sortable(reorderGrid, {
+                                        animation: 250,
+                                        ghostClass: 'sortable-ghost',
+                                        onEnd: function() {
+                                            // Optional: renumerate visual badges if desired
+                                            // reorderGrid.querySelectorAll('.page-num').forEach((p, idx) => p.textContent = idx + 1);
+                                        }
+                                    });
+                                }
+
+                            } catch (err) {
+                                console.error(err);
+                                alert("Failed to generate previews: " + err.message);
+                                previewLoader.style.display = 'none';
+                            }
+                        });
+                    }
+
+                    executeBtn.addEventListener('click', async () => {
+                        const files = window.PDFJIN_UI ? window.PDFJIN_UI.selectedFiles : [];
+                        if (!files || files.length === 0) return alert("Please select a PDF file.");
+
+                        if (window.PDFJIN_TASKS && typeof window.PDFJIN_TASKS.isLimitReached === 'function' && window.PDFJIN_TASKS.isLimitReached()) {
+                            return window.PDFJIN_TASKS.showLimitModal();
+                        }
+
+                        executeBtn.disabled = true;
+                        const originalText = executeBtn.innerHTML;
+                        executeBtn.innerHTML = '<span class="spinner-small"></span> Organizing...';
+
+                        // Get the sequence as a comma-separated string
+                        const order = Array.from(reorderGrid.children).map(c => c.getAttribute('data-index')).join(',');
+
+                        const formData = new FormData();
+                        formData.append('files', files[0]);
+                        formData.append('order', order);
+
+                        try {
+                            const API_BASE = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
+                            const token = localStorage.getItem('authToken');
+                            const headers = {};
+                            if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                            const res = await fetch(`${API_BASE}/reorder-pdf`, {
+                                method: 'POST',
+                                headers: headers,
+                                body: formData,
+                                mode: 'cors'
+                            });
+
+                            if (!res.ok) {
+                                let errorText = await res.text();
+                                try {
+                                    const errJson = JSON.parse(errorText);
+                                    if (errJson.detail) errorText = typeof errJson.detail === 'string' ? errJson.detail : JSON.stringify(errJson.detail);
+                                } catch(e) {}
+                                throw new Error(errorText);
+                            }
+
+                            const blob = await res.blob();
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            const fileName = files[0].name.replace(/\.[^/.]+$/, "") + "_reordered.pdf";
+                            a.download = fileName;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+
+                            if (window.PDFJIN_TASKS && typeof window.PDFJIN_TASKS.increment === 'function') {
+                                window.PDFJIN_TASKS.increment();
+                            }
+
+                            executeBtn.innerHTML = " Success!";
+                            setTimeout(() => {
+                                executeBtn.disabled = false;
+                                executeBtn.innerHTML = originalText;
+                            }, 3000);
+                        } catch (err) {
+                            console.error(err);
+                            alert("Reorder failed: " + err.message);
+                            executeBtn.disabled = false;
+                            executeBtn.innerHTML = originalText;
+                        }
+                    });
+                }
+                init();
+            });
+        })();
+    </script>
+</body>
+
+</html>

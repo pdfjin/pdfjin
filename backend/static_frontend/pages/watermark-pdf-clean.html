@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Add custom text watermarks or professional logo images to your PDF files online for free. Control transparency, position, and font style in one click." />
+    <title>Watermark PDF Online Free - Add Text or Logo to PDF</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tool-page.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/watermark-pdf-clean.html" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Watermark PDF Online Free - Add Text or Logo to PDF",
+  "description": "Add custom text watermarks or professional logo images to your PDF files online for free. Control transparency, position, and font style in one click.",
+  "url": "https://pdfjin.com/pages/watermark-pdf-clean.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+                                                                            <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="tool-container">
+        <div class="section-inner">
+            <div class="tool-card shadow-lg">
+                <div style="text-align: left; margin-bottom: 25px;">
+                    <a href="dashboard.html" class="back-link" style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s;">
+                        &larr; Back to Dashboard
+                    </a>
+                </div>
+                <div class="tool-header">
+                    <div class="tool-icon-large">&#128395;</div>
+                    <h1 class="tool-title">Watermark PDF</h1>
+                    <p class="tool-subtitle">Protect your documents with a custom text watermark. Processed securely in the cloud.</p>
+                </div>
+
+                <div class="upload-area">
+                    <!-- DROP ZONE -->
+                    <div id="dropZone" class="drop-zone">
+                        <div class="drop-zone-icon"></div>
+                        <p class="drop-zone-text">Click or Drag PDF here</p>
+                        <p class="drop-zone-hint">Securely watermark your files (up to 50MB)</p>
+                        <input type="file" id="fileInput" class="file-input" accept="application/pdf" />
+                    </div>
+
+                    <!-- FILE INFO (Hidden initially) -->
+                    <div id="fileInfoBox" class="file-selected-zone" style="display: none; background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 16px; margin-top: 20px; align-items: center; justify-content: space-between;">
+                        <div class="file-meta-info" style="display: flex; align-items: center; gap: 12px;">
+                            <span class="file-icon" style="font-size: 1.5rem;"></span>
+                            <span id="displayFileName" class="file-name" style="font-weight: 600; color: #1e293b; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">document.pdf</span>
+                        </div>
+                        <button type="button" class="btn-remove" onclick="window.resetTool()" style="color: #ef4444; font-weight: 700; cursor: pointer; background: none; border: none; font-size: 1.2rem;"></button>
+                    </div>
+
+                    <!-- SETTINGS (Hidden initially) -->
+                    <div id="watermarkSettings" class="watermark-settings" style="display: none; margin-top: 2rem; text-align: left;">
+                        <div class="settings-card" style="background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+                            <div class="input-group" style="margin-bottom: 20px;">
+                                <label for="watermarkText" style="display: block; font-weight: 700; margin-bottom: 8px; color: #1e293b; font-size: 0.9rem;">Watermark Text</label>
+                                <input type="text" id="watermarkText" class="input-control" style="width: 100%; padding: 14px; border: 2px solid #edeff5; border-radius: 12px; font-size: 1rem;" placeholder="e.g. CONFIDENTIAL, DRAFT" value="PDFjin.com">
+                            </div>
+
+                            <button id="executeBtn" class="btn-execute" style="width: 100%; padding: 16px; background: #CC0000; color: white; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                                <span id="spinner" class="spinner-small" style="display: none;"></span>
+                                <span id="btnText">Apply Watermark & Download &rarr;</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <p id="errorMessage" style="color: #CC0000; margin-top: 20px; font-weight: 600; display: none;"></p>
+
+                </div>
+
+        <!-- Tool Description Area -->
+        <div class="tool-seo-section">
+            <h2>Add Text or Logo Watermark to PDF Online Free</h2>
+            <p>Protect your intellectual property, enforce copyright, and brand your creative assets by adding custom text or image watermarks to your PDF documents with PDFjin's free online watermark tool. Our intuitive platform lets you type custom text (like CONFIDENTIAL or DRAFT) or upload a brand logo, then customize its position, rotation, opacity, font style, and scaling to suit your exact design preferences. Running completely in your web browser, our watermark tool requires no software downloads, subscription fees, or account sign-ups. The watermark is stamped permanently onto your PDF pages with high visual precision without altering document text or underlying layouts. Your documents are treated with the highest security, utilizing HTTPS encryption and automatic deletion of files from our cloud storage right after download. Keep your documents protected and professional with PDFjin.</p>
+        </div>
+
+              </div>
+
+            </div>
+    </main>
+
+                                                                            <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+    <script>
+        (function () {
+            const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
+            const ENDPOINT = "/watermark-pdf";
+            
+            const fileInput = document.getElementById('fileInput');
+            const dropZone = document.getElementById('dropZone');
+            const fileInfoBox = document.getElementById('fileInfoBox');
+            const watermarkSettings = document.getElementById('watermarkSettings');
+            const displayFileName = document.getElementById('displayFileName');
+            const executeBtn = document.getElementById('executeBtn');
+            const spinner = document.getElementById('spinner');
+            const btnText = document.getElementById('btnText');
+            const errorMessage = document.getElementById('errorMessage');
+            const watermarkText = document.getElementById('watermarkText');
+            
+            let selectedFile = null;
+
+            window.resetTool = () => {
+                selectedFile = null;
+                fileInput.value = '';
+                dropZone.style.display = 'block';
+                fileInfoBox.style.display = 'none';
+                watermarkSettings.style.display = 'none';
+                errorMessage.style.display = 'none';
+            };
+
+            const handleFile = (file) => {
+                if (!file || !file.name.toLowerCase().endsWith('.pdf')) {
+                    showError("Please select a valid PDF file.");
+                    return;
+                }
+                selectedFile = file;
+                dropZone.style.display = 'none';
+                fileInfoBox.style.display = 'flex';
+                watermarkSettings.style.display = 'block';
+                displayFileName.textContent = file.name;
+                errorMessage.style.display = 'none';
+            };
+
+            const showError = (msg) => {
+                errorMessage.textContent = msg;
+                errorMessage.style.display = 'block';
+            };
+
+            fileInput.onchange = (e) => {
+                if (e.target.files.length > 0) handleFile(e.target.files[0]);
+            };
+
+            dropZone.onclick = () => fileInput.click();
+
+            dropZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropZone.style.borderColor = "#CC0000";
+                dropZone.style.background = "#fff5f5";
+            });
+
+            dropZone.addEventListener('dragleave', () => {
+                dropZone.style.borderColor = "#e2e8f0";
+                dropZone.style.background = "#fff";
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropZone.style.borderColor = "#e2e8f0";
+                dropZone.style.background = "#fff";
+                if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+            });
+
+            executeBtn.onclick = async () => {
+                if (!selectedFile) return;
+
+                // Rate limiting check
+                if (window.PDFJIN_TASKS && typeof window.PDFJIN_TASKS.isLimitReached === 'function' && window.PDFJIN_TASKS.isLimitReached()) {
+                    window.PDFJIN_TASKS.showLimitModal();
+                    return;
+                }
+
+                executeBtn.disabled = true;
+                spinner.style.display = 'inline-block';
+                btnText.textContent = 'Processing...';
+                errorMessage.style.display = 'none';
+
+                const formData = new FormData();
+                formData.append('files', selectedFile); // Backend expects 'files'
+                formData.append('text', watermarkText.value || "PDFjin.com");
+
+                try {
+                    console.log("PDFjin: Watermarking via", `${API_URL}${ENDPOINT}`);
+                    const response = await fetch(`${API_URL}${ENDPOINT}`, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        const errText = await response.text();
+                        let errorMsg = "Server error. Please try again.";
+                        try {
+                            const errJson = JSON.parse(errText);
+                            errorMsg = errJson.error || errJson.detail || errorMsg;
+                        } catch(e) {}
+                        throw new Error(errorMsg);
+                    }
+
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+                    
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `watermarked_${selectedFile.name}`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+
+                    if (window.PDFJIN_TASKS && typeof window.PDFJIN_TASKS.increment === 'function') {
+                        window.PDFJIN_TASKS.increment();
+                    }
+
+                    btnText.textContent = ' Success! Downloading...';
+                    spinner.style.display = 'none';
+                    
+                    setTimeout(() => {
+                        btnText.textContent = 'Apply Watermark & Download ';
+                        executeBtn.disabled = false;
+                    }, 3000);
+
+                } catch (err) {
+                    console.error("Watermark Error:", err);
+                    showError(err.message);
+                    btnText.textContent = 'Try Again';
+                    spinner.style.display = 'none';
+                    executeBtn.disabled = false;
+                }
+            };
+        })();
+    </script>
+</body>
+</html>
+

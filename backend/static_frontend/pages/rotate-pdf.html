@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotate PDF Pages Online Free - Flip PDF Document Easy</title>
+    <meta name="description" content="Rotate individual PDF pages or entire documents permanently online for free. Select custom rotation angles and save your flipped PDF files in seconds." />
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/tool-page.css">
+
+    <style>
+        .settings-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .rotation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .rotation-option {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .rotation-option:hover {
+            border-color: #CC0000;
+            background: #fffafa;
+        }
+
+        .rotation-option.active {
+            border-color: #CC0000;
+            background: #fffafa;
+            box-shadow: 0 0 0 4px rgba(204, 0, 0, 0.1);
+        }
+
+        .rotate-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/rotate-pdf.html" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Rotate PDF Pages Online Free - Flip PDF Document Easy",
+  "description": "Rotate individual PDF pages or entire documents permanently online for free. Select custom rotation angles and save your flipped PDF files in seconds.",
+  "url": "https://pdfjin.com/pages/rotate-pdf.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="single-file-mode">
+    <!-- NAVIGATION -->
+                            <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="tool-container">
+        <div class="section-inner">
+            <div class="tool-card shadow-lg">
+                <div style="text-align: left; margin-bottom: 25px;">
+                    <a href="dashboard.html" class="back-link"
+                        style="text-decoration: none; color: #64748b; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
+                        &larr; Back to dashboard
+                    </a>
+                </div>
+                <div class="tool-header">
+                    <div class="tool-icon-large">🔄</div>
+                    <h1 class="tool-title">Rotate PDF</h1>
+                    <p class="tool-subtitle">Rotate individual pages or the entire document by 90, 180, or 270 degrees.</p>
+                </div>
+
+                <div class="upload-area">
+                    <div class="drop-zone" id="dropZone">
+                        <span class="drop-zone-icon"></span>
+                        <p class="drop-zone-text">Upload PDF to Rotate</p>
+                        <p class="drop-zone-hint">Free Account required (up to 50MB)</p>
+                        <input type="file" id="fileInput" class="file-input" accept="application/pdf" />
+                    </div>
+
+                    <div class="file-list" id="fileList"></div>
+
+                    <div id="settingsContainer" class="settings-card">
+                        <h3 style="text-align: left; font-weight: 700; color: #1e293b;">Select Rotation Angle</h3>
+                        <div class="rotation-grid">
+                            <div class="rotation-option active" data-angle="90">
+                                <span class="rotate-icon">&#10227;</span>
+                                Right 90°
+                            </div>
+                            <div class="rotation-option" data-angle="180">
+                                <span class="rotate-icon">&#10227;</span>
+                                180°
+                            </div>
+                            <div class="rotation-option" data-angle="270">
+                                <span class="rotate-icon">&#10226;</span>
+                                Left 90°
+                            </div>
+                        </div>
+                        <input type="hidden" id="rotationAngle" value="90">
+                    </div>
+
+                    <div class="action-container" id="actionContainer">
+                        <button class="btn-execute" id="executeBtn">
+                            Rotate PDF &rarr;
+                        </button>
+                    </div>
+
+                </div>
+
+        <!-- Tool Description Area -->
+        <div class="tool-seo-section">
+            <h2>Rotate PDF Pages Permanently Free Online</h2>
+            <p>Rotate sideways or upside-down pages of your PDF document permanently with PDFjin's free online rotation tool. Scanned files, mobile snapshots, and converted files often end up in the wrong orientation, making them difficult to read or print. Our visual PDF rotator allows you to upload your document, view individual page previews, rotate specific pages 90, 180, or 270 degrees, and save the updated file in seconds. PDFjin works flawlessly on both desktop and mobile browsers, ensuring a responsive page adjustment experience with no download or sign-up needed. Since the rotation is applied directly to the document structure, there is no quality loss or text warping. Your document safety is absolute; we use modern encryption to secure your data and automatically remove all files from our servers after download. Align your pages perfectly with PDFjin today.</p>
+        </div>
+
+              </div>
+
+            </div>
+    
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can I rotate just one specific page instead of the whole document?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, our visual interface allows you to hover over any individual page thumbnail and rotate it clockwise or counter-clockwise by 90 degrees independently of the others.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Does rotating the page change the actual file permanently?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, once you apply the changes and download the new file, the rotation is permanently saved to the PDF's structural metadata, so it will open correctly on any device.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Will rotating the page ruin the text quality?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>No, the rotation process is completely lossless. It simply changes the orientation metadata of the page; no images or text are re-rendered or degraded.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/rotate-pdf.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Rotate Pdf &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I rotate just one specific page instead of the whole document?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, our visual interface allows you to hover over any individual page thumbnail and rotate it clockwise or counter-clockwise by 90 degrees independently of the others."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does rotating the page change the actual file permanently?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, once you apply the changes and download the new file, the rotation is permanently saved to the PDF's structural metadata, so it will open correctly on any device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will rotating the page ruin the text quality?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, the rotation process is completely lossless. It simply changes the orientation metadata of the page; no images or text are re-rendered or degraded."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
+    </main>
+
+                            <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+    <script>
+        (function () {
+            document.addEventListener('DOMContentLoaded', () => {
+                const executeBtn = document.getElementById('executeBtn');
+                if (!executeBtn) return;
+
+                const loadScript = (src) => {
+                    return new Promise((resolve) => {
+                        if (document.querySelector(`script[src*="${src}"]`)) return resolve();
+                        const s = document.createElement('script');
+                        s.src = src;
+                        s.onload = resolve;
+                        document.body.appendChild(s);
+                    });
+                };
+
+                async function init() {
+                    await loadScript('../js/core/tasks.js');
+                    await loadScript('../js/core/ui.js');
+
+                    if (window.PDFJIN_UI) {
+                        window.PDFJIN_UI.initUploadArea(() => {
+                            const settingsContainer = document.getElementById('settingsContainer');
+                            if (settingsContainer && window.PDFJIN_UI.selectedFiles.length > 0) {
+                                settingsContainer.style.setProperty('display', 'block', 'important');
+                            }
+                        });
+                    }
+
+                    document.querySelectorAll('.rotation-option').forEach(option => {
+                        option.addEventListener('click', () => {
+                            document.querySelectorAll('.rotation-option').forEach(opt => opt.classList.remove('active'));
+                            option.classList.add('active');
+                            document.getElementById('rotationAngle').value = option.getAttribute('data-angle');
+                        });
+                    });
+
+                    executeBtn.addEventListener('click', async () => {
+                        const files = window.PDFJIN_UI ? window.PDFJIN_UI.selectedFiles : [];
+                        if (!files || files.length === 0) return alert("Please select a PDF file to rotate.");
+
+                        const angleInput = document.getElementById('rotationAngle');
+                        const angle = angleInput ? angleInput.value : "90";
+
+                        if (window.PDFJIN_TASKS && typeof window.PDFJIN_TASKS.isLimitReached === 'function' && window.PDFJIN_TASKS.isLimitReached()) {
+                            return window.PDFJIN_TASKS.showLimitModal();
+                        }
+
+                        executeBtn.disabled = true;
+                        const originalText = executeBtn.innerHTML;
+                        executeBtn.innerHTML = '<span class="spinner-small"></span> Rotating PDF...';
+
+                        const formData = new FormData();
+                        formData.append('files', files[0]);
+                        formData.append('angle', angle);
+
+                        try {
+                            const API_BASE = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
+                            const token = localStorage.getItem('authToken');
+                            const headers = {};
+                            if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                            const res = await fetch(`${API_BASE}/rotate-pdf`, {
+                                method: 'POST',
+                                headers: headers,
+                                body: formData,
+                                mode: 'cors'
+                            });
+
+                            if (!res.ok) {
+                                let errorText = await res.text();
+                                try {
+                                    const errJson = JSON.parse(errorText);
+                                    if (errJson.detail) errorText = typeof errJson.detail === 'string' ? errJson.detail : JSON.stringify(errJson.detail);
+                                } catch(e) {}
+                                throw new Error(errorText);
+                            }
+
+                            const blob = await res.blob();
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            const fileName = files[0].name.replace(/\.[^/.]+$/, "") + "_rotated.pdf";
+                            a.download = fileName;
+                            document.body.appendChild(a);
+                            a.click();
+                            document.body.removeChild(a);
+
+                            if (window.PDFJIN_TASKS && typeof window.PDFJIN_TASKS.increment === 'function') {
+                                window.PDFJIN_TASKS.increment();
+                            }
+
+                            executeBtn.innerHTML = " Success!";
+                            setTimeout(() => {
+                                executeBtn.disabled = false;
+                                executeBtn.innerHTML = originalText;
+                            }, 3000);
+                        } catch (err) {
+                            console.error(err);
+                            alert("Rotation failed: " + err.message);
+                            executeBtn.disabled = false;
+                            executeBtn.innerHTML = originalText;
+                        }
+                    });
+                }
+                init();
+            });
+        })();
+    </script>
+</body>
+
+</html>

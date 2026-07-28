@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | Redact sensitive personal data from PDF documents automatically with AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/redact-sensitive-personal-data-from-pdf-documents-automatically-with-ai-guide.html" />
+    <meta name="description" content="Learn all about Redact sensitive personal data from PDF documents automatically with AI. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Redact sensitive personal data from PDF documents automatically with AI | PDFjin" />
+    <meta property="og:description" content="Learn all about Redact sensitive personal data from PDF documents automatically with AI. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/blog-merge.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/redact-sensitive-personal-data-from-pdf-documents-automatically-with-ai-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Redact sensitive personal data from PDF documents automatically with AI | PDFjin" />
+    <meta name="twitter:description" content="Learn all about Redact sensitive personal data from PDF documents automatically with AI. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/blog-merge.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Redact sensitive personal data from PDF documents automatically with AI",
+  "description": "Learn all about Redact sensitive personal data from PDF documents automatically with AI. A comprehensive guide by PDFjin.",
+  "image": "https://pdfjin.com/assets/blog/blog-merge.png",
+  "datePublished": "2026-06-15",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/redact-sensitive-personal-data-from-pdf-documents-automatically-with-ai-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>Redact sensitive personal data from PDF documents automatically with AI</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Jun 15, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/blog-merge.png" alt="Redact sensitive personal data from PDF documents automatically with AI Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Safeguard Sensitive Data - Automatically Redact PDFs with AI Precision</h2>
+
+In today's data-driven world, protecting sensitive personal information is paramount. Every document, especially PDFs, often contains details that demand careful handling: names, addresses, financial figures, medical records, and more. Manually redacting these elements from extensive PDF documents is a slow, error-prone, and incredibly tedious task. It drains resources, delays workflows, and, most critically, introduces significant risks of non-compliance with strict data privacy regulations like GDPR, HIPAA, and CCPA. Missing even a single piece of protected data can lead to severe penalties, reputational damage, and a loss of trust. This growing challenge calls for a smarter, more reliable solution.
+
+The demand for efficient and secure data handling has never been higher. Businesses and individuals alike face an avalanche of digital information, much of which contains confidential details. Think about legal discovery documents, patient medical histories, financial statements, or HR records. Each page holds potential liabilities if sensitive data falls into the wrong hands. Traditional methods of redaction involve painstakingly reviewing each page, highlighting confidential sections, and then applying digital black boxes. This process is not only time-consuming but also relies heavily on human vigilance, which is susceptible to oversight and mistakes, jeopardizing data security and regulatory compliance.
+
+<h3>The Pitfalls of Manual Redaction - Time, Cost, and Compliance Risk</h3>
+
+Manual redaction is a workflow bottleneck. Imagine sifting through hundreds or thousands of pages of legal discovery, patient records, or financial audits. Each document demands meticulous attention to identify and obscure every piece of Personally Identifiable Information (PII) or Protected Health Information (PHI). This painstaking process consumes countless hours of valuable staff time, leading to high operational costs. Furthermore, human error remains a constant threat. A single overlooked name, account number, or medical diagnosis can expose your organization to severe legal ramifications, hefty fines, and irreparable damage to your public image. The sheer volume of data makes consistent, accurate manual redaction almost impossible to sustain.
+
+Beyond the immediate costs and potential errors, manual redaction struggles to keep pace with evolving privacy regulations. Laws like the General Data Protection Regulation (GDPR) in Europe, the Health Insurance Portability and Accountability Act (HIPAA) in the US, and the California Consumer Privacy Act (CCPA) impose strict requirements on how organizations manage and protect personal data. Non-compliance is not just a theoretical risk; it results in real-world penalties that can cripple a business. Ensuring every single document meets these stringent standards through manual effort becomes an administrative nightmare, making a compelling case for a more automated and robust approach to data security.
+
+<h3>Embrace the Future - AI-Powered Smart Redaction</h3>
+
+This is where Artificial Intelligence (AI) steps in as a revolutionary force. AI-powered redaction tools transform how we handle sensitive information in PDFs. Instead of relying on manual scrutiny, AI leverages sophisticated algorithms, machine learning, and natural language processing (NLP) to autonomously identify, categorize, and redact specific data points across entire documents. This advanced technology goes far beyond simple keyword searches; it understands context, recognizes patterns, and learns from user input to improve its accuracy over time. It can pinpoint everything from names, addresses, and social security numbers to financial details, medical codes, and proprietary business information with unparalleled efficiency.
+
+The integration of AI into redaction workflows offers a paradigm shift in data security and operational efficiency. Imagine processing thousands of pages in minutes, not days or weeks, with a significantly reduced margin for error. AI-driven solutions are not just about speed; they are about intelligence. They can be trained to recognize specific data types unique to your industry or organization, ensuring a tailored and precise redaction process. This level of automation frees up valuable human resources, allowing teams to focus on higher-value tasks while ensuring sensitive data remains securely protected, upholding both ethical standards and legal obligations.
+
+<h3>How AI Transforms Your Redaction Workflow</h3>
+
+AI revolutionizes redaction in several critical ways. First, it offers unparalleled **accuracy**. AI algorithms detect sensitive data consistently, virtually eliminating the human errors that often plague manual efforts. Second, **speed** is dramatically improved. AI can process vast quantities of documents in a fraction of the time it would take a human, accelerating legal reviews, compliance checks, and data sharing processes. Third, it ensures **consistency**. AI applies redaction rules uniformly across all documents, regardless of length or complexity, ensuring compliance standards are met every single time. This uniformity is crucial for maintaining legal defensibility and avoiding selective data disclosure.
+
+Furthermore, AI-powered tools offer **comprehensive data discovery**. They can uncover sensitive information hidden in metadata, image-based text (via OCR), or complex document structures that manual review might miss. Finally, many advanced AI redaction platforms provide robust **audit trails**. They document precisely what was redacted, when, and by whom, offering invaluable evidence for compliance and accountability purposes. This transparency is critical for organizations operating under strict regulatory frameworks, providing a clear record of due diligence. For advanced identification before redaction, consider exploring sophisticated <a href="https://pdfjin.com/pages/ai-pdf-extraction.html" style="text-decoration: underline;">AI PDF extraction tools</a>.
+
+<h3>Key Features of Intelligent Redaction Solutions</h3>
+
+Modern AI redaction solutions come packed with features designed for maximum effectiveness and ease of use. They offer **automated identification of PII/PHI**, capable of spotting names, addresses, phone numbers, email addresses, credit card numbers, and health records without manual prompting. You can also implement **customizable rules and patterns**, allowing you to define specific keywords, phrases, or data formats unique to your organization or industry that need redaction. This ensures the tool adapts to your specific compliance needs.
+
+**Batch processing capabilities** are a game-changer, enabling you to redact hundreds or thousands of documents simultaneously, drastically cutting down processing time. Crucially, these solutions ensure **secure and irreversible redaction**. Once data is redacted, it's permanently removed or obscured, making it impossible to retrieve or reconstruct, thus preventing data breaches. Some tools also offer different redaction types, such as blackouts, blurs, or text removal, giving you control over the visual presentation of the redacted document while maintaining full data integrity. These features ensure that your data is not just hidden, but truly secured.
+
+<h3>Beyond Simple Blackouts - True Intelligent Redaction</h3>
+
+Many basic PDF editors allow you to draw a black box over text. However, this often only visually obscures the data; the underlying text might still exist in the document's metadata or be recoverable. True intelligent redaction, powered by AI, goes much deeper. It doesn't just overlay a black rectangle; it actually removes the sensitive text from the document's structure, rendering it permanently unreadable and unsearchable. This crucial distinction ensures compliance and genuine data security. AI understands context, helping differentiate between a generic "John Doe" and a specific client's name that requires redaction.
+
+The sophistication of AI also extends to handling unstructured data. For instance, in scanned documents or images embedded within PDFs, optical character recognition (OCR) works in tandem with AI to identify text that would otherwise be invisible to traditional search functions. This layered approach guarantees that no sensitive detail slips through the cracks, regardless of its format or presentation within the PDF. This level of thoroughness is virtually impossible to achieve with manual methods, making <a href="https://pdfjin.com/pages/ai-smart-redact.html" style="text-decoration: underline;">AI-powered smart redaction</a> an indispensable tool for comprehensive data protection.
+
+<h3>Who Benefits Most from AI Redaction?</h3>
+
+Industries handling vast amounts of sensitive personal data stand to gain the most from AI-powered redaction. **Legal professionals** frequently deal with discovery documents, court filings, and client records that require meticulous redaction for privacy and compliance. **Healthcare providers** must strictly adhere to HIPAA regulations, redacting patient names, medical conditions, and other PHI from records shared for research, billing, or administrative purposes. **Human Resources departments** process employee records, payroll information, and personal details that demand confidentiality.
+
+**Government agencies** regularly release public records that need thorough redaction to protect citizen privacy while maintaining transparency. **Financial institutions** manage highly confidential client data, account numbers, and transaction details, making accurate redaction essential for fraud prevention and regulatory compliance. Essentially, any organization that manages large volumes of documents containing PII, PHI, or proprietary information will find AI redaction an invaluable asset for maintaining security, ensuring compliance, and optimizing workflows.
+
+<h3>Conclusion - Secure Your Data, Empower Your Workflow</h3>
+
+Adopting AI for redacting sensitive personal data from PDF documents is no longer a luxury; it's a necessity for any organization committed to data security, compliance, and operational efficiency. You can mitigate risks, save substantial time and resources, and foster greater trust with clients and stakeholders by moving beyond manual, error-prone processes. AI-powered redaction offers precision, speed, and comprehensive coverage that human efforts simply cannot match, ensuring your data remains protected in an increasingly complex regulatory landscape.
+
+Don't let sensitive information expose your organization to risk. Embrace the power of intelligent automation to secure your PDF documents with confidence. We invite you to experience the future of document security today. **Explore PDFjin's free AI-powered tools and other robust PDF solutions** to streamline your workflows, protect your data, and unlock new levels of productivity. Try them out now and see the difference AI can make!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-lightweight-ai-pdf-utility-tools-for-fast-browser-processing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best lightweight AI PDF utility tools for fast browser processing</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-translate-a-pdf-while-keeping-images-in-place-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to translate a PDF while keeping images in place</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-clean-up-messy-scanned-pdf-documents-using-ai-enhancement-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to clean up messy scanned PDF documents using AI enhancement</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-extract-images-from-pdf-in-high-resolution-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to extract images from PDF in high resolution using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-find-hidden-terms-in-a-contract-pdf-before-signing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to find hidden terms in a contract PDF before signing</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="extract-product-inventory-lists-from-supplier-pdf-catalogs-with-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Extract product inventory lists from supplier PDF catalogs with AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-ai-tool-to-extract-data-from-research-paper-pdf-files-safely-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best AI tool to extract data from research paper PDF files safely</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="convert-cad-drawings-to-pdf-without-autocad-software-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Convert CAD drawings to PDF without AutoCAD software</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="free-privacy-first-pdf-summarizer-for-confidential-business-reports-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Free privacy first PDF summarizer for confidential business reports</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="what-is-a-semantic-pdf-extractor-and-why-do-you-need-one-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">What is a semantic PDF extractor and why do you need one</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

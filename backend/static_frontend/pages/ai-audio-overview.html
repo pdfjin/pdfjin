@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert PDF to Audio Overview Online - Speak PDF Free</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/ai-studio.css">
+
+    <style>
+        :root {
+            --audio-primary: #10b981;
+            --audio-secondary: #3b82f6;
+        }
+
+        .audio-container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .audio-card {
+            background: white;
+            border-radius: 24px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0fdf4;
+        }
+
+        .upload-circle {
+            width: 120px;
+            height: 120px;
+            background: #f0fdf4;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: var(--audio-primary);
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-circle:hover {
+            transform: scale(1.05);
+            background: #dcfce7;
+        }
+
+        .player-viz {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 4px;
+            height: 100px;
+            margin: 30px 0;
+        }
+
+        .v-bar {
+            width: 6px;
+            height: 20px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            transition: height 0.2s, background 0.2s;
+        }
+
+        .btn-audio {
+            padding: 15px 40px;
+            border-radius: 100px;
+            border: none;
+            background: linear-gradient(135deg, var(--audio-primary), var(--audio-secondary));
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2);
+        }
+
+        #processing {
+            display: none;
+            margin-top: 50px;
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        // PDFjin: Global API configuration v3.3
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            
+            // Force fix stale localStorage that blocks requests
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    console.log("PDFjin: Fixing stale API configuration...");
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+
+            // Critical: Instant Login Check
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/ai-audio-overview.html" />
+    <meta name="description" content="Transform your PDF documents into realistic spoken AI audio summaries online. Listen to key research findings, textbooks, or articles on the go free." />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Convert PDF to Audio Overview Online - Speak PDF Free",
+  "description": "Transform your PDF documents into realistic spoken AI audio summaries online. Listen to key research findings, textbooks, or articles on the go free.",
+  "url": "https://pdfjin.com/pages/ai-audio-overview.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires HTML5",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+                                                                                            <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <div class="audio-container">
+        <div class="audio-card">
+            <div id="uploadModule">
+                <div class="upload-circle" onclick="document.getElementById('fileInput').click()">&#127897;</div>
+                <h1 style="font-size: 2rem; margin-bottom: 10px;">PDF to Audio Overview</h1>
+                <p style="color: #64748b; margin-bottom: 30px;">Turn your long PDF documents into a natural-sounding
+                    audio overview.</p>
+                <input type="file" id="fileInput" hidden accept="application/pdf">
+                <button class="btn-audio" onclick="document.getElementById('fileInput').click()">Select PDF</button>
+            </div>
+
+            <div id="processing">
+                <div class="player-viz">
+                    <div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div>
+                    <div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div>
+                </div>
+                <h3>Generating Audio...</h3>
+                <p>Synthesizing professional narration</p>
+            </div>
+
+            <div id="playerContainer" style="display: none; margin-top: 40px;">
+                <audio id="audioPlayer" controls style="width: 100%; margin-bottom: 20px;"></audio>
+                <p style="color: #10b981; font-weight: 600;">&#10003; Audio Overview Ready</p>
+                <button class="btn-audio" style="margin-top: 20px;" onclick="location.reload()">Process Another</button>
+            </div>
+
+        <!-- Tool Description Area -->
+        <div class="tool-seo-section">
+            <h2>Convert PDF Documents to Natural Spoken AI Audio Overviews</h2>
+            <p>Turn any long PDF document, academic paper, textbook, or employee manual into a highly engaging, professional audio overview with PDFjin's free AI Audio Overview tool. Our state-of-the-art neural speech synthesis technology converts flat text into natural-sounding spoken narration, allowing you to consume dense written information effortlessly. This is highly useful for auditory learners, busy professionals, and visually impaired users who want to absorb document contents while multitasking, commuting, or relaxing. Free from registration gates and software downloads, PDFjin processes documents up to 50MB rapidly. Your files are fully protected with advanced HTTPS encryption and automatically deleted from our servers right after the audio generation completes. Experience professional-grade document narration today with PDFjin.</p>
+        </div>
+        </div>
+    </div>
+
+                                                                                            
+
+        <!-- FAQ Preview Component -->
+        <div class="faq-preview-section section-inner" id="faq-preview-accordion" style="margin-top: 4rem; padding-bottom: 4rem;">
+            <div class="section-header reveal">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-accordion-container" style="max-width: 800px; margin: 0 auto;">
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        How does the AI Audio Overview summarize long documents?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Our advanced language model scans the entire PDF, identifies the core themes, main arguments, and key takeaways, and synthesizes them into a concise, natural-sounding audio briefing.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Can I choose different voice types or accents?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>Yes, we offer a selection of high-quality, neural text-to-speech voices including professional, conversational, male, and female profiles to suit your listening preference.</p>
+                    </div>
+                </div>
+
+                <div class="faq-accordion-item" style="border-bottom: 1px solid #e2e8f0; padding: 1rem 0;">
+                    <button class="faq-accordion-button" style="width: 100%; text-align: left; background: none; border: none; font-size: 1.1rem; font-weight: 600; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" onclick="this.nextElementSibling.style.display = this.nextElementSibling.style.display === 'block' ? 'none' : 'block';">
+                        Does the tool read the entire document word-for-word?
+                        <span style="color: #6366f1;">+</span>
+                    </button>
+                    <div class="faq-accordion-content" style="display: none; padding-top: 1rem; color: #475569; line-height: 1.6;">
+                        <p>No, this specific tool generates a high-level executive summary rather than a full audiobook narration, saving you time by highlighting only the most critical information.</p>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="/faq/ai-audio-overview.html" class="btn-execute" style="background: none; color: #4338ca; border: 2px solid #4338ca; padding: 0.75rem 1.5rem; text-decoration: none; display: inline-block; font-weight: 600; border-radius: 8px;">Read all FAQs about Ai Audio Overview &rarr;</a>
+            </div>
+            <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the AI Audio Overview summarize long documents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our advanced language model scans the entire PDF, identifies the core themes, main arguments, and key takeaways, and synthesizes them into a concise, natural-sounding audio briefing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I choose different voice types or accents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer a selection of high-quality, neural text-to-speech voices including professional, conversational, male, and female profiles to suit your listening preference."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the tool read the entire document word-for-word?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, this specific tool generates a high-level executive summary rather than a full audiobook narration, saving you time by highlighting only the most critical information."
+      }
+    }
+  ]
+}
+            </script>
+        </div>
+
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                  <a href="#" class="social-btn" aria-label="X">&#120143;</a>
+                  <a href="#" class="social-btn" aria-label="GitHub">&#8997;</a>
+                  <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="split-pdf.html">Split PDF</a></li>
+                    <li><a href="compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="ai-pdf-podcast.html">AI Podcast</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="api-docs.html">API Docs</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=3.3"></script>
+    <script src="../js/core/tasks.js?v=3.1"></script>
+    <script>
+        (function () {
+            const API_URL = window.PDFJIN_API_URL || "https://pdfjin-api-97530578628.us-central1.run.app";
+            const fileInput = document.getElementById('fileInput');
+            const uploadModule = document.getElementById('uploadModule');
+            const processing = document.getElementById('processing');
+            const playerContainer = document.getElementById('playerContainer');
+            const audioPlayer = document.getElementById('audioPlayer');
+
+            fileInput.onchange = async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+
+                if (window.PDFJIN_TASKS && window.PDFJIN_TASKS.isLimitReached()) {
+                    window.PDFJIN_TASKS.showLimitModal();
+                    return;
+                }
+
+                uploadModule.style.display = 'none';
+                processing.style.display = 'block';
+
+                const formData = new FormData();
+                formData.append('files', file);
+
+                try {
+                    const token = localStorage.getItem('authToken');
+                    const headers = {};
+                    if (token) headers['Authorization'] = `Bearer ${token}`;
+
+                    const response = await fetch(`${API_URL}/ai-audio-overview`, {
+                        method: 'POST',
+                        headers: headers,
+                        body: formData,
+                        mode: 'cors'
+                    });
+
+                    if (!response.ok) {
+                        const err = await response.json().catch(() => ({}));
+                        throw new Error(err.detail || "Generation failed");
+                    }
+
+                    const blob = await response.blob();
+                    audioPlayer.src = URL.createObjectURL(blob);
+                    processing.style.display = 'none';
+                    playerContainer.style.display = 'block';
+
+                    if (window.PDFJIN_TASKS) window.PDFJIN_TASKS.increment();
+
+                    audioPlayer.onplay = () => {
+                        const bars = document.querySelectorAll('.v-bar');
+                        const interval = setInterval(() => {
+                            if (audioPlayer.paused) { clearInterval(interval); return; }
+                            bars.forEach(bar => {
+                                bar.style.height = (Math.random() * 80 + 10) + 'px';
+                                bar.style.backgroundColor = Math.random() > 0.5 ? '#10b981' : '#3b82f6';
+                            });
+                        }, 150);
+                    };
+                } catch (err) {
+                    alert("Error: " + err.message);
+                    uploadModule.style.display = 'block';
+                    processing.style.display = 'none';
+                }
+            };
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | Convert scanned receipts PDF to expense reports using AI parsing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/convert-scanned-receipts-pdf-to-expense-reports-using-ai-parsing-guide.html" />
+    <meta name="description" content="Learn all about Convert scanned receipts PDF to expense reports using AI parsing. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Convert scanned receipts PDF to expense reports using AI parsing | PDFjin" />
+    <meta property="og:description" content="Learn all about Convert scanned receipts PDF to expense reports using AI parsing. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/blog-pdf-word.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/convert-scanned-receipts-pdf-to-expense-reports-using-ai-parsing-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Convert scanned receipts PDF to expense reports using AI parsing | PDFjin" />
+    <meta name="twitter:description" content="Learn all about Convert scanned receipts PDF to expense reports using AI parsing. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/blog-pdf-word.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Convert scanned receipts PDF to expense reports using AI parsing",
+  "description": "Learn all about Convert scanned receipts PDF to expense reports using AI parsing. A comprehensive guide by PDFjin.",
+  "image": "https://pdfjin.com/assets/blog/blog-pdf-word.png",
+  "datePublished": "2026-06-25",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/convert-scanned-receipts-pdf-to-expense-reports-using-ai-parsing-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>Convert scanned receipts PDF to expense reports using AI parsing</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Jun 25, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/blog-pdf-word.png" alt="Convert scanned receipts PDF to expense reports using AI parsing Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Goodbye Receipt Chaos Hello AI Powered Expense Reports</h2>
+
+<p>Do you dread expense report season? Stacks of crumpled receipts, faded ink, and endless data entry can turn a simple task into a monumental chore. For small business owners, freelancers, and large enterprises alike, managing expenses often feels like a necessary evil. You spend valuable hours manually sorting, categorizing, and inputting financial data. This inefficient process consumes precious time and introduces a high risk of errors, leading to potential compliance issues and lost deductions. Imagine a world where this tedious process vanishes. A world where your scanned receipts instantly transform into organized, accurate expense reports. Thanks to the power of AI parsing, this future is now.</p>
+
+<p>The traditional method of expense reporting is a significant drain on productivity. You collect physical receipts, sometimes scanning them into individual PDF files. Then, you manually read each one, extracting vendor names, dates, amounts, and tax information. This manual <a href="https://pdfjin.com/pages/ai-pdf-extraction.html" style="text-decoration: underline;">AI PDF extraction</a> process is prone to human error. A missed digit, a miscategorized expense, or a lost receipt can cause discrepancies. These errors lead to frustrating reconciliation efforts, delayed reimbursements, and an overall inefficient financial workflow. Businesses often face audits where immaculate record-keeping is paramount. Without a robust system, these situations become stressful and costly. It is time to move beyond the paper chase and embrace smart technology.</p>
+
+<p>Artificial Intelligence (AI) has revolutionized how we handle data. For expense management, AI parsing offers a game-changing solution. It uses advanced machine learning algorithms to "read" your scanned receipts. This technology does not just recognize text; it understands the context. When you upload a scanned receipt PDF, the AI automatically identifies key data points. It pinpoints the merchant, date of transaction, total amount, currency, and even line-item details. This intelligent automation turns unstructured data from images into structured, usable information. The result? Fast, accurate, and consistent data extraction every single time.</p>
+
+<p>Adopting AI parsing for your expense reports brings a host of compelling advantages. First, you gain unparalleled time savings. What once took hours or even days now finishes in minutes. Employees focus on core tasks, not administrative burdens. Second, accuracy improves dramatically. AI eliminates the common human errors associated with manual data entry, ensuring your financial records are precise. Third, compliance becomes simpler. With accurate, categorized data, meeting regulatory requirements and preparing for audits is a breeze. Finally, you unlock real-time financial insights. Having up-to-date expense data allows for better budgeting, forecasting, and strategic decision-making. This transforms expense management from a reactive chore into a proactive business asset.</p>
+
+<p>The process of converting scanned receipts to expense reports with AI is remarkably straightforward. First, you scan your physical receipts. Most modern smartphones offer excellent scanning capabilities, or you can use a dedicated scanner. Save these scans as PDF files. Next, upload these PDF files to an AI-powered expense management platform. The AI immediately goes to work. It applies Optical Character Recognition (OCR) to convert the image text into machine-readable data. Then, its parsing algorithms extract the relevant financial details. The system categorizes expenses based on predefined rules or learns from your input. Finally, you review the extracted data and export it. Most solutions allow you to <a href="https://pdfjin.com/pages/pdf-to-excel.html" style="text-decoration: underline;">transform your expense data into a structured Excel file</a>, ready for accounting.</p>
+
+<p>Selecting the right AI tool is crucial for maximizing these benefits. Look for platforms offering high accuracy rates, especially with varying receipt formats and qualities. Data security is another paramount concern. Ensure the tool employs robust encryption and privacy protocols. User-friendliness also matters; the interface should be intuitive for quick adoption. Integration capabilities with existing accounting software or enterprise resource planning (ERP) systems can streamline your entire financial workflow. Consider tools that offer customization options for categorization and reporting, adapting to your unique business needs. A free trial or demo can help you assess these factors before making a commitment.</p>
+
+<h3>Legal Note</h3>
+
+<p>Proper record-keeping is not just good practice; it is a legal requirement for businesses. AI parsing tools significantly bolster your compliance efforts. They provide a clear, auditable trail of all expenses. Digital copies of receipts, coupled with extracted data, offer robust evidence for tax purposes. Always consult with your tax advisor regarding specific digital record-keeping regulations in your jurisdiction. Most tax authorities now accept digital records, provided they are accurate, accessible, and retain the original information. AI helps ensure these criteria are met consistently.</p>
+
+<h3>Security and Peace of Mind</h3>
+
+<p>Handling sensitive financial data demands the highest level of security. Reputable AI parsing platforms prioritize data protection. They use advanced encryption technologies, both in transit and at rest, to safeguard your information. Look for tools that comply with industry standards like GDPR, HIPAA (if applicable to your business), and SOC 2. Multi-factor authentication, regular security audits, and strict access controls are also vital features. By entrusting your receipts to a secure AI solution, you gain peace of mind. Your financial data remains protected from unauthorized access and cyber threats, allowing you to focus on growth.</p>
+
+<h3>Pro Tips for Smart Expense Management</h3>
+<ul>
+    <li><strong>Scan Receipts Immediately:</strong> Do not let receipts pile up. Scan them as soon as you receive them. This prevents fading, loss, and the stress of a last-minute scramble.</li>
+    <li><strong>Use High-Quality Scans:</strong> Clear, well-lit scans significantly improve AI accuracy. Avoid crumpled or blurry images for best results.</li>
+    <li><strong>Standardize Your Naming:</strong> Adopt a consistent naming convention for your scanned PDF files (e.g., "VendorName_Date_Amount.pdf"). This aids in organization.</li>
+    <li><strong>Review and Verify:</strong> While AI is highly accurate, always perform a quick review of the extracted data. This ensures everything is perfect before finalizing your reports.</li>
+    <li><strong>Leverage Categorization:</strong> Utilize the categorization features to their fullest. Consistent categorization makes budgeting and financial analysis far more effective.</li>
+    <li><strong>Integrate When Possible:</strong> Connect your AI parsing tool with your accounting software. This creates a seamless, end-to-end financial workflow.</li>
+</ul>
+
+<p>The era of manual, error-prone expense reporting is ending. AI parsing transforms a tedious chore into an efficient, accurate, and strategic process. Businesses and individuals reclaim valuable time, reduce costly errors, and gain unprecedented insight into their financial health. Say goodbye to the receipt nightmare and embrace the future of expense management.</p>
+
+<p>Ready to experience the power of AI for yourself? PDFjin offers a suite of intuitive, AI-powered PDF tools designed to simplify your document workflows. <a href="https://pdfjin.com" style="text-decoration: underline;">Try PDFjin's free tools today</a> and see how effortless expense reporting can be. Convert, manage, and optimize your PDFs with intelligence and ease.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="ai-driven-pdf-compression-to-shrink-file-size-without-losing-quality-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">AI driven PDF compression to shrink file size without losing quality</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-analyze-medical-report-pdf-data-securely-with-private-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to analyze medical report PDF data securely with private AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-create-a-fillable-pdf-form-from-scratch-for-free-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to create a fillable PDF form from scratch for free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-compress-a-pdf-on-iphone-without-third-party-apps-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to compress a PDF on iPhone without third party apps</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="secure-your-confidential-pdfs-with-aes-256-encryption-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Secure your confidential PDFs with AES 256 encryption</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="ultimate-guide-to-organizing-pdf-pages-in-the-browser-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Ultimate guide to organizing PDF pages in the browser</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="why-your-pdf-looks-different-when-printed-and-how-to-fix-it-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Why your PDF looks different when printed and how to fix it</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="edit-pdf-text-online-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to Edit PDF Text Online for Free (No Download Needed)</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="merge-multiple-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">The Best Way to Merge Multiple PDF Files into One Document Free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-translate-academic-thesis-pdf-files-into-multiple-languages-safely-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to translate academic thesis PDF files into multiple languages safely</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
