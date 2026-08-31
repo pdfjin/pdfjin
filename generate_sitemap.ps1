@@ -33,8 +33,7 @@ Get-ChildItem -Path "$FRONTEND_DIR\pages\blog\*.html" -Exclude "blog.html" | For
 # 5. FAQ Pages
 if (Test-Path "$FRONTEND_DIR\faq") {
     Get-ChildItem -Path "$FRONTEND_DIR\faq\*.html" | ForEach-Object {
-        $name_without_ext = $_.Name.Replace(".html", "")
-        $urls += [PSCustomObject]@{ loc = "$BASE_URL/faq/$name_without_ext"; lastmod = $TODAY; priority = "0.9" }
+        $urls += [PSCustomObject]@{ loc = "$BASE_URL/faq/$($_.Name)"; lastmod = $TODAY; priority = "0.9" }
     }
 }
 

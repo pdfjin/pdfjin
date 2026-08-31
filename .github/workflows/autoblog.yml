@@ -2,8 +2,8 @@ name: Auto Blogger Pipeline
 
 on:
   schedule:
-    # Runs at 09:00 and 21:00 UTC (Adjust timezones if needed)
-    - cron: '0 9,21 * * *'
+    # Runs at 09:00 UTC (Adjust timezones if needed)
+    - cron: '0 9 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 env:

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to batch convert Word documents to PDF automatically</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-batch-convert-word-documents-to-pdf-automatically-guide.html" />
+    <meta name="description" content="Learn all about How to batch convert Word documents to PDF automatically. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to batch convert Word documents to PDF automatically | PDFjin" />
+    <meta property="og:description" content="Learn all about How to batch convert Word documents to PDF automatically. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20batch%20convert%20Word%20documents%20to%20PDF%20automatically.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=5520576" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-batch-convert-word-documents-to-pdf-automatically-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to batch convert Word documents to PDF automatically | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to batch convert Word documents to PDF automatically. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20batch%20convert%20Word%20documents%20to%20PDF%20automatically.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=5520576" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to batch convert Word documents to PDF automatically",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20batch%20convert%20Word%20documents%20to%20PDF%20automatically.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=5520576",
+  "datePublished": "2026-07-28",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-batch-convert-word-documents-to-pdf-automatically-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to batch convert Word documents to PDF automatically</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Jul 28, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20batch%20convert%20Word%20documents%20to%20PDF%20automatically.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=5520576" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Automate Word to PDF Conversions</h2>
+<p>To batch convert multiple Microsoft Word documents (.doc, .docx) to PDF format automatically, you primarily have three technical approaches: leveraging Microsoft Word's built-in VBA (Visual Basic for Applications) capabilities, utilizing PowerShell scripting on Windows systems, or employing dedicated online conversion tools.</p>
+<p>Each method offers distinct advantages regarding control, platform dependency, and ease of setup. This guide details how to implement each solution effectively.</p>
+
+<h2>Method 1 Using Microsoft Word VBA Macro</h2>
+<p>Microsoft Word includes a powerful object model that allows automation through VBA macros. This method requires Microsoft Word to be installed on the machine performing the conversion.</p>
+
+<h3>Step-by-Step VBA Implementation</h3>
+<ol>
+    <li><strong>Open Word and Access VBA Editor:</strong> Launch Microsoft Word. Press <code>Alt + F11</code> to open the VBA editor.</li>
+    <li><strong>Insert a New Module:</strong> In the VBA editor, in the Project pane on the left, right-click on "Normal" (or your specific project name), select "Insert," then "Module."</li>
+    <li><strong>Paste the VBA Code:</strong> Copy and paste the following VBA code into the new module. Modify <code>strInputFolder</code> and <code>strOutputFolder</code> to your desired paths.</li>
+</ol>
+<pre><code>
+Sub BatchConvertDocToPDF()
+    Dim strInputFolder As String
+    Dim strOutputFolder As String
+    Dim objFSO As Object
+    Dim objFolder As Object
+    Dim objFile As Object
+    Dim objWord As Object
+    Dim objDoc As Object
+    Dim strDocPath As String
+    Dim strPdfPath As String
+
+    ' --- Configuration ---
+    strInputFolder = "C:\Path\To\Your\Word\Documents\"  ' &lt;--- IMPORTANT: Change this to your input folder
+    strOutputFolder = "C:\Path\To\Your\PDF\Output\"    ' &lt;--- IMPORTANT: Change this to your output folder
+    ' -------------------
+
+    Set objFSO = CreateObject("Scripting.FileSystemObject")
+
+    ' Ensure input folder exists
+    If Not objFSO.FolderExists(strInputFolder) Then
+        MsgBox "Input folder does not exist: " &amp; strInputFolder, vbCritical
+        Exit Sub
+    End If
+
+    ' Create output folder if it doesn't exist
+    If Not objFSO.FolderExists(strOutputFolder) Then
+        objFSO.CreateFolder strOutputFolder
+    End If
+
+    Set objWord = CreateObject("Word.Application")
+    objWord.Visible = False ' Keep Word invisible during conversion
+
+    Set objFolder = objFSO.GetFolder(strInputFolder)
+
+    For Each objFile In objFolder.Files
+        If LCase(objFSO.GetExtensionName(objFile.Name)) = "doc" Or _
+           LCase(objFSO.GetExtensionName(objFile.Name)) = "docx" Then
+
+            strDocPath = objFile.Path
+            strPdfPath = strOutputFolder &amp; objFSO.GetBaseName(objFile.Name) &amp; ".pdf"
+
+            On Error Resume Next ' Handle errors gracefully for individual files
+            Set objDoc = objWord.Documents.Open(strDocPath, False, False, False)
+            If Err.Number = 0 Then
+                objDoc.ExportAsFixedFormat _
+                    OutputFileName:=strPdfPath, _
+                    ExportFormat:=wdExportFormatPDF, _
+                    OpenAfterExport:=False, _
+                    OptimizeFor:=wdExportOptimizeForPrint, _
+                    Range:=wdExportAllDocument, _
+                    Item:=wdExportDocumentContent, _
+                    IncludeDocProperties:=True, _
+                    KeepIRSMCTags:=True, _
+                    CreateBookmarks:=wdExportCreateNoBookmarks, _
+                    DocStructureTags:=True, _
+                    BitmapMissingFonts:=True, _
+                    UseISO19005_1:=False
+
+                objDoc.Close SaveChanges:=False
+                Debug.Print "Converted: " &amp; objFile.Name &amp; " to " &amp; strPdfPath
+            Else
+                Debug.Print "Failed to open or convert: " &amp; objFile.Name &amp; ". Error: " &amp; Err.Description
+            End If
+            On Error GoTo 0 ' Reset error handling
+        End If
+    Next objFile
+
+    objWord.Quit
+    Set objDoc = Nothing
+    Set objWord = Nothing
+    Set objFile = Nothing
+    Set objFolder = Nothing
+    Set objFSO = Nothing
+
+    MsgBox "Batch conversion complete!", vbInformation
+End Sub
+</code></pre>
+<ol start="4">
+    <li><strong>Run the Macro:</strong> In the VBA editor, place your cursor anywhere within the <code>Sub BatchConvertDocToPDF()</code> routine. Press <code>F5</code> or click the "Run Sub/UserForm" button (a green triangle).</li>
+</ol>
+
+<h2>Method 2 PowerShell Scripting for Windows</h2>
+<p>For Windows users, PowerShell provides a robust way to automate tasks, including interacting with Microsoft Office applications via COM objects. This method also requires Microsoft Word to be installed.</p>
+
+<h3>Step-by-Step PowerShell Implementation</h3>
+<ol>
+    <li><strong>Create a PowerShell Script:</strong> Open a plain text editor (like Notepad or VS Code) and save the following code as a <code>.ps1</code> file (e.g., <code>Convert-WordToPdf.ps1</code>). Adjust <code>$inputFolder</code> and <code>$outputFolder</code> variables.</li>
+</ol>
+<pre><code>
+# --- Configuration ---
+$inputFolder = "C:\Path\To\Your\Word\Documents"   # &lt;--- IMPORTANT: Change this to your input folder
+$outputFolder = "C:\Path\To\Your\PDF\Output"     # &lt;--- IMPORTANT: Change this to your output folder
+# -------------------
+
+# Create output folder if it doesn't exist
+if (-not (Test-Path $outputFolder)) {
+    New-Item -ItemType Directory -Path $outputFolder | Out-Null
+    Write-Host "Created output folder: $outputFolder"
+}
+
+# Create a new Word application object
+$word = New-Object -ComObject "Word.Application"
+$word.Visible = $false # Keep Word invisible
+
+# Define PDF format constant
+$wdFormatPDF = 17 # wdExportFormatPDF enum value
+
+Get-ChildItem -Path $inputFolder -Include "*.doc", "*.docx" -Recurse | ForEach-Object {
+    $docPath = $_.FullName
+    $pdfPath = Join-Path $outputFolder ($_.BaseName + ".pdf")
+
+    try {
+        Write-Host "Converting '$($_.Name)' to PDF..."
+        $doc = $word.Documents.Open($docPath, $false, $false, $false)
+        $doc.SaveAs([ref]$pdfPath, [ref]$wdFormatPDF)
+        $doc.Close($false) # Close without saving changes to the original document
+        Write-Host "Successfully converted $($_.Name)"
+    }
+    catch {
+        Write-Error "Failed to convert '$($_.Name)'. Error: $($_.Exception.Message)"
+    }
+}
+
+# Quit Word application and release COM object
+$word.Quit()
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($word) | Out-Null
+Remove-Variable word
+Write-Host "Batch conversion complete."
+</code></pre>
+<ol start="2">
+    <li><strong>Execute the Script:</strong> Open PowerShell (search for "PowerShell" in the Start Menu). Navigate to the directory where you saved your <code>.ps1</code> file using <code>cd C:\Path\To\Script</code>.</li>
+    <li><strong>Run:</strong> Execute the script by typing <code>.\Convert-WordToPdf.ps1</code> and pressing Enter.</li>
+</ol>
+
+<h2>Method 3 Online Batch Conversion Tools</h2>
+<p>For users who prefer a straightforward, platform-agnostic solution without installing software or writing code, online tools offer a convenient alternative. Many services provide drag-and-drop interfaces for batch processing.</p>
+<p>These tools often handle various document types and can be significantly faster for one-off tasks or when you lack administrative privileges to run scripts. For a quick and efficient conversion of Word to PDF, consider using an <a href="https://pdfjin.com/pages/word-to-pdf.html" style="text-decoration: underline;">online Word to PDF converter</a>.</p>
+<p>Additionally, after converting your documents, you may find that the resulting PDF files are too large for easy sharing. In such cases, you can <a href="https://pdfjin.com/pages/compress-pdf.html" style="text-decoration: underline;">compress the PDF file</a> to reduce its size without significant loss of quality.</p>
+
+<h2>Comparison of Batch Conversion Methods</h2>
+<p>Choosing the right method depends on your specific needs, technical comfort, and operating environment. Here's a brief comparison:</p>
+
+<table>
+    <tr>
+        <td><strong>Method</strong></td>
+        <td><strong>Pros</strong></td>
+        <td><strong>Cons</strong></td>
+        <td><strong>Requirements</strong></td>
+    </tr>
+    <tr>
+        <td><strong>VBA Macro</strong></td>
+        <td>Highly customizable. Integrated directly with Word. No external tools needed.</td>
+        <td>Requires basic VBA knowledge. Word must be installed. Windows only.</td>
+        <td>Microsoft Word (Windows)</td>
+    </tr>
+    <tr>
+        <td><strong>PowerShell Script</strong></td>
+        <td>Powerful command-line automation. Scalable for large batches.</td>
+        <td>Requires scripting knowledge. Word must be installed. Windows only.</td>
+        <td>Microsoft Word, Windows OS</td>
+    </tr>
+    <tr>
+        <td><strong>Online Tools</strong></td>
+        <td>Extremely user-friendly. No software installation. Cross-platform.</td>
+        <td>Dependent on internet connection. Data privacy concerns for sensitive documents. Limited customization.</td>
+        <td>Web browser, Internet access</td>
+    </tr>
+</table>
+
+<h2>Conclusion</h2>
+<p>Automating Word to PDF conversions can significantly streamline document workflows. Whether you choose the granular control of VBA and PowerShell or the simplicity of online tools, the key is to select a method that aligns with your technical expertise and operational requirements.</p>
+<p>For instant and secure online conversions and various other PDF utilities, PDFjin offers a robust platform to manage your documents efficiently.</p>
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="secure-ai-tool-for-scanning-legal-documents-without-data-tracking-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Secure AI tool for scanning legal documents without data tracking</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="ultimate-guide-to-organizing-pdf-pages-in-the-browser-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Ultimate guide to organizing PDF pages in the browser</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="top-5-ai-tools-for-chatting-with-lengthy-legal-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Top 5 AI tools for chatting with lengthy legal PDFs</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-summarize-government-policy-pdf-documents-in-minutes-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to summarize government policy PDF documents in minutes</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="chat-with-multiple-pdf-documents-simultaneously-using-ai-search-tools-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Chat with multiple PDF documents simultaneously using AI search tools</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="merge-multiple-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">The Best Way to Merge Multiple PDF Files into One Document Free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="the-difference-between-pdf-and-pdf-a-for-long-term-archiving-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">The difference between PDF and PDF/A for long term archiving</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-remove-passwords-from-secured-pdf-files-easily-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to remove passwords from secured PDF files easily</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-ocr-software-to-extract-text-from-old-scanned-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best OCR software to extract text from old scanned PDFs</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="free-tools-to-convert-jpg-and-png-images-into-a-single-pdf-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Free tools to convert JPG and PNG images into a single PDF</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
