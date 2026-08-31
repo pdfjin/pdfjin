@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to convert CSV data into a neatly formatted PDF table</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-convert-csv-data-into-a-neatly-formatted-pdf-table-guide.html" />
+    <meta name="description" content="Learn all about How to convert CSV data into a neatly formatted PDF table. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to convert CSV data into a neatly formatted PDF table | PDFjin" />
+    <meta property="og:description" content="Learn all about How to convert CSV data into a neatly formatted PDF table. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20convert%20CSV%20data%20into%20a%20neatly%20formatted%20PDF%20table.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7579251" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-convert-csv-data-into-a-neatly-formatted-pdf-table-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to convert CSV data into a neatly formatted PDF table | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to convert CSV data into a neatly formatted PDF table. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20convert%20CSV%20data%20into%20a%20neatly%20formatted%20PDF%20table.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7579251" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to convert CSV data into a neatly formatted PDF table",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20convert%20CSV%20data%20into%20a%20neatly%20formatted%20PDF%20table.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7579251",
+  "datePublished": "2026-08-06",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-convert-csv-data-into-a-neatly-formatted-pdf-table-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to convert CSV data into a neatly formatted PDF table</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Aug 06, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20convert%20CSV%20data%20into%20a%20neatly%20formatted%20PDF%20table.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7579251" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Direct Answer Converting CSV to PDF Tables</h2>
+<p>Converting CSV data into a neatly formatted PDF table requires an intermediary step to impose visual structure, as CSV files are plain text without inherent formatting capabilities. The most common approaches involve using spreadsheet software to design the table, employing programmatic libraries for automation, or leveraging online conversion tools for quick results. Each method focuses on taking the raw CSV data and applying presentation layers such as cell borders, font styles, and column alignments before rendering to PDF.</p>
+
+<h2>The Challenge With Raw CSV Data</h2>
+<p>CSV (Comma Separated Values) is a simplistic format designed for data exchange, not presentation. It stores tabular data in plain text, with values typically separated by commas. This inherent simplicity means a raw CSV file contains no styling information, font choices, border definitions, or page layout instructions.</p>
+<p>Directly converting a raw CSV to PDF often results in a visually unappealing, unformatted block of text. The PDF engine wouldn't know how to interpret delimiters as table boundaries or apply any visual hierarchy without explicit instructions.</p>
+<ul>
+    <li><strong>No Visual Hierarchy</strong> Without formatting, headers are indistinguishable from data rows.</li>
+    <li><strong>Poor Readability</strong> Lack of borders, distinct cell padding, or proper column widths makes large datasets difficult to scan.</li>
+    <li><strong>No Page Control</strong> CSV has no concept of pages, leading to uncontrolled content flow in a PDF.</li>
+</ul>
+
+<h2>Method 1 Spreadsheet Software for Visual Layout</h2>
+<p>Using a spreadsheet application like Microsoft Excel, Google Sheets, or LibreOffice Calc is often the most straightforward non-programmatic way to achieve a well-formatted PDF table from CSV data. These tools provide extensive visual control over your data's presentation.</p>
+
+<h3>Steps with Spreadsheet Software</h3>
+<ul>
+    <li><strong>Import CSV</strong> Open your spreadsheet software and use its data import functionality (e.g., "Data" &gt; "From Text/CSV" in Excel) to load your CSV file. Ensure the correct delimiter (usually comma) is selected.</li>
+    <li><strong>Format Table</strong> Once imported, apply desired table formatting. This includes setting column widths, adding cell borders, applying header row styling (bold text, background colors), adjusting text alignment, and choosing appropriate fonts and sizes.</li>
+    <li><strong>Review Page Breaks</strong> Utilize the "Page Break Preview" or "Print Preview" features to ensure your table breaks logically across pages. Adjust margins or scaling as needed to fit content gracefully.</li>
+    <li><strong>Export to PDF</strong> Use the "Save As" or "Print" function within the spreadsheet software. Select "PDF" as the output format. Most modern spreadsheet programs offer built-in PDF export capabilities. For situations where you already have a formatted Excel sheet, you can easily <a href="https://pdfjin.com/pages/excel-to-pdf.html" style="text-decoration: underline;">convert your Excel sheet to PDF</a> using online tools.</li>
+</ul>
+
+<h2>Method 2 Programmatic Conversion for Automation</h2>
+<p>For large, regularly updated datasets, or scenarios requiring highly customized layouts, a programmatic approach offers superior control and automation. Python, with its rich ecosystem of data processing and PDF generation libraries, is an excellent choice.</p>
+
+<h3>Python with Pandas and fpdf2</h3>
+<p>This method involves reading the CSV with Pandas, which is ideal for data manipulation, and then using a library like <code>fpdf2</code> (or ReportLab) to render the data into a PDF document with precise table styling.</p>
+<ul>
+    <li><strong>Load Data</strong> Use <code>pandas.read_csv('your_file.csv')</code> to load your CSV data into a DataFrame, which provides a structured, table-like object.</li>
+    <li><strong>Prepare Data</strong> Cleanse or transform your data within Pandas if necessary (e.g., formatting dates, rounding numbers, handling missing values).</li>
+    <li><strong>Initialize PDF</strong> Create an instance of the PDF class from <code>fpdf2</code>, specifying page orientation and units.</li>
+    <li><strong>Render Table</strong> Iterate through the DataFrame's columns to create table headers, then iterate through its rows. For each cell, add it to the PDF using `pdf.cell()` or `pdf.multi_cell()`, carefully controlling width, height, borders, alignment, and font styles. You will need to calculate column widths and handle page breaks manually if the table spans multiple pages.</li>
+    <li><strong>Output PDF</strong> Save the generated document using `pdf.output('output.pdf')`.</li>
+</ul>
+
+<h2>Method 3 Online Tools for Quick Conversions</h2>
+<p>When you need a quick, one-off conversion without installing software or writing code, online CSV to PDF converters are convenient. These tools typically offer basic formatting options.</p>
+
+<h3>How Online Tools Work</h3>
+<ul>
+    <li><strong>Upload CSV</strong> Navigate to an online converter and upload your CSV file.</li>
+    <li><strong>Review Options</strong> Many tools provide options to detect delimiters, recognize headers, or apply simple table styles. Select your preferred settings.</li>
+    <li><strong>Convert</strong> Initiate the conversion process. The tool processes your CSV and generates a PDF.</li>
+    <li><strong>Download PDF</strong> Once complete, download your newly formatted PDF table.</li>
+</ul>
+<p>While convenient, always be mindful of data privacy when uploading sensitive information to third-party online services.</p>
+
+<h2>Key Formatting Considerations for Readability</h2>
+<p>Regardless of the method chosen, thoughtful table design enhances readability and professionalism in your PDF output.</p>
+<ul>
+    <li><strong>Header Styling</strong> Use distinct styling for header rows (bold text, different background color) to clearly separate them from the data.</li>
+    <li><strong>Column Widths</strong> Adjust column widths appropriately to prevent truncation or excessive white space. Ensure text wraps cleanly within cells if needed.</li>
+    <li><strong>Borders and Lines</strong> Employ subtle cell borders or row separators to guide the reader's eye, but avoid overly thick or distracting lines.</li>
+    <li><strong>Font Choice and Size</strong> Select a professional, legible font (e.g., Arial, Helvetica, Times New Roman) and an appropriate size that is easy to read without being too large or too small.</li>
+    <li><strong>Pagination</strong> For multi-page tables, ensure that table headers repeat on each new page for continuity. Manage page breaks to avoid splitting critical data rows.</li>
+    <li><strong>Data Alignment</strong> Align text (left or justified) and numbers (right or decimal aligned) consistently for a clean look.</li>
+</ul>
+
+<h2>Optimizing PDF Output</h2>
+<p>After successfully converting your CSV data into a formatted PDF table, you might find situations where further optimization is beneficial. For example, if your generated PDF contains many graphics or a large amount of data, its file size could become substantial. In such cases, you might want to <a href="https://pdfjin.com/pages/compress-pdf.html" style="text-decoration: underline;">compress the PDF file</a> to reduce its size, making it quicker to share and upload without compromising visual quality.</p>
+<p>Whatever your approach to converting CSV to PDF, PDFjin provides a suite of online tools to help manage, optimize, and secure your documents quickly and efficiently.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="top-5-ai-tools-for-chatting-with-lengthy-legal-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Top 5 AI tools for chatting with lengthy legal PDFs</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-summarize-multi-page-academic-pdf-with-ai-without-losing-context-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to summarize multi page academic PDF with AI without losing context</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-ways-to-redact-medical-records-in-pdf-format-securely-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best ways to redact medical records in PDF format securely</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="extract-product-inventory-lists-from-supplier-pdf-catalogs-with-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Extract product inventory lists from supplier PDF catalogs with AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="convert-apple-pages-documents-to-pdf-without-a-mac-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Convert Apple Pages documents to PDF without a Mac</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-analyze-medical-report-pdf-data-securely-with-private-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to analyze medical report PDF data securely with private AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="automate-hr-onboarding-workflows-by-extracting-data-from-resume-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Automate HR onboarding workflows by extracting data from resume PDFs</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="top-5-free-ways-to-edit-pdf-text-online-in-2026-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Top 5 free ways to edit PDF text online in 2026</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-extract-specific-data-fields-from-pdf-invoices-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to extract specific data fields from PDF invoices using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="automated-invoice-data-extraction-from-pdf-files-for-small-business-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Automated invoice data extraction from PDF files for small business</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

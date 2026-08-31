@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | Add bates numbering to legal PDFs for court submissions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/add-bates-numbering-to-legal-pdfs-for-court-submissions-guide.html" />
+    <meta name="description" content="Learn all about Add bates numbering to legal PDFs for court submissions. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Add bates numbering to legal PDFs for court submissions | PDFjin" />
+    <meta property="og:description" content="Learn all about Add bates numbering to legal PDFs for court submissions. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20Add%20bates%20numbering%20to%20legal%20PDFs%20for%20court%20submissions.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7602746" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/add-bates-numbering-to-legal-pdfs-for-court-submissions-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Add bates numbering to legal PDFs for court submissions | PDFjin" />
+    <meta name="twitter:description" content="Learn all about Add bates numbering to legal PDFs for court submissions. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20Add%20bates%20numbering%20to%20legal%20PDFs%20for%20court%20submissions.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7602746" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Add bates numbering to legal PDFs for court submissions",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20Add%20bates%20numbering%20to%20legal%20PDFs%20for%20court%20submissions.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7602746",
+  "datePublished": "2026-08-05",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/add-bates-numbering-to-legal-pdfs-for-court-submissions-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>Add bates numbering to legal PDFs for court submissions</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Aug 05, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20Add%20bates%20numbering%20to%20legal%20PDFs%20for%20court%20submissions.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7602746" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Add Bates Numbering to Legal PDFs for Court Submissions</h2>
+
+Adding Bates numbering to legal PDFs for court submissions is a critical step, ensuring unique identification and sequential tracking across all documents in a case. This process goes beyond simple page numbering, requiring configurable prefixes, suffixes, and a consistent numbering sequence across potentially multiple files. Specialized PDF editing software or robust online tools are essential for accurate implementation.
+
+<h2>What is Bates Numbering</h2>
+<p>Bates numbering is a method of assigning a unique identifying number and/or date to each page in a collection of documents, typically used in the legal, medical, and business fields. It helps to organize and reference large volumes of paperwork, especially during litigation discovery processes. Each page receives a distinct, sequential stamp, often including a case identifier.</p>
+
+<h2>Why Bates Numbering is Essential</h2>
+<p>In legal contexts, Bates numbering provides an undeniable audit trail. It ensures that no pages are inadvertently omitted or duplicated and allows all parties to refer to specific documents and pages with absolute clarity. This uniformity is crucial for court submissions, depositions, and trial presentations, preventing disputes over document authenticity or completeness.</p>
+
+<h2>Technical Steps for Bates Numbering in Adobe Acrobat Pro</h2>
+<p>Adobe Acrobat Pro is a common desktop application used for advanced PDF manipulation, including Bates numbering. This method offers granular control over the numbering scheme.</p>
+<ul>
+    <li><strong>Open Documents</strong>: Start by opening all PDFs you intend to Bates number. For a multi-document numbering sequence, it's best to combine them first or use the "Bates Numbering" feature on a folder.</li>
+    <li><strong>Access Bates Numbering Tool</strong>: Navigate to <code>Tools</code> &gt; <code>Organize Pages</code> &gt; <code>More</code> &gt; <code>Bates Numbering</code> &gt; <code>Add</code>.</li>
+    <li><strong>Select Files</strong>: In the dialog box, click <code>Add Files...</code> to select the PDFs. Arrange them in the correct order for numbering.</li>
+    <li><strong>Configure Numbering Scheme</strong>:
+        <ul>
+            <li><strong>Prefix and Suffix</strong>: Enter any text (e.g., case number, client initials) to appear before (prefix) or after (suffix) the Bates number.</li>
+            <li><strong>Starting Number</strong>: Define the first number in the sequence. This is critical for continuing numbering across multiple batches or starting from a specific point.</li>
+            <li><strong>Digits</strong>: Specify the number of digits (e.g., 000001 for 6 digits). This pads the number with leading zeros for uniform appearance.</li>
+        </ul>
+    </li>
+    <li><strong>Placement and Appearance</strong>: Choose the position (header/footer, left/center/right), font, size, and color of the Bates stamp. Ensure it does not obscure existing document content.</li>
+    <li><strong>Apply Numbering</strong>: Click <code>OK</code> to apply the Bates numbering. Acrobat will process the documents and add the specified numbers.</li>
+</ul>
+
+<h2>Using Online PDF Tools for Bates Numbering</h2>
+<p>For users without Adobe Acrobat Pro or those needing a quicker solution, online PDF tools provide an accessible alternative. These platforms often simplify the process, abstracting some of the complexity.</p>
+<ul>
+    <li><strong>Select a Reliable Online Tool</strong>: Choose a reputable online service that specifically offers page numbering or Bates numbering. Many tools are designed to <a href="https://pdfjin.com/pages/add-page-numbers.html" style="text-decoration: underline;">add page numbers</a> with advanced customization.</li>
+    <li><strong>Upload Your PDF Document</strong>: Drag and drop your legal PDF or browse to upload it to the online platform.</li>
+    <li><strong>Configure Bates Settings</strong>: Look for options like "Start Number," "Prefix," "Suffix," and "Position." These settings directly control the Bates numbering format.
+        <p>Ensure your chosen online tool allows for:
+            <ul>
+                <li>Customizable starting number.</li>
+                <li>Prefix and suffix text fields.</li>
+                <li>Control over the number of digits for padding.</li>
+            </ul>
+        </p>
+    </li>
+    <li><strong>Preview and Apply</strong>: Most good online tools offer a preview of the numbering before finalizing. Review the placement and sequence. Once satisfied, apply the numbering and download your new PDF.</li>
+</ul>
+
+<h2>Key Considerations for Accurate Bates Numbering</h2>
+<p>Ensuring accuracy is paramount when adding Bates numbering. Overlooking details can lead to significant issues during legal proceedings.</p>
+
+<table>
+    <thead>
+        <tr>
+            <td><strong>Aspect</strong></td>
+            <td><strong>Description</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Consistent Sequence</strong></td>
+            <td>Verify that numbering flows continuously across all documents, especially if merging multiple files or adding pages later.</td>
+        </tr>
+        <tr>
+            <td><strong>Prefixes and Suffixes</strong></td>
+            <td>Use clear, concise identifiers (e.g., "CASE-001-", "-EXHIBIT-A") to provide context for each Bates number.</td>
+        </tr>
+        <tr>
+            <td><strong>Placement</strong></td>
+            <td>Choose a consistent location (e.g., bottom right corner) that doesn't obstruct existing text or graphics.</td>
+        </tr>
+        <tr>
+            <td><strong>Font and Size</strong></td>
+            <td>Select a legible font and size. It should be easily readable without being overly intrusive.</td>
+        </tr>
+        <tr>
+            <td><strong>Document Integrity</strong></td>
+            <td>Always keep a copy of the original, un-Bates-numbered PDF. Bates numbering modifies the document directly.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Common Challenges and Solutions</h2>
+<ul>
+    <li><strong>Overlapping Existing Content</strong>: If the Bates number lands on crucial text, adjust its position (e.g., move from bottom right to top right) or slightly reduce the font size. Previewing is key.</li>
+    <li><strong>Incorrect Numbering Sequence</strong>: This usually occurs when files are processed out of order or the "Starting Number" is set incorrectly. Always re-verify the file order before applying Bates numbering and double-check the starting value.</li>
+    <li><strong>Large File Sizes</strong>: Bates numbering itself doesn't significantly increase file size, but if you're dealing with very large discovery documents, consider optimizing or <a href="https://pdfjin.com/pages/compress-pdf.html" style="text-decoration: underline;">compressing the PDF file</a> before or after numbering to ease sharing.</li>
+</ul>
+
+<p>For efficient, reliable Bates numbering without the need for desktop software, consider using an online PDF tool. PDFjin offers a user-friendly way to add detailed page numbering, including custom prefixes and suffixes, to streamline your legal PDF workflows.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-free-ai-pdf-translator-for-official-international-documents-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best free AI PDF translator for official international documents</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="why-converting-scanned-pdfs-to-word-requires-ocr-technology-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Why converting scanned PDFs to Word requires OCR technology</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="convert-html-web-pages-to-pdf-for-offline-reading-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Convert HTML web pages to PDF for offline reading</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-summarize-multi-page-academic-pdf-with-ai-without-losing-context-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to summarize multi page academic PDF with AI without losing context</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-extract-specific-data-fields-from-pdf-invoices-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to extract specific data fields from PDF invoices using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="speed-up-academic-research-by-chatting-with-textbook-pdf-chapters-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Speed up academic research by chatting with textbook PDF chapters</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-search-for-specific-words-across-multiple-pdf-files-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to search for specific words across multiple PDF files</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-add-a-digital-signature-to-a-pdf-without-adobe-acrobat-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to add a digital signature to a PDF without Adobe Acrobat</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-align-and-distribute-text-boxes-in-a-pdf-editor-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to align and distribute text boxes in a PDF editor</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-convert-a-pdf-to-grayscale-to-save-printer-ink-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to convert a PDF to grayscale to save printer ink</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

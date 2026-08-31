@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to embed video and audio files into a PDF document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-embed-video-and-audio-files-into-a-pdf-document-guide.html" />
+    <meta name="description" content="Learn all about How to embed video and audio files into a PDF document. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to embed video and audio files into a PDF document | PDFjin" />
+    <meta property="og:description" content="Learn all about How to embed video and audio files into a PDF document. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20embed%20video%20and%20audio%20files%20into%20a%20PDF%20document.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7169521" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-embed-video-and-audio-files-into-a-pdf-document-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to embed video and audio files into a PDF document | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to embed video and audio files into a PDF document. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20embed%20video%20and%20audio%20files%20into%20a%20PDF%20document.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7169521" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to embed video and audio files into a PDF document",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20embed%20video%20and%20audio%20files%20into%20a%20PDF%20document.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7169521",
+  "datePublished": "2026-08-10",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-embed-video-and-audio-files-into-a-pdf-document-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to embed video and audio files into a PDF document</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Aug 10, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20embed%20video%20and%20audio%20files%20into%20a%20PDF%20document.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=7169521" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Embedding Video and Audio in PDF Documents</h2>
+<p>Directly embedding video and audio into a PDF document creates an interactive, self-contained experience. This process primarily relies on robust PDF editing software, which converts the multimedia content into a format compatible with the PDF specification (often H.264/MP4 for video and MP3 for audio) and integrates it directly into the file structure. While convenient, this can significantly increase file size.</p>
+
+<h3>Method 1 Direct Embedding with a PDF Editor</h3>
+<p>The most common and effective way to embed media is by using professional PDF editing software like Adobe Acrobat Pro. These tools provide dedicated features for rich media integration.</p>
+<ul>
+    <li><strong>Step 1 Open Your PDF:</strong> Launch your PDF editor and open the document where you want to embed the media.</li>
+    <li><strong>Step 2 Access Media Tools:</strong> Navigate to the "Tools" panel. Look for "Rich Media," "Add Video," or "Add Sound" options. The exact naming varies by software version.</li>
+    <li><strong>Step 3 Select and Place Media:</strong> Choose the "Add Video" or "Add Sound" tool. Click and drag a rectangle on the PDF page where you want the media player to appear. A file selection dialog will open.</li>
+    <li><strong>Step 4 Configure Media Properties:</strong>
+    <ul>
+        <li><strong>Browse:</strong> Select your video (e.g., .mp4, .mov) or audio (e.g., .mp3) file.</li>
+        <li><strong>Playback Options:</strong> Configure settings such as auto-play, loop, show controller, and poster image (a static image displayed before playback).</li>
+        <li><strong>Appearance:</strong> Adjust the border, color, and transparency of the media player area.</li>
+    </ul>
+    </li>
+    <li><strong>Step 5 Save Your Document:</strong> After configuring, save the PDF. The media is now an integral part of the file.</li>
+</ul>
+<p><strong>Technical Consideration:</strong> Ensure your media files are in widely supported formats. H.264 encoded MP4 files and MP3 audio are generally the most compatible across various PDF readers. Embedding often triggers a conversion to these formats if your source is different.</p>
+
+<h3>Method 2 Linking to External Media Files</h3>
+<p>If file size is a critical concern, or if your media is hosted online (e.g., YouTube, Vimeo, cloud storage), linking to an external file is a viable alternative. This method keeps your PDF lightweight but requires an internet connection for web links or specific local file paths for desktop links.</p>
+<ul>
+    <li><strong>Step 1 Create a Hyperlink:</strong> In your PDF editor, select text or an image that will serve as the clickable trigger for your media.</li>
+    <li><strong>Step 2 Add the Link Action:</strong> Access the link tool (often found under "Edit PDF" or "Link" options). Draw a rectangle over your chosen text or image.</li>
+    <li><strong>Step 3 Specify Link Type:</strong>
+    <ul>
+        <li><strong>Open a Web Page:</strong> For online media, input the full URL (e.g., <code>https://www.youtube.com/watch?v=yourvideo</code>).</li>
+        <li><strong>Open a File:</strong> For local media, browse to the file on your computer. Be cautious, as this link will only work if the user has the same file path.</li>
+    </ul>
+    </li>
+    <li><strong>Step 4 Configure Appearance:</strong> Define how the link appears (e.g., visible rectangle, dashed border).</li>
+    <li><strong>Step 5 Save Changes:</strong> Save the PDF. Clicking the link will open the media in the user's default browser or media player.</li>
+</ul>
+<p><strong>Technical Consideration:</strong> Relative file paths for local media are problematic for distribution. Always use absolute web URLs for hosted content to ensure universal access. Embedding multimedia can significantly increase your PDF's file size. Always consider optimizing your media or quickly <a href="https://pdfjin.com/pages/compress-pdf.html" style="text-decoration: underline;">compress the PDF file</a> before sending.</p>
+
+<h3>Method 3 Attaching Media Files</h3>
+<p>Some PDF readers and editors allow you to attach arbitrary files to a PDF, similar to an email attachment. While this doesn't embed the media for inline playback, it ensures the files are distributed alongside the PDF.</p>
+<ul>
+    <li><strong>Step 1 Open Attachments Panel:</strong> Look for an "Attachments" icon or panel (often represented by a paperclip) in your PDF viewer's sidebar.</li>
+    <li><strong>Step 2 Add Attachment:</strong> Click the option to add a new attachment and select your video or audio file.</li>
+    <li><strong>Step 3 Save Document:</strong> Save the PDF. Users will need to open the attachments panel and manually launch the media file.</li>
+</ul>
+<p><strong>Technical Consideration:</strong> This method is best for supplementary material where direct inline playback isn't required. Users must actively seek out and open the attached files, which will launch in their system's default media player.</p>
+
+<h3>Comparison of Methods</h3>
+<p>Choosing the right method depends on your priorities regarding file size, user experience, and distribution constraints.</p>
+<table>
+    <tr>
+        <td><strong>Feature</strong></td>
+        <td><strong>Direct Embedding</strong></td>
+        <td><strong>Linking to External</strong></td>
+        <td><strong>Attaching Files</strong></td>
+    </tr>
+    <tr>
+        <td><strong>File Size Impact</strong></td>
+        <td>High</td>
+        <td>Minimal</td>
+        <td>Moderate to High</td>
+    </tr>
+    <tr>
+        <td><strong>Playback</strong></td>
+        <td>Inline, within PDF</td>
+        <td>External player/browser</td>
+        <td>External player (after manual open)</td>
+    </tr>
+    <tr>
+        <td><strong>Portability</strong></td>
+        <td>High (self-contained)</td>
+        <td>Low (requires internet/path)</td>
+        <td>High (files travel with PDF)</td>
+    </tr>
+    <tr>
+        <td><strong>User Experience</strong></td>
+        <td>Seamless, integrated</td>
+        <td>Redirects user</td>
+        <td>Requires extra steps</td>
+    </tr>
+    <tr>
+        <td><strong>Reader Compatibility</strong></td>
+        <td>Good for modern readers</td>
+        <td>Excellent (standard links)</td>
+        <td>Excellent (standard attachments)</td>
+    </tr>
+</table>
+
+<p>Whether you're creating a rich multimedia report or an interactive presentation, understanding these embedding techniques provides a solid foundation. While directly embedding media offers a rich experience, for general PDF modifications like adding text, images, or managing pages, you might need to <a href="https://pdfjin.com/pages/edit-pdf.html" style="text-decoration: underline;">edit the PDF</a> using a dedicated tool.</p>
+<p>For quick online solutions to manage your PDF files, including compression or editing, consider utilizing PDFjin's suite of tools for efficient document handling.</p>
+
+
+
+
+
+
+
+
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-ai-pdf-tool-for-students-managing-large-reading-assignments-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best AI PDF tool for students managing large reading assignments</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-invert-colors-on-a-pdf-for-dark-mode-reading-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to invert colors on a PDF for dark mode reading</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-translate-academic-thesis-pdf-files-into-multiple-languages-safely-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to translate academic thesis PDF files into multiple languages safely</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="ai-question-generator-for-corporate-training-pdf-documents-in-bulk-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">AI question generator for corporate training PDF documents in bulk</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-batch-convert-word-documents-to-pdf-automatically-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to batch convert Word documents to PDF automatically</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-extract-financial-tables-from-pdf-to-excel-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to extract financial tables from PDF to Excel using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="extract-clauses-from-legal-contract-pdf-using-ai-automation-tools-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Extract clauses from legal contract PDF using AI automation tools</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="compare-two-legal-contract-pdf-files-for-differences-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Compare two legal contract PDF files for differences using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-add-a-digital-signature-to-a-pdf-without-adobe-acrobat-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to add a digital signature to a PDF without Adobe Acrobat</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-ai-is-revolutionizing-pdf-summaries-and-contract-auditing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How AI is revolutionizing PDF summaries and contract auditing</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
