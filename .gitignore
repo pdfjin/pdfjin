@@ -26,7 +26,6 @@ node-v20.12.0-win-x64/
 pdgjin-*.json
 db.json
 backend/db.json
-backend/static_frontend/
 stripekey.txt
 deepseekapi.txt
 pw.txt

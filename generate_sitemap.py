@@ -85,6 +85,21 @@ def generate_sitemaps():
                     "priority": "0.8"
                 })
 
+    # 5. Scan FAQ pages
+    faq_dir = os.path.join(FRONTEND_DIR, "faq")
+    if os.path.exists(faq_dir):
+        for file in os.listdir(faq_dir):
+            if file.endswith(".html") and file not in EXCLUDE_PAGES:
+                file_path = os.path.join(faq_dir, file)
+                # Omit .html for cleaner URLs, or keep it. We'll use the file name as is for now 
+                # (you can change it to extensionless if you prefer, but .html works and is canonical)
+                name_without_ext = file.replace(".html", "")
+                urls.append({
+                    "loc": f"{BASE_URL}/faq/{name_without_ext}",
+                    "lastmod": get_file_date(file_path),
+                    "priority": "0.9"
+                })
+
     # Build XML helper
     def build_xml(url_list, output_path):
         xml_lines = [

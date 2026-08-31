@@ -2,7 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 import os
 
-KEY = "fcc31732d5364f76b458f117d40e64f1"
+KEY = "606c7becc4104846a80250335c7a2966"
 HOST = "pdfjin.com"
 KEY_LOCATION = f"https://pdfjin.com/{KEY}.txt"
 

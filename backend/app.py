@@ -361,6 +361,19 @@ async def serve_clean_page(page_name: str):
         return FileResponse(target)
     raise HTTPException(status_code=404)
 
+@app.get("/faq/{faq_name}")
+async def serve_faq_page(faq_name: str):
+    safe_name = os.path.basename(faq_name)
+    if safe_name.endswith(".html"):
+        filename = safe_name
+    else:
+        filename = f"{safe_name}.html"
+        
+    target = os.path.join("static_frontend", "faq", filename)
+    if os.path.exists(target):
+        return FileResponse(target)
+    raise HTTPException(status_code=404)
+
 @app.get("/admin")
 async def admin_shortcut():
     # Shortcut for /admin -> /pages/admin.html
