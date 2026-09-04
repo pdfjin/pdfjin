@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to auto-rename PDF invoices based on text content</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-auto-rename-pdf-invoices-based-on-text-content-guide.html" />
+    <meta name="description" content="Learn all about How to auto-rename PDF invoices based on text content. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to auto-rename PDF invoices based on text content | PDFjin" />
+    <meta property="og:description" content="Learn all about How to auto-rename PDF invoices based on text content. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20auto-rename%20PDF%20invoices%20based%20on%20text%20content.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=9736815" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-auto-rename-pdf-invoices-based-on-text-content-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to auto-rename PDF invoices based on text content | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to auto-rename PDF invoices based on text content. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20auto-rename%20PDF%20invoices%20based%20on%20text%20content.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=9736815" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to auto-rename PDF invoices based on text content",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20auto-rename%20PDF%20invoices%20based%20on%20text%20content.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=9736815",
+  "datePublished": "2026-09-04",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-auto-rename-pdf-invoices-based-on-text-content-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to auto-rename PDF invoices based on text content</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Sep 04, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20How%20to%20auto-rename%20PDF%20invoices%20based%20on%20text%20content.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=9736815" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Automating PDF Invoice Renaming Based on Text Content</h2>
+<p>Automatically renaming PDF invoices streamlines document management by using their internal text content to create descriptive filenames. The core process involves three critical steps: extracting all readable text from the PDF, parsing this text to identify key data points like invoice numbers, dates, and vendor names, and finally, using this extracted information to construct a new, standardized filename for the document.</p>
+
+<h2>Understanding the Renaming Workflow</h2>
+<p>The journey from a generic PDF filename to a structured one requires a systematic approach. This workflow addresses both digitally native PDFs and scanned image-based invoices.</p>
+<ul>
+    <li><strong>Text Extraction</strong> Obtain the full text content of the PDF. If the PDF is a scanned image, Optical Character Recognition (OCR) is essential to convert the image into searchable text.</li>
+    <li><strong>Data Parsing</strong> Once text is available, leverage regular expressions (regex) or more advanced pattern matching to locate and isolate specific data fields, such as "Invoice #", "Date", "Total Amount", or "Vendor Name".</li>
+    <li><strong>Filename Construction and Rename</strong> Combine the extracted data points into a consistent filename format (e.g., "VENDOR_INV[InvoiceNumber]_DATE.pdf") and then programmatically rename the file.</li>
+</ul>
+
+<h2>Prerequisites and Setup for Automation</h2>
+<p>To implement an automated renaming solution, Python is an excellent choice due to its robust libraries for PDF processing and text manipulation. You will need a Python environment and specific libraries.</p>
+<h3>Required Tools and Libraries</h3>
+<ul>
+    <li><strong>Python 3.x</strong> Your primary scripting language.</li>
+    <li><strong><code>pypdf</code> or <code>pdfminer.six</code></strong> For extracting text from digitally native PDFs.</li>
+    <li><strong><code>Pillow</code> (PIL Fork)</strong> For image processing, particularly if using OCR.</li>
+    <li><strong><code>pytesseract</code></strong> A Python wrapper for Google's Tesseract OCR engine.</li>
+    <li><strong>Tesseract OCR Engine</strong> The underlying OCR application. Install this separately for your operating system.</li>
+</ul>
+<p>You can install most Python libraries via pip:</p>
+<p><code>pip install pypdf pillow pytesseract</code></p>
+<p>For scanned documents, ensure Tesseract is correctly installed and accessible in your system's PATH. If your PDFs are scans, converting them to searchable PDFs first is crucial. For this, you might use an online <a href="https://pdfjin.com/pages/ocr-to-pdf.html" style="text-decoration: underline;">OCR PDF tool</a> to make the content extractable.</p>
+
+<h2>Step-by-Step Implementation with Python</h2>
+<p>Let's break down the technical steps for processing a PDF and renaming it.</p>
+
+<h3>1 Extracting Text from PDF</h3>
+<p>The first hurdle is getting the text. Digital PDFs allow direct text extraction, while scanned PDFs require OCR.</p>
+<h4>Function to Extract Text</h4>
+<pre><code>
+import pypdf
+import pytesseract
+from PIL import Image
+import io
+
+def extract_text_from_pdf(pdf_path):
+    text = ""
+    try:
+        # Try digital extraction first
+        with open(pdf_path, 'rb') as file:
+            reader = pypdf.PdfReader(file)
+            for page_num in range(len(reader.pages)):
+                text += reader.pages[page_num].extract_text() or ""
+        
+        if not text.strip(): # If no text or only whitespace, assume scanned and try OCR
+            print(f"No digital text found for {pdf_path}. Attempting OCR...")
+            # For OCR, convert PDF pages to images
+            # (Note: This requires 'poppler' utilities for pdf2image, not shown here for brevity)
+            # A simpler way with pytesseract might involve converting a whole PDF via external tools
+            # or processing individual image files if the PDF is already images.
+            # For demonstration, assume a simplified scenario where we can pass an image directly.
+            # In reality, you'd iterate through PDF pages, convert each to image, then OCR.
+            # Example placeholder for OCR:
+            # images = convert_from_path(pdf_path) # Requires pdf2image
+            # for img in images:
+            #     text += pytesseract.image_to_string(img)
+            # For practical OCR for a full PDF, consider dedicated tools or libraries like pdf2image.
+            text = "OCR_PLACEHOLDER_TEXT_FROM_SCAN" # Replace with actual OCR logic
+            
+    except Exception as e:
+        print(f"Error extracting text from {pdf_path}: {e}")
+        text = ""
+    return text
+</code></pre>
+<p>For robust OCR from PDFs, you'd typically convert each PDF page into an image using libraries like <code>pdf2image</code> (which depends on Poppler), then pass those images to <code>pytesseract</code>. This ensures comprehensive handling of scanned documents.</p>
+
+<h3>2 Defining Data Extraction Patterns</h3>
+<p>Once you have the text, regular expressions are your best friend for pulling out specific data points. The effectiveness of your regex patterns depends heavily on the consistency of your invoice layouts.</p>
+<h4>Common Data Points and Regex Patterns</h4>
+<table>
+    <tr>
+        <td><strong>Data Point</strong></td>
+        <td><strong>Example Text</strong></td>
+        <td><strong>Example Regex Pattern</strong></td>
+    </tr>
+    <tr>
+        <td>Invoice Number</td>
+        <td>Invoice # INV-2023-001</td>
+        <td><code>r"(?:Invoice|Inv)\s*[#No.]*\s*([A-Za-z0-9\-]+)"</code></td>
+    </tr>
+    <tr>
+        <td>Date</td>
+        <td>Date: 12/01/2023</td>
+        <td><code>r"(?:Date|Bill Date):\s*(\d{1,2}[/\-]\d{1,2}[/\-]\d{2,4})"</code></td>
+    </tr>
+    <tr>
+        <td>Vendor Name</td>
+        <td>FROM: ACME Corp.</td>
+        <td><code>r"(?:FROM|Vendor):\s*([A-Za-z\s.,&amp;-]+)"</code></td>
+    </tr>
+    <tr>
+        <td>Total Amount</td>
+        <td>TOTAL DUE: $1,234.56</td>
+        <td><code>r"(?:TOTAL|Total Due):\s*[$€£]?\s*([\d,]+\.\d{2})"</code></td>
+    </tr>
+</table>
+<p>Define a function to apply these patterns and extract the values:</p>
+<pre><code>
+import re
+
+def extract_invoice_data(text):
+    data = {
+        "invoice_num": "UNKNOWN",
+        "date": "NODATE",
+        "vendor": "NOVENDOR"
+    }
+
+    # Example patterns - adapt to your specific invoice formats
+    patterns = {
+        "invoice_num": r"(?:Invoice|Inv)\s*[#No.]*\s*([A-Za-z0-9\-]+)",
+        "date": r"(?:Date|Bill Date)[:\s]*(\d{1,2}[/\-]\d{1,2}[/\-]\d{2,4})",
+        "vendor": r"(?:FROM|Vendor):\s*([A-Za-z\s.,&amp;-]+)"
+    }
+
+    for key, pattern in patterns.items():
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            # Clean up extracted vendor name if necessary (e.g., remove newlines)
+            if key == "vendor":
+                data[key] = match.group(1).strip().replace('\n', ' ')
+            else:
+                data[key] = match.group(1).strip()
+    return data
+</code></pre>
+
+<h3>3 Constructing the New Filename</h3>
+<p>Standardize your filenames. A common format includes the vendor, invoice number, and date.</p>
+<h4>Function to Construct Filename</h4>
+<pre><code>
+def construct_new_filename(invoice_data):
+    invoice_num = invoice_data.get("invoice_num", "UNKNOWN").replace('/', '-')
+    date = invoice_data.get("date", "NODATE").replace('/', '-')
+    vendor = invoice_data.get("vendor", "NOVENDOR").replace('/', '_').replace('.', '')
+
+    # Example format: VENDOR_INV[InvoiceNumber]_DATE.pdf
+    new_name = f"{vendor.upper()}_INV{invoice_num}_{date}.pdf"
+    return new_name
+</code></pre>
+<p>Ensure the filename is sanitized to remove characters that are invalid in file paths (e.g., '/', ':', '?').</p>
+
+<h3>4 Executing the Rename</h3>
+<p>The final step is to use Python's <code>os</code> module to rename the file.</p>
+<h4>Function to Rename File</h4>
+<pre><code>
+import os
+
+def rename_pdf_file(original_path, new_filename, output_dir="renamed_invoices"):
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    original_dirname, original_basename = os.path.split(original_path)
+    new_path = os.path.join(output_dir, new_filename)
+
+    try:
+        os.rename(original_path, new_path)
+        print(f"Renamed '{original_basename}' to '{new_filename}' in '{output_dir}'")
+        return True
+    except OSError as e:
+        print(f"Error renaming file {original_path} to {new_path}: {e}")
+        return False
+</code></pre>
+<p>Consider moving the renamed files to a separate directory to keep your source folder clean.</p>
+
+<h3>Putting It All Together</h3>
+<p>Combine these functions into a script that iterates through your PDF invoice directory.</p>
+<pre><code>
+# Example usage:
+# Assuming 'invoice_files' is a list of paths to your PDF invoices
+
+# for pdf_file_path in invoice_files:
+#     print(f"Processing {pdf_file_path}...")
+#     text_content = extract_text_from_pdf(pdf_file_path)
+#     if text_content:
+#         invoice_data = extract_invoice_data(text_content)
+#         new_filename = construct_new_filename(invoice_data)
+#         rename_pdf_file(pdf_file_path, new_filename)
+#     else:
+#         print(f"Could not extract text from {pdf_file_path}. Skipping.")
+</code></pre>
+<p>For organizations dealing with high volumes of varied PDF documents, programmatic <a href="https://pdfjin.com/pages/ai-pdf-extraction.html" style="text-decoration: underline;">AI PDF extraction</a> offers more advanced capabilities for identifying and structuring data beyond simple regex patterns, especially for invoices with highly inconsistent layouts.</p>
+
+<h2>Robustness and Error Handling</h2>
+<p>Real-world invoices are rarely perfectly uniform. Your script should account for:</p>
+<ul>
+    <li><strong>Missing Data</strong> What if an invoice number or date is not found? Use default placeholders.</li>
+    <li><strong>Multiple Formats</strong> Design flexible regex patterns or create a dictionary of patterns to try against different known invoice layouts.</li>
+    <li><strong>OCR Accuracy</strong> OCR is not always 100% accurate. Implement confidence checks if possible or manual review for low-confidence extractions.</li>
+    <li><strong>File Permissions</strong> Ensure your script has the necessary permissions to read and rename files.</li>
+</ul>
+
+<p>Automating invoice renaming significantly reduces manual effort and improves organization. For quick online solutions to similar PDF challenges, consider PDFjin's suite of tools for robust PDF management and data extraction.</p>
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="merge-multiple-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">The Best Way to Merge Multiple PDF Files into One Document Free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="convert-scanned-receipts-pdf-to-expense-reports-using-ai-parsing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Convert scanned receipts PDF to expense reports using AI parsing</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="digitally-sign-pdf-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">The Easiest Way to Digitally Sign PDF Documents Online for Free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="automate-pdf-data-extraction-for-real-estate-lease-agreements-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Automate PDF data extraction for real estate lease agreements</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="what-is-a-semantic-pdf-extractor-and-why-do-you-need-one-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">What is a semantic PDF extractor and why do you need one</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-convert-scanned-handwritten-pdf-to-text-using-advanced-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to convert scanned handwritten PDF to text using advanced AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-combine-word-excel-and-images-into-one-pdf-binder-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to combine Word Excel and Images into one PDF binder</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-crop-pdf-pages-to-remove-margins-for-kindle-reading-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to crop PDF pages to remove margins for Kindle reading</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="automated-invoice-data-extraction-from-pdf-files-for-small-business-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Automated invoice data extraction from PDF files for small business</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="convert-microsoft-publisher-files-to-pdf-for-professional-printing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Convert Microsoft Publisher files to PDF for professional printing</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
