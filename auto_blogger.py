@@ -81,6 +81,12 @@ WRITING RULES:
 7. Format the output STRICTLY as HTML tags (<h2>, <p>, <ul>, <li>, <strong>, <a>, <table>). DO NOT wrap it in a full <html> document, just the inner content block. DO NOT use markdown code blocks (```html).
 8. HEADINGS STRICT RULE: Do NOT use colons (:), semicolons (;), brackets ([]), braces ({{}}), or slashes (/) in any headings (<h2>, <h3>, <h4>). Keep headings clean.
     """
+    # Generate content using Gemini
+    raw_text = query_gemini(prompt)
+    html_content = raw_text.replace("```html", "").replace("```", "").strip()
+    return html_content
+
+def query_gemini(prompt):
     # Dynamically find a valid Gemini model
     list_url = f"https://generativelanguage.googleapis.com/v1beta/models?key={API_KEY}"
     try:
@@ -116,9 +122,7 @@ WRITING RULES:
         try:
             with urllib.request.urlopen(req) as response:
                 res = json.loads(response.read().decode("utf-8"))
-                text = res["candidates"][0]["content"]["parts"][0]["text"]
-                html_content = text.replace("```html", "").replace("```", "").strip()
-                return html_content
+                return res["candidates"][0]["content"]["parts"][0]["text"]
         except urllib.error.HTTPError as e:
             error_body = e.read().decode("utf-8")
             print(f"=== API ERROR (Attempt {attempt + 1}/{max_retries}) ===")
@@ -138,6 +142,47 @@ WRITING RULES:
             print(f"=== CATCH ALL ERROR ===")
             print(f"Error: {e}")
             exit(1)
+
+def replenish_topics_if_low(min_pending=5, add_count=20):
+    if not os.path.exists(CSV_FILE):
+        return
+    existing_topics = set()
+    pending_count = 0
+    with open(CSV_FILE, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            t = row.get("topic", "").strip()
+            if t:
+                existing_topics.add(t.lower())
+            if row.get("status") == "pending":
+                pending_count += 1
+
+    if pending_count >= min_pending:
+        return
+
+    print(f"Pending topics low ({pending_count} remaining). Auto-generating {add_count} new topics...")
+    prompt = f"""
+Generate {add_count} unique, highly engaging, technical blog post titles for a modern online PDF and AI document productivity platform (PDFjin).
+Focus on specific user problems: PDF editing, OCR, conversion, compression, digital signatures, redaction, security, and AI document intelligence.
+Format output strictly as one title per line. Do not include numbers, bullets, colons, or introductory commentary.
+"""
+    response_text = query_gemini(prompt)
+    if not response_text:
+        return
+
+    new_rows = []
+    for line in response_text.splitlines():
+        clean_title = re.sub(r'^\d+[\.\)]\s*', '', line.strip()).strip('"-*• ')
+        if clean_title and len(clean_title) > 15 and clean_title.lower() not in existing_topics:
+            new_rows.append({"topic": clean_title, "status": "pending"})
+            existing_topics.add(clean_title.lower())
+
+    if new_rows:
+        with open(CSV_FILE, "a", encoding="utf-8", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=["topic", "status"])
+            for r in new_rows:
+                writer.writerow(r)
+        print(f"Auto-replenished {len(new_rows)} new pending topics into {CSV_FILE}.")
 
 def generate_slug(topic):
     slug = "".join([c.lower() if c.isalnum() else "-" for c in topic])
@@ -229,6 +274,7 @@ def update_blog_index(topic, slug, image_url):
 
 
 def main():
+    replenish_topics_if_low(min_pending=5, add_count=20)
     topics = get_pending_topics(limit=1)
     if not topics:
         print("No pending topics found.")
