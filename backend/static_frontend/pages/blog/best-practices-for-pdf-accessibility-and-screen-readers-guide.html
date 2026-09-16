@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | Best practices for PDF accessibility and screen readers</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/best-practices-for-pdf-accessibility-and-screen-readers-guide.html" />
+    <meta name="description" content="Learn all about Best practices for PDF accessibility and screen readers. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Best practices for PDF accessibility and screen readers | PDFjin" />
+    <meta property="og:description" content="Learn all about Best practices for PDF accessibility and screen readers. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20Best%20practices%20for%20PDF%20accessibility%20and%20screen%20readers.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=1982028" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/best-practices-for-pdf-accessibility-and-screen-readers-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Best practices for PDF accessibility and screen readers | PDFjin" />
+    <meta name="twitter:description" content="Learn all about Best practices for PDF accessibility and screen readers. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20Best%20practices%20for%20PDF%20accessibility%20and%20screen%20readers.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=1982028" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Best practices for PDF accessibility and screen readers",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20Best%20practices%20for%20PDF%20accessibility%20and%20screen%20readers.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=1982028",
+  "datePublished": "2026-09-11",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/best-practices-for-pdf-accessibility-and-screen-readers-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>Best practices for PDF accessibility and screen readers</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Sep 11, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="https://image.pollinations.ai/prompt/A%20professional%2C%20modern%20blog%20post%20cover%20image%20about%20Best%20practices%20for%20PDF%20accessibility%20and%20screen%20readers.%20Flat%20design%2C%20highly%20relevant%2C%20clean%2C%20wide%20landscape.?width=1280&height=720&nologo=true&seed=1982028" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Ensure Proper Document Tagging</h2>
+<p>The fundamental barrier for screen readers in PDFs is the absence or incorrect application of PDF tags. Tags define the logical structure and reading order, much like HTML elements define a webpage's structure. Without them, a screen reader cannot interpret the document's hierarchy, identify headings, paragraphs, lists, or tables, rendering the content as an undifferentiated block of text.</p>
+<ul>
+    <li><strong>Root Cause:</strong> Many PDFs are generated from applications that do not preserve or create proper accessibility tags by default. Scanned documents also lack tags.</li>
+    <li><strong>Solution:</strong> Always generate PDFs from source documents (e.g., Word, InDesign) that are already structured with headings, lists, and tables. If starting with an untagged PDF, use a PDF editor to manually add and verify the tag tree structure, ensuring all content is tagged and redundant tags are removed.</li>
+</ul>
+
+<h2>Implement Optical Character Recognition OCR</h2>
+<p>Scanned PDFs or image-based documents present a significant accessibility hurdle: the text is not machine-readable. A screen reader cannot vocalize text that is perceived as an image rather than selectable characters.</p>
+<ul>
+    <li><strong>Root Cause:</strong> PDFs created by scanning paper documents or containing flattened image layers lack an underlying text layer.</li>
+    <li><strong>Solution:</strong> Process all image-based PDFs using Optical Character Recognition (OCR) technology. This converts the image of text into actual, selectable text, making it accessible to screen readers. For quick and effective conversion, use an <a href="https://pdfjin.com/pages/ocr-pdf.html" style="text-decoration: underline;">online OCR tool</a> to add a hidden text layer to your scanned documents.</li>
+</ul>
+
+<h2>Provide Descriptive Alternative Text</h2>
+<p>Visual elements like images, charts, graphs, and complex diagrams convey information that is lost to users who cannot see them. Screen readers need textual equivalents to describe this content.</p>
+<ul>
+    <li><strong>Root Cause:</strong> Images are embedded without textual descriptions (alt text).</li>
+    <li><strong>Solution:</strong> For every meaningful image or graphical object, embed concise and descriptive alternative text (alt text). This text should convey the purpose and content of the visual. Decorative images should have empty alt text (`alt=""`) so screen readers skip them.</li>
+</ul>
+
+<h2>Define Logical Reading Order</h2>
+<p>The visual layout of a PDF might not correspond to the programmatic reading order perceived by a screen reader. Text boxes, columns, and sidebars can confuse the sequential flow.</p>
+<ul>
+    <li><strong>Root Cause:</strong> The tag tree order in a PDF does not match the intended logical reading sequence.</li>
+    <li><strong>Solution:</strong> Within a PDF editor, inspect and rearrange the order of elements in the Tags panel (or similar structure view). Ensure headings, paragraphs, lists, and tables are presented in an order that makes sense when read linearly.</li>
+</ul>
+
+<h2>Specify Document Language</h2>
+<p>Screen readers rely on the declared language to apply correct pronunciation rules. Without a specified language, content might be mispronounced, making it difficult to understand.</p>
+<ul>
+    <li><strong>Root Cause:</strong> The document's primary language is not set in its metadata.</li>
+    <li><strong>Solution:</strong> Always set the document's primary language in the PDF's Document Properties. If sections within the PDF are in a different language, tag those specific text blocks with their respective language attributes.</li>
+</ul>
+
+<h2>Create Accessible Forms</h2>
+<p>PDF forms often lack proper field labels and logical tab order, making them unusable for screen reader users who cannot visually identify fields or navigate them intuitively.</p>
+<ul>
+    <li><strong>Root Cause:</strong> Form fields lack programmatic labels and a defined tab order.</li>
+    <li><strong>Solution:</strong> Use a PDF editor to add tooltips or "alt text" to each form field. Ensure every field has a clear, descriptive label. Set a logical tab order for form fields so users can navigate sequentially using the Tab key.</li>
+</ul>
+
+<h2>Check Color Contrast and Font Selection</h2>
+<p>Poor color contrast between text and background, or overly stylized/small fonts, can impede readability for users with low vision and make it harder for screen readers to accurately interpret text sometimes.</p>
+<ul>
+    <li><strong>Root Cause:</strong> Design choices disregard WCAG (Web Content Accessibility Guidelines) recommendations for visual presentation.</li>
+    <li><strong>Solution:</strong> Adhere to WCAG 2.1 AA guidelines for color contrast (e.g., 4.5:1 for normal text, 3:1 for large text). Use legible, sans-serif fonts at an appropriate size (10pt or larger) to ensure clarity.</li>
+</ul>
+
+<h2>Use Meaningful Link Text</h2>
+<p>Generic link text like "Click here" or bare URLs provides no context for screen reader users who often navigate by a list of links. This forces them to infer meaning from surrounding content, which might be absent or out of order.</p>
+<ul>
+    <li><strong>Root Cause:</strong> Link anchor text is vague or non-descriptive.</li>
+    <li><strong>Solution:</strong> Ensure all hyperlinks use descriptive text that clearly indicates the link's destination or purpose, even when read out of context. For example, "Download the annual report" is preferable to "Click here."</li>
+</ul>
+
+<h2>Regular Accessibility Checks</h2>
+<p>Implementing best practices is a continuous process. Regular validation ensures ongoing compliance and catches any regressions.</p>
+<ul>
+    <li><strong>Root Cause:</strong> PDFs are often created and published without a final accessibility audit.</li>
+    <li><strong>Solution:</strong> Utilize built-in accessibility checkers in PDF software (e.g., Adobe Acrobat Pro Accessibility Checker) or third-party tools. Conduct manual reviews, including navigating the document with a screen reader, to catch issues automated checkers might miss.</li>
+</ul>
+
+<p>Adhering to these best practices significantly enhances PDF accessibility, ensuring your content is available to everyone, regardless of their reliance on assistive technologies. For efficient, online PDF manipulation and accessibility fixes, consider using robust <a href="https://pdfjin.com/pages/edit-pdf.html" style="text-decoration: underline;">PDF editing tools</a> to manage document properties, tags, and content.</p>
+
+
+
+
+
+
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-remove-a-watermark-from-a-pdf-document-safely-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to remove a watermark from a PDF document safely</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="secure-your-confidential-pdfs-with-aes-256-encryption-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Secure your confidential PDFs with AES 256 encryption</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="top-ways-to-secure-pdf-files-with-passwords-and-encryption-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Top ways to secure PDF files with passwords and encryption</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="edit-pdf-text-online-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to Edit PDF Text Online for Free (No Download Needed)</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="automate-pdf-generation-from-google-forms-responses-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Automate PDF generation from Google Forms responses</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="add-watermarks-to-your-pdf-files-online-to-protect-copyright-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Add watermarks to your PDF files online to protect copyright</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-convert-csv-data-into-a-neatly-formatted-pdf-table-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to convert CSV data into a neatly formatted PDF table</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="convert-scanned-receipts-pdf-to-expense-reports-using-ai-parsing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Convert scanned receipts PDF to expense reports using AI parsing</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="extract-product-inventory-lists-from-supplier-pdf-catalogs-with-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Extract product inventory lists from supplier PDF catalogs with AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-chat-with-annual-financial-report-pdf-files-for-stock-insights-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to chat with annual financial report PDF files for stock insights</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
