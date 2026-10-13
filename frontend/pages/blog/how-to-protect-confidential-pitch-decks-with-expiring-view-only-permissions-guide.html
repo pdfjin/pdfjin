@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to protect confidential pitch decks with expiring view-only permissions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-protect-confidential-pitch-decks-with-expiring-view-only-permissions-guide.html" />
+    <meta name="description" content="Learn all about How to protect confidential pitch decks with expiring view-only permissions. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to protect confidential pitch decks with expiring view-only permissions | PDFjin" />
+    <meta property="og:description" content="Learn all about How to protect confidential pitch decks with expiring view-only permissions. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/hero/hero_how-to-protect-confidential-pitch-decks-with-expiring-view-only-permissions-guide.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-protect-confidential-pitch-decks-with-expiring-view-only-permissions-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to protect confidential pitch decks with expiring view-only permissions | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to protect confidential pitch decks with expiring view-only permissions. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/hero/hero_how-to-protect-confidential-pitch-decks-with-expiring-view-only-permissions-guide.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to protect confidential pitch decks with expiring view-only permissions",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://pdfjin.com/assets/blog/hero/hero_how-to-protect-confidential-pitch-decks-with-expiring-view-only-permissions-guide.png",
+  "datePublished": "2026-10-13",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-protect-confidential-pitch-decks-with-expiring-view-only-permissions-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to protect confidential pitch decks with expiring view-only permissions</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Oct 13, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/hero/hero_how-to-protect-confidential-pitch-decks-with-expiring-view-only-permissions-guide.png" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Protecting Pitch Decks with Expiring View-Only Permissions</h2>
+
+To truly protect confidential pitch decks, you must move beyond email attachments and standard cloud drive links. The most effective approach involves leveraging secure document sharing platforms that provide expiring view-only permissions. This ensures your intellectual property remains controlled, preventing unauthorized downloads, prints, or prolonged access after a specified period.
+
+<h2>The Inherent Risks of Standard Sharing Methods</h2>
+<p>Traditional methods for sharing sensitive documents like pitch decks often create significant vulnerabilities. Once a file leaves your control, whether as an email attachment or an open cloud link, its security is compromised.</p>
+<ul>
+    <li><strong>Lack of Control Post-Send:</strong> Email attachments are instantly replicated and stored locally on recipient devices. Cloud links, if not configured meticulously, offer similar uncontrolled access.</li>
+    <li><strong>No Expiration Mechanism:</strong> Standard shares lack built-in timers. A recipient could access your confidential data weeks or months later, potentially outdated or no longer relevant to your discussions.</li>
+    <li><strong>Easy Forwarding and Downloading:</strong> Without specific restrictions, recipients can effortlessly forward the entire document or download it, enabling further unauthorized distribution.</li>
+    <li><strong>Absence of Audit Trails:</strong> You have no insight into who viewed the document, when, or for how long, making it impossible to track potential breaches.</li>
+</ul>
+
+<h2>Technical Approaches to Expiring Permissions</h2>
+<p>Implementing expiring view-only permissions relies on specialized systems that manage access dynamically, rather than just serving static files. These systems typically employ a combination of technologies.</p>
+
+<h3>Leveraging Secure Document Platforms</h3>
+<p>Dedicated secure document platforms are designed to provide granular control over shared files. They don't send the file itself; instead, they provide a secure viewing environment.</p>
+<ul>
+    <li><strong>Token-Based Access:</strong> When a user requests to view a document, the platform generates a unique, time-limited token. This token grants access to the document viewer, and it expires automatically.</li>
+    <li><strong>DRM Digital Rights Management:</strong> These platforms incorporate DRM features that prevent common actions like downloading, printing, or even copying text from the document.</li>
+    <li><strong>Dynamic Watermarking:</strong> To deter screen captures, dynamic watermarks overlay the document with viewer-specific information, such as their email address, IP, or a timestamp. This makes any unauthorized capture traceable.</li>
+    <li><strong>Revocable Access:</strong> Even if a link is active, the sender retains the ability to instantly revoke access for any viewer at any time, adding an immediate layer of security.</li>
+</ul>
+
+<h3>Implementing Expiring Links Step by Step</h3>
+<p>While specific steps vary by platform, the general workflow for setting up expiring view-only links is consistent across most secure sharing solutions.</p>
+<ol>
+    <li><strong>Choose a Secure Document Sharing Service:</strong> Select a platform known for its robust security features, DRM capabilities, and expiring link options.</li>
+    <li><strong>Upload Your Pitch Deck:</strong> Always upload your pitch deck in a non-editable format, ideally a PDF, to minimize alteration risks.</li>
+    <li><strong>Configure Sharing Settings:</strong> Within the platform, set the specific access parameters. This typically includes:
+        <ul>
+            <li>Defining an expiration date and time for the link.</li>
+            <li>Disabling download, print, and copy options.</li>
+            <li>Requiring viewer email verification for enhanced security.</li>
+        </ul>
+    </li>
+    <li><strong>Generate the Secure View-Only Link:</strong> The platform will generate a unique URL for your document, embedded with all the configured security parameters.</li>
+    <li><strong>Distribute the Link:</strong> Share this secure link with your intended recipients instead of attaching the actual file.</li>
+</ol>
+
+<h2>Key Features for Secure Pitch Deck Sharing</h2>
+<p>When evaluating secure sharing solutions, prioritize features that directly address the vulnerabilities of confidential documents.</p>
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>Benefit</th>
+    </tr>
+    <tr>
+        <td>Time-Limited Access</td>
+        <td>Automatically revokes viewing permissions after a set duration, preventing perpetual access.</td>
+    </tr>
+    <tr>
+        <td>No Download Print Copy</td>
+        <td>Enforces view-only status, making it impossible for recipients to save, print, or copy content.</td>
+    </tr>
+    <tr>
+        <td>Viewer Analytics</td>
+        <td>Provides detailed logs of who accessed the document, when they viewed it, and for how long.</td>
+    </tr>
+    <tr>
+        <td>Dynamic Watermarks</td>
+        <td>Overlays viewer-specific identifiers (e.g., email, IP) onto the document to deter and trace screenshots.</td>
+    </tr>
+    <tr>
+        <td>Remote Revocation</td>
+        <td>Allows you to instantly terminate access for any or all viewers, even if the link's expiration time has not been reached.</td>
+    </tr>
+</table>
+
+<h2>Best Practices for Confidential Sharing</h2>
+<p>Beyond selecting the right tools, employing best practices significantly enhances the security of your pitch deck.</p>
+<ul>
+    <li><strong>Convert to PDF:</strong> Always convert your pitch deck to a PDF format before uploading. PDFs offer a more consistent viewing experience and are harder to tamper with than native presentation files.</li>
+    <li><strong>Add a Permanent Watermark:</strong> For an extra layer of protection, consider adding a permanent "Confidential" or "Proprietary" watermark to your document before sharing. This reinforces its sensitive nature. If you need to add such a visual deterrent, you can quickly <a href="https://pdfjin.com/pages/watermark-pdf.html" style="text-decoration: underline;">watermark a PDF online</a> before distribution.</li>
+    <li><strong>Encrypt Your PDF:</strong> Before uploading to a sharing platform, you can add an additional layer of password protection or encryption directly to the PDF file itself. This means even if the platform's security is breached, the file remains protected. You can easily <a href="https://pdfjin.com/pages/protect-pdf.html" style="text-decoration: underline;">protect your PDF with a password</a> or encryption using an online tool.</li>
+    <li><strong>Monitor Access Logs:</strong> Regularly review the access logs provided by your secure sharing platform to identify any unusual viewing patterns or attempts.</li>
+    <li><strong>Communicate Expectations:</strong> Clearly inform recipients about the confidential nature of the document and the limitations of their access.</li>
+</ul>
+<p>Effectively protecting your pitch deck demands proactive measures. By implementing expiring view-only permissions through a secure platform, you maintain control over your confidential information. For quick and essential PDF preparations like adding watermarks or encrypting files, PDFjin offers robust online tools to streamline your workflow.</p>
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-convert-scanned-receipts-to-quickbooks-and-xero-compatible-formats-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to convert scanned receipts to QuickBooks and Xero compatible formats</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-ai-is-revolutionizing-pdf-summaries-and-contract-auditing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How AI is revolutionizing PDF summaries and contract auditing</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-convert-figma-and-canva-designs-into-print-ready-high-res-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to convert Figma and Canva designs into print-ready high-res PDFs</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-fix-broken-text-formatting-in-converted-pdf-files-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to fix broken text formatting in converted PDF files using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-practices-for-optimizing-vector-graphics-in-print-ready-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best practices for optimizing vector graphics in print-ready PDFs</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="extract-metadata-from-thousands-of-pdf-files-automatically-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Extract metadata from thousands of PDF files automatically using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="ai-driven-pdf-compression-to-shrink-file-size-without-losing-quality-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">AI driven PDF compression to shrink file size without losing quality</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-open-source-alternative-to-paid-ai-pdf-editing-software-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best open source alternative to paid AI PDF editing software</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-tools-for-comparing-two-versions-of-a-pdf-document-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best tools for comparing two versions of a PDF document</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="top-5-ai-tools-for-chatting-with-lengthy-legal-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Top 5 AI tools for chatting with lengthy legal PDFs</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
