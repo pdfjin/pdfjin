@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to automatically extract purchase order data from supplier PDF invoices</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-automatically-extract-purchase-order-data-from-supplier-pdf-invoices-guide.html" />
+    <meta name="description" content="Learn all about How to automatically extract purchase order data from supplier PDF invoices. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to automatically extract purchase order data from supplier PDF invoices | PDFjin" />
+    <meta property="og:description" content="Learn all about How to automatically extract purchase order data from supplier PDF invoices. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/hero/hero_how-to-automatically-extract-purchase-order-data-from-supplier-pdf-invoices-guide.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-automatically-extract-purchase-order-data-from-supplier-pdf-invoices-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to automatically extract purchase order data from supplier PDF invoices | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to automatically extract purchase order data from supplier PDF invoices. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/hero/hero_how-to-automatically-extract-purchase-order-data-from-supplier-pdf-invoices-guide.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to automatically extract purchase order data from supplier PDF invoices",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://pdfjin.com/assets/blog/hero/hero_how-to-automatically-extract-purchase-order-data-from-supplier-pdf-invoices-guide.png",
+  "datePublished": "2026-10-20",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-automatically-extract-purchase-order-data-from-supplier-pdf-invoices-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to automatically extract purchase order data from supplier PDF invoices</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Oct 20, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/hero/hero_how-to-automatically-extract-purchase-order-data-from-supplier-pdf-invoices-guide.png" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>How to Automatically Extract Purchase Order Data from Supplier PDF Invoices</h2>
+<p>Automatically extracting purchase order (PO) data from supplier PDF invoices is a critical step for modernizing accounts payable, minimizing manual errors, and accelerating processing times. The goal is to ingest invoices, identify key fields like PO numbers, line items, quantities, and totals, and validate them against existing purchase orders without human intervention. This automation leverages intelligent document processing, combining character recognition with advanced pattern matching and artificial intelligence.</p>
+
+<h2>Core Technical Challenges</h2>
+<p>While PDFs appear structured, their variability poses significant challenges for automated data extraction. Understanding these root causes is essential for designing an effective solution.</p>
+<ul>
+    <li><strong>Diverse Document Layouts:</strong> Each supplier often uses a unique invoice format. Fixed templates fail when confronted with varying placements of data fields.</li>
+    <li><strong>Image-Based Scanned PDFs:</strong> Many invoices arrive as scanned images. The text content is not natively selectable, requiring an initial processing step.</li>
+    <li><strong>Unstructured and Semi-Structured Data:</strong> Even within a consistent layout, descriptive fields or line item details can vary, making rule-based parsing difficult to maintain.</li>
+    <li><strong>Data Validation Complexity:</strong> Extracted data must be accurately matched against an existing purchase order in your ERP system. This demands intelligent cross-referencing and discrepancy flagging.</li>
+</ul>
+
+<h2>Fundamental Extraction Methodologies</h2>
+<p>Effective automation combines several technical approaches to tackle the inherent variability of PDF invoices. Each method addresses specific aspects of the data extraction problem.</p>
+
+<h3>Optical Character Recognition as a Prerequisite</h3>
+<p>For any invoice that is an image-based PDF, the first crucial step is to convert the visual content into machine-readable text. <a href="https://pdfjin.com/pages/ocr-pdf.html" style="text-decoration: underline;">OCR PDF</a> technology processes the image, identifies text characters, and outputs a searchable PDF or plain text data. High-quality OCR engines are essential for accurate subsequent extraction, as the precision of the text layer directly impacts the success of further processing.</p>
+
+<h3>Rule-Based Template Extraction</h3>
+<p>This method defines specific rules or templates for extracting data from PDFs with highly consistent layouts. It relies on identifying fixed positions or patterns of data points.</p>
+<ul>
+    <li><strong>How it Works:</strong> You map specific coordinates or regular expressions to capture fields. For example, a "PO Number" might always appear on the third line after the supplier address.</li>
+    <li><strong>Pros:</strong> Provides high accuracy for known, unchanging formats. It is relatively simple to set up for a small number of very consistent templates.</li>
+    <li><strong>Cons:</strong> Extremely fragile and not scalable. Any minor layout change from the supplier, such as a logo shift or font size alteration, can break the template, requiring manual re-configuration.</li>
+</ul>
+
+<h3>AI and Machine Learning Semantic Extraction</h3>
+<p>For handling diverse and unstructured invoice layouts, AI and machine learning models, particularly those leveraging Natural Language Processing (NLP) and Large Language Models (LLMs), are indispensable. These models learn to understand the semantic meaning of data points rather than relying on fixed positions.</p>
+<ul>
+    <li><strong>Entity Recognition:</strong> ML models are trained to recognize specific entities (e.g., PO number, item quantity, unit price, total amount) regardless of their placement on the invoice. This often uses Named Entity Recognition (NER) techniques.</li>
+    <li><strong>Table Extraction:</strong> Advanced models can identify and parse line item tables, even when their structure varies. They infer column headers and associate data correctly without predefined coordinates.</li>
+    <li><strong>Adaptability:</strong> With sufficient training data, these models can adapt to new invoice formats over time, significantly reducing the need for constant manual rule adjustments. Leveraging advanced tools for <a href="https://pdfjin.com/pages/ai-pdf-extraction.html" style="text-decoration: underline;">AI PDF Extraction</a> can drastically improve efficiency and accuracy in this area.</li>
+</ul>
+
+<h2>Comparison of Extraction Methods</h2>
+<p>Choosing the right approach depends on the volume, variability, and quality of your incoming PDF invoices.</p>
+<table>
+    <tr>
+        <td><strong>Method</strong></td>
+        <td><strong>Best For</strong></td>
+        <td><strong>Key Strength</strong></td>
+        <td><strong>Key Challenge</strong></td>
+    </tr>
+    <tr>
+        <td>OCR PDF</td>
+        <td>Scanned PDFs</td>
+        <td>Converts images to machine-readable text</td>
+        <td>Prone to recognition errors with poor scan quality</td>
+    </tr>
+    <tr>
+        <td>Rule-Based Templates</td>
+        <td>Highly consistent, fixed layout PDFs</td>
+        <td>High accuracy for specific, unchanging formats</td>
+        <td>Fragile to layout changes, poor scalability</td>
+    </tr>
+    <tr>
+        <td>AI Machine Learning</td>
+        <td>Variable layout, semi-structured PDFs</td>
+        <td>Adapts to diverse formats, understands semantic meaning</td>
+        <td>Requires training data, computational resources</td>
+    </tr>
+</table>
+
+<h2>Step-by-Step Implementation Strategy</h2>
+<p>Implementing an automated PO data extraction system involves several logical stages, combining the techniques discussed for a robust solution.</p>
+<ol>
+    <li><strong>Input Document Preparation:</strong> Ensure all incoming PDFs are in a suitable format. This is where you apply OCR to any scanned documents, making their content machine-readable for subsequent processing.</li>
+    <li><strong>Data Extraction Engine Selection:</strong> Choose a solution that balances rule-based precision for known, consistent formats with AI flexibility for variable ones. A hybrid approach often provides the best balance between accuracy and adaptability.</li>
+    <li><strong>Configuration and Training:</strong>
+        <ul>
+            <li>For rule-based systems: Define precise templates for your most common supplier invoices.</li>
+            <li>For AI systems: Provide a diverse set of annotated invoices. This training teaches the model to accurately recognize and extract the required fields from various layouts.</li>
+        </ul>
+    </li>
+    <li><strong>Data Validation and Matching:</strong>
+        <ul>
+            <li><strong>Cross-Reference PO:</strong> Automatically match extracted PO numbers with existing purchase orders in your ERP or procurement system.</li>
+            <li><strong>Line Item Verification:</strong> Validate extracted line item details (quantity, unit price, total) against the corresponding PO line items to identify discrepancies.</li>
+            <li><strong>Tolerance Checks:</strong> Implement rules for acceptable variances in totals or line items to flag potential issues for human review.</li>
+        </ul>
+    </li>
+    <li><strong>Integration with Business Systems:</strong> Export the validated data into your accounting software, ERP (e.g., SAP, Oracle), or other financial management systems. This typically involves APIs or direct database integration to ensure seamless data flow.</li>
+    <li><strong>Continuous Improvement:</strong> Regularly monitor the accuracy of the extraction process. Use feedback loops to retrain AI models or refine rule sets as new invoice variations or supplier formats emerge.</li>
+</ol>
+
+<p>By systematically addressing the technical complexities of PDF invoice processing, you can significantly enhance operational efficiency, reduce manual effort, and improve data accuracy across your procurement and accounts payable functions. Leveraging comprehensive PDF tools online can help you quickly prepare documents and extract critical information without complex software installations.</p>
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="complete-guide-to-bates-stamping-and-sequential-indexing-for-litigation-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Complete guide to Bates stamping and sequential indexing for litigation PDFs</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-compare-scanned-paper-contracts-against-digital-pdf-agreements-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to compare scanned paper contracts against digital PDF agreements using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="convert-cad-drawings-to-pdf-without-autocad-software-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Convert CAD drawings to PDF without AutoCAD software</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-ai-pdf-reader-for-visually-impaired-professionals-using-text-to-speech-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best AI PDF reader for visually impaired professionals using text to speech</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="chat-with-multiple-pdf-documents-simultaneously-using-ai-search-tools-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Chat with multiple PDF documents simultaneously using AI search tools</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-add-a-digital-signature-to-a-pdf-without-adobe-acrobat-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to add a digital signature to a PDF without Adobe Acrobat</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-create-a-fillable-pdf-form-from-scratch-for-free-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to create a fillable PDF form from scratch for free</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-create-accessible-pdf-tables-compliant-with-wcag-2-1-aa-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to create accessible PDF tables compliant with WCAG 2.1 AA</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-crop-and-rotate-mixed-orientation-pages-in-architectural-plan-sets-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to crop and rotate mixed-orientation pages in architectural plan sets</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="ai-audio-overview-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Audio Overview - Convert Dry PDFs into High-Quality, Conversational Podcasts with Dual AI Host</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
