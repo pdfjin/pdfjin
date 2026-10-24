@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to batch extract email attachments and compile them into a unified PDF</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-batch-extract-email-attachments-and-compile-them-into-a-unified-pdf-guide.html" />
+    <meta name="description" content="Learn all about How to batch extract email attachments and compile them into a unified PDF. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to batch extract email attachments and compile them into a unified PDF | PDFjin" />
+    <meta property="og:description" content="Learn all about How to batch extract email attachments and compile them into a unified PDF. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/hero/hero_how-to-batch-extract-email-attachments-and-compile-them-into-a-unified-pdf-guide.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-batch-extract-email-attachments-and-compile-them-into-a-unified-pdf-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to batch extract email attachments and compile them into a unified PDF | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to batch extract email attachments and compile them into a unified PDF. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/hero/hero_how-to-batch-extract-email-attachments-and-compile-them-into-a-unified-pdf-guide.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to batch extract email attachments and compile them into a unified PDF",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://pdfjin.com/assets/blog/hero/hero_how-to-batch-extract-email-attachments-and-compile-them-into-a-unified-pdf-guide.png",
+  "datePublished": "2026-10-24",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-batch-extract-email-attachments-and-compile-them-into-a-unified-pdf-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to batch extract email attachments and compile them into a unified PDF</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Oct 24, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/hero/hero_how-to-batch-extract-email-attachments-and-compile-them-into-a-unified-pdf-guide.png" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Batch Extract Email Attachments and Compile to a Unified PDF</h2>
+<p>Consolidating numerous email attachments into a single, organized PDF document is a common requirement for auditing, reporting, or archival. This process typically involves three key stages: batch extraction of attachments, conversion of diverse file types to PDF, and finally, merging all converted PDFs into one unified file.</p>
+
+<h2>Step 1 Batch Extract Email Attachments</h2>
+<p>The initial challenge is efficiently extracting attachments from multiple emails. Manual extraction is feasible for a few emails but quickly becomes impractical for dozens or hundreds.</p>
+
+<h3>Method 1 Outlook VBA Script Automation</h3>
+<p>For Microsoft Outlook users, Visual Basic for Applications (VBA) offers a powerful way to automate attachment extraction. This method provides control over file naming and destination.</p>
+<p><strong>Steps:</strong></p>
+<ul>
+    <li>Open Outlook and press <strong>Alt + F11</strong> to open the VBA editor.</li>
+    <li>In the Project Explorer pane, right-click on your project (e.g., "Project1 (VbaProject.OTM)") and select <strong>Insert > Module</strong>.</li>
+    <li>Paste the following simplified VBA code into the module window. This script extracts attachments from selected emails in a folder.</li>
+</ul>
+<p><code>
+Sub ExtractAttachments()<br>
+    Dim objOutlook As Outlook.Application<br>
+    Dim objNamespace As Outlook.Namespace<br>
+    Dim objSelection As Outlook.Selection<br>
+    Dim objMail As Outlook.MailItem<br>
+    Dim objAttachments As Outlook.Attachments<br>
+    Dim objAttachment As Outlook.Attachment<br>
+    Dim strFilePath As String<br>
+    Dim strFolderPath As String<br>
+<br>
+    Set objOutlook = Application<br>
+    Set objNamespace = objOutlook.GetNamespace("MAPI")<br>
+    Set objSelection = objOutlook.ActiveExplorer.Selection<br>
+<br>
+    ' Define your desired save path here<br>
+    strFolderPath = "C:\ExtractedAttachments\"<br>
+<br>
+    ' Create folder if it doesn't exist<br>
+    If Dir(strFolderPath, vbDirectory) = "" Then MkDir strFolderPath<br>
+<br>
+    For Each objMail In objSelection<br>
+        Set objAttachments = objMail.Attachments<br>
+        For Each objAttachment In objAttachments<br>
+            strFilePath = strFolderPath & objAttachment.FileName<br>
+            objAttachment.SaveAsFile strFilePath<br>
+            Debug.Print "Saved: " & strFilePath<br>
+        Next objAttachment<br>
+    Next objMail<br>
+<br>
+    MsgBox "Attachments Extracted!", vbInformation<br>
+<br>
+    Set objAttachment = Nothing<br>
+    Set objAttachments = Nothing<br>
+    Set objMail = Nothing<br>
+    Set objSelection = Nothing<br>
+    Set objNamespace = Nothing<br>
+    Set objOutlook = Nothing<br>
+End Sub
+</code></p>
+<ul>
+    <li>Modify <code>strFolderPath</code> to your desired destination.</li>
+    <li>Select the emails in Outlook from which you want to extract attachments.</li>
+    <li>Run the script by clicking the green "Run Sub/UserForm" button or pressing <strong>F5</strong> in the VBA editor.</li>
+</ul>
+<p>This script will save all attachments from the selected emails into the specified folder. For web-based email clients like Gmail, third-party tools or scripting with services APIs (e.g., Google Apps Script) might be required.</p>
+
+<h3>Method 2 Manual Extraction or Client Features</h3>
+<p>Some email clients offer a "Save All Attachments" feature for individual emails. While not batch across multiple emails, it's quicker than saving one by one within a single message.</p>
+<ul>
+    <li><strong>Outlook</strong>: Open an email, navigate to the "File" tab, and select "Save Attachments."</li>
+    <li><strong>Thunderbird</strong>: Select one or more emails, right-click, and choose "Save All Attachments..."</li>
+</ul>
+<p>This approach works best for a small number of emails or when attachments are already grouped by email for specific tasks.</p>
+
+<h2>Step 2 Convert Attachments to PDF</h2>
+<p>Once extracted, attachments will likely be in various formats: DOCX, XLSX, JPG, PNG, TXT, etc. To create a unified PDF, all these files must first be converted to PDF format.</p>
+
+<h3>Automated Conversion Options</h3>
+<p>For large-scale or recurring tasks, scripting languages like Python are highly effective. Libraries exist for converting common document and image types to PDF:</p>
+<ul>
+    <li><strong>DOCX to PDF</strong>: Libraries like <code>docx2pdf</code> (requires Microsoft Word or LibreOffice).</li>
+    <li><strong>XLSX to PDF</strong>: Libraries like <code>openpyxl</code> for reading, then using PDF rendering tools (often complex).</li>
+    <li><strong>Image files (JPG, PNG) to PDF</strong>: Libraries such as <code>Pillow</code> (PIL) to handle images, then <code>img2pdf</code> to convert them to PDF.</li>
+</ul>
+<p>This approach demands programming expertise and environment setup for each file type.</p>
+
+<h3>Manual or Online Conversion Tools</h3>
+<p>For fewer files or less frequent needs, manual conversion is simpler. Desktop applications (like Microsoft Word's "Save As PDF" function) work well. For quick, online conversions of various file types, dedicated online tools are invaluable. You can efficiently <a href="https://pdfjin.com/pages/word-to-pdf.html" style="text-decoration: underline;">convert Word documents to PDF</a>, Excel sheets, or image files individually.</p>
+<table>
+    <thead>
+        <tr>
+            <td><strong>Original Format</strong></td>
+            <td><strong>Common Conversion Method</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>DOCX, DOC</td>
+            <td>Microsoft Word "Save As PDF" or online converters</td>
+        </tr>
+        <tr>
+            <td>XLSX, XLS</td>
+            <td>Microsoft Excel "Print to PDF" or online converters</td>
+        </tr>
+        <tr>
+            <td>JPG, PNG, GIF</td>
+            <td>Image viewer "Print to PDF" or online image to PDF converters</td>
+        </tr>
+        <tr>
+            <td>TXT</td>
+            <td>Text editor "Print to PDF" or simple online converters</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Step 3 Compile into a Unified PDF</h2>
+<p>With all attachments now in PDF format, the final step is to merge them into a single document. The order of merging determines the page order in your final unified PDF.</p>
+
+<h3>Using Command Line Tools</h3>
+<p>For users comfortable with command-line interfaces, tools like <code>pdftk</code> (PDF Toolkit) or <code>qpdf</code> are highly efficient for merging multiple PDF files. You can specify the input files in a desired order.</p>
+<p><strong>Example with <code>pdftk</code>:</strong></p>
+<p><code>
+pdftk input1.pdf input2.pdf input3.pdf cat output combined.pdf
+</code></p>
+<p>This command concatenates <code>input1.pdf</code>, <code>input2.pdf</code>, and <code>input3.pdf</code> into a new file named <code>combined.pdf</code>.</p>
+
+<h3>Using Online PDF Tools</h3>
+<p>For a straightforward, user-friendly approach, online PDF merging tools are ideal. They typically offer a drag-and-drop interface to upload your converted PDF files and arrange them in the desired sequence before merging. This eliminates the need for software installation or command-line syntax, providing a fast and intuitive way to <a href="https://pdfjin.com/pages/merge-pdf.html" style="text-decoration: underline;">merge PDF files</a> into a single document.</p>
+
+<h2>Key Considerations for Automation</h2>
+<p>When automating this entire workflow, consider these factors:</p>
+<ul>
+    <li><strong>File Naming</strong>: Implement consistent naming conventions for extracted and converted files to maintain order.</li>
+    <li><strong>Error Handling</strong>: Build in mechanisms to handle unexpected file types, corrupt attachments, or conversion failures.</li>
+    <li><strong>Scalability</strong>: Ensure your chosen methods can handle the volume of emails and attachments without significant performance degradation.</li>
+    <li><strong>Security</strong>: Be mindful of script permissions and the security of online tools when dealing with sensitive data.</li>
+</ul>
+
+<p>Whether you opt for a fully scripted solution or a hybrid approach using online tools, this multi-step process effectively transforms a collection of disparate email attachments into a single, cohesive PDF document. For quick, online handling of these tasks, consider using PDFjin's suite of tools for conversion and merging without needing complex setups.</p>
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-sign-pdfs-with-digital-certificate-signatures-on-windows-and-mac-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to sign PDFs with digital certificate signatures on Windows and Mac</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-ai-tool-to-extract-data-from-research-paper-pdf-files-safely-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best AI tool to extract data from research paper PDF files safely</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="secure-your-confidential-pdfs-with-aes-256-encryption-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Secure your confidential PDFs with AES 256 encryption</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-add-a-digital-signature-to-a-pdf-without-adobe-acrobat-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to add a digital signature to a PDF without Adobe Acrobat</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-find-hidden-terms-in-a-contract-pdf-before-signing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to find hidden terms in a contract PDF before signing</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-search-for-specific-words-across-multiple-pdf-files-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to search for specific words across multiple PDF files</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="ai-question-generator-for-corporate-training-pdf-documents-in-bulk-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">AI question generator for corporate training PDF documents in bulk</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-translate-academic-thesis-pdf-files-into-multiple-languages-safely-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to translate academic thesis PDF files into multiple languages safely</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-convert-markdown-and-latex-documentation-into-professional-pdf-manuals-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to convert Markdown and LaTeX documentation into professional PDF manuals</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-convert-scanned-handwritten-lab-notebooks-into-searchable-pdf-documents-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to convert scanned handwritten lab notebooks into searchable PDF documents</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
