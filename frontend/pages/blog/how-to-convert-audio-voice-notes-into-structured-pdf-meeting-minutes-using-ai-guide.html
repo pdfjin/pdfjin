@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | How to convert audio voice notes into structured PDF meeting minutes using AI</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/how-to-convert-audio-voice-notes-into-structured-pdf-meeting-minutes-using-ai-guide.html" />
+    <meta name="description" content="Learn all about How to convert audio voice notes into structured PDF meeting minutes using AI. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to convert audio voice notes into structured PDF meeting minutes using AI | PDFjin" />
+    <meta property="og:description" content="Learn all about How to convert audio voice notes into structured PDF meeting minutes using AI. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/hero/hero_how-to-convert-audio-voice-notes-into-structured-pdf-meeting-minutes-using-ai-guide.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/how-to-convert-audio-voice-notes-into-structured-pdf-meeting-minutes-using-ai-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to convert audio voice notes into structured PDF meeting minutes using AI | PDFjin" />
+    <meta name="twitter:description" content="Learn all about How to convert audio voice notes into structured PDF meeting minutes using AI. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/hero/hero_how-to-convert-audio-voice-notes-into-structured-pdf-meeting-minutes-using-ai-guide.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to convert audio voice notes into structured PDF meeting minutes using AI",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://pdfjin.com/assets/blog/hero/hero_how-to-convert-audio-voice-notes-into-structured-pdf-meeting-minutes-using-ai-guide.png",
+  "datePublished": "2026-11-06",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/how-to-convert-audio-voice-notes-into-structured-pdf-meeting-minutes-using-ai-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>How to convert audio voice notes into structured PDF meeting minutes using AI</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Nov 06, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/hero/hero_how-to-convert-audio-voice-notes-into-structured-pdf-meeting-minutes-using-ai-guide.png" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>Streamlining Meeting Minutes with AI Voice Notes</h2>
+<p>Transforming unstructured audio voice notes into organized, structured PDF meeting minutes is a multi-stage AI process. The core approach involves accurate speech-to-text transcription, intelligent semantic extraction to identify key meeting components, and subsequent structuring into a standard format before PDF generation.</p>
+<p>This method significantly reduces manual effort, ensuring all crucial decisions, action items, and discussion points are captured and presented clearly, directly addressing the challenge of inefficient minute-taking.</p>
+
+<h2>The Core AI Workflow for Audio to PDF Minutes</h2>
+<p>The conversion process leverages several AI capabilities, moving from raw audio to a refined, document-ready format. Each step builds upon the previous one, ensuring data integrity and meaningful output.</p>
+
+<h3>Step 1 Accurate Audio Transcription ASR</h3>
+<p>The initial and most critical step is converting spoken words into text. Advanced Automatic Speech Recognition (ASR) models are employed for high accuracy, even in challenging audio environments.</p>
+<ul>
+    <li><strong>Speaker Diarization:</strong> AI identifies and separates different speakers, assigning utterances to individuals. This is crucial for attributing comments and decisions accurately within meeting minutes.</li>
+    <li><strong>Noise Reduction:</strong> Pre-processing techniques clean the audio, minimizing background noise and improving transcription fidelity.</li>
+    <li><strong>Language Models:</strong> Domain-specific language models can be used to improve accuracy for technical jargon or industry-specific terms.</li>
+</ul>
+<p>For this foundational step, dedicated tools like <a href="https://pdfjin.com/pages/ai-voice-memo.html" style="text-decoration: underline;">AI Voice Memo</a> can handle the robust transcription of your audio notes, providing a solid textual basis.</p>
+
+<h3>Step 2 Semantic Extraction and Summarization NLP NLU</h3>
+<p>Once transcribed, Natural Language Processing (NLP) and Natural Language Understanding (NLU) models parse the text to extract meaningful information. This goes beyond simple keyword spotting to comprehend context and intent.</p>
+<ul>
+    <li><strong>Key Topic Identification:</strong> AI identifies the main subjects discussed, grouping related sentences.</li>
+    <li><strong>Action Item Detection:</strong> Models are trained to recognize phrases indicating tasks, responsibilities, and deadlines.</li>
+    <li><strong>Decision Tracking:</strong> AI pinpoints definitive statements of agreement or resolutions reached during the meeting.</li>
+    <li><strong>Sentiment Analysis:</strong> Optionally, AI can gauge the overall sentiment surrounding specific topics or decisions.</li>
+</ul>
+<p>Tools designed for advanced text analysis, such as <a href="https://pdfjin.com/pages/ai-semantic-extract.html" style="text-decoration: underline;">AI Semantic Extract</a>, are essential here to pull out the critical structured data points from your meeting transcripts.</p>
+
+<h3>Step 3 Structuring Data for Clarity</h3>
+<p>The extracted data is then organized into a predefined, standardized meeting minutes template. This ensures consistency and immediate readability.</p>
+<p>A typical structure might include sections for attendees, topics, decisions, and action items, often presented in bullet points or tabular format for easy scanning.</p>
+<table>
+    <tr>
+        <td><strong>Section</strong></td>
+        <td><strong>AI Role</strong></td>
+        <td><strong>Example Output</strong></td>
+    </tr>
+    <tr>
+        <td>Attendees</td>
+        <td>Speaker Diarization</td>
+        <td>John Doe, Jane Smith, Alex Lee</td>
+    </tr>
+    <tr>
+        <td>Topics Discussed</td>
+        <td>Key Topic Identification</td>
+        <td>Project Alpha Status, Q3 Budget Review</td>
+    </tr>
+    <tr>
+        <td>Key Decisions</td>
+        <td>Decision Tracking</td>
+        <td>Approved Q3 marketing campaign; Deferred hiring decision.</td>
+    </tr>
+    <tr>
+        <td>Action Items</td>
+        <td>Action Item Detection</td>
+        <td>John: Send revised budget by EOD. Jane: Prepare Q3 performance report.</td>
+    </tr>
+</table>
+
+<h3>Step 4 Generating the Structured PDF</h3>
+<p>The final structured data is then rendered into a PDF document. This step involves layout and formatting to ensure the minutes are professional and easy to navigate.</p>
+<ul>
+    <li><strong>Template Application:</strong> The structured text is populated into a pre-designed PDF template.</li>
+    <li><strong>Formatting:</strong> Elements like headings, bullet points, and tables are correctly rendered, maintaining visual hierarchy.</li>
+    <li><strong>Security and Sharing:</strong> PDFs offer a universal, secure format suitable for archival and distribution.</li>
+</ul>
+
+<h2>Key AI Capabilities Utilized</h2>
+<p>The effectiveness of this workflow hinges on several advanced AI disciplines:</p>
+<ul>
+    <li><strong>Automatic Speech Recognition (ASR):</strong> Converts audio to text.</li>
+    <li><strong>Natural Language Processing (NLP):</strong> Analyzes and understands human language.</li>
+    <li><strong>Natural Language Understanding (NLU):</strong> Extracts meaning, intent, and entities from text.</li>
+    <li><strong>Named Entity Recognition (NER):</strong> Identifies and classifies entities (people, organizations, dates).</li>
+    <li><strong>Topic Modeling:</strong> Discovers abstract "topics" that occur in a collection of documents.</li>
+</ul>
+
+<h2>Best Practices for Effective AI Driven Minutes</h2>
+<ul>
+    <li><strong>Clear Audio Input:</strong> Ensure high-quality audio recordings with minimal background noise. Clear speech significantly boosts ASR accuracy.</li>
+    <li><strong>Define Objectives:</strong> Before recording, have a clear agenda. This helps AI models focus on relevant information during extraction.</li>
+    <li><strong>Review and Refine:</strong> Always perform a human review of the generated minutes. While AI is highly capable, a final check ensures absolute accuracy and addresses any nuanced interpretations.</li>
+    <li><strong>Iterative Improvement:</strong> Over time, providing feedback to your AI system can help fine-tune its performance for your specific meeting contexts and terminology.</li>
+</ul>
+<p>Leveraging AI to convert audio voice notes into structured PDF meeting minutes transforms a tedious task into an efficient, automated process. You can quickly generate comprehensive, professional minutes online, making your workflow smoother and more productive.</p>
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-organize-and-merge-clinical-trial-pdf-dossiers-for-regulatory-submission-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to organize and merge clinical trial PDF dossiers for regulatory submission</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-repair-corrupted-pdf-xref-tables-and-stream-objects-online-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to repair corrupted PDF xref tables and stream objects online</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-convert-scanned-receipts-to-quickbooks-and-xero-compatible-formats-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to convert scanned receipts to QuickBooks and Xero compatible formats</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-compare-scanned-paper-contracts-against-digital-pdf-agreements-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to compare scanned paper contracts against digital PDF agreements using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="what-is-a-semantic-pdf-extractor-and-why-do-you-need-one-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">What is a semantic PDF extractor and why do you need one</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-extract-specific-data-fields-from-pdf-invoices-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to extract specific data fields from PDF invoices using AI</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-convert-presentation-slides-into-compact-handout-pdfs-with-notes-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to convert presentation slides into compact handout PDFs with notes</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="automate-pdf-generation-from-google-forms-responses-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Automate PDF generation from Google Forms responses</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-ai-tool-for-merging-massive-pdf-files-without-formatting-errors-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best AI tool for merging massive PDF files without formatting errors</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="extract-specific-customer-data-from-shipping-manifest-pdf-files-using-ai-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Extract specific customer data from shipping manifest PDF files using AI</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
