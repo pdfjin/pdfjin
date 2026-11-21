@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>PDFjin | Protecting PII Implementing Compliant Redaction for GDPR and HIPAA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/tool-page.css">
+    <link rel="stylesheet" href="../../css/blog.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4FR9CKVZ0"></script>
+    <script>
+        (function () {
+            const targetApi = "https://pdfjin-api-97530578628.us-central1.run.app";
+            window.PDFJIN_API_URL = targetApi;
+            try {
+                const config = JSON.parse(localStorage.getItem('adminApiConfig') || '{}');
+                if (config.apiUrl && (config.apiUrl.includes('97530578628') || config.apiUrl.includes('asia-southeast1'))) {
+                    config.apiUrl = targetApi;
+                    localStorage.setItem('adminApiConfig', JSON.stringify(config));
+                }
+            } catch(e) {}
+            const logged = localStorage.getItem('isLoggedIn') === 'true' || sessionStorage.getItem('isLoggedIn') === 'true';
+            if (logged) {
+                document.documentElement.classList.add('is-logged-in');
+                window.isUserLoggedIn = true;
+            }
+        })();
+    </script>
+    <link rel="canonical" href="https://pdfjin.com/pages/blog/protecting-pii-implementing-compliant-redaction-for-gdpr-and-hipaa-guide.html" />
+    <meta name="description" content="Learn all about Protecting PII Implementing Compliant Redaction for GDPR and HIPAA. A comprehensive guide by PDFjin." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Protecting PII Implementing Compliant Redaction for GDPR and HIPAA | PDFjin" />
+    <meta property="og:description" content="Learn all about Protecting PII Implementing Compliant Redaction for GDPR and HIPAA. A comprehensive guide by PDFjin." />
+    <meta property="og:image" content="https://pdfjin.com/assets/blog/hero/hero_protecting-pii-implementing-compliant-redaction-for-gdpr-and-hipaa-guide.png" />
+    <meta property="og:url" content="https://pdfjin.com/pages/blog/protecting-pii-implementing-compliant-redaction-for-gdpr-and-hipaa-guide.html" />
+    <meta property="og:site_name" content="PDFjin" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Protecting PII Implementing Compliant Redaction for GDPR and HIPAA | PDFjin" />
+    <meta name="twitter:description" content="Learn all about Protecting PII Implementing Compliant Redaction for GDPR and HIPAA. A comprehensive guide by PDFjin." />
+    <meta name="twitter:image" content="https://pdfjin.com/assets/blog/hero/hero_protecting-pii-implementing-compliant-redaction-for-gdpr-and-hipaa-guide.png" />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Protecting PII Implementing Compliant Redaction for GDPR and HIPAA",
+  "description": "Learn how to convert Excel to PDF while keeping perfect formatting and margins online for free. Turn XLS/XLSX spreadsheets into print-ready PDF sheets easy.",
+  "image": "https://pdfjin.com/assets/blog/hero/hero_protecting-pii-implementing-compliant-redaction-for-gdpr-and-hipaa-guide.png",
+  "datePublished": "2026-11-21",
+  "author": {
+    "@type": "Organization",
+    "name": "PDFjin Content Team"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PDFjin",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pdfjin.com/assets/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pdfjin.com/pages/blog/protecting-pii-implementing-compliant-redaction-for-gdpr-and-hipaa-guide.html"
+  }
+}
+  </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18124600701"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18124600701');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4117768235037658" crossorigin="anonymous"></script>
+</head>
+
+<body class="blog-pos-page">
+
+    <!-- NAVIGATION -->
+    <nav class="navbar scrolled" role="navigation" aria-label="Main navigation">
+        <a href="/" class="nav-logo" aria-label="PDFjin Home">
+            <div class="logo-icon" aria-hidden="true">&#128196;</div>
+            PDF<span>jin</span>
+        </a>
+
+        <ul class="nav-links" id="navMenu">
+            <li><a href="/#services">Tools</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../../index.html#how-it-works">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="../api-docs.html">API Docs</a></li>
+            <li class="guest-only"><a href="../auth.html">Sign In</a></li>
+            <li class="user-only">
+                <div class="nav-user-wrapper">
+                    <a href="../dashboard.html" class="user-profile-btn" title="Go to Dashboard">
+                        <span class="user-bubble" id="navUserBubble">U</span>
+                        <span class="user-status-dot"></span>
+                    </a>
+                    <a href="#" class="logout-link-simple" id="navLogout">Logout</a>
+                </div>
+            </li>
+            <li><a href="/#services" class="nav-cta" id="mainCTA">Get Started Free &rarr;</a></li>
+        </ul>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="blog-pos-wrapper">
+        <header class="blog-pos-header">
+            <span class="category-badge">Tutorial</span>
+            <h1>Protecting PII Implementing Compliant Redaction for GDPR and HIPAA</h1>
+            <div class="blog-pos-meta">
+                <span>By PDFjin Content Team</span>
+                <span class="meta-divider">&bull;</span>
+                <span>Nov 21, 2026</span>
+                <span class="meta-divider">&bull;</span>
+                <span>6 min read</span>
+            </div>
+        
+            <div class="post-action-bar">
+                <span class="share-label">Share:</span>
+                <a href="#" class="action-icon-link facebook" aria-label="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link twitter" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href) + '&text=' + encodeURIComponent(document.title), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link linkedin" aria-label="Share on LinkedIn" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" class="action-icon-link whatsapp" aria-label="Share on WhatsApp" onclick="window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); return false;">
+                    <svg viewBox="0 0 24 24"><path d="M20.52 3.449A11.91 11.91 0 0 0 12 .002a11.96 11.96 0 0 0-10.22 17.84L.27 24l6.3-1.654A11.91 11.91 0 0 0 12 23.948a11.96 11.96 0 0 0 11.99-12c.002-3.197-1.24-6.205-3.47-8.499zM12 21.94c-2.58 0-5.11-1.04-6.95-2.88l-4.42 1.16 1.18-4.3C.44 14.12-.03 12.08.03 9.97.13 4.54 4.63.15 10.06.02a12.03 12.03 0 0 1 3.52 23.9z"></path><path d="M16.81 14.61c-.39-.2-2.31-1.14-2.67-1.27-.36-.13-.62-.2-.88.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.47.3-.86.1-.39-.2-1.65-.61-3.14-1.95-1.16-1.04-1.94-2.33-2.17-2.73-.23-.39-.02-.6.18-.8.19-.19.39-.46.59-.69.19-.23.26-.39.39-.65.13-.26.06-.5-.03-.7-.1-.2-.88-2.12-1.21-2.9-.32-.76-.64-.66-.88-.67-.23-.01-.5-.01-.76-.01-.26 0-.69.1-1.05.49-.36.39-1.37 1.34-1.37 3.27 0 1.93 1.41 3.8 1.6 4.06.2.26 2.76 4.22 6.69 5.92.94.41 1.67.65 2.24.83.94.3 1.79.26 2.47.16.76-.11 2.31-.95 2.64-1.86.33-.91.33-1.69.23-1.86-.1-.17-.36-.27-.75-.47z"></path></svg>
+                </a>
+                <a href="#" class="action-icon-link instagram" aria-label="Copy link for Instagram" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="action-icon-link tiktok" aria-label="Copy link for TikTok" onclick="copyBlogLink(); return false;">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path></svg>
+                </a>
+            </div>
+        </header>
+
+        <div class="blog-pos-hero-image">
+            <img src="/assets/blog/hero/hero_protecting-pii-implementing-compliant-redaction-for-gdpr-and-hipaa-guide.png" alt="Excel to PDF Illustration">
+        </div>
+
+        <section class="blog-pos-content">
+<h2>The Imperative for Compliant Redaction</h2>
+<p>Achieving compliant redaction for sensitive data under regulations like GDPR and HIPAA demands more than just drawing black boxes over text. True compliance requires the permanent, irretrievable removal of PII (Personally Identifiable Information) and PHI (Protected Health Information) from documents, including all underlying text layers and metadata. Manual redaction is highly error-prone and inefficient for large volumes, making automated, technically sound solutions essential to mitigate significant legal and reputational risks.</p>
+
+<h3>GDPR and HIPAA Fundamentals</h3>
+<p>Both GDPR (General Data Protection Regulation) and HIPAA (Health Insurance Portability and Accountability Act) mandate stringent protection for personal data. GDPR emphasizes data minimization, purpose limitation, and the "right to be forgotten," meaning PII must be rendered unidentifiable when no longer needed or when requested by a data subject. HIPAA specifically protects PHI, requiring covered entities and business associates to implement administrative, physical, and technical safeguards to ensure its confidentiality, integrity, and availability. Redaction is a critical technical safeguard for both.</p>
+
+<h2>Common Pitfalls in Redaction</h2>
+<p>Many organizations inadvertently expose PII/PHI due to common misconceptions about what constitutes effective redaction.</p>
+
+<h3>Metadata and Hidden Layers</h3>
+<p>One primary oversight is failing to strip metadata. PDF files often contain embedded data such as author names, creation dates, revision history, comments, and hidden text layers. Simply redacting visible content leaves this PII exposed, which can be easily recovered by technical users. Ensuring all metadata is purged is as crucial as redacting visible content.</p>
+
+<h3>The Myth of Simple Black Boxes</h3>
+<p>Applying an opaque shape over text in a PDF editor does not constitute permanent redaction. This method only creates an overlay. The underlying text remains searchable, selectable, and can be revealed by simply removing the overlay with standard PDF tools. True redaction physically removes the character data and associated content from the document's structure, replacing it with a blank space or an opaque block.</p>
+
+<h2>Technical Approaches to True Redaction</h2>
+<p>Implementing compliant redaction requires a multi-faceted technical strategy that addresses content identification, permanent removal, and workflow integration.</p>
+
+<h3>Automated PII Detection</h3>
+<p>The first step involves identifying PII/PHI within documents. This can be achieved through:</p>
+<ul>
+    <li><strong>Regular Expressions:</strong> Pattern matching for common PII formats (e.g., social security numbers, email addresses, phone numbers).</li>
+    <li><strong>Lexical Analysis and Dictionaries:</strong> Identifying specific names, medical terms, or other sensitive keywords.</li>
+    <li><strong>Natural Language Processing NLP:</strong> More advanced techniques for understanding context and identifying PII that doesn't fit strict patterns.</li>
+    <li><strong>AI and Machine Learning:</strong> Training models to recognize complex PII/PHI across diverse document types, often outperforming rule-based systems in accuracy and scale.</li>
+</ul>
+<p>For scanning image-based documents to make their text searchable for redaction, consider tools like <a href="https://pdfjin.com/pages/ocr-pdf.html" style="text-decoration: underline;">OCR PDF</a>.</p>
+
+<h3>Permanent Content Removal</h3>
+<p>Once identified, PII/PHI must be permanently removed. The most robust methods involve:</p>
+<ul>
+    <li><strong>Content Stream Manipulation:</strong> Directly editing the PDF's internal content streams to delete characters, words, or images containing PII/PHI. This is the most secure method as it physically removes the data.</li>
+    <li><strong>Rasterization of Redacted Areas:</strong> Converting the redacted sections (or the entire page) into an image. This effectively "flattens" the content, preventing retrieval of underlying text. This method is effective but can sometimes increase file size and remove text searchability from the redacted zones.</li>
+    <li><strong>Flattening Annotations:</strong> Ensuring that redaction annotations are not merely overlays but are irreversibly applied, making them part of the document's fixed content.</li>
+    <li><strong>Metadata Stripping:</strong> Employing specialized tools to identify and remove all embedded metadata, comments, hidden layers, and scripts from the PDF.</li>
+</ul>
+
+<h3>Workflow Integration and Verification</h3>
+<p>Integrating redaction into your document lifecycle is crucial. This involves:</p>
+<ul>
+    <li>Defining clear policies for what data requires redaction and under what circumstances.</li>
+    <li>Implementing automated or semi-automated tools that can be integrated into document processing pipelines.</li>
+    <li>Establishing a review and verification process to ensure redaction accuracy before document release.</li>
+    <li>Maintaining an audit trail of redaction actions for accountability.</li>
+</ul>
+
+<h2>Key Differences GDPR vs HIPAA Redaction</h2>
+<p>While both regulations demand PII/PHI protection, their focus areas and scope differ slightly.</p>
+
+<table>
+    <thead>
+        <tr>
+            <td><strong>Aspect</strong></td>
+            <td><strong>GDPR Redaction Focus</strong></td>
+            <td><strong>HIPAA Redaction Focus</strong></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Scope of Data</strong></td>
+            <td>Broad PII any EU citizen</td>
+            <td>PHI healthcare specific data</td>
+        </tr>
+        <tr>
+            <td><strong>Purpose</strong></td>
+            <td>Data minimization Right to be forgotten</td>
+            <td>Protect patient privacy Prevent fraud</td>
+        </tr>
+        <tr>
+            <td><strong>Identifiers</strong></td>
+            <td>Name address email IP biometrics</td>
+            <td>All 18 PHI identifiers eg medical record numbers dates faces</td>
+        </tr>
+        <tr>
+            <td><strong>Sanctions</strong></td>
+            <td>Higher fines up to 4% global turnover</td>
+            <td>Fines civil criminal penalties</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Steps for a Robust Redaction Strategy</h2>
+<p>To establish a technically sound and compliant redaction process, follow these steps:</p>
+<ol>
+    <li><strong>Audit Data:</strong> Identify where PII/PHI resides across your systems and document types. Understand the data flows.</li>
+    <li><strong>Define PII/PHI Schemas:</strong> Create precise definitions and regular expressions for all sensitive data types requiring redaction in your context.</li>
+    <li><strong>Select Appropriate Tools:</strong> Invest in enterprise-grade redaction software that offers automated detection, permanent content removal, and metadata stripping capabilities. Leveraging <a href="https://pdfjin.com/pages/ai-smart-redact.html" style="text-decoration: underline;">AI Smart Redact</a> solutions can significantly enhance accuracy and efficiency, especially with unstructured data.</li>
+    <li><strong>Implement Workflows:</strong> Integrate redaction into document creation, processing, and sharing workflows. Automate as much as possible to reduce human error.</li>
+    <li><strong>Train Personnel:</strong> Ensure all staff handling sensitive documents are trained on redaction policies and tools.</li>
+    <li><strong>Verify and Audit:</strong> Establish a robust quality assurance process to verify redaction effectiveness before documents are released. Regularly audit your processes for compliance.</li>
+</ol>
+<p>Effectively protecting PII and PHI through compliant redaction is non-negotiable. Leverage PDFjin's specialized tools to automate detection, permanently remove sensitive information, and ensure your documents meet stringent regulatory standards without compromise.</p>
+
+<div class="related-posts-container" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eaeaea;">
+    <h3>Related Articles</h3>
+    <ul style="list-style: none; padding: 0; line-height: 1.8;">
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-create-dynamic-interactive-pdf-checklists-for-field-inspections-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to create dynamic interactive PDF checklists for field inspections</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-remove-page-numbers-from-scanned-book-pdfs-before-ocr-processing-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to remove page numbers from scanned book PDFs before OCR processing</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-add-a-digital-signature-to-a-pdf-without-adobe-acrobat-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to add a digital signature to a PDF without Adobe Acrobat</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-translate-a-pdf-while-keeping-images-in-place-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to translate a PDF while keeping images in place</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="best-ways-to-redact-medical-records-in-pdf-format-securely-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Best ways to redact medical records in PDF format securely</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-change-the-default-pdf-viewer-in-windows-and-mac-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to change the default PDF viewer in Windows and Mac</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="complete-guide-to-bates-stamping-and-sequential-indexing-for-litigation-pdfs-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Complete guide to Bates stamping and sequential indexing for litigation PDFs</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-repair-corrupted-pdf-xref-tables-and-stream-objects-online-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to repair corrupted PDF xref tables and stream objects online</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="how-to-translate-japanese-chinese-and-korean-pdf-manuals-into-english-accurately-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">How to translate Japanese, Chinese, and Korean PDF manuals into English accurately</a></li>
+        <li style="margin-bottom: 10px;">&rarr; <a href="speed-up-academic-research-by-chatting-with-textbook-pdf-chapters-guide.html" style="color: var(--primary); font-weight: 500; text-decoration: none;">Speed up academic research by chatting with textbook PDF chapters</a></li>
+    </ul>
+</div>
+</section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="nav-logo" style="display:inline-flex;">
+                    <div class="logo-icon">&#128196;</div>
+                    PDF<span>jin</span>
+                </a>
+                <p>The complete PDF toolkit built on open-source technology.</p>
+                <div class="footer-social">
+                    <a href="#" class="action-icon-link" aria-label="X">&#120143;</a>
+                    <a href="#" class="action-icon-link" aria-label="GitHub">&#8997;</a>
+                    <a href="#" class="action-icon-link" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Convert</h4>
+                <ul>
+                    <li><a href="../pdf-to-word.html">PDF to Word</a></li>
+                    <li><a href="../word-to-pdf.html">Word to PDF</a></li>
+                    <li><a href="../pdf-to-jpg.html">PDF to JPG</a></li>
+                    <li><a href="../jpg-to-pdf.html">JPG to PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Tools</h4>
+                <ul>
+                    <li><a href="../merge-pdf.html">Merge PDF</a></li>
+                    <li><a href="../split-pdf.html">Split PDF</a></li>
+                    <li><a href="../compress-pdf.html">Compress PDF</a></li>
+                    <li><a href="../sign-pdf.html">Sign PDF</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>AI Studio</h4>
+                <ul>
+                    <li><a href="../ai-pdf-chat.html">AI Chat</a></li>
+                    <li><a href="../ai-pdf-extraction.html">AI Extract</a></li>
+                    <li><a href="../ai-smart-rewrite.html">AI Rewrite</a></li>
+                    <li><a href="../ai-audio-overview.html">Audio Overview</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="../../about.html">About Us</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../api-docs.html">API Docs</a></li>
+                    <li><a href="../../privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>&copy; 2026 PDFjin. <a href="../../privacy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a> | <a href="../../terms.html" style="color: inherit; text-decoration: underline;">Terms</a> | <a href="../../contact.html" style="color: inherit; text-decoration: underline;">Contact</a></span>
+            <span>Made with &hearts; using open-source tools &middot; Hosted on <a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a></span>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=3.3"></script>
+
+    <div id="toast-container"></div>
+    <script>
+        function copyBlogLink() {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+                showToast("Link copied to clipboard!");
+            });
+        }
+        function showToast(message) {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> ${message}`;
+            container.appendChild(toast);
+            
+            // Trigger reflow
+            void toast.offsetWidth;
+            toast.classList.add("show");
+            
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
